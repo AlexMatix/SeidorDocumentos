@@ -1,0 +1,115 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./vwin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+<window id="vwin" border="none" onCreate="entityController.loadView(ebeanDetail, self);" >
+
+  <zscript>
+    import ieci.tdw.ispac.adapter.TransactAdapterI;
+    import ieci.tdw.ispac.entity.EntityAdapter;
+    import ieci.tdw.ispac.entity.adapter.PWGeneralAdapter;
+
+
+    EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+    PWGeneralAdapter pwGeneralAdapter = pwGeneralController.read(ebeanDetail);
+
+    update(){
+      fcv.validate(ewin);
+      entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+    }
+
+    TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+  </zscript>
+
+  <div class="row detailBox" >
+    <div class="row gridCard">
+
+      <div class="row">
+        <div class="col-md-4"></div> 
+        <div class="col-md-4">
+          <label value="Fecha de oficio" sclass="detailField"></label>
+          <h:p> <label id="date_office" sclass="detailData"></label></h:p> 
+        </div> 
+        <div class="col-md-4">
+          <label value="No. de Oficio*" sclass="detailField" ></label>
+          <h:p> <label id="no_office" sclass="detailData" ></label> </h:p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label value="Nombre del solicitante" sclass="detailField" ></label>
+        <h:p> <label id="name_aplicant" sclass="detailData" ></label> </h:p>
+      </div>
+
+      <div class="col-md-4">
+        <label value="Cargo" sclass="detailField" ></label>
+        <h:p> <label id="position" sclass="detailData" ></label> </h:p>
+      </div>
+
+      <div class="col-md-4">
+        <label value="Dependencia" sclass="detailField" ></label>
+        <h:p> <label id="dependence" sclass="detailData" ></label> </h:p>
+      </div>
+
+      <div class="col-md-12">
+        <label value="Ubicación de la obras" sclass="detailField" ></label>
+        <h:p> <label id="location_works" sclass="detailData" ></label> </h:p>
+      </div>
+
+      <div class="row gridCard">  
+        <div class="col-md-12">
+          <label value="Datos del solicitante" sclass="detailField"></label>
+        </div>
+      </div>
+      <div sclass="separatorEdit" ></div>
+
+              <div class="row">        
+              <listbox id="lbcontac_json" onCreate="pwGeneralAdapter.loadContact(self, false, vwin);" style="">
+                <listhead>
+                  <listheader label="Telefono"  hflex="3"></listheader>
+                  <listheader label="Extención" hflex="1"></listheader>
+                  <listheader label="Correo"    hflex="3"></listheader>
+                </listhead>       
+                <listitem self="@{each=esp}" value="@{esp}" >
+                  <listcell label="@{esp.phone}" ></listcell>
+                  <listcell label="@{esp.extension}" ></listcell>              
+                  <listcell label="@{esp.email}" ></listcell>              
+                </listitem>   
+              </listbox>
+          </div>
+      </div>
+
+      <div class="row gridCard">  
+        <div class="col-md-12">
+          <label value="Lista de obras" sclass="detailField"></label>
+        </div>
+      </div>
+      <div sclass="separatorEdit" ></div>
+
+        <div class="col-md-12">
+          <listbox id="lbworks_json" onCreate="pwGeneralAdapter.loadWork(self, false, vwin, catalogManager.getCatalogs(421));">
+            <listhead>
+              <listheader label="Nombre" hflex="1"></listheader>
+              <listheader label="Localidad" hflex="1"></listheader>
+              <listheader label="Tipo de obra" hflex="1"></listheader>
+              <listheader label="Mapa" hflex="1"></listheader>
+              <listheader label="Superficie(m2)" hflex="1"></listheader>
+              <listheader label="Observaciones" hflex="1"></listheader>
+            </listhead>
+          </listbox>
+        </div>
+
+      <div visible="false">      
+        <div class="col-md-12">
+          <label value="Contactos" sclass="detailField" ></label>
+          <h:p> <label id="contac_json" sclass="detailData" ></label> </h:p>
+        </div>
+        <div class="col-md-12">
+          <label value="Tabla de obras" sclass="detailField" ></label>
+          <h:p> <label id="works_json" sclass="detailData" ></label> </h:p>
+        </div>
+      </div>
+        
+    </div>  
+</window>
+</zk>

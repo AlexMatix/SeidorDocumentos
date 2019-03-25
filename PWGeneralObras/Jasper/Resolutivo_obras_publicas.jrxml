@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConstanciaVerificacion" pageWidth="612" pageHeight="792" columnWidth="522" leftMargin="50" rightMargin="40" topMargin="20" bottomMargin="0" uuid="6c50ef1e-4cb4-4e54-ab16-ec55fa13560c">
+	<property name="ireport.zoom" value="0.9982500000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="LongFormatedDate[time_now]" class="java.lang.String"/>
+	<parameter name="SimpleFormatedDate[time_now]" class="java.lang.String"/>
+	<parameter name="styles_url" class="java.lang.String">
+		<defaultValueExpression><![CDATA["http://tramitesdev.queretaro.gob.mx:8080/egovstyles/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PW_GENERAL_no_office" class="java.lang.String">
+		<defaultValueExpression><![CDATA["SIN OFICIO"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PW_GENERAL_date_office" class="java.lang.String"/>
+	<parameter name="PW_GENERAL_location_works" class="java.lang.String"/>
+	<parameter name="PW_GENERAL_name_aplicant" class="java.lang.String"/>
+	<parameter name="PW_GENERAL_position" class="java.lang.String"/>
+	<parameter name="PW_RESOLUTIVOS_name_works_concat" class="java.lang.String"/>
+	<pageHeader>
+		<band height="65">
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Bottom">
+				<reportElement mode="Transparent" x="-51" y="0" width="614" height="54" backcolor="#FFFFFF" uuid="1460f06c-89df-48cf-a6ab-480df30cf67b"/>
+				<imageExpression><![CDATA[$P{styles_url} + "images/report/sedesu/header.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="117">
+			<staticText>
+				<reportElement x="0" y="95" width="230" height="20" uuid="a59079f5-1050-49aa-b27f-3256f45f810a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRESENTE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="272" y="41" width="212" height="20" uuid="c4dab22a-df5f-440c-9f16-ef59cfc7fb8a"/>
+				<textFieldExpression><![CDATA["Querétaro, Qro., a "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="272" y="11" width="212" height="20" uuid="d739b417-70ee-4686-91ac-8ce468ada3b3"/>
+				<text><![CDATA[ SEDESU/SSMA/                              /2019]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="41" width="230" height="17" uuid="4e2c870f-4e48-4863-a190-9eba58dbc81f"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PW_GENERAL_location_works}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="57" width="230" height="20" uuid="7d26f744-b496-49b2-9b51-7535f491be79"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PW_GENERAL_name_aplicant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="77" width="230" height="18" uuid="3578c18c-3937-45d9-9ff7-d4bd8cc4138a"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PW_GENERAL_position}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="469" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="18" width="522" height="90" uuid="d16d3255-04ca-48c8-a385-5dfd15da56e5"/>
+				<textElement textAlignment="Justified">
+					<font size="10" isBold="false" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Con fundamento en los artículos 4, 8 y 16 de la Constitución Política de los Estados Unidos Mexicanos; artículo 20 párrafo tercero y 22 fracciones I y XIV de la Constitución Política del Estado de Querétaro; artículo 3, 19 fracción IV y 25 fracción XIII de la ley Orgánica del poder Ejecutivo del Estado de Querétaro artículos 1, 6 fracción I, 7 fracción XIV, 52, 53 y 54 de la ley de Protección Ambiental para e desarrollo sustetable del Estado de Querétaro y en atención en su solicitud de evaluación en materia de impacto ambiental en las obras publicas a los que se requiere en el oficio " + $P{PW_GENERAL_no_office} + ", de fecha " + $P{PW_GENERAL_date_office} + ", recibido en está Secretaria el mismo día; al respecto le comento lo siguiente:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="163" width="522" height="29" uuid="874a772c-9410-4faa-9807-5d90ed6750f1"/>
+				<textElement textAlignment="Justified">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Para las demás obras publicas mencionadas en el oficio de mérito, no requiere contar con la autorización del material de Impacto Ambiental por parte de esta Secretaria."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="209" width="522" height="32" uuid="36cfad4c-f7b7-4db4-b9f2-5ffef647aeda"/>
+				<textElement textAlignment="Justified">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["No obstante lo anterior, se hace de su conocimiento que por ningún motivo el presente documento representa una autorización de desmonte de vegetación."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="266" width="522" height="41" uuid="3c93b40d-b6f0-4821-88a9-1732254eb515"/>
+				<textElement textAlignment="Justified">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Asimismo, le comento que este documento solo se reviso lo relativo a Impacto Ambientales, por que por ningún motivo exime de contar con la autorización que por competencia corresponda emitir a otras Dependencias."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="328" width="257" height="20" uuid="b3217947-da8e-40da-9134-799a7712f87b"/>
+				<textFieldExpression><![CDATA["Sin más por el momento le envió un cordial saludo."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="210" y="366" width="100" height="20" uuid="bab63da3-7de9-4038-8f94-37e81df8529f"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Atentamente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="423" width="221" height="33" uuid="0d6cec2e-68d6-4e95-b1ea-163638f53183"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ing. Ricardo Javier Torres Hernandez
+Subsecretario del Medio Ambiente]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="123" width="522" height="29" uuid="fb3032f4-7b42-4f3e-9c8e-583bb0dbe495"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["Para la obra(s) pubica(s) denominada(s) \"" + $P{PW_RESOLUTIVOS_name_works_concat}  + "\" require ingresar a la secretaria más información de la obra a realizar, en donde se llevará acabo la misma y la superficie de dicho poligono."]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="100">
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Bottom">
+				<reportElement mode="Transparent" x="-51" y="0" width="614" height="100" backcolor="#FFFFFF" uuid="1805fdd3-edca-48ae-82c5-d63918973a8f"/>
+				<imageExpression><![CDATA[$P{styles_url} + "images/report/sedesu/footer.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+</jasperReport>

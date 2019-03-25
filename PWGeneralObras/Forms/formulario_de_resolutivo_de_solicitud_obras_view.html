@@ -1,0 +1,67 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./vwin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+<window id="vwin" border="none" onCreate="entityController.loadView(ebeanDetail, self);" >
+
+	<zscript>
+		import ieci.tdw.ispac.adapter.TransactAdapterI;
+		import ieci.tdw.ispac.entity.EntityAdapter;
+
+		//Importación de adapter
+	    import ieci.tdw.ispac.entity.adapter.PWGeneralAdapter;
+	    import ieci.tdw.ispac.entity.controller.PWGeneralController;
+
+	    //Lista de elementos
+	    ArrayList uomCatalog = catalogManager.getCatalogs(421);
+
+		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+		update(){
+			fcv.validate(ewin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+		}
+
+		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+	</zscript>
+
+	<div class="row detailBox" >
+		<div class="row gridCard">
+
+			<div class="row gridCard">  
+		        <div class="col-md-12">
+		            <label value="Lista de obras"  sclass="editTitle" ></label>
+		        </div>
+		    </div>
+		    <div sclass="separatorEdit" ></div>
+
+		    <div class="col-md-12">
+		      <listbox id="lbworks_json_resolutive" onCreate="pwGeneralAdapter.loadWorkResolutive(self, false, vwin, uomCatalog);" style="">
+		        <listhead>
+		          <listheader label="Nombre" hflex="1"></listheader>
+		          <listheader label="Localidad" hflex="1"></listheader>
+		          <listheader label="Tipo de construcción" hflex="2"></listheader>
+		          <listheader label="Mapa" hflex="1"></listheader>
+		          <listheader label="Superficie(m2)" hflex="1"></listheader>
+		          <listheader label="Autorización" hflex="1"></listheader>
+		          <listheader label="Observaciones" hflex="1"></listheader>
+		          <listheader label="Accion" hflex="1"></listheader>
+		        </listhead>
+		      </listbox>
+		    </div>
+
+
+			<div class="col-md-12" visible="false">
+				<label value="Tabla de obras" sclass="detailField" ></label>
+				<h:p> <label id="works_json" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-12" visible="false">
+		        <label value="Nombre de obras" sclass="editField" ></label>
+		        <h:p><label id="name_works_concat" ></label></h:p> 
+		    </div>
+		</div>
+	</div>
+
+</window>
+</zk>
