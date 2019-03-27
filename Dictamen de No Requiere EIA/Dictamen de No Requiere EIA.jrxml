@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="eia_noReq" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a04ad110-87b6-411d-b0ff-05f7360a8d7c">
+	<property name="ireport.zoom" value="0.8467108950806664"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SAIA_TB01_fisica" class="java.lang.String"/>
+	<parameter name="LongFormatedDate[time_now]" class="java.lang.String"/>
+	<parameter name="SAIA_TB01_name" class="java.lang.String"/>
+	<parameter name="SAIA_TB01_lastname1" class="java.lang.String"/>
+	<parameter name="SAIA_TB01_lastname2" class="java.lang.String"/>
+	<parameter name="SEIA_TB06_projectname" class="java.lang.String"/>
+	<parameter name="SEIA_TB06_street" class="java.lang.String"/>
+	<parameter name="SEIA_TB06_extnum" class="java.lang.String"/>
+	<parameter name="SEIA_TB06_municipality" class="java.lang.String"/>
+	<parameter name="SEIA_TB06_city" class="java.lang.String"/>
+	<parameter name="SEIA_TB06_state" class="java.lang.String"/>
+	<parameter name="SEIA_TB06_projectdescription" class="java.lang.String"/>
+	<parameter name="SEIA_TB06_total_surface" class="java.lang.String"/>
+	<parameter name="styles_url" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="78" splitType="Stretch">
+			<image hAlign="Center" vAlign="Bottom">
+				<reportElement x="0" y="0" width="572" height="78" uuid="3bf2de5a-82ba-43f6-a3b0-f99ce29e4777"/>
+				<imageExpression><![CDATA[$P{styles_url} + "images/report/sedesu/header.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="128" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="12" y="64" width="551" height="49" uuid="b98858a6-7068-4b7d-aa88-2aea1d10b442"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{SAIA_TB01_fisica}.equals("No") ? $P{SAIA_TB01_name} : ($P{SAIA_TB01_name} + " " + $P{SAIA_TB01_lastname1} + " " + $P{SAIA_TB01_lastname2})) + "\n" +
+               "Titular del predio" + "\n" + "Presente \n"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="31" width="222" height="20" uuid="ddc59918-5808-436d-bd93-79e9d9095336"/>
+				<textElement textAlignment="Right">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Querétaro, Qro., " + $P{LongFormatedDate[time_now]}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="0" width="142" height="20" forecolor="#666666" uuid="ef221eff-c47e-4768-83ee-5b17c9b7b92d"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SEDESU/SSMA/"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="220" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="10" y="1" width="553" height="207" uuid="b98858a6-7068-4b7d-aa88-2aea1d10b442"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["En atención a su escrito de fecha " + $P{LongFormatedDate[time_now]} + " recibido en esta Secretaría el día " + $P{LongFormatedDate[time_now]} +
+                        ", mediante el cual solicita evaluación en materia de Impacto Ambiental para la construcción y operación de " + $P{SEIA_TB06_projectname} +
+                        ", en un predio ubicado en " + $P{SEIA_TB06_street} + " " + $P{SEIA_TB06_extnum} + " ," + $P{SEIA_TB06_municipality} + " ," + $P{SEIA_TB06_city} + " ," + $P{SEIA_TB06_state} +
+                        ", al respecto le comunico lo siguiente:" + "\n\n" +
+                        "Una vez revisada la información ingresada, y toda vez que el proyecto consiste en la construcción de " + $P{SEIA_TB06_projectdescription} +
+                        ", dentro de un predio con superficie total de " + $P{SEIA_TB06_total_surface} +
+                        ", no requiere contar con autorización en materia de Impacto Ambiental por parte de esta Secretaría." + "\n\n" +
+                        "No obstante lo anterior, se hace de su conocimiento que por ningún motivo el presente documento representa una autorización de desmonte de vegetación." + "\n\n" +
+                        "Asimismo, le comento que en este documento sólo se revisó lo relativo a Impactos Ambientales, por lo que por ningún motivo exime de contar con la " +
+                        "autorización que por competencia corresponda emitir a otras Dependencias." + "\n\n" + "Sin más por el momento, le envío un cordial saludo." + "\n\n"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="12" y="0" width="547" height="24" uuid="b98858a6-7068-4b7d-aa88-2aea1d10b442"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Atentamente" + "\n"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="96" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="10" y="21" width="547" height="50" uuid="b98858a6-7068-4b7d-aa88-2aea1d10b442"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Ing. Ricardo Javier Torres Hernández" + "\n" +
+                        "Subsecretario del Medio Ambiente"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="144" y="19" width="288" height="1" uuid="9e0dadc5-d18a-44b1-9101-8e9d7b5a918b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField evaluationTime="Page">
+				<reportElement x="232" y="76" width="108" height="20" forecolor="#999999" uuid="f60df503-72e0-4b4c-831e-744ff7c80523"/>
+				<textElement textAlignment="Right">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER} + " de "]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="77" splitType="Stretch">
+			<image hAlign="Center" vAlign="Bottom">
+				<reportElement x="0" y="0" width="572" height="77" uuid="311d265f-4002-4940-876a-8b825f3f1d40"/>
+				<imageExpression><![CDATA[$P{styles_url} + "images/report/sedesu/footer.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+</jasperReport>

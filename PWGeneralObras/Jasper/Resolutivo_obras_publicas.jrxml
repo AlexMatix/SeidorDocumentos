@@ -68,14 +68,14 @@
 	<parameter name="styles_url" class="java.lang.String">
 		<defaultValueExpression><![CDATA["http://tramitesdev.queretaro.gob.mx:8080/egovstyles/"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="PW_GENERAL_no_office" class="java.lang.String">
+	<parameter name="F_PW_GENERAL_no_office" class="java.lang.String">
 		<defaultValueExpression><![CDATA["SIN OFICIO"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="PW_GENERAL_date_office" class="java.lang.String"/>
-	<parameter name="PW_GENERAL_location_works" class="java.lang.String"/>
-	<parameter name="PW_GENERAL_name_aplicant" class="java.lang.String"/>
-	<parameter name="PW_GENERAL_position" class="java.lang.String"/>
-	<parameter name="PW_RESOLUTIVOS_name_works_concat" class="java.lang.String"/>
+	<parameter name="F_PW_GENERAL_date_office" class="java.lang.String"/>
+	<parameter name="F_PW_GENERAL_location_works" class="java.lang.String"/>
+	<parameter name="F_PW_GENERAL_name_aplicant" class="java.lang.String"/>
+	<parameter name="F_PW_GENERAL_position" class="java.lang.String"/>
+	<parameter name="F_PW_RESOLUTIVOS_name_works_concat" class="java.lang.String"/>
 	<pageHeader>
 		<band height="65">
 			<image scaleImage="RetainShape" hAlign="Center" vAlign="Bottom">
@@ -87,7 +87,7 @@
 	<columnHeader>
 		<band height="117">
 			<staticText>
-				<reportElement x="0" y="95" width="230" height="20" uuid="a59079f5-1050-49aa-b27f-3256f45f810a"/>
+				<reportElement x="0" y="95" width="241" height="20" uuid="a59079f5-1050-49aa-b27f-3256f45f810a"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
@@ -102,25 +102,25 @@
 				<text><![CDATA[ SEDESU/SSMA/                              /2019]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="41" width="230" height="17" uuid="4e2c870f-4e48-4863-a190-9eba58dbc81f"/>
+				<reportElement x="0" y="41" width="241" height="17" uuid="4e2c870f-4e48-4863-a190-9eba58dbc81f"/>
 				<textElement>
 					<font size="11" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{PW_GENERAL_location_works}.toUpperCase()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{F_PW_GENERAL_location_works}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="57" width="230" height="20" uuid="7d26f744-b496-49b2-9b51-7535f491be79"/>
+				<reportElement x="0" y="57" width="241" height="20" uuid="7d26f744-b496-49b2-9b51-7535f491be79"/>
 				<textElement>
 					<font size="11" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{PW_GENERAL_name_aplicant}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{F_PW_GENERAL_name_aplicant}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="77" width="230" height="18" uuid="3578c18c-3937-45d9-9ff7-d4bd8cc4138a"/>
+				<reportElement x="0" y="77" width="241" height="18" uuid="3578c18c-3937-45d9-9ff7-d4bd8cc4138a"/>
 				<textElement>
 					<font size="11" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{PW_GENERAL_position}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{F_PW_GENERAL_position}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
@@ -131,7 +131,7 @@
 				<textElement textAlignment="Justified">
 					<font size="10" isBold="false" isStrikeThrough="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Con fundamento en los artículos 4, 8 y 16 de la Constitución Política de los Estados Unidos Mexicanos; artículo 20 párrafo tercero y 22 fracciones I y XIV de la Constitución Política del Estado de Querétaro; artículo 3, 19 fracción IV y 25 fracción XIII de la ley Orgánica del poder Ejecutivo del Estado de Querétaro artículos 1, 6 fracción I, 7 fracción XIV, 52, 53 y 54 de la ley de Protección Ambiental para e desarrollo sustetable del Estado de Querétaro y en atención en su solicitud de evaluación en materia de impacto ambiental en las obras publicas a los que se requiere en el oficio " + $P{PW_GENERAL_no_office} + ", de fecha " + $P{PW_GENERAL_date_office} + ", recibido en está Secretaria el mismo día; al respecto le comento lo siguiente:"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Con fundamento en los artículos 4, 8 y 16 de la Constitución Política de los Estados Unidos Mexicanos; artículo 20 párrafo tercero y 22 fracciones I y XIV de la Constitución Política del Estado de Querétaro; artículo 3, 19 fracción IV y 25 fracción XIII de la ley Orgánica del poder Ejecutivo del Estado de Querétaro artículos 1, 6 fracción I, 7 fracción XIV, 52, 53 y 54 de la ley de Protección Ambiental para e desarrollo sustetable del Estado de Querétaro y en atención en su solicitud de evaluación en materia de impacto ambiental en las obras publicas a los que se requiere en el oficio " + $P{F_PW_GENERAL_no_office} + ", de fecha " + $P{F_PW_GENERAL_date_office} + ", recibido en está Secretaria el mismo día; al respecto le comento lo siguiente:"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="163" width="522" height="29" uuid="874a772c-9410-4faa-9807-5d90ed6750f1"/>
@@ -176,7 +176,7 @@ Subsecretario del Medio Ambiente]]></text>
 			<textField>
 				<reportElement x="0" y="123" width="522" height="29" uuid="fb3032f4-7b42-4f3e-9c8e-583bb0dbe495"/>
 				<textElement textAlignment="Justified"/>
-				<textFieldExpression><![CDATA["Para la obra(s) pubica(s) denominada(s) \"" + $P{PW_RESOLUTIVOS_name_works_concat}  + "\" require ingresar a la secretaria más información de la obra a realizar, en donde se llevará acabo la misma y la superficie de dicho poligono."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Para la obra(s) pubica(s) denominada(s) \"" + $P{F_PW_RESOLUTIVOS_name_works_concat}  + "\" require ingresar a la secretaria más información de la obra a realizar, en donde se llevará acabo la misma y la superficie de dicho poligono."]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
