@@ -1,0 +1,159 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./ewin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+<window id="ewin" border="none" onCreate="entityController.loadEdit(ebeanDetail, self);" >
+
+	<zscript>
+		import ieci.tdw.ispac.adapter.TransactAdapterI;
+		import ieci.tdw.ispac.entity.EntityAdapter;
+
+		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+		update(){
+			fcv.validate(ewin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+		}
+
+		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+	</zscript>
+
+	<div class="row editBox" >
+		<div class="row editHeader">
+			<div class="col-md-12" align="right" >
+				<custom-attributes removeOnPortal="true" ></custom-attributes>
+				<button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
+			</div>
+		</div>
+
+		<div class="row gridCard">
+
+			<!-- PARTE DE DATOS DE PAGO -->
+			<div class="row gridCard">  
+      		  	<div class="col-md-12">
+          			<label value="Datos de pago" sclass="detailField"></label>
+        		</div>
+      		</div>
+      		<div sclass="separatorEdit" ></div>
+
+			<div class="col-md-2">
+				<label value="Año Fiscal*" sclass="editField" ></label>
+				<h:p> <intbox id="transaction_year" maxlength="4"></intbox> </h:p> 
+			</div>
+			
+			<div class="col-md-2">
+				<label value="Número de transacción*" sclass="editField" ></label>
+				<h:p> <longbox id="transaction"  ></longbox> </h:p> 
+			</div>
+
+			<div class="col-md-2">
+				<label value=" " sclass="editField" ></label>
+				<h:p><button label="VERIFICAR PAGO" sclass="btn btn-secondary" iconSclass="z-icon-plus"></button></h:p>
+			</div>
+			<div class="col-md-6"></div>
+
+			<!-- FIN PARTE DE DATOS DE PAGO -->
+
+
+			<!-- PARTE DE DATOS GENERALES DEL CIUDADANO -->
+			<div class="row gridCard">  
+      		  	<div class="col-md-12">
+          			<label value="Datos generales" sclass="detailField"></label>
+        		</div>
+      		</div>
+      		<div sclass="separatorEdit" ></div>
+
+			<div class="col-md-6">
+				<label value="Nombre de la empresa o institución*" sclass="editField" ></label>
+				<h:p> <textbox id="company_name" maxlength="150"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-6">
+				<label value="Nombre del representante*" sclass="editField" ></label>
+				<h:p> <textbox id="agent_name" maxlength="100"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-6">
+				<label value="null*" sclass="editField" ></label>
+				<h:p> <textbox id="agent_position" maxlength="100"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-6">
+				<label value="Giro o Actividad de la Empresa*" sclass="editField" ></label>
+				<h:p> <textbox id="company_activity" maxlength="100"  ></textbox> </h:p> 
+			</div>
+
+			<!--FIN  PARTE DE DATOS GENERALES DEL CIUDADANO -->
+
+
+			<!-- PARTE DE DATOS DE LOCALIZACIÓN DE LA FUENTE -->
+			<div class="row gridCard">  
+      		  	<div class="col-md-12">
+          			<label value="Localización de la fuente" sclass="detailField"></label>
+        		</div>
+      		</div>
+      		<div sclass="separatorEdit" ></div>
+
+			<div class="col-md-8">
+				<label value="Calle*" sclass="editField" ></label>
+				<h:p> <textbox id="street" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-2">
+				<label value="Número Exterior*" sclass="editField" ></label>
+				<h:p> <textbox id="extnum" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-2">
+				<label value="Número interior" sclass="editField" ></label>
+				<h:p> <textbox id="innnum" maxlength="255"  ></textbox> </h:p> 
+			</div>
+
+			<div class="col-md-2">
+				<label value="Código postal*" sclass="editField" ></label>
+				<h:p> <textbox id="zipcode" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-2">
+				<label value="Estado*" sclass="editField" ></label>
+				<h:p> <textbox id="state" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-2">
+				<label value="Municipio*" sclass="editField" ></label>
+				<h:p> <textbox id="municipality" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-3">
+				<label value="Ciudad*" sclass="editField" ></label>
+				<h:p> <textbox id="city" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-3">
+				<label value="Colonia*" sclass="editField" ></label>
+				<h:p> <textbox id="neighborhood" maxlength="255"  ></textbox> </h:p> 
+			</div>
+
+			<div class="col-md-8">
+				<label value="Entre las calles" sclass="editField" ></label>
+				<h:p> <textbox id="reference" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-2">
+				<label value="Teléfono fijo" sclass="editField" ></label>
+				<h:p> <textbox id="telephone" maxlength="20"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-2">
+				<label value="Celular" sclass="editField" ></label>
+				<h:p> <textbox id="cellphone" maxlength="20"  ></textbox> </h:p> 
+			</div>
+
+			<div class="col-md-8">
+				<label value="Localización" sclass="editField" ></label>
+				<h:p> <textbox id="localitation" maxlength="300"></textbox> </h:p> 
+			</div>
+
+			<div class="col-md-2">
+				<label value="Latitud*" sclass="editField" ></label>
+				<h:p> <doublebox id="latitude" format="##############################.#####"  ></doublebox> </h:p> 
+			</div>
+			<div class="col-md-2">
+				<label value="Longitud*" sclass="editField" ></label>
+				<h:p> <doublebox id="longitude" format="##############################.#####"  ></doublebox> </h:p> 
+			</div>
+		</div>
+
+	</div>
+
+</window>
+</zk>

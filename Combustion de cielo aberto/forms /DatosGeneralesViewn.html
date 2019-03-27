@@ -1,0 +1,135 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./vwin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+<window id="vwin" border="none" onCreate="entityController.loadView(ebeanDetail, self);" >
+
+	<zscript>
+		import ieci.tdw.ispac.adapter.TransactAdapterI;
+		import ieci.tdw.ispac.entity.EntityAdapter;
+
+		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+		update(){
+			fcv.validate(ewin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+		}
+
+		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+	</zscript>
+
+	<div class="row detailBox" >
+		<div class="row gridCard">
+
+			<!-- PARTE DE DATOS DE PAGO -->
+			<div class="row gridCard">  
+      		  	<div class="col-md-12">
+          			<label value="Datos de pago" sclass="detailField"></label>
+        		</div>
+      		</div>
+      		<div sclass="separatorEdit" ></div>
+
+			<div class="col-md-2">
+				<label value="Año Fiscal" sclass="detailField" ></label>
+				<h:p> <label id="transaction_year" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-2">
+				<label value="Número de transacción" sclass="detailField" ></label>
+				<h:p> <label id="transaction" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-8"></div>
+			<!--FIN PARTE DE DATOS DE PAGO -->
+
+			<!-- PARTE DE DATOS GENERALES DEL CIUDADANO -->
+			<div class="row gridCard">  
+      		  	<div class="col-md-12">
+          			<label value="Datos generales" sclass="detailField"></label>
+        		</div>
+      		</div>
+      		<div sclass="separatorEdit" ></div>
+
+			<div class="col-md-6">
+				<label value="Nombre de la empresa o institución" sclass="detailField" ></label>
+				<h:p> <label id="company_name" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-6">
+				<label value="Nombre del representante" sclass="detailField" ></label>
+				<h:p> <label id="agent_name" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-6">
+				<label value="null" sclass="detailField" ></label>
+				<h:p> <label id="agent_position" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-6">
+				<label value="Giro o Actividad de la Empresa" sclass="detailField" ></label>
+				<h:p> <label id="company_activity" sclass="detailData" ></label> </h:p>
+			</div>
+			<!--FIN PARTE DE DATOS GENERALES DEL CIUDADANO -->
+
+			<!-- PARTE DE DATOS DE LOCALIZACIÓN DE LA FUENTE -->
+			<div class="row gridCard">  
+      		  	<div class="col-md-12">
+          			<label value="Localización de la fuente" sclass="detailField"></label>
+        		</div>
+      		</div>
+      		<div sclass="separatorEdit" ></div>
+
+			<div class="col-md-8">
+				<label value="Calle" sclass="detailField" ></label>
+				<h:p> <label id="street" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-2">
+				<label value="Número Exterior" sclass="detailField" ></label>
+				<h:p> <label id="extnum" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-2">
+				<label value="Número interior" sclass="detailField" ></label>
+				<h:p> <label id="innnum" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-2">
+				<label value="Código postal" sclass="detailField" ></label>
+				<h:p> <label id="zipcode" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-2">
+				<label value="Estado" sclass="detailField" ></label>
+				<h:p> <label id="state" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-2">
+				<label value="Municipio" sclass="detailField" ></label>
+				<h:p> <label id="municipality" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-3">
+				<label value="Ciudad" sclass="detailField" ></label>
+				<h:p> <label id="city" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-3">
+				<label value="Colonia" sclass="detailField" ></label>
+				<h:p> <label id="neighborhood" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-8">
+				<label value="Entre las calles" sclass="detailField" ></label>
+				<h:p> <label id="reference" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-2">
+				<label value="Teléfono fijo" sclass="detailField" ></label>
+				<h:p> <label id="telephone" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-2">
+				<label value="Celular" sclass="detailField" ></label>
+				<h:p> <label id="cellphone" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-2">
+				<label value="Latitud" sclass="detailField" ></label>
+				<h:p> <label id="latitude" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-2">
+				<label value="Longitud" sclass="detailField" ></label>
+				<h:p> <label id="longitude" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+
+	</div>
+
+</window>
+</zk>
