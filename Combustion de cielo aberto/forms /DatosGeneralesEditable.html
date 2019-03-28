@@ -1,12 +1,23 @@
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./ewin"?>
+<?component name="addressbox" class="ieci.tdw.ispac.customcomps.Addressbox" extends="div" ?>
 
 <zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
 <window id="ewin" border="none" onCreate="entityController.loadEdit(ebeanDetail, self);" >
 
+
 	<zscript>
+
 		import ieci.tdw.ispac.adapter.TransactAdapterI;
 		import ieci.tdw.ispac.entity.EntityAdapter;
+		import ieci.tdw.ispac.context.ApplicationContextUtil;
+    	import ieci.tdw.ispac.constant.SigemConstants;
+    	import ieci.tdw.ispac.adapter.gmaps.GmapsResponseAdapter;
+	  	import ieci.tdw.ispac.model.SystemProperties;
+	  	import ieci.tdw.ispac.util.SystemPropertiesUtil;
+	  	import ieci.tdw.ispac.constant.SystemPropertiesConstants;
+	  	import ieci.tdw.ispac.ws.model.SpfVerifyPaymentBean;
+	  	import ieci.tdw.ispac.ws.client.SpfVerifyPaymentWSClient;
 
 		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
@@ -16,7 +27,197 @@
 		}
 
 		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+
+
+
+
+		/*********************** Start Address **********************/
+	    String stateS = ebeanDetail.getField("state");
+	    String muniS = ebeanDetail.getField("municipality");
+	    String cityS = ebeanDetail.getField("city");
+	    String neigS = ebeanDetail.getField("neighborhood");
+	    Object zipObject = ebeanDetail.getField("zipcode");
+	    Integer zip = null;
+	    if(zipS!=null){
+	       if (zipObject  instanceof String){
+	         zip = Integer.parseInt(zipObject );
+	       }else  if (zipObject  instanceof Integer){
+	         zip = zipObject ;
+	       }
+	    }
+	    Integer stateId= ebeanDetail.getField("id_state");
+	    Integer muniId = ebeanDetail.getField("id_municipality");
+	    Integer cityId = ebeanDetail.getField("id_city");
+	    Integer neighId = ebeanDetail.getField("id_neighborhood");
+
+	    public void setAddress() {
+	      if (addressbox.checkState(true)) {
+	        ebeanDetail.setField("state",   addressbox.getState() );
+	        ebeanDetail.setField("id_state", addressbox.getStateId() );
+	      }
+
+	      if (addressbox.checkMunicipality(true)) {
+	        ebeanDetail.setField("municipality",   addressbox.getMunicipality() );
+	        ebeanDetail.setField("id_municipality", addressbox.getMunicipalityId() );
+	      }
+
+	      if (addressbox.checkCity(true)) {
+	        ebeanDetail.setField("city",  addressbox.getCity() );
+	        ebeanDetail.setField("id_city",addressbox.getCityId() );
+	      }
+
+	      if (addressbox.checkNeighborhood(true)) {
+	        ebeanDetail.setField("neighborhood",  addressbox.getNeighborhood() );
+	        ebeanDetail.setField("id_neighborhood",addressbox.getNeighborhoodId() );
+	      }
+
+	      if (addressbox.checkZipcode(true)) {
+	        ebeanDetail.setField("zipcode",addressbox.getZipcode() );
+	      }
+	    }
+	    /*********************** FinishAddress **********************/
+
+	    /*********************** Start Payment **********************/
+	    public void getYear(Intbox self){
+	      Calendar today = Calendar.getInstance();
+	      self.setValue(today.get(Calendar.YEAR));
+	    }
+
+	   public void verifyPayment(){
+	      fcv.validate(transaction_year);
+	      fcv.validate(transaction);
+	      SpfVerifyPaymentBean verify = recaudanetExternalPaymentController.verifyPayment(transaction_year.getValue(), transaction.getValue(), ewin);
+	    }
+    	/*********************** Finish Payment **********************/
+
+
+    	/*********************** Start Maps **********************/
+	   	SystemProperties sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_INITIALZOOM, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+		Integer initialZoom = sp.getIntValue();
+		
+		sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_LATITUDE, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+	    Double initialLatitude = sp.getDoubleValue();
+		
+		sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_LONGITUDE, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+	    Double initialLongitude = sp.getDoubleValue();
+		
+		sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_APIKEY, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+	    String apiKey = sp.getStringValue();
+	    
+	    Double lat, lng;
+	    lat = initialLatitude;
+	    lng = initialLongitude;
+	    Integer radius = 100;
+	    
+	    Double latStored = ebeanDetail.getField("latitude");
+	    Double longStored = ebeanDetail.getField("longitude");
+	    Integer zoomStored = ebeanDetail.getField("zoom");
+
+	    public void onChangeTexts(){
+	      marker.setLat(latitude.doubleValue());
+	      marker.setLng(longitude.doubleValue());
+	      gmaps.setCenter(latitudeBox.doubleValue(), longitude.doubleValue());
+	    }
+
+	    public void prepareAddress(){
+	      
+	    }
+
+	    public void changeInitialGmaps(){
+	      if (latStored != null) latitude.setValue(latStored);
+	      else latitude.setValue(lat);
+	      if (longStored != null) longitude.setValue(longStored);
+	      else longitude.setValue(lng);
+	      if (zoomStored != null) zoom.setValue(zoomStored);  
+	      else zoom.setValue(11);
+	      gmaps.setZoom(zoom.getValue());
+	      gmaps.setCenter(latitude.doubleValue(), longitude.doubleValue());
+	      marker.setLat(latitude.doubleValue());
+	      marker.setLng(longitude.doubleValue());
+	    }
+
+	    public void changeGmapsLocation(Event event){
+	      
+	        marker.setLat(event.lat);
+	        marker.setLng(event.lng);
+	        
+	        Doublebox latitude= (Doublebox) ewin.getFellow("latitude");
+	        Doublebox longitude= (Doublebox) ewin.getFellow("longitude");
+	        Intbox zoom = ewin.getFellow("zoom");
+	        
+	        latitude.setValue(event.lat);
+	        longitude.setValue(event.lng);
+	        zoom.setValue(gmaps.getZoom());
+	      
+	    }
+	    
+	    public void resetMap(){
+	      changeInitialGmaps();
+	      gmaps.setCenter(latitude.doubleValue(), longitude.doubleValue());
+	    }
+	    
+	    public void updateLocationSearch(){
+	      GmapsResponseAdapter geocodingResponse = gmapsController.findAddress(localitation.getValue());
+	      if(geocodingResponse.isOkResponse()) {
+	        Double lattemp = geocodingResponse.getLatitude();
+	        Double lngtemp = geocodingResponse.getLongitude();
+	        Doublebox latitude= (Doublebox) ewin.getFellow("latitude");
+	        Doublebox longitude= (Doublebox) ewin.getFellow("longitude");
+	        latitude.setValue(lattemp);
+	        longitude.setValue(lngtemp);
+	        Intbox zoom = ewin.getFellow("zoom");
+	        zoom.setValue(gmaps.getZoom());
+	        gmaps.setCenter(latitude.doubleValue(), longitude.doubleValue());
+	        marker.setLat(latitude.doubleValue());
+	        marker.setLng(longitude.doubleValue());
+	      } else {
+	        lat = initialLatitude;
+	        lng = initialLongitude;
+	      }
+	    }
+	    
+	     public void zoomHasChanged() {
+	        Intbox zoom = ewin.getFellow("zoom");
+	        zoom.setValue(gmaps.getZoom());
+	    }
+    /*********************** Finish Maps **********************/
 	</zscript>
+	<!-- JAVA SCRIPT DEL MAPA DE GOOGLE -->
+	<script type="text/javascript">
+	    var nav = null;
+	    var lat2, lng2;
+	    function requestPosition() {
+		    if (nav == null) {
+		        nav = window.navigator;
+		    }
+	        if (nav != null) {
+	            var geoloc = nav.geolocation;
+	            if (geoloc != null) {
+	                geoloc.getCurrentPosition(successCallback,errorCallback,{timeout:5000});
+	            }
+	            else {
+	                alert("Geolocation API is not supported in your browser");
+	            }
+	        }
+	        else {
+	            alert("Navigator is not found");
+	        }
+      	}
+	      
+	    function successCallback(position) {
+	        lat2 = position.coords.latitude;
+	        lng2 = position.coords.longitude;
+	        zk.Widget.$(jq('$latitude')).setValue(lat2);
+	        zk.Widget.$(jq('$longitude')).setValue(lng2);
+	        
+	        zk.Widget.$(jq('$latitude')).fireOnChange();
+	        zk.Widget.$(jq('$longitude')).fireOnChange();
+	    }   
+	      
+	    function errorCallback() {
+	        alert("Google geolocation API is not working now, try later");
+	    }     
+ 	</script>
 
 	<div class="row editBox" >
 		<div class="row editHeader">
@@ -28,27 +229,30 @@
 
 		<div class="row gridCard">
 
-			<!-- PARTE DE DATOS DE PAGO -->
-			<div class="row gridCard">  
+			<!-- PARTE DE DATOS DE PAGO Año 2018, tansaccion 454646 -->
+			<div class="row gridCard">
+      		  	<div class="col-md-12">
+					<div id="divAlert"></div>
+				</div>  
       		  	<div class="col-md-12">
           			<label value="Datos de pago" sclass="detailField"></label>
         		</div>
       		</div>
       		<div sclass="separatorEdit" ></div>
 
-			<div class="col-md-2">
+			<div class="col-md-3">
 				<label value="Año Fiscal*" sclass="editField" ></label>
 				<h:p> <intbox id="transaction_year" maxlength="4"></intbox> </h:p> 
 			</div>
 			
-			<div class="col-md-2">
+			<div class="col-md-3">
 				<label value="Número de transacción*" sclass="editField" ></label>
-				<h:p> <longbox id="transaction"  ></longbox> </h:p> 
+				<h:p> <intbox id="transaction"  ></intbox> </h:p> 
 			</div>
 
 			<div class="col-md-2">
 				<label value=" " sclass="editField" ></label>
-				<h:p><button label="VERIFICAR PAGO" sclass="btn btn-secondary" iconSclass="z-icon-plus"></button></h:p>
+				<h:p><button label="VERIFICAR PAGO" sclass="btn btn-secondary" iconSclass="z-icon-plus" onClick="verifyPayment();"></button></h:p>
 			</div>
 			<div class="col-md-6"></div>
 
@@ -72,8 +276,8 @@
 				<h:p> <textbox id="agent_name" maxlength="100"  ></textbox> </h:p> 
 			</div>
 			<div class="col-md-6">
-				<label value="null*" sclass="editField" ></label>
-				<h:p> <textbox id="agent_position" maxlength="100"  ></textbox> </h:p> 
+				<label value="Cargo del Representante" sclass="editField" ></label>
+				<h:p> <textbox id="agent_position" maxlength="100" ></textbox> </h:p> 
 			</div>
 			<div class="col-md-6">
 				<label value="Giro o Actividad de la Empresa*" sclass="editField" ></label>
@@ -108,6 +312,74 @@
 				<label value="Código postal*" sclass="editField" ></label>
 				<h:p> <textbox id="zipcode" maxlength="255"  ></textbox> </h:p> 
 			</div>
+
+			<!--ADRESSBOX -->
+			<div class="row">
+          		<addressbox     id="addressbox" state ="${stateS}"  stateId="${stateId}"
+                                municipality="${muniS}" municipalityId="${muniId}"
+                                city="${cityS}" cityId="${cityId}"  neighborhoodId="${neighId}"
+                                neighborhood="${neigS}" zipcode="${zip}"
+                                onChange="setAddress();" ></addressbox>
+
+    		</div>
+			<!--FIN ADRESSBOX -->
+
+			
+
+
+			<div class="col-md-8">
+				<label value="Entre las calles" sclass="editField" ></label>
+				<h:p> <textbox id="reference" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-2">
+				<label value="Teléfono fijo" sclass="editField" ></label>
+				<h:p> <textbox id="telephone" maxlength="20"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-2">
+				<label value="Celular" sclass="editField" ></label>
+				<h:p> <textbox id="cellphone" maxlength="20"  ></textbox> </h:p> 
+			</div>
+
+			<div class="col-md-6">
+				<label value="Localización" sclass="editField" ></label>
+				<h:p> <textbox id="localitation" maxlength="300"></textbox> </h:p> 
+			</div>
+			<div class="col-md-2">
+				<button label="Buscar" sclass="btn btn-info" iconSclass="z-icon-search" onClick="updateLocationSearch();" ></button>
+			</div>
+
+
+			<div class="col-md-2">
+				<label value="Latitud*" sclass="editField" ></label>
+				<h:p> <doublebox id="latitude" format="##############################.#####"  ></doublebox> </h:p> 
+			</div>
+			<div class="col-md-2">
+				<label value="Longitud*" sclass="editField" ></label>
+				<h:p> <doublebox id="longitude" format="##############################.#####"  ></doublebox> </h:p> 
+			</div>
+
+			 <div visible="false">
+        		<label value="Zoom" sclass="editField" ></label>
+        		<h:p> <intbox id="zoom"  ></intbox> </h:p>
+      		</div>
+
+			<div class="row gridCard">
+      			<div class="col-md-12" >
+			        <script type="text/javascript" content="zk.googleAPIkey='${apiKey}'" ></script>
+			        <gmaps id="gmaps" zoom="${initialZoom}" height="350px"
+			          showSmallCtrl="false" onMapZoom="zoomHasChanged();" onMapClick="changeGmapsLocation(event); "
+			          onMapDrop="changeGmapsLocation(event);"
+			          onCreate="prepareAddress();changeInitialGmaps();">
+			          <gmarker id="marker" draggingEnabled="${!readOnly}"
+			            content="" visible="true" ></gmarker>
+			        </gmaps>
+      			</div>
+   			</div>
+    		<separator spacing="30px"></separator>
+
+
+			<!-- DATOS ID ADRESSBOX 
+
 			<div class="col-md-2">
 				<label value="Estado*" sclass="editField" ></label>
 				<h:p> <textbox id="state" maxlength="255"  ></textbox> </h:p> 
@@ -125,35 +397,26 @@
 				<h:p> <textbox id="neighborhood" maxlength="255"  ></textbox> </h:p> 
 			</div>
 
-			<div class="col-md-8">
-				<label value="Entre las calles" sclass="editField" ></label>
-				<h:p> <textbox id="reference" maxlength="255"  ></textbox> </h:p> 
-			</div>
-			<div class="col-md-2">
-				<label value="Teléfono fijo" sclass="editField" ></label>
-				<h:p> <textbox id="telephone" maxlength="20"  ></textbox> </h:p> 
-			</div>
-			<div class="col-md-2">
-				<label value="Celular" sclass="editField" ></label>
-				<h:p> <textbox id="cellphone" maxlength="20"  ></textbox> </h:p> 
-			</div>
 
-			<div class="col-md-8">
-				<label value="Localización" sclass="editField" ></label>
-				<h:p> <textbox id="localitation" maxlength="300"></textbox> </h:p> 
-			</div>
-
-			<div class="col-md-2">
-				<label value="Latitud*" sclass="editField" ></label>
-				<h:p> <doublebox id="latitude" format="##############################.#####"  ></doublebox> </h:p> 
-			</div>
-			<div class="col-md-2">
-				<label value="Longitud*" sclass="editField" ></label>
-				<h:p> <doublebox id="longitude" format="##############################.#####"  ></doublebox> </h:p> 
-			</div>
+			<div class="row" visible="false">
+				<div class="col-md-12">
+					<label value="id_estado*" sclass="editField" ></label>
+					<h:p> <intbox id="id_state" maxlength="9"   ></intbox> </h:p> 
+				</div>
+				<div class="col-md-12">
+					<label value="id_municipio*" sclass="editField" ></label>
+					<h:p> <intbox id="id_municipality" maxlength="9"   ></intbox> </h:p> 
+				</div>
+				<div class="col-md-12">
+					<label value="id_ciudad" sclass="editField" ></label>
+					<h:p> <intbox id="id_city" maxlength="9"   ></intbox> </h:p> 
+				</div>
+				<div class="col-md-12">
+					<label value="id_colonia" sclass="editField" ></label>
+					<h:p> <intbox id="id_neighborhood" maxlength="9"   ></intbox> </h:p> 
+				</div>
+			</div>-->
 		</div>
-
 	</div>
-
 </window>
 </zk>

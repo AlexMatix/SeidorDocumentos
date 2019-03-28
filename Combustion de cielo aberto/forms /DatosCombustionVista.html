@@ -1,0 +1,68 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./vwin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+<window id="vwin" border="none" onCreate="entityController.loadView(ebeanDetail, self);" >
+
+	<zscript>
+		import ieci.tdw.ispac.adapter.TransactAdapterI;
+		import ieci.tdw.ispac.entity.EntityAdapter;
+
+		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+		update(){
+			fcv.validate(ewin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+		}
+
+		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+	</zscript>
+
+	<div class="row detailBox" >
+		<div class="row gridCard">
+			<div class="col-md-12">
+				<label value="Número de licencia ambiental" sclass="detailField" ></label>
+				<h:p> <label id="number_licence" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-12">
+				<label value="Objetivo de la combustión" sclass="detailField" ></label>
+				<h:p> <label id="objective_combustion" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-12">
+				<label value="Nombre " sclass="detailField" ></label>
+				<h:p> <label id="name_tecnico" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-12">
+				<label value="Cargo" sclass="detailField" ></label>
+				<h:p> <label id="position" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-12">
+				<label value="Teléfono fijo " sclass="detailField" ></label>
+				<h:p> <label id="phone" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-12">
+				<label value="Exención" sclass="detailField" ></label>
+				<h:p> <label id="extension" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-12">
+				<label value="Teléfono celular" sclass="detailField" ></label>
+				<h:p> <label id="cellphone" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-12">
+				<label value="Emai" sclass="detailField" ></label>
+				<h:p> <label id="email" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-12">
+				<label value="date_combustion_json" sclass="detailField" ></label>
+				<h:p> <label id="date_combustion_json" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-12">
+				<label value="quantity_combustion_json" sclass="detailField" ></label>
+				<h:p> <label id="quantity_combustion_json" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+
+	</div>
+
+</window>
+</zk>
