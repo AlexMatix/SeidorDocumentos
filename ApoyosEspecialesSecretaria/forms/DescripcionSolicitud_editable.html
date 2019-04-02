@@ -1,0 +1,142 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./ewin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+<window id="ewin" border="none" onCreate="entityController.loadEdit(ebeanDetail, self);" >
+
+	<zscript>
+		import ieci.tdw.ispac.adapter.TransactAdapterI;
+		import ieci.tdw.ispac.entity.EntityAdapter;
+
+		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+		update(){
+			fcv.validate(ewin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+		}
+
+		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+	</zscript>
+
+	<div class="row editBox" >
+		<div class="row editHeader">
+			<div class="col-md-12" align="right" >
+				<custom-attributes removeOnPortal="true" ></custom-attributes>
+				<button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
+			</div>
+		</div>
+
+		<div class="row gridCard">
+			<div class="col-md-4">
+				<label value="Origen de la petición*" sclass="editField" ></label>
+				<h:p> <textbox id="origin_request" maxlength="100"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-4">
+				<label value="Fecha" sclass="editField" ></label>
+				<h:p> <datebox id="date_request"  ></datebox> </h:p> 
+			</div>
+			<div class="col-md-4"></div>
+
+
+			<div class="col-md-12">
+				<label value="Código postal*" sclass="editField" ></label>
+				<h:p> <textbox id="zipcode" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Estado" sclass="editField" ></label>
+				<h:p> <textbox id="state" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Municipio" sclass="editField" ></label>
+				<h:p> <textbox id="municipality" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Colonia" sclass="editField" ></label>
+				<h:p> <textbox id="neighborhood" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Ciudad" sclass="editField" ></label>
+				<h:p> <textbox id="city" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="No. Exterior" sclass="editField" ></label>
+				<h:p> <textbox id="extnum" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="No. Interior" sclass="editField" ></label>
+				<h:p> <textbox id="innnum" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="id_state" sclass="editField" ></label>
+				<h:p> <intbox id="id_state" maxlength="9"   ></intbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="id_municipality" sclass="editField" ></label>
+				<h:p> <intbox id="id_municipality" maxlength="9"   ></intbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="id_city" sclass="editField" ></label>
+				<h:p> <intbox id="id_city" maxlength="9"   ></intbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="id_neighborhood" sclass="editField" ></label>
+				<h:p> <intbox id="id_neighborhood" maxlength="9"   ></intbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Nombre de la Calle" sclass="editField" ></label>
+				<h:p> <textbox id="noma_street" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Referencia 1" sclass="editField" ></label>
+				<h:p> <textbox id="reference1" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Referencia 2" sclass="editField" ></label>
+				<h:p> <textbox id="reference2" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Longitud" sclass="editField" ></label>
+				<h:p> <doublebox id="longitude" format="##############################.#####"  ></doublebox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Latitud" sclass="editField" ></label>
+				<h:p> <doublebox id="latitude" format="##############################.#####"  ></doublebox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Evento" sclass="editField" ></label>
+				<h:p> <textbox id="event" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Subtema" sclass="editField" ></label>
+				<h:p> <textbox id="subtheme" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Compromiso del gobernador" sclass="editField" ></label>
+				<checkbox id="government_commitment" ></checkbox> 
+			</div>
+			<div class="col-md-12">
+				<label value="Fecha del evento" sclass="editField" ></label>
+				<h:p> <datebox id="date_event"  ></datebox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Cantidad solicitada " sclass="editField" ></label>
+				<h:p> <intbox id="quantity_solicitude" maxlength="9"   ></intbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Detalle de la solicitud" sclass="editField" ></label>
+				<h:p> <textbox id="detail_solicitude" maxlength="0"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Trámite" sclass="editField" ></label>
+				<h:p> <textbox id="procedure" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-12">
+				<label value="Perdona que lo atendió" sclass="editField" ></label>
+				<h:p> <textbox id="person_attended" maxlength="255"  ></textbox> </h:p> 
+			</div>
+		</div>
+
+	</div>
+
+</window>
+</zk>
