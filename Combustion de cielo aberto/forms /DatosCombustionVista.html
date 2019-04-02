@@ -20,49 +20,102 @@
 
 	<div class="row detailBox" >
 		<div class="row gridCard">
-			<div class="col-md-12">
+
+			<div class="col-md-6">
 				<label value="Número de licencia ambiental" sclass="detailField" ></label>
 				<h:p> <label id="number_licence" sclass="detailData" ></label> </h:p>
 			</div>
-			<div class="col-md-12">
+
+			<div class="col-md-6">
 				<label value="Objetivo de la combustión" sclass="detailField" ></label>
 				<h:p> <label id="objective_combustion" sclass="detailData" ></label> </h:p>
 			</div>
-			<div class="col-md-12">
+
+			<div class="row gridCard">  
+      		  	<div class="col-md-12">
+          			<label value="Personal técnico responsable del evento que efectuará" sclass="detailField"></label>
+        		</div>
+      		</div>
+      		<div sclass="separatorEdit"></div>
+
+			<div class="col-md-6">
 				<label value="Nombre " sclass="detailField" ></label>
 				<h:p> <label id="name_tecnico" sclass="detailData" ></label> </h:p>
 			</div>
-			<div class="col-md-12">
+
+			<div class="col-md-6">
 				<label value="Cargo" sclass="detailField" ></label>
 				<h:p> <label id="position" sclass="detailData" ></label> </h:p>
 			</div>
-			<div class="col-md-12">
+
+			<div class="col-md-3">
 				<label value="Teléfono fijo " sclass="detailField" ></label>
 				<h:p> <label id="phone" sclass="detailData" ></label> </h:p>
 			</div>
-			<div class="col-md-12">
+			<div class="col-md-3">
 				<label value="Exención" sclass="detailField" ></label>
 				<h:p> <label id="extension" sclass="detailData" ></label> </h:p>
 			</div>
-			<div class="col-md-12">
+			<div class="col-md-3">
 				<label value="Teléfono celular" sclass="detailField" ></label>
 				<h:p> <label id="cellphone" sclass="detailData" ></label> </h:p>
 			</div>
-			<div class="col-md-12">
+			<div class="col-md-3">
 				<label value="Emai" sclass="detailField" ></label>
 				<h:p> <label id="email" sclass="detailData" ></label> </h:p>
 			</div>
-			<div class="col-md-12">
-				<label value="date_combustion_json" sclass="detailField" ></label>
-				<h:p> <label id="date_combustion_json" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-12">
-				<label value="quantity_combustion_json" sclass="detailField" ></label>
-				<h:p> <label id="quantity_combustion_json" sclass="detailData" ></label> </h:p>
+
+
+			<div class="row gridCard">  
+            	<div class="col-md-6">
+                	<label value="Programación de fecha(s) y horario(s) en que tendrá(n) lugar la(s) conbustion(es)"  sclass="editTitle" ></label>
+            	</div>
+          	</div>
+          	<div sclass="separatorEdit"></div>
+
+          	<div class="col-md-12">
+	          	<listbox id="date_combustion" onCreate="pwGeneralAdapter.loadWork(self, true, ewin, catalogManager.getCatalogs(421));" style="">
+	            	<listhead>
+	                	<listheader label="Hora" hflex="1"></listheader>
+		                <listheader label="Fecha" hflex="1"></listheader>
+		                <listheader label="Accion" hflex="1"></listheader>
+	              	</listhead>
+	          	</listbox>
+      		</div>
+
+
+      		<!-- LISTA DE CANTIDADES DE COMBUSTIBLE -->
+			<div class="row gridCard">  
+            	<div class="col-md-6">
+                	<label value="Cantidades de combustible a emplear por evento"  sclass="editTitle" ></label>
+            	</div>
+                
+          	</div>
+          	<div sclass="separatorEdit"></div>
+
+          	<div class="col-md-12">
+	          	<listbox id="quantity_combustion" onCreate="pwGeneralAdapter.loadWork(self, true, ewin, catalogManager.getCatalogs(421));" style="">
+	            	<listhead>
+	                	<listheader label="Combustible" hflex="1"></listheader>
+		                <listheader label="Cantidad" hflex="1"></listheader>
+		                <listheader label="Estado" hflex="1"></listheader>
+		                <listheader label="Accion" hflex="1"></listheader>
+	              	</listhead>
+	          	</listbox>
+      		</div>
+			<!--FIN LISTA DE CANTIDADES DE COMBUSTIBLE -->
+
+			<div visible="false">
+				<div class="col-md-12">
+					<label value="date_combustion_json" sclass="detailField" ></label>
+					<h:p> <label id="date_combustion_json" sclass="detailData" ></label> </h:p>
+				</div>
+				<div class="col-md-12">
+					<label value="quantity_combustion_json" sclass="detailField" ></label>
+					<h:p> <label id="quantity_combustion_json" sclass="detailData" ></label> </h:p>
+				</div>
 			</div>
 		</div>
-
 	</div>
-
 </window>
 </zk>
