@@ -7,7 +7,10 @@
 	<zscript>
 		import ieci.tdw.ispac.adapter.TransactAdapterI;
 		import ieci.tdw.ispac.entity.EntityAdapter;
+		import ieci.tdw.ispac.entity.adapter.AESPGValorationAdapter;
+      	import ieci.tdw.ispac.entity.controller.AESPValorationController;
 
+    	AESPGValorationAdapter aespgValorationAdapter = AESPValorationController.readRegisterContact(ebeanDetail);
 		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
 		update(){
@@ -21,7 +24,7 @@
 	<div class="row editBox" >
 		<div class="row editHeader">
 			<div class="col-md-12" align="right" >
-				<custom-attributes removeOnPortal="true" ></custom>
+				<custom-attributes removeOnPortal="true" ></custom-attributes>
 				<button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
 			</div>
 		</div>
@@ -32,16 +35,20 @@
 		        <div class="col-md-6">
 		            <label value="Valoración"  sclass="editTitle" ></label>
 		        </div>
+		        <div class="col-md-6">
+              		<button label="añadir" sclass="btn btn-info" onClick="aespgValorationAdapter.addRegisterContact(lbworks_json, ewin);" iconSclass="z-icon-plus-circle" style="float: right;"></button>
+            	</div>
 		    </div>
 	        <div sclass="separatorEdit" ></div>
 
 	      	<div class="col-md-12">
-	          	<listbox id="lbcontact_json" onCreate="aespgValorationAdapter.loadValorations(self, true, ewin, catalogManager.getCatalogs(421));" style="">
+	          	<listbox id="lbcontact_json" onCreate="aespgValorationAdapter.loadRegisterContact(self, true, ewin, catalogManager.getCatalogs(421));" style="">
 	              <listhead>
 		            <listheader label="Tipo de apoyo" hflex="1"></listheader>
 		            <listheader label="Dependencia" hflex="1"></listheader>
 		            <listheader label="Fecha" hflex="1"></listheader>
 		            <listheader label="Valoración" hflex="1"></listheader>
+		            <listheader label="Acciones" hflex="1"></listheader>
 	              </listhead>
 	          	</listbox>
 	      	</div>

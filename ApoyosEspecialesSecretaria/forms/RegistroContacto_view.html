@@ -7,7 +7,10 @@
 	<zscript>
 		import ieci.tdw.ispac.adapter.TransactAdapterI;
 		import ieci.tdw.ispac.entity.EntityAdapter;
+		import ieci.tdw.ispac.entity.adapter.AESPGValorationAdapter;
+      	import ieci.tdw.ispac.entity.controller.AESPValorationController;
 
+    	AESPGValorationAdapter aespgValorationAdapter = AESPValorationController.readRegisterContact(ebeanDetail);
 		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
 		update(){
@@ -21,8 +24,37 @@
 	<div class="row detailBox" >
 		<div class="row gridCard">
 			<div class="col-md-12">
-				<label value="contact_json" sclass="detailField" ></label>
-				<h:p> <label id="contact_json" sclass="detailData" ></label> </h:p>
+			
+			<!-- LISTBOX VALORACION -->
+			<div class="row gridCard">  
+		        <div class="col-md-6">
+		            <label value="Valoración"  sclass="editTitle" ></label>
+		        </div>
+		    </div>
+	        <div sclass="separatorEdit" ></div>
+
+	      	<div class="col-md-12">
+	          	<listbox id="lbcontact_json" onCreate="aespgValorationAdapter.loadValorations(self, true, ewin, catalogManager.getCatalogs(421));" style="">
+	              <listhead>
+		            <listheader label="Tipo de apoyo" hflex="1"></listheader>
+		            <listheader label="Dependencia" hflex="1"></listheader>
+		            <listheader label="Fecha" hflex="1"></listheader>
+		            <listheader label="Valoración" hflex="1"></listheader>
+	              </listhead>
+	          	</listbox>
+	      	</div>
+			<!--FIN LISTBOX VALORACION -->
+			
+			<!-- CAMPOS OCULTOS -->
+			<div visible="false">
+				<div class="row gridCard">
+					<div class="col-md-12">
+						<label value="contact_json" sclass="detailField" ></label>
+						<h:p> <label id="contact_json" sclass="detailData" ></label> </h:p>
+					</div>
+				</div>
+			</div>
+			<!--FIN CAMPOS OCULTOS -->
 			</div>
 		</div>
 
