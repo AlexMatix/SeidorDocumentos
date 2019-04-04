@@ -1,0 +1,71 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./vwin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+<window id="vwin" border="none" onCreate="entityController.loadView(ebeanDetail, self);" >
+
+	<zscript>
+		import ieci.tdw.ispac.adapter.TransactAdapterI;
+		import ieci.tdw.ispac.entity.EntityAdapter;
+		import ieci.tdw.ispac.entity.adapter.AESPGValorationAdapter;
+      	import ieci.tdw.ispac.entity.controller.AESPValorationController;
+
+      	//
+		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+    	AESPGValorationAdapter aespgValorationAdapter = AESPValorationController.read(ebeanDetail);
+
+		update(){
+			fcv.validate(ewin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+		}
+
+		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+	</zscript>
+
+	<div class="row detailBox" >
+		<div class="row gridCard">
+			<div class="col-md-4">
+				<label value="Autorización" sclass="detailField" ></label>
+				<h:p> <label id="authorization" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-4">
+				<label value="¿Necesita valoración?" sclass="detailField" ></label>
+				<h:p> <label id="assessment" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-4">
+				<label value="Prioridad" sclass="detailField" ></label>
+				<h:p> <label id="priority" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<!-- LISTBOX DEPENDENCIAS -->
+			<div class="row gridCard">  
+		        <div class="col-md-6">
+		            <label value="Lista de Dependencias"  sclass="editTitle" ></label>
+		        </div>
+		    </div>
+	        <div sclass="separatorEdit" ></div>
+
+	      	<div class="col-md-12">
+	          	<listbox id="lbdependence" onCreate="aespgValorationAdapter.loadDependences(self, true, ewin);" style="">
+	              <listhead>
+		            <listheader label="Nombre" hflex="1"></listheader>
+		            <listheader label="Check" hflex="1"></listheader>
+		            <listheader label="Accion" hflex="1"></listheader>
+	              </listhead>
+	          	</listbox>
+	      	</div>
+			<!--FIN LISTBOX DEPENDENCIAS -->
+
+			<!-- CAMPOS OCULTOS -->
+			<div visible="false">
+				<div class="col-md-12">
+					<label value="Dependencia" sclass="detailField" ></label>
+					<h:p> <label id="dependence" sclass="detailData" ></label> </h:p>
+				</div>
+			</div>
+			<!--FIN CAMPOS OCULTOS -->
+		</div>
+	</div>
+
+</window>
+</zk>

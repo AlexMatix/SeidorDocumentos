@@ -1,0 +1,57 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./vwin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+<window id="vwin" border="none" onCreate="entityController.loadView(ebeanDetail, self);" >
+
+	<zscript>
+		import ieci.tdw.ispac.adapter.TransactAdapterI;
+		import ieci.tdw.ispac.entity.EntityAdapter;
+
+		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+		update(){
+			fcv.validate(ewin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+		}
+
+		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+	</zscript>
+
+	<div class="row detailBox" >
+		<div class="row gridCard">
+			<!-- LISTBOX DEPENDENCIAS -->
+			<div class="row gridCard">  
+		        <div class="col-md-6">
+		            <label value="Valoración"  sclass="editTitle" ></label>
+		        </div>
+		    </div>
+	        <div sclass="separatorEdit" ></div>
+
+	      	<div class="col-md-12">
+	          	<listbox id="lbvaloration_json" onCreate="aespgValorationAdapter.loadValorations(self, true, ewin, catalogManager.getCatalogs(421));" style="">
+	              <listhead>
+		            <listheader label="Tipo de apoyo" hflex="1"></listheader>
+		            <listheader label="Dependencia" hflex="1"></listheader>
+		            <listheader label="Fecha" hflex="1"></listheader>
+		            <listheader label="Valoración" hflex="1"></listheader>
+	              </listhead>
+	          	</listbox>
+	      	</div>
+			<!--FIN LISTBOX DEPENDENCIAS -->
+			
+			<!-- CAMPOS OCULTOS -->
+			<div visible="false">
+				<div class="row gridCard">
+					<div class="col-md-12">
+						<label value="valoration_json" sclass="editField" ></label>
+						<h:p> <textbox id="valoration_json" maxlength="0"  ></textbox> </h:p> 
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</window>
+</zk>

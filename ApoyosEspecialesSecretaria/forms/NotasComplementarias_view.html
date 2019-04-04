@@ -1,0 +1,57 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./vwin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+<window id="vwin" border="none" onCreate="entityController.loadView(ebeanDetail, self);" >
+
+	<zscript>
+		import ieci.tdw.ispac.adapter.TransactAdapterI;
+		import ieci.tdw.ispac.entity.EntityAdapter;
+		import ieci.tdw.ispac.entity.adapter.AESPGValorationAdapter;
+      	import ieci.tdw.ispac.entity.controller.AESPValorationController;
+
+    	AESPGValorationAdapter aespgValorationAdapter = AESPValorationController.read(ebeanDetail);
+		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+			
+		update(){
+			fcv.validate(ewin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+		}
+
+		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+	</zscript>
+
+	<div class="row detailBox" >
+		
+		<!-- LISTBOX NOTAS COMPLEMENTARIAS -->
+		<div class="row gridCard">  
+	        <div class="col-md-6">
+	            <label value="Notas complmentarias"  sclass="editTitle" ></label>
+	        </div>
+	    </div>
+        <div sclass="separatorEdit" ></div>
+
+      	<div class="col-md-12">
+          	<listbox id="lbnotes_complementaries_json" onCreate="aespgValorationAdapter.loadNotesComplementaries(self, true, ewin);" style="">
+              <listhead>
+	            <listheader label="Descripción" hflex="1"></listheader>
+	            <listheader label="Fecha" hflex="1"></listheader>
+	            <listheader label="Añadido por" hflex="1"></listheader>
+	            <listheader label="Documento" hflex="1"></listheader>
+	            <listheader label="Accion" hflex="1"></listheader>
+              </listhead>
+          	</listbox>
+      	</div>
+		<!--FIN LISTBOX NOTAS COMPLEMENTARIAS -->
+		
+		<!-- CAMPOS OCULTOS -->
+		<div visible="false">
+			<div class="col-md-12">
+				<label value="notes_complementaries_json" sclass="detailField" ></label>
+				<h:p> <label id="notes_complementaries_json" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+		<!--FIN CAMPOS OCULTOS -->
+	</div>
+</window>
+</zk>
