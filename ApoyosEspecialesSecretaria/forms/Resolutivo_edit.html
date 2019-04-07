@@ -1,0 +1,73 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./ewin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+<window id="ewin" border="none" onCreate="entityController.loadEdit(ebeanDetail, self);" >
+
+	<zscript>
+		import ieci.tdw.ispac.adapter.TransactAdapterI;
+		import ieci.tdw.ispac.entity.EntityAdapter;
+
+		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+		update(){
+			fcv.validate(ewin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+		}
+
+		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+	</zscript>
+
+	<div class="row editBox" >
+		<div class="row editHeader">
+			<div class="col-md-12" align="right" >
+				<custom-attributes removeOnPortal="true" ></custom-attributes>
+				<button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
+			</div>
+		</div>
+
+		<div class="row gridCard">
+			<div class="col-md-4">
+				<label value="Resolutivo" sclass="editField" ></label>
+				<h:p> <textbox id="resolutive" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-4">
+				<label value="Código F" sclass="editField" ></label>
+				<h:p> <textbox id="code_f" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-4">
+				<label value="Folio" sclass="editField" ></label>
+				<h:p> <textbox id="folio" maxlength="50"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-4">
+				<label value="Fecha de trámite" sclass="editField" ></label>
+				<h:p> <datebox id="date_procedure"  ></datebox> </h:p> 
+			</div>
+			<div class="col-md-4">
+				<label value="Fecha de administrativo" sclass="editField" ></label>
+				<h:p> <datebox id="date_administrative"  ></datebox> </h:p> 
+			</div>
+			<div class="col-md-4">
+				<label value="Fecha de pago" sclass="editField" ></label>
+				<h:p> <datebox id="date_payment"  ></datebox> </h:p> 
+			</div>
+			<div class="col-md-4">
+				<label value="Fecha de compromiso" sclass="editField" ></label>
+				<h:p> <datebox id="date_commitment"  ></datebox> </h:p> 
+			</div>
+			<div class="col-md-4">
+				<label value="Cantidad Autorizada" sclass="editField" ></label>
+				<h:p> <intbox id="quantity_authorized" maxlength="9"   ></intbox> </h:p> 
+			</div>
+			<div class="col-md-4"></div>
+
+			<div class="col-md-12">
+				<label value="Descripción" sclass="editField" ></label>
+				<h:p> <textbox id="description" maxlength="0" multiline="true" rows="5"></textbox> </h:p> 
+			</div>
+		</div>
+
+	</div>
+
+</window>
+</zk>

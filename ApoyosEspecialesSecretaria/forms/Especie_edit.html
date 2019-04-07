@@ -1,0 +1,47 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./ewin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+<window id="ewin" border="none" onCreate="entityController.loadEdit(ebeanDetail, self);" >
+
+	<zscript>
+		import ieci.tdw.ispac.adapter.TransactAdapterI;
+		import ieci.tdw.ispac.entity.EntityAdapter;
+
+		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+		update(){
+			fcv.validate(ewin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+		}
+
+		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+	</zscript>
+
+	<div class="row editBox" >
+		<div class="row editHeader">
+			<div class="col-md-12" align="right" >
+				<custom-attributes removeOnPortal="true" ></custom-attributes>
+				<button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
+			</div>
+		</div>
+
+		<div class="row gridCard">
+			<div class="col-md-4">
+				<label value="Lugar de entrega" sclass="editField" ></label>
+				<h:p> <textbox id="place_delivery" maxlength="255"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-4">
+				<label value="Cantidad de personas beneficiadas" sclass="editField" ></label>
+				<h:p> <intbox id="quantity_people" maxlength="5"   ></intbox> </h:p> 
+			</div>
+			<div class="col-md-4">
+				<label value="Cantidad autorizada" sclass="editField" ></label>
+				<h:p> <intbox id="quantity_authorized" maxlength="9"   ></intbox> </h:p> 
+			</div>
+		</div>
+
+	</div>
+
+</window>
+</zk>
