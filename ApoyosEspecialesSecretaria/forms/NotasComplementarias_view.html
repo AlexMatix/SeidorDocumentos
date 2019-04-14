@@ -10,12 +10,12 @@
 		import ieci.tdw.ispac.entity.adapter.AESPGValorationAdapter;
       	import ieci.tdw.ispac.entity.controller.AESPValorationController;
 
-    	AESPGValorationAdapter aespgValorationAdapter = AESPValorationController.read(ebeanDetail);
 		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+    	AESPGValorationAdapter aespgValorationAdapter = aespValorationController.read(ebeanDetail);
 			
 		update(){
-			fcv.validate(ewin);
-			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+			fcv.validate(vwin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, vwin);
 		}
 
 		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
@@ -32,13 +32,12 @@
         <div sclass="separatorEdit" ></div>
 
       	<div class="col-md-12">
-          	<listbox id="lbnotes_complementaries_json" onCreate="aespgValorationAdapter.loadNotesComplementaries(self, true, ewin);" style="">
+          	<listbox id="lbnotes_complementaries_json" onCreate="aespgValorationAdapter.loadNotesComplementaries(self, true, vwin);" style="">
               <listhead>
 	            <listheader label="Descripción" hflex="1"></listheader>
 	            <listheader label="Fecha" hflex="1"></listheader>
 	            <listheader label="Añadido por" hflex="1"></listheader>
 	            <listheader label="Documento" hflex="1"></listheader>
-	            <listheader label="Accion" hflex="1"></listheader>
               </listhead>
           	</listbox>
       	</div>

@@ -243,20 +243,20 @@
               }
             }
 
-			public void changeOrigen(){
-        		String type = origen_solicitud.getValue();
-				if(type.equals("Giras") || type.equals("Gobernador en tu Calle")){
-					divEvento.setVisible(true);
-				} else{
-					divEvento.setVisible(false);
-				}
-			}
-			
-			public void onSelectCitizen(){
-        		casFormController.selectData(ewin, ebeanDetail, transactDetail, onbb, onlb);
-      		}
-	        
-      	]]>
+            public void changeOrigen(){
+                String type = origen_solicitud.getValue();
+                if(type.equals("Giras") || type.equals("Gobernador en tu Calle")){
+                    divEvento.setVisible(true);
+                } else{
+                    divEvento.setVisible(false);
+                }
+            }
+            
+            public void onSelectCitizen(){
+                casFormController.selectData(ewin, ebeanDetail, transactDetail, onbb, onlb);
+            }
+            
+        ]]>
         </zscript>
 
         <div class="row editBox">
@@ -288,7 +288,7 @@
                         <datebox id="fecha_solicitud" ></datebox>
                     </h:p>
                 </div>
-                <div class="col-md-4">	
+                <div class="col-md-4">  
                 </div>
             </div>
             <div class="row gridCard">
@@ -362,7 +362,7 @@
                     </div>         
                 </div>
             </div>
-			
+            
             <div class="row gridCard">
                 <div class="col-md-12">
                     <script type="text/javascript" content="zk.googleAPIkey='${apiKey}'" ></script>
@@ -375,7 +375,7 @@
                         </gmarker>
                     </gmaps>
                 </div>
-				
+                
                 <div class="col-md-12" visible="false">
                     <label value="Zoom" sclass="editField" ></label>
                     <h:p>
@@ -465,7 +465,7 @@
                         </bandbox>
                     </h:p>
                 </div>                
-          	</div>
+            </div>
           
             <div class="row gridCard">
                 <div class="col-md-4">
@@ -527,7 +527,7 @@
                     </h:p>
                 </div>
             </div>
-            <div class="row gridCard">	
+            <div class="row gridCard">  
                 <addressbox_citizen id="addressbox_citizen"
                                     state="${stateSCiudadano}" stateId="${stateIdCiudadano}"
                                     municipality="${muniSCiudadano}"
@@ -535,7 +535,7 @@
                                     cityId="${cityIdCiudadano}" neighborhoodId="${neighIdCiudadano}"
                                     neighborhood="${neigSCiudadano}" zipcode="${zipCiudadano}"
                                     onChange="setCitizenAddress();" >
-                </addressbox_citizen>	
+                </addressbox_citizen>   
             </div>
             <div class="row gridCard">
                 <div class="col-md-8">
@@ -563,7 +563,7 @@
                     <h:p>
                         <textbox id="reference" maxlength="255" ></textbox>
                     </h:p>
-                </div>     		
+                </div>          
                 <div class="col-md-4">
                 </div>
             </div>

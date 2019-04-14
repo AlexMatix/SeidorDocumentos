@@ -7,13 +7,13 @@
 	<zscript>
 		import ieci.tdw.ispac.adapter.TransactAdapterI;
 		import ieci.tdw.ispac.entity.EntityAdapter;
+        import ieci.tdw.ispac.navigation.NavigationControl;
 
 		import ieci.tdw.ispac.entity.adapter.AESPGValorationAdapter;
       	import ieci.tdw.ispac.entity.controller.AESPValorationController;
 
-    	AESPGValorationAdapter aespgValorationAdapter = AESPValorationController.read(ebeanDetail);
-
 		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+    	AESPGValorationAdapter aespgValorationAdapter = aespValorationController.read(ebeanDetail);
 
 		update(){
 			fcv.validate(ewin);
@@ -38,7 +38,7 @@
 	            <label value="Notas complmentarias"  sclass="editTitle" ></label>
 	        </div>
             <div class="col-md-6">
-              <button label="añadir" sclass="btn btn-info" onClick="aespgValorationAdapter.addNotesComplementaries(lbworks_json, ewin);" iconSclass="z-icon-plus-circle" style="float: right;"></button>
+              <button label="añadir" sclass="btn btn-info" onClick="aespgValorationAdapter.addNotesComplementaries(lbnotes_complementaries_json, ewin);" iconSclass="z-icon-plus-circle" style="float: right;"></button>
             </div>
 	    </div>
         <div sclass="separatorEdit" ></div>

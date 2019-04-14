@@ -7,12 +7,15 @@
 	<zscript>
 		import ieci.tdw.ispac.adapter.TransactAdapterI;
 		import ieci.tdw.ispac.entity.EntityAdapter;
+		import ieci.tdw.ispac.entity.adapter.AESPGValorationAdapter;
+      	import ieci.tdw.ispac.entity.controller.AESPValorationController;
 
 		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+    	AESPGValorationAdapter aespgValorationAdapter = aespValorationController.readValorations(ebeanDetail);
 
 		update(){
-			fcv.validate(ewin);
-			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+			fcv.validate(vwin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, vwin);
 		}
 
 		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
@@ -29,7 +32,7 @@
 	        <div sclass="separatorEdit" ></div>
 
 	      	<div class="col-md-12">
-	          	<listbox id="lbvaloration_json" onCreate="aespgValorationAdapter.loadValorations(self, true, ewin, catalogManager.getCatalogs(421));" style="">
+	          	<listbox id="lbvaloration_json" onCreate="aespgValorationAdapter.loadValorations(self, true, vwin, catalogManager.getCatalogs(421));" style="">
 	              <listhead>
 		            <listheader label="Tipo de apoyo" hflex="1"></listheader>
 		            <listheader label="Dependencia" hflex="1"></listheader>

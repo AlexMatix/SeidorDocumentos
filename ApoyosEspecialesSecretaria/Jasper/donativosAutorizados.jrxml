@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="donativosAutorizados" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aa4e5189-00dd-45d2-960c-84b8bba0010f">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="624"/>
+	<parameter name="F_AESPG_APOYOS_ESPECIALES_01_compromiso_gobernador" class="java.lang.String"/>
+	<parameter name="F_AESPG_APOYOS_ESPECIALES_01_names" class="java.lang.String"/>
+	<parameter name="F_AESPG_APOYOS_ESPECIALES_01_lastname" class="java.lang.String"/>
+	<parameter name="F_AESPG_APOYOS_ESPECIALES_01_zipcode" class="java.lang.String"/>
+	<parameter name="F_AESPG_APOYOS_ESPECIALES_01_neighborhood" class="java.lang.String"/>
+	<parameter name="F_AESPG_APOYOS_ESPECIALES_01_fecha_solicitud" class="java.lang.String"/>
+	<parameter name="F_AESPG_APOYOS_ESPECIALES_01_streetc" class="java.lang.String"/>
+	<parameter name="F_AESPG_APOYOS_ESPECIALES_innnum" class="java.lang.String"/>
+	<parameter name="F_AESPG_APOYOS_ESPECIALES_extnum" class="java.lang.String"/>
+	<parameter name="F_AESPG_APOYOS_ESPECIALES_municipality" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="77" splitType="Stretch">
+			<rectangle>
+				<reportElement x="441" y="40" width="109" height="20" backcolor="#CCCCCC" uuid="dd46e399-a8c3-4d32-9c92-71d1a045eef4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="91" y="10" width="459" height="20" uuid="a6d62c17-6e58-45b8-80ae-c074931ee606"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[DONATIVOS AUTORIZADOS POR EL C. GOBERNADOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="43" width="139" height="15" uuid="fac35be4-e01d-474d-a818-d34e8fd7ce39"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[FOLIO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="441" y="42" width="109" height="15" uuid="0025db29-6c64-4f48-80ab-6b5b6cc91b16"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["No  1068"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="9" y="1" width="92" height="72" uuid="f53a9d28-9542-4187-b539-4f0f89766041"/>
+				<imageExpression><![CDATA["http://tramitesdev.queretaro.gob.mx:8080/egovstyles/images/logos/poder_ejecutivo_horizontal.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="639" splitType="Stretch">
+			<rectangle>
+				<reportElement x="9" y="2" width="552" height="87" uuid="513c9f6a-c13a-40a5-abbf-3d8cbbcb8772"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="3" width="551" height="15" backcolor="#CCCCCC" uuid="2de41f62-e3ca-4515-b4f2-0dd211f0df61"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="9" y="102" width="552" height="131" uuid="7e9d39f3-f83d-4a6a-acd3-ded18e331bf6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="9" y="245" width="552" height="163" uuid="b2651760-e6f1-4045-8756-62d01f0175a7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="9" y="420" width="552" height="141" uuid="e9094f81-d49c-4174-9289-af1719354a3a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="12" y="3" width="539" height="15" uuid="7eb8afa6-9a23-417e-9d25-eb840d1917f5"/>
+				<textFieldExpression><![CDATA["Recibí a mi entera satisfacción:"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="9" y="18" width="552" height="1" uuid="db5ced2b-4862-4af9-a939-7100d463b38a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="10" y="103" width="551" height="15" backcolor="#CCCCCC" uuid="3c45fbba-5a70-4b6b-98d7-75a2479edf7b"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="12" y="102" width="539" height="15" uuid="8e1ca59f-6d45-45c1-8221-fe9f3c341820"/>
+				<textFieldExpression><![CDATA["Por concepto de apoyo para:"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="9" y="118" width="552" height="1" uuid="f1eb93d6-7a0c-4413-a511-992fd0dac555"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="10" y="420" width="276" height="15" uuid="7fed1430-c132-4aa5-8588-49d66099d68b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Firma o huella del beneficiario.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="420" width="276" height="15" uuid="659d0099-4fd0-4c49-81e1-4ad862f3eed9"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Vo.Bo.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="9" y="435" width="552" height="1" uuid="0fa1c8ee-a50a-4215-ab24-86f59f8abdc0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="285" y="420" width="1" height="15" uuid="725efb70-29e9-4a9b-ba75-bc47883db657"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="321" y="522" width="208" height="1" uuid="5d080c1e-455a-4e6d-aefe-42c5240c1300"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="43" y="521" width="208" height="1" uuid="3401c575-ff75-431f-9bd9-3dcac098a5c8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="12" y="251" width="539" height="15" uuid="f16407f8-a9fa-4b72-b741-6849c2b420f6"/>
+				<textFieldExpression><![CDATA["Nombre: "+$P{F_AESPG_APOYOS_ESPECIALES_01_names}.trim()+" "+$P{F_AESPG_APOYOS_ESPECIALES_01_lastname}.trim()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="12" y="268" width="539" height="30" uuid="a6d59af9-4b78-4eee-86fe-b4072eebb403"/>
+				<textFieldExpression><![CDATA["Domicilio: "+$P{F_AESPG_APOYOS_ESPECIALES_01_streetc}.trim()+" "+$P{F_AESPG_APOYOS_ESPECIALES_01_neighborhood}.trim()+" "+
+$P{F_AESPG_APOYOS_ESPECIALES_extnum}.trim()+" "+$P{F_AESPG_APOYOS_ESPECIALES_innnum}.trim()+" "+$P{F_AESPG_APOYOS_ESPECIALES_01_zipcode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="12" y="302" width="539" height="15" uuid="c6f70203-4e73-46e8-92c0-ef6e79a7c910"/>
+				<textFieldExpression><![CDATA["Querétaro, Qro."+$P{F_AESPG_APOYOS_ESPECIALES_01_fecha_solicitud}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="12" y="319" width="539" height="15" uuid="9a8163ec-8b20-4c67-a948-dd52628a3905"/>
+				<textFieldExpression><![CDATA["El beneficiario se identifica con:"+" "+"INE"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="12" y="336" width="539" height="15" uuid="1fd6339b-6f64-4c09-a473-2da89d009270"/>
+				<textFieldExpression><![CDATA["Grupo social: "]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="12" y="355" width="539" height="15" uuid="edeaf316-1fc6-4f71-bc6f-f2650a14cf5e"/>
+				<textFieldExpression><![CDATA["Municipio: "+$P{F_AESPG_APOYOS_ESPECIALES_municipality}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="12" y="32" width="539" height="32" uuid="1ec84fd1-489b-46ee-9dba-f838126df8ce"/>
+				<textFieldExpression><![CDATA["$10,00 PESOS"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="12" y="124" width="539" height="103" uuid="4bfeebdf-1669-47c9-b1aa-6f7852b6bdc0"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$P{F_AESPG_APOYOS_ESPECIALES_01_compromiso_gobernador}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="33" y="523" width="218" height="15" uuid="e7692c2d-fba9-4b5c-9ede-d1b62887d2e6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{F_AESPG_APOYOS_ESPECIALES_01_names}.trim()+" "+$P{F_AESPG_APOYOS_ESPECIALES_01_lastname}.trim()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -10,10 +10,9 @@
 		import ieci.tdw.ispac.entity.adapter.AESPGValorationAdapter;
       	import ieci.tdw.ispac.entity.controller.AESPValorationController;
 
-    	AESPGValorationAdapter aespgValorationAdapter = AESPValorationController.readValorations(ebeanDetail);
-
 
 		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+    	AESPGValorationAdapter aespgValorationAdapter = aespValorationController.readValorations(ebeanDetail);
 
 		update(){
 			fcv.validate(ewin);
@@ -38,7 +37,7 @@
 		            <label value="Lista de Dependencias"  sclass="editTitle" ></label>
 		        </div>
 		        <div class="col-md-6">
-	              	<button label="añadir" sclass="btn btn-info" onClick="aespgValorationAdapter.addValorations(lbworks_json, ewin);" iconSclass="z-icon-plus-circle" style="float: right;"></button>
+	              	<button label="añadir" sclass="btn btn-info" onClick="aespgValorationAdapter.addValorations(lbvaloration_json, ewin);" iconSclass="z-icon-plus-circle" style="float: right;"></button>
 	            </div>
 		    </div>
 	        <div sclass="separatorEdit" ></div>

@@ -7,6 +7,8 @@
 	<zscript>
 		import ieci.tdw.ispac.adapter.TransactAdapterI;
 		import ieci.tdw.ispac.entity.EntityAdapter;
+      	import ieci.tdw.ispac.entity.controller.AESPValorationController;
+
 
 		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
@@ -32,8 +34,18 @@
 				<h:p> <textbox id="resolutive" maxlength="255"  ></textbox> </h:p> 
 			</div>
 			<div class="col-md-4">
-				<label value="Código F" sclass="editField" ></label>
-				<h:p> <textbox id="code_f" maxlength="255"  ></textbox> </h:p> 
+				<div class="row">
+					<div class="col-md-4">
+						<label value="Código F" sclass="editField" ></label>
+						<h:p> <textbox id="code_f" maxlength="255"  ></textbox> </h:p>
+					</div>
+
+					<div class="col-md-4">
+						<button label="Generar" sclass="btn btn-default" onClick="aespValorationController.generateCodeF(ewin);" iconSclass="z-icon-save" ></button>
+					</div>
+
+				</div>
+				 
 			</div>
 			<div class="col-md-4">
 				<label value="Folio" sclass="editField" ></label>
