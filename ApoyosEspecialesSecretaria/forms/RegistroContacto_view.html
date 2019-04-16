@@ -10,12 +10,13 @@
 		import ieci.tdw.ispac.entity.adapter.AESPGValorationAdapter;
       	import ieci.tdw.ispac.entity.controller.AESPValorationController;
 
-    	AESPGValorationAdapter aespgValorationAdapter = AESPValorationController.readRegisterContact(ebeanDetail);
 		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
+    	AESPGValorationAdapter aespgValorationAdapter = aespValorationController.readRegisterContact(ebeanDetail);
+
 		update(){
-			fcv.validate(ewin);
-			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+			fcv.validate(vwin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, vwin);
 		}
 
 		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
@@ -34,12 +35,14 @@
 	        <div sclass="separatorEdit" ></div>
 
 	      	<div class="col-md-12">
-	          	<listbox id="lbcontact_json" onCreate="aespgValorationAdapter.loadValorations(self, true, ewin, catalogManager.getCatalogs(421));" style="">
+	          	<listbox id="lbcontact_json" onCreate="aespgValorationAdapter.loadRegisterContact(self, false, vwin);" style="">
 	              <listhead>
-		            <listheader label="Tipo de apoyo" hflex="1"></listheader>
-		            <listheader label="Dependencia" hflex="1"></listheader>
+		            <listheader label="Tipo de contacto" hflex="1"></listheader>
 		            <listheader label="Fecha" hflex="1"></listheader>
-		            <listheader label="Valoración" hflex="1"></listheader>
+		            <listheader label="Notas" hflex="1"></listheader>
+		            <listheader label="¿Ejecutor tuvo contacto?" hflex="1"></listheader>
+		            <listheader label="Intento de contacto por" hflex="1"></listheader>
+		            <listheader label="Acciones" hflex="1"></listheader>
 	              </listhead>
 	          	</listbox>
 	      	</div>

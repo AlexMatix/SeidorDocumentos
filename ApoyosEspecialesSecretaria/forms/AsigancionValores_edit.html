@@ -35,22 +35,24 @@
 		</div>
 
 		<div class="row gridCard">
+			
 			<div class="col-md-4">
 				<label value="Autorización" sclass="editField" ></label>
 				<checkbox id="authorization" ></checkbox> 
 			</div>
+			
 			<div class="col-md-4">
 				<label value="¿Necesita valoración?" sclass="editField" ></label>
 				<checkbox id="assessment" ></checkbox> 
 			</div>
-			<div class="col-md-4">
-				<label value="Prioridad" sclass="editField" ></label> 
-				<h:p><combobox id="priority" maxlength="255" onCreate="transactDetail.loadCatalog(self, 541);" readonly="true" disabled="true">
-        </combobox></h:p> 
-			</div>
 
+			<div class="col-md-4">
+				<label value="Prioridad" sclass="editField" ></label>
+				 <combobox id="priority" maxlength="255" onCreate="transactDetail.loadCatalog(self, 541);"  ></combobox> 
+			</div>
+			
 			<!-- LISTBOX DEPENDENCIAS -->
-			<div class="row gridCard">  
+			<div class="row gridCard" style="margin-top: 15px ">  
 		        <div class="col-md-6">
 		            <label value="Lista de Dependencias"  sclass="editTitle" ></label>
 		        </div>
@@ -58,6 +60,7 @@
 	              <button label="añadir" sclass="btn btn-info" onClick="aespgValorationAdapter.addDependences(lbdependence, ewin);" iconSclass="z-icon-plus-circle" style="float: right;"></button>
 	            </div>
 		    </div>
+
 	        <div sclass="separatorEdit" ></div>
 
 	      	<div class="col-md-12">
@@ -79,10 +82,7 @@
 				</div>
 			</div>
 			<!--FIN CAMPOS OCULTOS -->
-
 		</div>
-
 	</div>
-
 </window>
 </zk>
