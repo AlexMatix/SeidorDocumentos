@@ -14,8 +14,8 @@
     	AESPGValorationAdapter aespgValorationAdapter = aespValorationController.readValorations(ebeanDetail);
 
 		update(){
-			fcv.validate(vwin);
-			entityController.saveOrUpdate(transactDetail, ebeanDetail, vwin);
+			fcv.validate(ewin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
 		}
 
 		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
@@ -26,7 +26,7 @@
 			<!-- LISTBOX VALORACION -->
 			<div class="row gridCard">  
 		        <div class="col-md-6">
-		            <label value="Valoración"  sclass="editTitle" ></label>
+		            <label value="Valoración"  sclass="detailField" ></label>
 		        </div>
 		    </div>
 	        <div sclass="separatorEdit" ></div>
@@ -47,8 +47,8 @@
 			<div visible="false">
 				<div class="row gridCard">
 					<div class="col-md-12">
-						<label value="valoration_json" sclass="editField" ></label>
-						<h:p> <textbox id="valoration_json" maxlength="0"  ></textbox> </h:p> 
+						<label value="valoration_json" sclass="detailField" ></label>
+						<h:p> <label id="valoration_json" sclass="detailData"></label> </h:p> 
 					</div>
 				</div>
 			</div>

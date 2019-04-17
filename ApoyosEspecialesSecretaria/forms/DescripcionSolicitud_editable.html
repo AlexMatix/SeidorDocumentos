@@ -55,6 +55,8 @@
                     import ieci.tdw.ispac.validation.DoubleboxMandatoryValidator;
                     import ieci.tdw.ispac.rule.eia.EiaConstants;
                     import ieci.tdw.ispac.adapter.gmaps.GmapsResponseAdapter;
+                    import ieci.tdw.ispac.entity.adapter.AESPGValorationAdapter;
+                    import ieci.tdw.ispac.entity.controller.AESPValorationController;
 
                     EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
@@ -396,14 +398,13 @@
             <div class="row gridCard">
                 <div class="col-md-4">
                     <label value="Tema" sclass="editField" ></label>
-                    <combobox id="tema" maxlength="255" onCreate="transactDetail.loadCatalog(self, 303);" onChange="transactDetail.loadHierarchy(self, ewin);"  >
-                        <custom-attributes hierarchy_type="Tema de atención ciudadana" ></custom-attributes>
-                        <custom-attributes hierarchy_combo="subtema" ></custom-attributes>
-                    </combobox>
+                    <combobox id="tema" maxlength="255" onCreate="casFormController.loadTheme(self);" readonly="true"
+                              onChange="casFormController.onChangeTheme(self, subtema);"  ></combobox>
                 </div>
                 <div class="col-md-4">
                     <label value="Subtema" sclass="editField" ></label>
-                    <combobox id="subtema" maxlength="255" onChange="transactDetail.loadHierarchy(self, ewin);"  ></combobox>
+                    <combobox id="subtema" maxlength="255" onCreate="casFormController.loadSubtheme(self, ebeanDetail);" readonly="true"
+                              onChange="casFormController.onChangeSubtheme(self, tramite)" ></combobox>
                 </div>
                 <div class="col-md-4">
                     <separator spacing="20px" ></separator>
@@ -411,14 +412,31 @@
                     <checkbox id="compromiso_gobernador" ></checkbox>
                 </div>
             </div>
+
             <div class="row gridCard">
-                <div class="col-md-12">
-                    <label value="Trámite" sclass="editField" ></label>
-                    <h:p>
-                        <textbox id="tramite" maxlength="255" ></textbox>
-                    </h:p>
+
+                <div class="col-md-4">
+                    <label value="Fecha del evento *" sclass="editField" ></label>
+                    <h:p> <datebox id="date_event"  ></datebox> </h:p> 
+                </div>
+
+                <div class="col-md-4">
+                    <label value="Tipo de ayuda*" sclass="editField" ></label>
+                     <combobox 
+                        id="type_support" 
+                        maxlength="255" 
+                        onCreate="transactDetail.loadCatalog(self, 619);"
+                        onChange="aespValorationController.checkTupeSupport(ewin)"
+                        ></combobox> 
+                </div>
+                
+                <div class="col-md-4">
+                    <label value="Cantidad solicitada" sclass="editField" ></label>
+                    <h:p> <intbox id="quantity_request" maxlength="9"   ></intbox> </h:p> 
                 </div>
             </div>
+
+          
             <div class="row gridCard">
                 <div class="col-md-12">
                     <label value="Detalle de la solicitud*" sclass="editField" ></label>
@@ -429,6 +447,16 @@
                     </h:p>
                 </div>
             </div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Trámite" sclass="editField" ></label>
+                    <combobox id="tramite" maxlength="255" onCreate="casFormController.loadTransaction(self, ebeanDetail);" 
+                              readonly="true" onChange="casFormController.onChangeTransaction(self, dependencia)"></combobox>
+                </div>
+                <textbox id="dependencia" maxlength="255" visible="false" ></textbox>
+            </div>
+
             <div class="row gridCard">
                 <div class="col-md-12">
                     <label value="Persona que lo atendió" sclass="editField" ></label>
