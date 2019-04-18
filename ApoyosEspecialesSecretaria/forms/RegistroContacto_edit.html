@@ -55,13 +55,22 @@
 	          	</listbox>
 	      	</div>
 			<!--FIN LISTBOX VALORACION -->
+
+			<div class="col-md-12">
+				<label value="Regresar a la fase de validación " sclass="editField" ></label>
+				<checkbox id="preview_phase_validation" ></checkbox> 
+			</div>
 			
 			<!-- CAMPOS OCULTOS -->
-			<div visible="true">
+			<div visible="false">
 				<div class="row gridCard">
 					<div class="col-md-12">
 						<label value="contact_json" sclass="editField" ></label>
 						<h:p> <textbox id="contact_json" maxlength="0"  ></textbox> </h:p> 
+					</div>
+					<div class="col-md-12">
+						<label value="next_phase" sclass="editField" ></label>
+						<h:p> <intbox id="next_phase" maxlength="2"   ></intbox> </h:p> 
 					</div>
 				</div>
 			</div>
