@@ -1,94 +1,602 @@
-<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?xml version="1.0" encoding="UTF-8"?><?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./ewin"?>
+<?component name="addressbox_form" class="ieci.tdw.ispac.customcomps.Addressbox" extends="div" ?>
+<?component name="addressbox_citizen" class="ieci.tdw.ispac.customcomps.Addressbox" extends="div" ?>
 
-<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
-<window id="ewin" border="none" onCreate="entityController.loadEdit(ebeanDetail, self);" >
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client">
+    <window id="ewin" border="none" onCreate="entityController.loadEdit(ebeanDetail, self);">
+        <script type="text/javascript">
+            <![CDATA[ 
+                    var nav = null; 
+                    var lat2, lng2; 
+                    function requestPosition() { 
+                            if (nav == null) { 
+                                    nav = window.navigator; 
+                            } 
+                            if (nav != null) { 
+                                    var geoloc = nav.geolocation; 
+                                    if (geoloc != null) {
+                                            geoloc.getCurrentPosition(successCallback,errorCallback,{timeout:5000});
+                                    } 
+                                    else { 
+                                            alert("Geolocation API is not supported in your browser"); 
+                                    } 
+                            } 
+                            else { 
+                                    alert("Navigator is not found"); 
+                            } 
+                    }
 
-	<zscript>
-		import ieci.tdw.ispac.entity.EntityAdapter;
-		import ieci.tdw.ispac.adapter.TransactAdapterI;
-      	import ieci.tdw.ispac.navigation.NavigationControl;
+                    function successCallback(position) { 
+                            lat2 = position.coords.latitude; 
+                            lng2 = position.coords.longitude;
+                            zk.Widget.$(jq('$latitude')).setValue(lat2);
+                            zk.Widget.$(jq('$longitude')).setValue(lng2);
 
-		//Importar clases de control y apadter 
-		import ieci.tdw.ispac.entity.adapter.AESPGValorationAdapter;
-      	import ieci.tdw.ispac.entity.controller.AESPValorationController;
+                            zk.Widget.$(jq('$latitude')).fireOnChange();
+                            zk.Widget.$(jq('$longitude')).fireOnChange(); 
+                    }
 
-    	EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
-    	
-    	AESPGValorationAdapter aespgValorationAdapter = aespValorationController.read(ebeanDetail);
-		
+                    function errorCallback() { 
+                            alert("Google geolocation API is not working now, try later"); 
+                    } 
+            ]]>
+        </script>
+        <zscript>
+            <![CDATA[
+                    import ieci.tdw.ispac.adapter.TransactAdapterI;
+                    import ieci.tdw.ispac.entity.EntityAdapter;
+                    import ieci.tdw.ispac.model.SystemProperties;
+                    import ieci.tdw.ispac.constant.SystemPropertiesConstants;
+                    import ieci.tdw.ispac.entity.adapter.EiaInitialFormAdapter;
+                    import ieci.tdw.ispac.model.Catalog;
+                    import ieci.tdw.ispac.util.SystemPropertiesUtil;
+                    import ieci.tdw.ispac.entity.controller.EiaFormController;
+                    import ieci.tdw.ispac.validation.DoubleboxMandatoryValidator;
+                    import ieci.tdw.ispac.rule.eia.EiaConstants;
+                    import ieci.tdw.ispac.adapter.gmaps.GmapsResponseAdapter;
+                    import ieci.tdw.ispac.entity.adapter.AESPGValorationAdapter;
+                    import ieci.tdw.ispac.entity.controller.AESPValorationController;
 
-		update(){
-			fcv.validate(ewin);
-			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
-		}
+                    EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
-		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
-	</zscript>
+                    update(){
+                            fcv.validate(ewin);
+                            entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+                    }
 
-	<div class="row editBox" >
-		<div class="row editHeader">
-			<div class="col-md-12" align="right" >
-				<custom-attributes removeOnPortal="true" ></custom-attributes>
-				<button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
-			</div>
-		</div>
+                    TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
 
-		<div class="row gridCard">
-			
-			<div class="col-md-4">
-				<label value="Autorización" sclass="editField" ></label>
-				<checkbox id="authorization" ></checkbox> 
-			</div>
-			
-			<div class="col-md-4">
-				<label value="¿Necesita valoración?" sclass="editField" ></label>
-				<checkbox id="assessment" ></checkbox> 
-			</div>
+                     // Address
+                    String stateS = ebeanDetail.getField("estado");
+                    String muniS = ebeanDetail.getField("municipio");
+                    String cityS = ebeanDetail.getField("poblacion");
+                    String neigS = ebeanDetail.getField("colonia");    
+                    Object zipObject = ebeanDetail.getField("codigo_postal");
 
-			<div class="col-md-4">
-				<label value="Prioridad" sclass="editField" ></label>
-				 <combobox id="priority" maxlength="255" onCreate="transactDetail.loadCatalog(self, 541);"  ></combobox> 
-			</div>
-			
-			<!-- LISTBOX DEPENDENCIAS -->
-			<div class="row gridCard" style="margin-top: 15px ">  
-		        <div class="col-md-6">
-		            <label value="Lista de Dependencias"  sclass="editTitle" ></label>
-		        </div>
-	            <div class="col-md-6">
-	              <button label="añadir" sclass="btn btn-info" onClick="aespgValorationAdapter.addDependences(lbdependence, ewin);" iconSclass="z-icon-plus-circle" style="float: right;"></button>
-	            </div>
-		    </div>
+                    Integer stateId = ebeanDetail.getField("id_estado");
+                    Integer muniId = ebeanDetail.getField("id_municipio");
+                    Integer cityId = ebeanDetail.getField("id_poblacion");
+                    Integer neighId = ebeanDetail.getField("id_colonia");
+                    Integer zip = null;
 
-	        <div sclass="separatorEdit" ></div>
 
-	      	<div class="col-md-12">
-	          	<listbox id="lbdependence" onCreate="aespgValorationAdapter.loadDependences(self, true, ewin);" style="">
-	              <listhead>
-		            <listheader label="Nombre" hflex="1"></listheader>
-		            <listheader label="Check"  hflex="1"></listheader>
-		            <listheader label="Accion" hflex="1"></listheader>
-	              </listhead>
-	          	</listbox>
-	      	</div>
-			<!--FIN LISTBOX DEPENDENCIAS -->
-			
-			<!-- CAMPOS OCULTOS -->
-			<div visible="false">
-				<div class="col-md-12">
-					<label value="Dependencia" sclass="editField" ></label>
-					<h:p> <textbox id="dependence" maxlength="0"  ></textbox> </h:p> 
-				</div>
-			</div>
+                    // Citizen Address
+                            String stateSCiudadano = ebeanDetail.getField("state");
+                    String muniSCiudadano = ebeanDetail.getField("municipality");
+                    String citySCiudadano = ebeanDetail.getField("city");
+                    String neigSCiudadano = ebeanDetail.getField("neighborhood");    
+                    Object zipObjectCiudadano = ebeanDetail.getField("zipcode");    
 
-			<div class="col-md-12" visible="false">
-				<label value="next_phase" sclass="editField" ></label>
-				<h:p> <intbox id="next_phase" maxlength="2"   ></intbox> </h:p> 
-			</div>
 
-			<!--FIN CAMPOS OCULTOS -->
-		</div>
-	</div>
-</window>
+                    Integer stateIdCiudadano = ebeanDetail.getField("id_state");
+                    Integer muniIdCiudadano = ebeanDetail.getField("id_municipality");
+                    Integer cityIdCiudadano = ebeanDetail.getField("id_city");
+                    Integer neighIdCiudadano = ebeanDetail.getField("id_neighborhood");
+                    Integer zipCiudadano = null;
+
+                    if(zipObject != null) {
+                       if (zipObject  instanceof String) {
+                         zip = Integer.parseInt(zipObject );
+                       } else  if (zipObject  instanceof Integer) {
+                         zip = zipObject ;
+                       }
+                    }
+
+                    if(zipObjectCiudadano != null) {
+                       if (zipObjectCiudadano  instanceof String) {
+                         zipCiudadano = Integer.parseInt(zipObjectCiudadano );
+                       } else  if (zipObjectCiudadano  instanceof Integer) {
+                         zipCiudadano = zipObjectCiudadano ;
+                       }
+                    }
+
+            public void setAddress() {
+                    if (addressbox_form.checkState(true)) {
+                            ebeanDetail.setField("estado",   addressbox_form.getState());
+                            ebeanDetail.setField("id_estado", addressbox_form.getStateId());
+                    }
+
+                    if (addressbox_form.checkMunicipality(true)) {
+                            ebeanDetail.setField("municipio",   addressbox_form.getMunicipality());
+                            ebeanDetail.setField("id_municipio", addressbox_form.getMunicipalityId());
+                    }
+
+                            if (addressbox_form.checkCity(true)) {
+                                    ebeanDetail.setField("poblacion",  addressbox_form.getCity());
+                                    ebeanDetail.setField("id_poblacion",addressbox_form.getCityId());
+                            }
+
+                    if (addressbox_form.checkNeighborhood(true)) {
+                            ebeanDetail.setField("colonia",  addressbox_form.getNeighborhood());
+                            ebeanDetail.setField("id_colonia",addressbox_form.getNeighborhoodId());
+                    }
+
+                    if (addressbox_form.checkZipcode(true)) {
+                            ebeanDetail.setField("codigo_postal", addressbox_form.getZipcode());
+                    }
+            }
+
+            public void setCitizenAddress() {
+                    if (addressbox_citizen.checkState(true)) {
+                            ebeanDetail.setField("state",   addressbox_citizen.getState());
+                            ebeanDetail.setField("id_state", addressbox_citizen.getStateId());
+                    }
+
+                    if (addressbox_citizen.checkMunicipality(true)) {
+                            ebeanDetail.setField("municipality",   addressbox_citizen.getMunicipality());
+                            ebeanDetail.setField("id_municipality", addressbox_citizen.getMunicipalityId());
+                    }
+
+                            if (addressbox_citizen.checkCity(true)) {
+                                    ebeanDetail.setField("city",  addressbox_citizen.getCity());
+                                    ebeanDetail.setField("id_city",addressbox_citizen.getCityId());
+                            }
+
+                    if (addressbox_citizen.checkNeighborhood(true)) {
+                            ebeanDetail.setField("neighborhood",  addressbox_citizen.getNeighborhood());
+                            ebeanDetail.setField("id_neighborhood",addressbox_citizen.getNeighborhoodId());
+                    }
+
+                    if (addressbox_citizen.checkZipcode(true)) {
+                            ebeanDetail.setField("zipcode", addressbox_citizen.getZipcode());
+                    }
+            }
+
+            // Maps Config
+            SystemProperties sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_INITIALZOOM, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+            Double initialZoom = (sp!=null)?sp.getDoubleValue():null;
+            sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_LATITUDE, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+            Double initialLatitude = (sp!=null)?sp.getDoubleValue():null;
+            sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_LONGITUDE, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+            Double initialLongitude = (sp!=null)?sp.getDoubleValue():null;
+            sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_APIKEY, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+            String apiKey = (sp!=null)?sp.getStringValue():null;
+
+            Double lat, lng;
+            lat = initialLatitude;
+            lng = initialLongitude;
+            Integer radius = 100;
+
+            Double latStored = ebeanDetail.getField("latitude");
+            Double longStored = ebeanDetail.getField("longitude");
+            Double zoomStored = ebeanDetail.getField("map_zoom");
+
+            public void zoomHasChanged() {
+                Doublebox map_zoom = ewin.getFellow("map_zoom");
+                map_zoom.setValue(gmaps.getZoom());
+            }
+
+            public void changeInitialGmaps(){
+                Doublebox latitude = (Doublebox) ewin.getFellow("latitude");
+                Doublebox longitude = (Doublebox) ewin.getFellow("longitude");
+                if (latStored != null) 
+                    latitude.setValue(latStored);
+                else 
+                    latitude.setValue(lat);
+
+                if (longStored != null) 
+                    longitude.setValue(longStored);
+                else 
+                    longitude.setValue(lng);
+
+                if (zoomStored != null) 
+                    map_zoom.setValue(zoomStored.intValue());  
+                else 
+                    map_zoom.setValue(11);
+                
+                gmaps.setZoom(map_zoom.getValue().intValue());
+                gmaps.setCenter(latitude.doubleValue(), longitude.doubleValue());
+                marker.setLat(latitude.doubleValue());
+                marker.setLng(longitude.doubleValue());
+            }
+
+            public void changeGmapsLocation(Event event){
+
+                marker.setLat(event.lat);
+                marker.setLng(event.lng);
+
+                Doublebox latitude= (Doublebox) ewin.getFellow("latitude");
+                Doublebox longitude= (Doublebox) ewin.getFellow("longitude");
+                Doublebox map_zoom = ewin.getFellow("map_zoom");
+
+                latitude.setValue(event.lat);
+                longitude.setValue(event.lng);
+                map_zoom.setValue(gmaps.getZoom());      
+            }
+
+            public void updateLocationSearch() {
+              GmapsResponseAdapter geocodingResponse = gmapsController.findAddress(addressMapForCitizenAttention.getValue());
+              if(geocodingResponse.isOkResponse()) {
+                Double lattemp = geocodingResponse.getLatitude();
+                Double lngtemp = geocodingResponse.getLongitude();
+                Doublebox latitude = (Doublebox) ewin.getFellow("latitude");
+                Doublebox longitude = (Doublebox) ewin.getFellow("longitude");
+                latitude.setValue(lattemp);
+                longitude.setValue(lngtemp);
+                Doublebox map_zoom = ewin.getFellow("map_zoom");
+                map_zoom.setValue(gmaps.getZoom());
+                gmaps.setCenter(latitude.doubleValue(), longitude.doubleValue());
+                marker.setLat(latitude.doubleValue());
+                marker.setLng(longitude.doubleValue());
+              } else {
+                lat = initialLatitude;
+                lng = initialLongitude;
+              }
+            }
+
+            public void changeOrigen(){
+                String type = origen_solicitud.getValue();
+                if(type.equals("Giras") || type.equals("Gobernador en tu Calle")){
+                    divEvento.setVisible(true);
+                } else{
+                    divEvento.setVisible(false);
+                }
+            }
+            
+            public void onSelectCitizen(){
+                casFormController.selectData(ewin, ebeanDetail, transactDetail, onbb, onlb);
+            }
+            
+        ]]>
+        </zscript>
+
+        <div class="row editBox">
+            <div class="row editHeader">
+                <div class="col-md-12" align="right">
+                    <custom-attributes removeOnPortal="true" ></custom-attributes>
+                    <button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Descripción de la solicitud" sclass="editTitle" ></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" >
+            </div>
+            <div class="row gridCard">
+                <div class="col-md-4">
+                    <label value="Origen de la solicitud*" sclass="editField" ></label>
+                    <combobox id="origen_solicitud" maxlength="255"
+                              onCreate="transactDetail.loadCatalog(self, 301);" 
+                              onChange="changeOrigen();" >
+                    </combobox>
+                </div>
+                <div class="col-md-4">
+                    <label value="Fecha" sclass="editField" ></label>
+                    <h:p>
+                        <datebox id="fecha_solicitud" onCreate="self.value = new Date()"></datebox>
+                    </h:p>
+                </div>
+                <div class="col-md-4">  
+                </div>
+            </div>
+            
+            <div class="row gridCard" id="divEvento" visible="false">
+                <div class="col-md-12">
+                    <label value="Evento" sclass="editField" ></label>
+                    <combobox id="evento" maxlength="255"
+                              onCreate="transactDetail.loadCatalog(self, 302);" >
+                    </combobox>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <addressbox_form id="addressbox_form" state="${stateS}"
+                                 stateId="${stateId}" municipality="${muniS}"
+                                 municipalityId="${muniId}" city="${cityS}" cityId="${cityId}"
+                                 neighborhoodId="${neighId}" neighborhood="${neigS}"
+                                 zipcode="${zip}" onChange="setAddress();" >
+                </addressbox_form>
+            </div>
+            <div class="row gridCard">
+                <div class="col-md-8">
+                    <label value="Nombre de la Calle" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="calle" maxlength="255" ></textbox>
+                    </h:p>
+                </div>
+                <div class="col-md-2">
+                    <label value="No. Exterior" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="numero_exterior" maxlength="255" ></textbox>
+                    </h:p>
+                </div>
+                <div class="col-md-2">
+                    <label value="No. Interior" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="numero_interior" maxlength="255" ></textbox>
+                    </h:p>
+                </div>
+            </div>
+            <div class="row gridCard">
+                <div class="col-md-4">
+                    <label value="Referencia 1" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="referencia_uno" maxlength="255" ></textbox>
+                    </h:p>
+                </div>
+                <div class="col-md-4">
+                    <label value="Referencia 2" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="referencias_dos" maxlength="255" ></textbox>
+                    </h:p>
+                </div>
+                <div class="col-md-2">
+                    <label value="Latitud" sclass="editField" visible="false" ></label>
+                    <h:p>
+                        <doublebox id="latitude"
+                                   format="##############################.#########" visible="false" >
+                        </doublebox>
+                    </h:p>
+                </div>
+                <div class="col-md-2">
+                    <label value="Longitud" sclass="editField" visible="false" ></label>
+                    <h:p>
+                        <doublebox id="longitude"
+                                   format="##############################.#########" visible="false" >
+                        </doublebox>
+                    </h:p>
+                </div>
+            </div>
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Buscar ubicación" sclass="editField" ></label>
+                    <div class="col-md-12" style="padding-left: 0px !important;">
+                        <div class="col-md-9" style="padding-left: 0px !important;">
+                            <textbox id="addressMapForCitizenAttention" maxlength="255"></textbox>         
+                        </div>
+                        <div class="col-md-3">
+                            <button label="Buscar" sclass="btn btn-info" iconSclass="z-icon-search" onClick="updateLocationSearch();" ></button>
+                        </div>
+                    </div>         
+                </div>
+            </div>
+            
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <script type="text/javascript" content="zk.googleAPIkey='${apiKey}'" ></script>
+                    <gmaps version="3.34" id="gmaps" zoom="${initialZoom}" height="350px" showSmallCtrl="false" onMapZoom="zoomHasChanged();"
+                           onMapClick="changeGmapsLocation(event);"
+                           onMapDrop="changeGmapsLocation(event);"
+                           onCreate="changeInitialGmaps();">
+                        <gmarker id="marker" draggingEnabled="true" content=""
+                                 visible="true" >
+                        </gmarker>
+                    </gmaps>
+                </div>
+                
+                <div class="col-md-12" visible="false">
+                    <label value="Zoom" sclass="editField" ></label>
+                    <h:p>
+                        <doublebox id="map_zoom" ></doublebox>
+                    </h:p>
+                </div>
+            </div>
+            <separator spacing="15px" ></separator>
+
+            <div class="row gridCard">
+                <div class="col-md-4">
+                    <label value="Tema" sclass="editField" ></label>
+                    <combobox id="tema" maxlength="255" onCreate="casFormController.loadTheme(self);" readonly="true"
+                              onChange="casFormController.onChangeTheme(self, subtema);"  ></combobox>
+                </div>
+                <div class="col-md-4">
+                    <label value="Subtema" sclass="editField" ></label>
+                    <combobox id="subtema" maxlength="255" onCreate="casFormController.loadSubtheme(self, ebeanDetail);" readonly="true"
+                              onChange="casFormController.onChangeSubtheme(self, tramite)" ></combobox>
+                </div>
+                <div class="col-md-4">
+                    <separator spacing="20px" ></separator>
+                    <label value="Compromiso del gobernador" sclass="editField" ></label>
+                    <checkbox id="compromiso_gobernador" ></checkbox>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+
+                <div class="col-md-4">
+                    <label value="Fecha del evento *" sclass="editField" ></label>
+                    <h:p> <datebox id="date_event"  ></datebox> </h:p> 
+                </div>
+
+                <div class="col-md-4">
+                    <label value="Tipo de ayuda*" sclass="editField" ></label>
+                     <combobox 
+                        id="type_support" 
+                        maxlength="255" 
+                        onCreate="transactDetail.loadCatalog(self, 619);"
+                        onChange="aespValorationController.checkTupeSupport(ewin)"
+                        ></combobox> 
+                </div>
+                
+                <div class="col-md-4">
+                    <label value="Cantidad solicitada" sclass="editField" ></label>
+                    <h:p> <intbox id="quantity_request" maxlength="9"   ></intbox> </h:p> 
+                </div>
+            </div>
+
+          
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Detalle de la solicitud*" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="detalle_solicitud" maxlength="500"
+                                 multiline="true" style="resize: none;" rows="5" >
+                        </textbox>
+                    </h:p>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Trámite" sclass="editField" ></label>
+                    <combobox id="tramite" maxlength="255" onCreate="casFormController.loadTransaction(self, ebeanDetail);" 
+                              readonly="true" onChange="casFormController.onChangeTransaction(self, dependencia)"></combobox>
+                </div>
+                <textbox id="dependencia" maxlength="255" visible="false" ></textbox>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Persona que lo atendió" sclass="editField" ></label>
+                    <combobox id="persona_atendio" maxlength="255" onCreate="transactDetail.loadCatalog(self, 361);"  ></combobox> 
+                </div>
+            </div>
+            <separator spacing="20px" ></separator>
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Datos del ciudadano" sclass="editTitle" ></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
+          
+            <div class="row gridCard">
+              <div class="col-md-8">
+                    <label value="Ciudadano" sclass="editField" ></label>
+                    <h:p>
+                        <bandbox id="onbb" onChanging="casFormController.suggestCitizenData(self, onlb, ebeanDetail, event.value);" autodrop="true" width="100%" >
+                          <bandpopup width="inherit">
+                            <listbox id="onlb" onSelect="onSelectCitizen();" width="500px" pageSize="5" mold="paging" autopaging="false">
+                              <listhead>
+                                <listheader label="Nombre Completo" hflex="2" ></listheader>
+                                <listheader label="Municipio" hflex="1" ></listheader>
+                                <listheader label="CURP" hflex="1" ></listheader>
+                              </listhead>
+                              <listitem self="@{each=c}">
+                                <listcell label="@{c.COMPLETE_NAME}" ></listcell>
+                                <listcell label="@{c.MUNIP_CITIZEN}" ></listcell>
+                                <listcell label="@{c.CURP}" ></listcell>
+                              </listitem>
+                            </listbox>
+                          </bandpopup>
+                        </bandbox>
+                    </h:p>
+                </div>                
+            </div>
+          
+            <div class="row gridCard">
+                <div class="col-md-4">
+                    <label value="CURP" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="curpc" maxlength="18" constraint="${ucurpmv}" ></textbox>
+                    </h:p>
+                </div>
+                <div class="col-md-4">
+                    <label value="Fecha de nacimiento" sclass="editField" ></label>
+                    <h:p>
+                        <datebox id="birth_datec" ></datebox>
+                    </h:p>
+                </div>
+                <div class="col-md-4">
+                    <label value="Sexo" sclass="editField" ></label>
+                    <combobox id="gender" maxlength="15"
+                              onCreate="transactDetail.loadCatalog(self, 305);" >
+                    </combobox>
+                </div>
+            </div>
+            <div class="row gridCard">
+                <div class="col-md-4">
+                    <label value="Nombre*" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="names" maxlength="255" ></textbox>
+                    </h:p>
+                </div>
+                <div class="col-md-8">
+                    <label value="Apellidos" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="lastname" maxlength="255" ></textbox>
+                    </h:p>
+                </div>
+            </div>
+            <div class="row gridCard">
+                <div class="col-md-3">
+                    <label value="Teléfono" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="telephonec" maxlength="20" ></textbox>
+                    </h:p>
+                </div>
+                <div class="col-md-3">
+                    <label value="Celular" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="cellphonec" maxlength="20" ></textbox>
+                    </h:p>
+                </div>
+                <div class="col-md-3">
+                    <label value="Otro teléfono" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="alternate_citizen_phone" maxlength="20" ></textbox>
+                    </h:p>
+                </div>
+                <div class="col-md-3">
+                    <label value="Correo electrónico" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="emailc" maxlength="255" ></textbox>
+                    </h:p>
+                </div>
+            </div>
+            <div class="row gridCard">  
+                <addressbox_citizen id="addressbox_citizen"
+                                    state="${stateSCiudadano}" stateId="${stateIdCiudadano}"
+                                    municipality="${muniSCiudadano}"
+                                    municipalityId="${muniIdCiudadano}" city="${citySCiudadano}"
+                                    cityId="${cityIdCiudadano}" neighborhoodId="${neighIdCiudadano}"
+                                    neighborhood="${neigSCiudadano}" zipcode="${zipCiudadano}"
+                                    onChange="setCitizenAddress();" >
+                </addressbox_citizen>   
+            </div>
+            <div class="row gridCard">
+                <div class="col-md-8">
+                    <label value="Nombre de la Calle" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="streetc" maxlength="255" ></textbox>
+                    </h:p>
+                </div>
+                <div class="col-md-2">
+                    <label value="No. Exterior" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="extnumc" maxlength="255" ></textbox>
+                    </h:p>
+                </div>
+                <div class="col-md-2">
+                    <label value="No. Interior" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="innnum" maxlength="255" ></textbox>
+                    </h:p>
+                </div>
+            </div>
+            <div class="row gridCard">
+                <div class="col-md-8">
+                    <label value="Referencia" sclass="editField" ></label>
+                    <h:p>
+                        <textbox id="reference" maxlength="255" ></textbox>
+                    </h:p>
+                </div>          
+                <div class="col-md-4">
+                </div>
+            </div>
+        </div>
+    </window>
 </zk>
