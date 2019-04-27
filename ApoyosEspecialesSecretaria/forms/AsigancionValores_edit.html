@@ -290,7 +290,14 @@
                         <datebox id="fecha_solicitud" onCreate="self.value = new Date()"></datebox>
                     </h:p>
                 </div>
-                <div class="col-md-4">  
+                <div class="col-md-4"> 
+                    <button 
+                        label="Copiar dirección a ciudadano" 
+                        sclass="btn btn-primary" 
+                        iconSclass="fa fa-clone" 
+                        onClick="aespValorationController.copyAddressBox(ewin);"
+                        style="margin-top: 24px;">
+                    </button>
                 </div>
             </div>
             
@@ -304,12 +311,12 @@
             </div>
 
             <div class="row gridCard">
-                <addressbox_form id="addressbox_form" state="${stateS}"
+                <addressbox_citizen id="addressbox_form" state="${stateS}"
                                  stateId="${stateId}" municipality="${muniS}"
                                  municipalityId="${muniId}" city="${cityS}" cityId="${cityId}"
                                  neighborhoodId="${neighId}" neighborhood="${neigS}"
                                  zipcode="${zip}" onChange="setAddress();" >
-                </addressbox_form>
+                </addressbox_citizen>
             </div>
             <div class="row gridCard">
                 <div class="col-md-8">
@@ -416,6 +423,16 @@
             </div>
 
             <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Trámite" sclass="editField" ></label>
+                    <combobox id="tramite" maxlength="255" onCreate="casFormController.loadTransaction(self, ebeanDetail);" 
+                              readonly="true" onChange="casFormController.onChangeTransaction(self, dependencia)"></combobox>
+                </div>
+                <textbox id="dependencia" maxlength="255" visible="false" ></textbox>
+            </div>
+            
+
+            <div class="row gridCard">
 
                 <div class="col-md-4">
                     <label value="Fecha del evento *" sclass="editField" ></label>
@@ -423,13 +440,6 @@
                 </div>
 
                 <div class="col-md-4">
-                    <label value="Tipo de ayuda*" sclass="editField" ></label>
-                     <combobox 
-                        id="type_support" 
-                        maxlength="255" 
-                        onCreate="transactDetail.loadCatalog(self, 619);"
-                        onChange="aespValorationController.checkTupeSupport(ewin)"
-                        ></combobox> 
                 </div>
                 
                 <div class="col-md-4">
@@ -448,15 +458,6 @@
                         </textbox>
                     </h:p>
                 </div>
-            </div>
-
-            <div class="row gridCard">
-                <div class="col-md-12">
-                    <label value="Trámite" sclass="editField" ></label>
-                    <combobox id="tramite" maxlength="255" onCreate="casFormController.loadTransaction(self, ebeanDetail);" 
-                              readonly="true" onChange="casFormController.onChangeTransaction(self, dependencia)"></combobox>
-                </div>
-                <textbox id="dependencia" maxlength="255" visible="false" ></textbox>
             </div>
 
             <div class="row gridCard">
