@@ -1,0 +1,36 @@
+la empresa de llama CUO
+tienda de carnes que se llama (CARNES)
+
+Manejar tarjetas de descuento.
+Cuanto descuento por cuantos kilos de carne.
+Seesiones compartidas, como perfiles familiares.
+IOS --> hardcodeado.
+
+Mapa con filtros para buscar las tiendas.
+Tiene que inciar la app y poner la ubicación del dispositivo.
+
+Consumir la base de datos las imagenes de sus descuentos y ponerlos una sección.
+
+Secci+on de tarjeta.
+todos los empleados tienen un id de empleado.
+el id se lee por el lector de codigos de barras y mostrarlo en una imagen
+Servicio para validar el empleado -> validar en tiempo real el ID de empleado y el RFC.
+
+Una sección donde puede mater el correo y para poder restablecer su cuenta.
+
+Sino tiene saldo no debe generar la imagen del código de barras.
+
+Modulo de configuración
+
+Se registra un alias y el código del empleado principal.
+Si es adicional se bloquea la sección de configuración.
+Se confirma con el correo.
+
+
+el usuario principal puede desactivar quien puede comprar.
+Maximo 5 cuentas.
+Se debe obtener de la lista de contactos el número a quien se le va a compartir la cuenta.
+Se tiene que detectar cuantas sesiones esta abiertar y se puede eliminar la cuenta para que pueda hacer login en otro dispositivo.
+Se le manda correo para confirmar.
+
+Los fracmentos se tienen que persistir.

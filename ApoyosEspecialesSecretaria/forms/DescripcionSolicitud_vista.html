@@ -5,20 +5,133 @@
 <window id="vwin" border="none" onCreate="entityController.loadView(ebeanDetail, self);" >
 
 	<zscript>
-		import ieci.tdw.ispac.adapter.TransactAdapterI;
-		import ieci.tdw.ispac.entity.EntityAdapter;
+	 <![CDATA[
+            import ieci.tdw.ispac.adapter.TransactAdapterI;
+            import ieci.tdw.ispac.entity.EntityAdapter;
+            import ieci.tdw.ispac.model.SystemProperties;
+            import ieci.tdw.ispac.constant.SystemPropertiesConstants;
+            import ieci.tdw.ispac.entity.adapter.EiaInitialFormAdapter;
+            import ieci.tdw.ispac.model.Catalog;
+            import ieci.tdw.ispac.util.SystemPropertiesUtil;
+            import ieci.tdw.ispac.entity.controller.EiaFormController;
+            import ieci.tdw.ispac.validation.DoubleboxMandatoryValidator;
+            import ieci.tdw.ispac.rule.eia.EiaConstants;
+            import ieci.tdw.ispac.adapter.gmaps.GmapsResponseAdapter;
+            import ieci.tdw.ispac.entity.adapter.AESPGValorationAdapter;
+            import ieci.tdw.ispac.entity.controller.AESPValorationController;
 
-		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+            EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
-		update(){
-			fcv.validate(ewin);
-			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
-		}
+            update(){
+                    fcv.validate(ewin);
+                    entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+            }
 
-		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+            TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+                    
+
+            // Maps Config
+            SystemProperties sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_INITIALZOOM, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+            Double initialZoom = (sp!=null)?sp.getDoubleValue():null;
+            sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_LATITUDE, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+            Double initialLatitude = (sp!=null)?sp.getDoubleValue():null;
+            sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_LONGITUDE, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+            Double initialLongitude = (sp!=null)?sp.getDoubleValue():null;
+            sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_APIKEY, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+            String apiKey = (sp!=null)?sp.getStringValue():null;
+
+           
+    
+
+          /*  public void changeInitialGmaps(){
+
+				Double algo = aespValorationController.getDobleValue(vwin,"latitude");
+
+                Label latitude = (Label) vwin.getFellow("latitude");
+                Label longitude = (Label) vwin.getFellow("longitude");
+                Label map_zoom = (Label) vwin.getFellow("map_zoom");
+				
+
+                Double doLat  = Double.parseDouble(latitude.getValue())
+                Double doLong = Double.parseDouble(longitude.getValue())
+                Integer inZoom = Integer.parseInt(map_zoom.getValue() );
+                gmaps.setZoom(inZoom);
+                gmaps.setCenter(doLat , doLong);
+                marker.setLat(doLat);
+                marker.setLng(doLong);
+            }
+
+           */
+            
+            public void onSelectCitizen(){
+                casFormController.selectData(vwin, ebeanDetail, transactDetail, onbb, onlb);
+            }
+            
+        ]]>
 	</zscript>
 
 	<div class="row detailBox" >
+
+				<!-- CAMPOS OCULTOS -->
+
+		<div visible="false">
+			<div class="col-md-12">
+				<label value="Id Municipio" sclass="detailField" ></label>
+				<h:p> <label id="id_municipio" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-12">
+				<label value="Id Estado" sclass="detailField" ></label>
+				<h:p> <label id="id_estado" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-12">
+				<label value="Id Población" sclass="detailField" ></label>
+				<h:p> <label id="id_poblacion" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-12">
+				<label value="Id Colonia" sclass="detailField" ></label>
+				<h:p> <label id="id_colonia" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-12">
+				<label value="map zoom" sclass="detailField" ></label>
+				<h:p> <label id="map_zoom" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-12">
+				<label value="Latitud" sclass="detailField" ></label>
+				<h:p> <label id="latitude" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-12">
+				<label value="Longitud" sclass="detailField" ></label>
+				<h:p> <label id="longitude" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-12">
+				<label value="Id Estado" sclass="detailField" ></label>
+				<h:p> <label id="id_state" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-12">
+				<label value="Id Municipio" sclass="detailField" ></label>
+				<h:p> <label id="id_municipality" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-12">
+				<label value="id city" sclass="detailField" ></label>
+				<h:p> <label id="id_city" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-12">
+				<label value="id neighborhood" sclass="detailField" ></label>
+				<h:p> <label id="id_neighborhood" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+		<!-- FIN CAMPOS OCULTOS -->
+
+
+
 		<div class="row gridCard">
 			<div class="col-md-6">
 				<label value="Origen de la Solicitud*" sclass="detailField" ></label>
@@ -78,6 +191,21 @@
 				<h:p> <label id="referencia_dos" sclass="detailData" ></label> </h:p>
 			</div>
 
+			<!--	
+			<div class="row gridCard">
+                <div class="col-md-12">
+                    <script type="text/javascript" content="zk.googleAPIkey='${apiKey}'" ></script>
+                    <gmaps version="3.34" id="gmaps" zoom="${initialZoom}" height="350px" showSmallCtrl="false" 
+                           onCreate="changeInitialGmaps();">
+                        <gmarker id="marker" draggingEnabled="true" content=""
+                                 visible="true" >
+                        </gmarker>
+                    </gmaps>
+                </div>
+            </div>
+            <separator spacing="15px" ></separator>
+			-->
+
 			<div class="col-md-12">
 				<label value="evento" sclass="detailField" ></label>
 				<h:p> <label id="evento" sclass="detailData" ></label> </h:p>
@@ -101,11 +229,6 @@
 			</div>
 			
 			<div class="col-md-4">
-				<label value="Tipo de ayuda" sclass="detailField" ></label>
-				<h:p> <label id="type_support" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			<div class="col-md-4">
 				<label value="Cantidad solicitada" sclass="detailField" ></label>
 				<h:p> <label id="quantity_request" sclass="detailData" ></label> </h:p>
 			</div>
@@ -120,11 +243,7 @@
 				<label value="Trámite" sclass="detailField" ></label>
 				<h:p> <label id="tramite" sclass="detailData" ></label> </h:p>
 			</div>
-			<div class="col-md-12">
-				<label value="Persona que lo atendió" sclass="detailField" ></label>
-				<h:p> <label id="persona_atendio" sclass="detailData" ></label> </h:p>
-			</div>
-			
+		
 			<!-- FIN PRIMERA SECCIÓN -->
 			
 			<div class="col-md-4">
@@ -217,64 +336,6 @@
 				<h:p> <label id="extnumc" sclass="detailData" ></label> </h:p>
 			</div>
 		</div>
-
-		<!-- CAMPOS OCULTOS -->
-
-		<div visible="false">
-			<div class="col-md-12">
-				<label value="Id Municipio" sclass="detailField" ></label>
-				<h:p> <label id="id_municipio" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="Id Estado" sclass="detailField" ></label>
-				<h:p> <label id="id_estado" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="Id Población" sclass="detailField" ></label>
-				<h:p> <label id="id_poblacion" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="Id Colonia" sclass="detailField" ></label>
-				<h:p> <label id="id_colonia" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="map zoom" sclass="detailField" ></label>
-				<h:p> <label id="map_zoom" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-12">
-				<label value="Latitud" sclass="detailField" ></label>
-				<h:p> <label id="latitude" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-12">
-				<label value="Longitud" sclass="detailField" ></label>
-				<h:p> <label id="longitude" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="Id Estado" sclass="detailField" ></label>
-				<h:p> <label id="id_state" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="Id Municipio" sclass="detailField" ></label>
-				<h:p> <label id="id_municipality" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="id city" sclass="detailField" ></label>
-				<h:p> <label id="id_city" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="id neighborhood" sclass="detailField" ></label>
-				<h:p> <label id="id_neighborhood" sclass="detailData" ></label> </h:p>
-			</div>
-		</div>
-		<!-- FIN CAMPOS OCULTOS -->
 
 
 	</div>
