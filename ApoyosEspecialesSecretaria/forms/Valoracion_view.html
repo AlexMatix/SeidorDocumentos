@@ -7,11 +7,8 @@
 	<zscript>
 		import ieci.tdw.ispac.adapter.TransactAdapterI;
 		import ieci.tdw.ispac.entity.EntityAdapter;
-		import ieci.tdw.ispac.entity.adapter.AESPGValorationAdapter;
-      	import ieci.tdw.ispac.entity.controller.AESPValorationController;
 
 		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
-    	AESPGValorationAdapter aespgValorationAdapter = aespValorationController.readValorations(ebeanDetail);
 
 		update(){
 			fcv.validate(ewin);
@@ -23,35 +20,47 @@
 
 	<div class="row detailBox" >
 		<div class="row gridCard">
-			<!-- LISTBOX VALORACION -->
-			<div class="row gridCard">  
-		        <div class="col-md-6">
-		            <label value="Valoración"  sclass="detailField" ></label>
-		        </div>
-		    </div>
-	        <div sclass="separatorEdit" ></div>
-
-	      	<div class="col-md-12">
-	          	<listbox id="lbvaloration_json" onCreate="aespgValorationAdapter.loadValorations(self, true, vwin, catalogManager.getCatalogs(421));" style="">
-	              <listhead>
-		            <listheader label="Tipo de apoyo" hflex="1"></listheader>
-		            <listheader label="Dependencia" hflex="1"></listheader>
-		            <listheader label="Fecha" hflex="1"></listheader>
-	              </listhead>
-	          	</listbox>
-	      	</div>
-			<!--FIN LISTBOX VALORACION -->
 			
-			<!-- CAMPOS OCULTOS -->
-			<div visible="false">
-				<div class="row gridCard">
-					<div class="col-md-12">
-						<label value="valoration_json" sclass="detailField" ></label>
-						<h:p> <label id="valoration_json" sclass="detailData"></label> </h:p> 
-					</div>
-				</div>
+			<div class="col-md-4">
+				<label value="Código F" sclass="detailField" ></label>
+				<h:p> <label id="code_f" sclass="detailData" ></label> </h:p>
 			</div>
-			<!--FIN CAMPOS OCULTOS -->
+
+			<div class="col-md-4">
+				<label value="Resolutivo" sclass="detailField" ></label>
+				<h:p> <label id="resolutive" sclass="detailData" ></label> </h:p>
+			</div>
+			
+			<div class="col-md-4">
+				<label value="Folio" sclass="detailField" ></label>
+				<h:p> <label id="folio" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-4">
+				<label value="Fecha de trámite" sclass="detailField" ></label>
+				<h:p> <label id="date_procedure" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-4">
+				<label value="Fecha de administrativo" sclass="detailField" ></label>
+				<h:p> <label id="date_administrative" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-4">
+				<label value="Fecha de pago" sclass="detailField" ></label>
+				<h:p> <label id="date_payment" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-4">
+				<label value="Fecha de compromiso" sclass="detailField" ></label>
+				<h:p> <label id="date_commitment" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-4">
+				<label value="Cantidad Autorizada" sclass="detailField" ></label>
+				<h:p> <label id="quantity_authorized" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-4">
+			</div>
+			<div class="col-md-12">
+				<label value="Descripción" sclass="detailField" ></label>
+				<h:p> <label id="description" sclass="detailData" ></label> </h:p>
+			</div>
 		</div>
 
 	</div>

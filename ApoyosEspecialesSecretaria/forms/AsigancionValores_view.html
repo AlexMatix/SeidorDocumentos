@@ -4,280 +4,72 @@
 <zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
 <window id="vwin" border="none" onCreate="entityController.loadView(ebeanDetail, self);" >
 
-	<zscript>
-		import ieci.tdw.ispac.adapter.TransactAdapterI;
-		import ieci.tdw.ispac.entity.EntityAdapter;
+    <zscript>
+        import ieci.tdw.ispac.adapter.TransactAdapterI;
+        import ieci.tdw.ispac.entity.EntityAdapter;
 
-		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+        //Importar clases de control y apadter 
+        import ieci.tdw.ispac.entity.adapter.AESPGValorationAdapter;
+        import ieci.tdw.ispac.entity.controller.AESPValorationController;
 
-		update(){
-			fcv.validate(ewin);
-			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
-		}
+        EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
-		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
-	</zscript>
+        AESPGValorationAdapter aespgValorationAdapter = aespValorationController.read(ebeanDetail);
 
-	<div class="row detailBox" >
-		<div class="row gridCard">
-			<div class="col-md-6">
-				<label value="Origen de la Solicitud*" sclass="detailField" ></label>
-				<h:p> <label id="origen_solicitud" sclass="detailData" ></label> </h:p>
-			</div>
+        update(){
+            fcv.validate(vwin);
+            entityController.saveOrUpdate(transactDetail, ebeanDetail, vwin);
+        }
 
-			<div class="col-md-6">
-				<label value="Fecha de la Solicitud" sclass="detailField" ></label>
-				<h:p> <label id="fecha_solicitud" sclass="detailData" ></label> </h:p>
-			</div>
+        TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+    </zscript>
 
+    <div class="row detailBox" >
+        <div class="row gridCard">
+            <div class="col-md-4">
+                <label value="Autorización" sclass="detailField" ></label>
+                <h:p> <label id="authorization" sclass="detailData" ></label> </h:p>
+            </div>
+            <div class="col-md-4">
+                <label value="¿Necesita valoración?" sclass="detailField" ></label>
+                <h:p> <label id="assessment" sclass="detailData" ></label> </h:p>
+            </div>
+            <div class="col-md-4">
+                <label value="Prioridad" sclass="detailField" ></label>
+                <h:p> <label id="priority" sclass="detailData" ></label> </h:p>
+            </div>
 
-			<div class="col-md-4">
-				<label value="Código postal" sclass="detailField" ></label>
-				<h:p> <label id="codigo_postal" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-4">
-				<label value="Estado" sclass="detailField" ></label>
-				<h:p> <label id="estado" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			<div class="col-md-4">
-				<label value="Municipio" sclass="detailField" ></label>
-				<h:p> <label id="municipio" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			<div class="col-md-6">
-				<label value="Población" sclass="detailField" ></label>
-				<h:p> <label id="poblacion" sclass="detailData" ></label> </h:p>
-			</div>
+            <!-- LISTBOX DEPENDENCIAS -->
+            <div class="row gridCard">  
+                <div class="col-md-6">
+                    <label value="Lista de Dependencias"  sclass="editTitle" ></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
 
-			<div class="col-md-6">
-				<label value="Colonia" sclass="detailField" ></label>
-				<h:p> <label id="colonia" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-8">
-				<label value="Calle" sclass="detailField" ></label>
-				<h:p> <label id="calle" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-2">
-				<label value="Número Interior" sclass="detailField" ></label>
-				<h:p> <label id="numero_interior" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-2">
-				<label value="Número exterior" sclass="detailField" ></label>
-				<h:p> <label id="numero_exterior" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			<div class="col-md-6">
-				<label value="Referencia 1" sclass="detailField" ></label>
-				<h:p> <label id="referencia_uno" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-6">
-				<label value="Referencia 2" sclass="detailField" ></label>
-				<h:p> <label id="referencia_dos" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="evento" sclass="detailField" ></label>
-				<h:p> <label id="evento" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-4">
-				<label value="Tema" sclass="detailField" ></label>
-				<h:p> <label id="tema" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-4">
-				<label value="Subtema" sclass="detailField" ></label>
-				<h:p> <label id="subtema" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-4">
-				<label value="Compromiso del gobernador" sclass="detailField" ></label>
-				<h:p> <label id="compromiso_gobernador" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-4">
-				<label value="Fecha del evento " sclass="detailField" ></label>
-				<h:p> <label id="date_event" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			<div class="col-md-4">
-				<label value="Tipo de ayuda" sclass="detailField" ></label>
-				<h:p> <label id="type_support" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			<div class="col-md-4">
-				<label value="Cantidad solicitada" sclass="detailField" ></label>
-				<h:p> <label id="quantity_request" sclass="detailData" ></label> </h:p>
-			</div>
+            <div class="col-md-12">
+                <listbox id="lbdependence" onCreate="aespgValorationAdapter.loadDependences(self, false, vwin, catalogManager.getCatalogs(741));" style="">
+                  <listhead>
+                    <listheader label="Nombre" hflex="1"></listheader>
+                    <listheader label="Check"  hflex="1"></listheader>
+                  </listhead>
+                </listbox>
+            </div>
+            <!--FIN LISTBOX DEPENDENCIAS -->
 
 
-			<div class="col-md-12">
-				<label value="Detalle de la solicitud" sclass="detailField" ></label>
-				<h:p> <label id="detalle_solicitud" sclass="detailData" ></label> </h:p>
-			</div>
+            <div class="col-md-12" visible="false">
+                <label value="Dependencia" sclass="detailField" ></label>
+                <h:p> <label id="dependence" sclass="detailData" ></label> </h:p>
+            </div>
 
-			<div class="col-md-12">
-				<label value="Trámite" sclass="detailField" ></label>
-				<h:p> <label id="tramite" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-12">
-				<label value="Persona que lo atendió" sclass="detailField" ></label>
-				<h:p> <label id="persona_atendio" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			<!-- FIN PRIMERA SECCIÓN -->
-			
-			<div class="col-md-4">
-				<label value="Curpc" sclass="detailField" ></label>
-				<h:p> <label id="curpc" sclass="detailData" ></label> </h:p>
-			</div>
+            <div class="col-md-12" visible="false">
+                <label value="next_phase" sclass="editField" ></label>
+                <h:p> <label id="next_phase" sclass="detailData"></label> </h:p> 
+            </div>
+        </div>
 
-			<div class="col-md-4">
-				<label value="fecha nacimiento ciudadano" sclass="detailField" ></label>
-				<h:p> <label id="birth_datec" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-4">
-				<label value="Sexo" sclass="detailField" ></label>
-				<h:p> <label id="gender" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-8">
-				<label value="Nombres" sclass="detailField" ></label>
-				<h:p> <label id="names" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-4">
-				<label value="Teléfono" sclass="detailField" ></label>
-				<h:p> <label id="telephonec" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-4">
-				<label value="Celular" sclass="detailField" ></label>
-				<h:p> <label id="cellphonec" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-4">
-				<label value="Teléfono alternativo" sclass="detailField" ></label>
-				<h:p> <label id="alternate_citizen_phone" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-4">
-				<label value="Correo electrónico" sclass="detailField" ></label>
-				<h:p> <label id="emailc" sclass="detailData" ></label> </h:p>
-			</div>
-
-
-			<div class="col-md-4">
-				<label value="Código postal ciudadano" sclass="detailField" ></label>
-				<h:p> <label id="zipcode" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-4">
-				<label value="estado ciudadano" sclass="detailField" ></label>
-				<h:p> <label id="state" sclass="detailData" ></label> </h:p>
-			</div>
-		
-			<div class="col-md-4">
-				<label value="Municipio ciudadano" sclass="detailField" ></label>
-				<h:p> <label id="municipality" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-4">
-				<label value="city" sclass="detailField" ></label>
-				<h:p> <label id="city" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			<div class="col-md-4">
-				<label value="Neighborhood" sclass="detailField" ></label>
-				<h:p> <label id="neighborhood" sclass="detailData" ></label> </h:p>
-			</div>
-
-			
-			<div class="col-md-4">
-				<label value="last name" sclass="detailField" ></label>
-				<h:p> <label id="lastname" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			
-			<div class="col-md-4">
-				<label value="Número Interior" sclass="detailField" ></label>
-				<h:p> <label id="innnum" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-4">
-				<label value="Referencia" sclass="detailField" ></label>
-				<h:p> <label id="reference" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			<div class="col-md-4">
-				<label value="Calle Ciudadano" sclass="detailField" ></label>
-				<h:p> <label id="streetc" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-4">
-				<label value="Número exterior ciudadano" sclass="detailField" ></label>
-				<h:p> <label id="extnumc" sclass="detailData" ></label> </h:p>
-			</div>
-		</div>
-
-		<!-- CAMPOS OCULTOS -->
-
-		<div visible="false">
-			<div class="col-md-12">
-				<label value="Id Municipio" sclass="detailField" ></label>
-				<h:p> <label id="id_municipio" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="Id Estado" sclass="detailField" ></label>
-				<h:p> <label id="id_estado" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="Id Población" sclass="detailField" ></label>
-				<h:p> <label id="id_poblacion" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="Id Colonia" sclass="detailField" ></label>
-				<h:p> <label id="id_colonia" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="map zoom" sclass="detailField" ></label>
-				<h:p> <label id="map_zoom" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-12">
-				<label value="Latitud" sclass="detailField" ></label>
-				<h:p> <label id="latitude" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-12">
-				<label value="Longitud" sclass="detailField" ></label>
-				<h:p> <label id="longitude" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="Id Estado" sclass="detailField" ></label>
-				<h:p> <label id="id_state" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="Id Municipio" sclass="detailField" ></label>
-				<h:p> <label id="id_municipality" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="id city" sclass="detailField" ></label>
-				<h:p> <label id="id_city" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="id neighborhood" sclass="detailField" ></label>
-				<h:p> <label id="id_neighborhood" sclass="detailData" ></label> </h:p>
-			</div>
-		</div>
-		<!-- FIN CAMPOS OCULTOS -->
-
-
-	</div>
+    </div>
 
 </window>
 </zk>

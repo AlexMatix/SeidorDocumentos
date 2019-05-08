@@ -67,101 +67,7 @@
 
                     TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
 
-                     // Address
-                    String stateS = ebeanDetail.getField("estado");
-                    String muniS = ebeanDetail.getField("municipio");
-                    String cityS = ebeanDetail.getField("poblacion");
-                    String neigS = ebeanDetail.getField("colonia");    
-                    Object zipObject = ebeanDetail.getField("codigo_postal");
-
-                    Integer stateId = ebeanDetail.getField("id_estado");
-                    Integer muniId = ebeanDetail.getField("id_municipio");
-                    Integer cityId = ebeanDetail.getField("id_poblacion");
-                    Integer neighId = ebeanDetail.getField("id_colonia");
-                    Integer zip = null;
-
-
-                    // Citizen Address
-                            String stateSCiudadano = ebeanDetail.getField("state");
-                    String muniSCiudadano = ebeanDetail.getField("municipality");
-                    String citySCiudadano = ebeanDetail.getField("city");
-                    String neigSCiudadano = ebeanDetail.getField("neighborhood");    
-                    Object zipObjectCiudadano = ebeanDetail.getField("zipcode");    
-
-
-                    Integer stateIdCiudadano = ebeanDetail.getField("id_state");
-                    Integer muniIdCiudadano = ebeanDetail.getField("id_municipality");
-                    Integer cityIdCiudadano = ebeanDetail.getField("id_city");
-                    Integer neighIdCiudadano = ebeanDetail.getField("id_neighborhood");
-                    Integer zipCiudadano = null;
-
-                    if(zipObject != null) {
-                       if (zipObject  instanceof String) {
-                         zip = Integer.parseInt(zipObject );
-                       } else  if (zipObject  instanceof Integer) {
-                         zip = zipObject ;
-                       }
-                    }
-
-                    if(zipObjectCiudadano != null) {
-                       if (zipObjectCiudadano  instanceof String) {
-                         zipCiudadano = Integer.parseInt(zipObjectCiudadano );
-                       } else  if (zipObjectCiudadano  instanceof Integer) {
-                         zipCiudadano = zipObjectCiudadano ;
-                       }
-                    }
-
-            public void setAddress() {
-                    if (addressbox_form.checkState(true)) {
-                            ebeanDetail.setField("estado",   addressbox_form.getState());
-                            ebeanDetail.setField("id_estado", addressbox_form.getStateId());
-                    }
-
-                    if (addressbox_form.checkMunicipality(true)) {
-                            ebeanDetail.setField("municipio",   addressbox_form.getMunicipality());
-                            ebeanDetail.setField("id_municipio", addressbox_form.getMunicipalityId());
-                    }
-
-                            if (addressbox_form.checkCity(true)) {
-                                    ebeanDetail.setField("poblacion",  addressbox_form.getCity());
-                                    ebeanDetail.setField("id_poblacion",addressbox_form.getCityId());
-                            }
-
-                    if (addressbox_form.checkNeighborhood(true)) {
-                            ebeanDetail.setField("colonia",  addressbox_form.getNeighborhood());
-                            ebeanDetail.setField("id_colonia",addressbox_form.getNeighborhoodId());
-                    }
-
-                    if (addressbox_form.checkZipcode(true)) {
-                            ebeanDetail.setField("codigo_postal", addressbox_form.getZipcode());
-                    }
-            }
-
-            public void setCitizenAddress() {
-                    if (addressbox_citizen.checkState(true)) {
-                            ebeanDetail.setField("state",   addressbox_citizen.getState());
-                            ebeanDetail.setField("id_state", addressbox_citizen.getStateId());
-                    }
-
-                    if (addressbox_citizen.checkMunicipality(true)) {
-                            ebeanDetail.setField("municipality",   addressbox_citizen.getMunicipality());
-                            ebeanDetail.setField("id_municipality", addressbox_citizen.getMunicipalityId());
-                    }
-
-                            if (addressbox_citizen.checkCity(true)) {
-                                    ebeanDetail.setField("city",  addressbox_citizen.getCity());
-                                    ebeanDetail.setField("id_city",addressbox_citizen.getCityId());
-                            }
-
-                    if (addressbox_citizen.checkNeighborhood(true)) {
-                            ebeanDetail.setField("neighborhood",  addressbox_citizen.getNeighborhood());
-                            ebeanDetail.setField("id_neighborhood",addressbox_citizen.getNeighborhoodId());
-                    }
-
-                    if (addressbox_citizen.checkZipcode(true)) {
-                            ebeanDetail.setField("zipcode", addressbox_citizen.getZipcode());
-                    }
-            }
+                    
 
             // Maps Config
             SystemProperties sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_INITIALZOOM, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
@@ -249,8 +155,10 @@
                 String type = origen_solicitud.getValue();
                 if(type.equals("Giras") || type.equals("Gobernador en tu Calle")){
                     divEvento.setVisible(true);
+                    compromiso_gobernador.setDisabled(false);
                 } else{
                     divEvento.setVisible(false);
+                    compromiso_gobernador.setDisabled(true);
                 }
             }
             
@@ -287,20 +195,66 @@
                 <div class="col-md-4">
                     <label value="Fecha" sclass="editField" ></label>
                     <h:p>
-                        <datebox id="fecha_solicitud" ></datebox>
+                        <datebox id="fecha_solicitud" onCreate="self.value = new Date()"></datebox>
                     </h:p>
                 </div>
-                <div class="col-md-4">  
+                <div class="col-md-4"> 
+                    <button 
+                        label="Copiar dirección a ciudadano" 
+                        sclass="btn btn-primary" 
+                        iconSclass="fa fa-clone" 
+                        onClick="aespValorationController.copyAddressBox(ewin);"
+                        style="margin-top: 24px;">
+                    </button>
                 </div>
             </div>
+            
+            <div class="row gridCard" id="divEvento" visible="false">
+                <div class="col-md-12">
+                    <label value="Evento" sclass="editField" ></label>
+                    <combobox id="evento" maxlength="255"
+                              onCreate="transactDetail.loadCatalog(self, 302);" >
+                    </combobox>
+                </div>
+            </div>
+
             <div class="row gridCard">
-                <addressbox_form id="addressbox_form" state="${stateS}"
+              <div class="col-md-2">
+                  <label value="Código postal" sclass="editField" ></label>
+                  <h:p> <textbox id="codigo_postal" maxlength="255" ></textbox> </h:p>
+              </div>
+              <div class="col-md-2">
+                <label value="Estado*" sclass="editField" ></label>
+                <combobox id="estado" maxlength="255" onCreate="casFormController.loadStates(self, ebeanDetail);" 
+                          onChange="casFormController.onChangeStates(self, municipio);" > </combobox>
+              </div>
+              <div class="col-md-2">
+                <label value="Municipio*" sclass="editField" ></label>
+                <combobox id="municipio" maxlength="255" onCreate="casFormController.loadMunip(ebeanDetail, self, estado.getId());"
+                          onChange="casFormController.onChangeMunip(self, poblacion, estado);" ></combobox>
+              </div>
+              <div class="col-md-3">
+                <label value="Localidad*" sclass="editField" ></label>
+                <combobox id="poblacion" maxlength="255" 
+                          onCreate="casFormController.loadLocal(ebeanDetail, estado.getId(), municipio.getId(), self);"
+                          onChange="casFormController.onChangeLocal(self, colonia, estado, municipio);" ></combobox>
+              </div>
+              <div class="col-md-3">
+                <label value="Colonia*" sclass="editField" ></label>
+                <combobox id="colonia" maxlength="255" 
+                          onCreate="casFormController.loadNeigh(ebeanDetail, estado.getId(), municipio.getId(), poblacion.getId(), self)" ></combobox>
+              </div>
+            </div>
+
+            <!--<div class="row gridCard">
+                
+                <addressbox_citizen id="addressbox_form" state="${stateS}"
                                  stateId="${stateId}" municipality="${muniS}"
                                  municipalityId="${muniId}" city="${cityS}" cityId="${cityId}"
                                  neighborhoodId="${neighId}" neighborhood="${neigS}"
                                  zipcode="${zip}" onChange="setAddress();" >
-                </addressbox_form>
-            </div>
+                </addressbox_citizen> 
+            </div>-->
             <div class="row gridCard">
                 <div class="col-md-8">
                     <label value="Nombre de la Calle" sclass="editField" ></label>
@@ -387,18 +341,10 @@
             </div>
             <separator spacing="15px" ></separator>
 
-            <div class="row gridCard" id="divEvento" visible="false">
-                <div class="col-md-12">
-                    <label value="Evento" sclass="editField" ></label>
-                    <combobox id="evento" maxlength="255"
-                              onCreate="transactDetail.loadCatalog(self, 302);" >
-                    </combobox>
-                </div>
-            </div>
             <div class="row gridCard">
                 <div class="col-md-4">
                     <label value="Tema" sclass="editField" ></label>
-                    <combobox id="tema" maxlength="255" onCreate="casFormController.loadTheme(self);" readonly="true"
+                    <combobox id="tema" maxlength="255" onCreate="aespValorationController.loadTheme(self);" readonly="true"
                               onChange="casFormController.onChangeTheme(self, subtema);"  ></combobox>
                 </div>
                 <div class="col-md-4">
@@ -409,30 +355,33 @@
                 <div class="col-md-4">
                     <separator spacing="20px" ></separator>
                     <label value="Compromiso del gobernador" sclass="editField" ></label>
-                    <checkbox id="compromiso_gobernador" ></checkbox>
+                    <checkbox id="compromiso_gobernador" disabled="true" ></checkbox>
                 </div>
             </div>
 
             <div class="row gridCard">
-
-                <div class="col-md-4">
-                    <label value="Fecha del evento *" sclass="editField" ></label>
-                    <h:p> <datebox id="date_event"  ></datebox> </h:p> 
+                <div class="col-md-12">
+                    <label value="Trámite" sclass="editField" ></label>
+                    <combobox id="tramite" maxlength="255" onCreate="casFormController.loadTransaction(self, ebeanDetail);" 
+                              readonly="true"></combobox>
                 </div>
+                <textbox id="dependencia" maxlength="255" visible="false" ></textbox>
+            </div>
+            
+
+            <div class="row gridCard">
 
                 <div class="col-md-4">
-                    <label value="Tipo de ayuda*" sclass="editField" ></label>
-                     <combobox 
-                        id="type_support" 
-                        maxlength="255" 
-                        onCreate="transactDetail.loadCatalog(self, 619);"
-                        onChange="aespValorationController.checkTupeSupport(ewin)"
-                        ></combobox> 
+                    <label value="Fecha del evento" sclass="editField" ></label>
+                    <h:p> <datebox id="date_event"  ></datebox> </h:p> 
                 </div>
                 
                 <div class="col-md-4">
                     <label value="Cantidad solicitada" sclass="editField" ></label>
                     <h:p> <intbox id="quantity_request" maxlength="9"   ></intbox> </h:p> 
+                </div>
+
+                <div class="col-md-4">
                 </div>
             </div>
 
@@ -448,21 +397,6 @@
                 </div>
             </div>
 
-            <div class="row gridCard">
-                <div class="col-md-12">
-                    <label value="Trámite" sclass="editField" ></label>
-                    <combobox id="tramite" maxlength="255" onCreate="casFormController.loadTransaction(self, ebeanDetail);" 
-                              readonly="true" onChange="casFormController.onChangeTransaction(self, dependencia)"></combobox>
-                </div>
-                <textbox id="dependencia" maxlength="255" visible="false" ></textbox>
-            </div>
-
-            <div class="row gridCard">
-                <div class="col-md-12">
-                    <label value="Persona que lo atendió" sclass="editField" ></label>
-                    <combobox id="persona_atendio" maxlength="255" onCreate="transactDetail.loadCatalog(self, 361);"  ></combobox> 
-                </div>
-            </div>
             <separator spacing="20px" ></separator>
             <div class="row gridCard">
                 <div class="col-md-12">
@@ -556,14 +490,34 @@
                 </div>
             </div>
             <div class="row gridCard">  
-                <addressbox_citizen id="addressbox_citizen"
-                                    state="${stateSCiudadano}" stateId="${stateIdCiudadano}"
-                                    municipality="${muniSCiudadano}"
-                                    municipalityId="${muniIdCiudadano}" city="${citySCiudadano}"
-                                    cityId="${cityIdCiudadano}" neighborhoodId="${neighIdCiudadano}"
-                                    neighborhood="${neigSCiudadano}" zipcode="${zipCiudadano}"
-                                    onChange="setCitizenAddress();" >
-                </addressbox_citizen>   
+                <div class="col-md-2">
+                  <label value="Código postal" sclass="editField" ></label>
+                  <h:p> <textbox id="codigoPostalC" maxlength="255" ></textbox> </h:p>
+                </div>
+                
+                <div class="col-md-2">
+                    <label value="Estado*" sclass="editField" ></label>
+                    <combobox id="estadoC" maxlength="255" onCreate="casFormController.loadStates(self, ebeanDetail);" 
+                              onChange="casFormController.onChangeStates(self, municipioC);" > </combobox>
+                </div>
+                <div class="col-md-2">
+                    <label value="Municipio*" sclass="editField" ></label>
+                    <combobox id="municipioC" maxlength="255" onCreate="casFormController.loadMunip(ebeanDetail, self, estadoC.getId());"
+                              onChange="casFormController.onChangeMunip(self, LocalidadC, estadoC);" ></combobox>
+                </div>
+                
+                <div class="col-md-3">
+                    <label value="Localidad*" sclass="editField" ></label>
+                    <combobox id="LocalidadC" maxlength="255" 
+                              onCreate="casFormController.loadLocal(ebeanDetail, estadoC.getId(), municipioC.getId(), self);"
+                              onChange="casFormController.onChangeLocal(self, coloniaC, estadoC, municipioC);" ></combobox>
+                </div>
+                  
+                <div class="col-md-3">
+                    <label value="Colonia*" sclass="editField" ></label>
+                    <combobox id="coloniaC" maxlength="255" 
+                              onCreate="casFormController.loadNeigh(ebeanDetail, estadoC.getId(), municipioC.getId(), LocalidadC.getId(), self)" ></combobox>
+              </div>
             </div>
             <div class="row gridCard">
                 <div class="col-md-8">
