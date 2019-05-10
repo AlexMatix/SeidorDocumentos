@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="comprobante_registro_solicitud" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a04ad110-87b6-411d-b1ff-05f7360a8d7c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.report.description" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="F_AESPG_APOYOS_ESPECIALES_01_names" class="java.lang.String"/>
+	<parameter name="F_AESPG_APOYOS_ESPECIALES_01_lastname" class="java.lang.String"/>
+	<parameter name="F_AESPG_APOYOS_ESPECIALES_01_tramite" class="java.lang.String"/>
+	<parameter name="F_AESPG_APOYOS_ESPECIALES_01_folio" class="java.lang.String"/>
+	<parameter name="F_AESPG_APOYOS_ESPECIALES_01_detalle_solicitud" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="174" splitType="Stretch">
+			<image>
+				<reportElement x="10" y="20" width="125" height="52" uuid="32c981f7-b639-4c9e-91fb-4427619aa1f0"/>
+				<imageExpression><![CDATA["http://localhost:8080/egovstyles/images/report/finanzas/logoAtencionCiudadana.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="437" y="20" width="125" height="52" uuid="32c981f7-b639-4c9e-91fb-4427619aa1f0"/>
+				<imageExpression><![CDATA["http://localhost:8080/egovstyles/images/report/finanzas/logoQueretaroGob.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="356" y="108" width="81" height="26" uuid="ddc59918-5808-436d-bd93-79e9d9095336"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fecha:"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="10" y="90" width="551" height="18" uuid="b98858a6-7068-4b7d-aa88-2aea1d10b442"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["COMPROBANTE DE REGISTRO DE SOLICITUD"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="134" width="551" height="20" uuid="1fb93747-daf5-43ee-87f5-e778de281842"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nombre del Solicitante: "+$P{F_AESPG_APOYOS_ESPECIALES_01_names} +" "+ $P{F_AESPG_APOYOS_ESPECIALES_01_lastname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="154" width="551" height="20" uuid="f37f9bf7-ac91-449e-b049-0e7fbfb81fb7"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Servicio | Trámite: "+ $P{F_AESPG_APOYOS_ESPECIALES_01_tramite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="0" width="181" height="20" uuid="4c9a88c3-6c3b-406e-8fc8-9dcb22fe7f13"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Folio: "+$P{F_AESPG_APOYOS_ESPECIALES_01_folio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MMMM/yyyy">
+				<reportElement x="437" y="108" width="123" height="26" uuid="ba98086d-933f-48e0-b19d-e2481f6aff4b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="175" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="10" y="0" width="551" height="48" uuid="b98858a6-7068-4b7d-aa88-2aea1d10b442"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Para información posterior a su trámite comunicarse a los teléfonos  01 800 237 22 33 ó 211 70 70 de 8:00 a 20:00 horas de lunes a viernes y sábados de 9:00 a 14:00 horas; o en línea con su número de folio en la página enlace.queretaro.gob.mx"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="10" y="72" width="551" height="18" uuid="a6ff5f38-dbee-4dc1-aa20-32309079fbc2"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="0" rightPadding="1">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Dirección de asesoría y promoción social"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="10" y="128" width="551" height="40" uuid="2918b0d6-ad34-48a0-afbb-51f980b81b87"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["El contexto legal donde se apoya la atención de las demandas ciudadanas en los niveles federales, estatal o municipal queda establecido en el Artículo 8vo. Constitucional."]]></textFieldExpression>
+			</textField>
+			<break>
+				<reportElement x="0" y="171" width="569" height="1" uuid="b46a1e05-fc21-49ee-a8d9-495f18be9ff0"/>
+			</break>
+			<textField>
+				<reportElement x="10" y="49" width="552" height="15" uuid="36c45927-4bbd-439d-a0cc-f575717f313c"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["En un plazo de 15 días hábiles a partir de esta fecha o acudir a:"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="10" y="90" width="551" height="18" uuid="612b94f8-f0ca-4676-b8d0-6ac24df37445"/>
+				<box topPadding="0" leftPadding="1" bottomPadding="0" rightPadding="1">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Av. Pie de la Cuesta No. 2121 Int 18, Col. Lomas de San Pedrito Peñuelas, C.P. 76148, Querétaro, Querétaro"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="10" y="109" width="551" height="18" uuid="2b6631b4-ee2a-4604-b78d-144ae5619def"/>
+				<box topPadding="0" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Teléfono : (442) 192-92-00"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="91" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="9" y="10" width="551" height="80" uuid="616113f7-50f5-4e22-8172-7bad06a53676"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Detalle de la solicitud:"+"\n"+$P{F_AESPG_APOYOS_ESPECIALES_01_detalle_solicitud}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="77" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="572" height="77" forecolor="#999999" uuid="f1405832-3835-4408-9b59-0b33ae508e66"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[
+
+  Palacio de la corregidora
+  5 de Mayo y Luis Pasteur, Centro Histórico
+  C.P. 76000 Tel. (442) 238 5007, Santiago de Querétaro, Qro.
+
+                ]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

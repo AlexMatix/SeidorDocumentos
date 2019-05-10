@@ -72,6 +72,247 @@
 
 	<div class="row detailBox" >
 
+		<div class="row gridCard">
+            <div class="col-md-4">
+              <label value="Folio" sclass="detailField" ></label>
+              <h:p> <label id="folio" sclass="detailData" ></label> </h:p>
+            </div>
+        </div>
+
+		<div class="row gridCard">
+			<div class="col-md-4">
+				<label value="Origen de la Solicitud*" sclass="detailField" ></label>
+				<h:p> <label id="origen_solicitud" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-4">
+				<label value="Fecha de la Solicitud" sclass="detailField" ></label>
+				<h:p> <label id="fecha_solicitud" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-4">
+				<label value="Evento" sclass="detailField" ></label>
+				<h:p> <label id="evento" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+
+		<div class="row gridCard">
+			<div class="col-md-2">
+				<label value="Código postal" sclass="detailField" ></label>
+				<h:p> <label id="codigo_postal" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-2">
+				<label value="Estado" sclass="detailField" ></label>
+				<h:p> <label id="estado" sclass="detailData" ></label> </h:p>
+			</div>
+			
+			<div class="col-md-2">
+				<label value="Municipio" sclass="detailField" ></label>
+				<h:p> <label id="municipio" sclass="detailData" ></label> </h:p>
+			</div>
+			
+			<div class="col-md-2">
+				<label value="Población" sclass="detailField" ></label>
+				<h:p> <label id="poblacion" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-2">
+				<label value="Colonia" sclass="detailField" ></label>
+				<h:p> <label id="colonia" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+
+		<div class="row gridCard">
+
+			<div class="col-md-8">
+				<label value="Calle" sclass="detailField" ></label>
+				<h:p> <label id="calle" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-2">
+				<label value="Número Interior" sclass="detailField" ></label>
+				<h:p> <label id="numero_interior" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-2">
+				<label value="Número exterior" sclass="detailField" ></label>
+				<h:p> <label id="numero_exterior" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+		
+		<div class="row gridCard">
+			<div class="col-md-6">
+				<label value="Referencia 1" sclass="detailField" ></label>
+				<h:p> <label id="referencia_uno" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-6">
+				<label value="Referencia 2" sclass="detailField" ></label>
+				<h:p> <label id="referencia_dos" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+
+			<!--	
+			<div class="row gridCard">
+                <div class="col-md-12">
+                    <script type="text/javascript" content="zk.googleAPIkey='${apiKey}'" ></script>
+                    <gmaps version="3.34" id="gmaps" zoom="${initialZoom}" height="350px" showSmallCtrl="false" 
+                           onCreate="changeInitialGmaps();">
+                        <gmarker id="marker" draggingEnabled="true" content=""
+                                 visible="true" >
+                        </gmarker>
+                    </gmaps>
+                </div>
+            </div>
+            <separator spacing="15px" ></separator>
+			-->
+
+		<div class="row gridCard">			
+			<div class="col-md-4">
+				<label value="Tema" sclass="detailField" ></label>
+				<h:p> <label id="tema" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-4">
+				<label value="Subtema" sclass="detailField" ></label>
+				<h:p> <label id="subtema" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-4">
+				<label value="Compromiso del gobernador" sclass="detailField" ></label>
+				<h:p> <label id="compromiso_gobernador" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-4">
+				<label value="Trámite" sclass="detailField" ></label>
+				<h:p> <label id="tramite" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+
+		<div class="row gridCard">
+			<div class="col-md-4">
+				<label value="Fecha del evento " sclass="detailField" ></label>
+				<h:p> <label id="date_event" sclass="detailData" ></label> </h:p>
+			</div>
+			
+			<div class="col-md-4">
+				<label value="Cantidad solicitada" sclass="detailField" ></label>
+				<h:p> <label id="quantity_request" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+
+		<div class="row gridCard">
+			<div class="col-md-12">
+				<label value="Detalle de la solicitud" sclass="detailField" ></label>
+				<h:p> <label id="detalle_solicitud" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+
+
+		
+			<!-- FIN PRIMERA SECCIÓN -->
+			
+		<div class="row gridCard">
+			<div class="col-md-4">
+				<label value="Curpc" sclass="detailField" ></label>
+				<h:p> <label id="curpc" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-4">
+				<label value="fecha nacimiento ciudadano" sclass="detailField" ></label>
+				<h:p> <label id="birth_datec" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-4">
+				<label value="Sexo" sclass="detailField" ></label>
+				<h:p> <label id="gender" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+
+		<div class="row gridCard">
+			
+			<div class="col-md-4">
+				<label value="Nombres" sclass="detailField" ></label>
+				<h:p> <label id="names" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-8">
+				<label value="Apellidos" sclass="detailField" ></label>
+				<h:p> <label id="lastname" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+		
+		<div class="row gridCard">
+			<div class="col-md-3">
+				<label value="Teléfono" sclass="detailField" ></label>
+				<h:p> <label id="telephonec" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-3">
+				<label value="Celular" sclass="detailField" ></label>
+				<h:p> <label id="cellphonec" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-3">
+				<label value="Teléfono alternativo" sclass="detailField" ></label>
+				<h:p> <label id="alternate_citizen_phone" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-3">
+				<label value="Correo electrónico" sclass="detailField" ></label>
+				<h:p> <label id="emailc" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+
+		<div class="row gridCard">
+			<div class="col-md-2">
+				<label value="Código postal ciudadano" sclass="detailField" ></label>
+				<h:p> <label id="codigoPostalC" sclass="detailData" ></label> </h:p>
+			</div>
+			<div class="col-md-2">
+				<label value="Estado" sclass="detailField" ></label>
+				<h:p> <label id="estadoC" sclass="detailData" ></label> </h:p>
+			</div>
+		
+			<div class="col-md-2">
+				<label value="Municipio" sclass="detailField" ></label>
+				<h:p> <label id="municipioC" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-2">
+				<label value="Localidad" sclass="detailField" ></label>
+				<h:p> <label id="LocalidadC" sclass="detailData" ></label> </h:p>
+			</div>
+
+			<div class="col-md-2">
+				<label value="Colonia" sclass="detailField" ></label>
+				<h:p> <label id="coloniaC" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+
+		<div class="row gridCard">
+			<div class="col-md-8">
+				<label value="Nombre de la Calle" sclass="detailField" ></label>
+				<h:p> <label id="streetc" sclass="detailData" ></label> </h:p>
+			</div>
+
+			
+			<div class="col-md-2">
+				<label value="No. Exterior" sclass="detailField" ></label>
+				<h:p> <label id="extnumc" sclass="detailData" ></label> </h:p>
+			</div>
+			
+			
+			<div class="col-md-2">
+				<label value="No. Interior" sclass="detailField" ></label>
+				<h:p> <label id="innnum" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+
+		<div class="row gridCard">
+			<div class="col-md-8">
+				<label value="Referencia" sclass="detailField" ></label>
+				<h:p> <label id="reference" sclass="detailData" ></label> </h:p>
+			</div>
+		</div>
+
+
 				<!-- CAMPOS OCULTOS -->
 
 		<div visible="false">
@@ -129,216 +370,6 @@
 			</div>
 		</div>
 		<!-- FIN CAMPOS OCULTOS -->
-
-
-
-		<div class="row gridCard">
-			<div class="col-md-6">
-				<label value="Origen de la Solicitud*" sclass="detailField" ></label>
-				<h:p> <label id="origen_solicitud" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-6">
-				<label value="Fecha de la Solicitud" sclass="detailField" ></label>
-				<h:p> <label id="fecha_solicitud" sclass="detailData" ></label> </h:p>
-			</div>
-
-
-			<div class="col-md-4">
-				<label value="Código postal" sclass="detailField" ></label>
-				<h:p> <label id="codigo_postal" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-4">
-				<label value="Estado" sclass="detailField" ></label>
-				<h:p> <label id="estado" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			<div class="col-md-4">
-				<label value="Municipio" sclass="detailField" ></label>
-				<h:p> <label id="municipio" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			<div class="col-md-6">
-				<label value="Población" sclass="detailField" ></label>
-				<h:p> <label id="poblacion" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-6">
-				<label value="Colonia" sclass="detailField" ></label>
-				<h:p> <label id="colonia" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-8">
-				<label value="Calle" sclass="detailField" ></label>
-				<h:p> <label id="calle" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-2">
-				<label value="Número Interior" sclass="detailField" ></label>
-				<h:p> <label id="numero_interior" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-2">
-				<label value="Número exterior" sclass="detailField" ></label>
-				<h:p> <label id="numero_exterior" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			<div class="col-md-6">
-				<label value="Referencia 1" sclass="detailField" ></label>
-				<h:p> <label id="referencia_uno" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-6">
-				<label value="Referencia 2" sclass="detailField" ></label>
-				<h:p> <label id="referencia_dos" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<!--	
-			<div class="row gridCard">
-                <div class="col-md-12">
-                    <script type="text/javascript" content="zk.googleAPIkey='${apiKey}'" ></script>
-                    <gmaps version="3.34" id="gmaps" zoom="${initialZoom}" height="350px" showSmallCtrl="false" 
-                           onCreate="changeInitialGmaps();">
-                        <gmarker id="marker" draggingEnabled="true" content=""
-                                 visible="true" >
-                        </gmarker>
-                    </gmaps>
-                </div>
-            </div>
-            <separator spacing="15px" ></separator>
-			-->
-
-			<div class="col-md-12">
-				<label value="evento" sclass="detailField" ></label>
-				<h:p> <label id="evento" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-4">
-				<label value="Tema" sclass="detailField" ></label>
-				<h:p> <label id="tema" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-4">
-				<label value="Subtema" sclass="detailField" ></label>
-				<h:p> <label id="subtema" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-4">
-				<label value="Compromiso del gobernador" sclass="detailField" ></label>
-				<h:p> <label id="compromiso_gobernador" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-4">
-				<label value="Fecha del evento " sclass="detailField" ></label>
-				<h:p> <label id="date_event" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			<div class="col-md-4">
-				<label value="Cantidad solicitada" sclass="detailField" ></label>
-				<h:p> <label id="quantity_request" sclass="detailData" ></label> </h:p>
-			</div>
-
-
-			<div class="col-md-12">
-				<label value="Detalle de la solicitud" sclass="detailField" ></label>
-				<h:p> <label id="detalle_solicitud" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-12">
-				<label value="Trámite" sclass="detailField" ></label>
-				<h:p> <label id="tramite" sclass="detailData" ></label> </h:p>
-			</div>
-		
-			<!-- FIN PRIMERA SECCIÓN -->
-			
-			<div class="col-md-4">
-				<label value="Curpc" sclass="detailField" ></label>
-				<h:p> <label id="curpc" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-4">
-				<label value="fecha nacimiento ciudadano" sclass="detailField" ></label>
-				<h:p> <label id="birth_datec" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-4">
-				<label value="Sexo" sclass="detailField" ></label>
-				<h:p> <label id="gender" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-8">
-				<label value="Nombres" sclass="detailField" ></label>
-				<h:p> <label id="names" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-4">
-				<label value="Teléfono" sclass="detailField" ></label>
-				<h:p> <label id="telephonec" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-4">
-				<label value="Celular" sclass="detailField" ></label>
-				<h:p> <label id="cellphonec" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-4">
-				<label value="Teléfono alternativo" sclass="detailField" ></label>
-				<h:p> <label id="alternate_citizen_phone" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-4">
-				<label value="Correo electrónico" sclass="detailField" ></label>
-				<h:p> <label id="emailc" sclass="detailData" ></label> </h:p>
-			</div>
-
-
-			<div class="col-md-4">
-				<label value="Código postal ciudadano" sclass="detailField" ></label>
-				<h:p> <label id="zipcode" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-4">
-				<label value="estado ciudadano" sclass="detailField" ></label>
-				<h:p> <label id="state" sclass="detailData" ></label> </h:p>
-			</div>
-		
-			<div class="col-md-4">
-				<label value="Municipio ciudadano" sclass="detailField" ></label>
-				<h:p> <label id="municipality" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-4">
-				<label value="city" sclass="detailField" ></label>
-				<h:p> <label id="city" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			<div class="col-md-4">
-				<label value="Neighborhood" sclass="detailField" ></label>
-				<h:p> <label id="neighborhood" sclass="detailData" ></label> </h:p>
-			</div>
-
-			
-			<div class="col-md-4">
-				<label value="last name" sclass="detailField" ></label>
-				<h:p> <label id="lastname" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			
-			<div class="col-md-4">
-				<label value="Número Interior" sclass="detailField" ></label>
-				<h:p> <label id="innnum" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-4">
-				<label value="Referencia" sclass="detailField" ></label>
-				<h:p> <label id="reference" sclass="detailData" ></label> </h:p>
-			</div>
-			
-			<div class="col-md-4">
-				<label value="Calle Ciudadano" sclass="detailField" ></label>
-				<h:p> <label id="streetc" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-4">
-				<label value="Número exterior ciudadano" sclass="detailField" ></label>
-				<h:p> <label id="extnumc" sclass="detailData" ></label> </h:p>
-			</div>
-		</div>
-
-
 	</div>
-
 </window>
 </zk>

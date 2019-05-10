@@ -176,7 +176,7 @@
                     <button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
                 </div>
             </div>
-
+            
             <div class="row gridCard">
                 <div class="col-md-12">
                     <label value="Descripción de la solicitud" sclass="editTitle" ></label>
@@ -184,6 +184,19 @@
             </div>
             <div sclass="separatorEdit" >
             </div>
+
+            <div class="row gridCard">
+                <div class="col-md-4">
+                  <label value="Folio*" sclass="editField" ></label>
+                  <hbox>
+                    <h:p> <textbox id="folio" maxlength="255" readonly="true"></textbox> </h:p>
+                    <button label="Generar" sclass="btn btn-info" onClick='aespValorationController.generateCodeFAndFolio(ewin, "folio");' ></button>
+                  </hbox>
+                </div>
+            </div>
+
+
+
             <div class="row gridCard">
                 <div class="col-md-4">
                     <label value="Origen de la solicitud*" sclass="editField" ></label>
@@ -213,7 +226,7 @@
                 <div class="col-md-12">
                     <label value="Evento" sclass="editField" ></label>
                     <combobox id="evento" maxlength="255"
-                              onCreate="transactDetail.loadCatalog(self, 302);" >
+                              onCreate="casFormController.loadEvent(self);" >
                     </combobox>
                 </div>
             </div>

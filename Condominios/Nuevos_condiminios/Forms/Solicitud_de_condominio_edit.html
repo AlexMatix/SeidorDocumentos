@@ -1,0 +1,58 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./ewin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+<window id="ewin" border="none" onCreate="entityController.loadEdit(ebeanDetail, self);" >
+
+	<zscript>
+		import ieci.tdw.ispac.adapter.TransactAdapterI;
+		import ieci.tdw.ispac.entity.EntityAdapter;
+
+		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+		update(){
+			fcv.validate(ewin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+		}
+
+		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+	</zscript>
+
+	<div class="row editBox" >
+		<div class="row editHeader">
+			<div class="col-md-12" align="right" >
+				<custom-attributes removeOnPortal="true" ></custom-attributes>
+				<button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
+			</div>
+		</div>
+
+		<div class="row gridCard">
+			<div class="col-md-4">
+				<label value="Tipo de trámite*" sclass="editField" ></label>
+				 <combobox id="type_procedure" maxlength="255" onCreate="transactDetail.loadCatalog(self, 761);"  ></combobox> 
+			</div>
+			<div class="col-md-4">
+				<label value="Clave catastral origen*" sclass="editField" ></label>
+				<h:p> <textbox id="key_catastral" maxlength="20"  ></textbox> </h:p> 
+			</div>
+		</div>
+		
+		<div class="row gridCard">
+			<div class="col-md-6">
+				<label value="Pago" sclass="editField" ></label>
+				<h:p> <textbox id="payment" maxlength="20"  ></textbox> </h:p> 
+			</div>
+			<div class="col-md-2">
+				<button 
+					label="Validar" 
+					sclass="btn btn-primary"
+					style="margin-top: 23px; width: 100px;">
+						
+					</button>
+			</div>
+		</div>
+
+	</div>
+
+</window>
+</zk>

@@ -5,16 +5,15 @@
 <window id="ewin" border="none" onCreate="entityController.loadEdit(ebeanDetail, self);" >
 
   <zscript>
-      import ieci.tdw.ispac.entity.EntityAdapter;
-      import ieci.tdw.ispac.adapter.TransactAdapterI;
-      import ieci.tdw.ispac.navigation.NavigationControl;
+    import ieci.tdw.ispac.entity.EntityAdapter;
+    import ieci.tdw.ispac.adapter.TransactAdapterI;
+    import ieci.tdw.ispac.navigation.NavigationControl;
 
-      //Importación de adapter
-      import ieci.tdw.ispac.entity.adapter.PWGeneralAdapter;
-      import ieci.tdw.ispac.entity.controller.PWGeneralController;
+    //Importación de adapter
+    import ieci.tdw.ispac.entity.adapter.PWGeneralAdapter;
+    import ieci.tdw.ispac.entity.controller.PWGeneralController;
 
-
-        //Lista de elementos
+    //Lista de elementos
     ArrayList uomCatalog = catalogManager.getCatalogs(421);
 
     EntityAdapter ebeanDetail         = Executions.getCurrent().getArg().get("adapter");
@@ -38,6 +37,13 @@
     </div>
 
     <div class="row gridCard">
+
+        <div class="row gridCard">
+              <div class="col-md-4">
+                <label value="Folio*" sclass="editField" ></label>
+                   <textbox id="folio" maxlength="255" readonly="true"></textbox> </h:p>
+              </div>
+          </div>
 
         <div class="col-md-4"></div>
 
