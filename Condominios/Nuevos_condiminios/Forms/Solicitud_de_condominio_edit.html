@@ -7,6 +7,9 @@
 	<zscript>
 		import ieci.tdw.ispac.adapter.TransactAdapterI;
 		import ieci.tdw.ispac.entity.EntityAdapter;
+		import ieci.tdw.ispac.ws.model.SpfVerifyPaymentBean;
+	  	import ieci.tdw.ispac.ws.client.SpfVerifyPaymentWSClient;
+
 
 		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
@@ -16,6 +19,20 @@
 		}
 
 		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+
+		/*********************** Start Payment **********************/
+	    public void getYear(Intbox self){
+	      Calendar today = Calendar.getInstance();
+	      self.setValue(today.get(Calendar.YEAR));
+	    }
+
+	   public void verifyPayment(){
+	      fcv.validate(transaction_year);
+	      fcv.validate(transaction);
+	      SpfVerifyPaymentBean verify = recaudanetExternalPaymentController.verifyPayment(transaction_year.getValue(), transaction.getValue(), ewin);
+	    }
+    	/*********************** Finish Payment **********************/
+
 	</zscript>
 
 	<div class="row editBox" >
@@ -37,21 +54,45 @@
 			</div>
 		</div>
 		
+		<!-- PARTE DE DATOS DE PAGO Año 2018, tansaccion 454646 -->
 		<div class="row gridCard">
-			<div class="col-md-6">
+  		  	<div class="col-md-12">
+      			<label value="Datos de pago" sclass="detailField"></label>
+    		</div>
+
+    		<div class="col-md-12">
+				<div id="divAlert"></div>
+			</div>  
+      	</div>
+      	<div sclass="separatorEdit" ></div>
+
+
+		<div class="row gridCard">
+			
+			<div class="col-md-3">
+				<label value="Año Fiscal*" sclass="editField" ></label>
+				<h:p> <intbox id="transaction_year" maxlength="4"></intbox> </h:p> 
+			</div>
+
+			<div class="col-md-3">
 				<label value="Pago" sclass="editField" ></label>
-				<h:p> <textbox id="payment" maxlength="20"  ></textbox> </h:p> 
+				<h:p> <intbox id="transaction"></intbox> </h:p> 
 			</div>
 			<div class="col-md-2">
 				<button 
 					label="Validar" 
 					sclass="btn btn-primary"
-					style="margin-top: 23px; width: 100px;">
+					style="margin-top: 23px; width: 100px;"
+					onClick="verifyPayment();">
 						
 					</button>
 			</div>
 		</div>
 
+
+		<div class="row gridCard" visible="false">
+			<h:p> <intbox id="reponseTransaction"></intbox> </h:p> 
+		</div>
 	</div>
 
 </window>
