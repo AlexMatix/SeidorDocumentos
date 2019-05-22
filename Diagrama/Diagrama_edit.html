@@ -2,6 +2,7 @@
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./ewin"?>
 
+<script src="../../cytoscape.js/documentation/demos/visual-style/code.js"></script>
 <zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
 	<window id="ewin" border="none" onCreate="entityController.loadEdit(ebeanDetail, self);" >
 
@@ -105,6 +106,7 @@
 										</h:div>
 										<h:span class="DiagramMargin"> Color de la linea  </h:span><h:br/>
 										<h:select class="form-control DiagramMargin" id="colorArrow" style="width : 100%">
+											<h:option value="1">Seleccionar color</h:option>
 											<h:option value="B4B1B0">Gris       </h:option>
 											<h:option value="50F2FF">Azul Claro </h:option>
 											<h:option value="000000">Negro      </h:option>
@@ -112,6 +114,12 @@
 											<h:option value="2BFF42">Verde 		</h:option>
 											<h:option value="ff2d3c">Rojo 		</h:option>
 											<h:option value="002993">Azul 		</h:option>
+										</h:select>
+
+										<h:select class="form-control DiagramMargin" id="typeArrow" style="width : 100%">
+											<h:option value="1">Seleccionar tipo 		 </h:option>
+											<h:option value="1">Linea de flujo    		 </h:option>
+											<h:option value="1">Linea de aprovechamiento </h:option>
 										</h:select>
 									</h:form>
 								</h:div>
@@ -489,6 +497,8 @@
 
 				if( evtTarget === DiagramContent ){
 					resetCheckboxProperties();
+					$("#Edge1").val("");
+					$("#Edge2").val("");
 				}
 			});
 
