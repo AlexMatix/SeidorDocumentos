@@ -1,0 +1,258 @@
+
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./ewin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+    <window id="ewin" border="none" onCreate="entityController.loadEdit(ebeanDetail, self);" >
+
+        <zscript>
+            import ieci.tdw.ispac.adapter.TransactAdapterI;
+            import ieci.tdw.ispac.entity.EntityAdapter;
+
+            EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+            update(){
+            fcv.validate(ewin);
+            entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+            }
+
+            TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+        </zscript>
+
+        <script src="${stylesUrl}js/diagram/cytoscape.min.js" />
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.6.1/cytoscape.min.js" />-->
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <script type="text/javascript"><![CDATA[
+        var initDiagramContent = false;
+        var cont = 1;
+        var draggableElemnts = [];
+
+        function newBlock() {
+            if(! initDiagramContent){
+                initDiagram();
+            }
+            console.log("LOG -- ", "GENERANDO NUEVO BLOQUE");
+            let block =
+                '<div id="block'+ cont +'">' +
+                '<div style="width: 100%;"> ' +
+                '<spam> #'+cont+'</spam> ' +
+                '<button type="button" class="btn btn-danger btn-sm" onclick="deleteDraggable('+cont+')" style="float:right">' +
+                '<i class="fa fa-trash"></i>' +
+                '</button>  ' +
+                '</div>' +
+                '<input type="text" id="blockDialog'+cont+'" style="margin-top: 25px" class="form-control">' +
+                '</div>';
+
+
+            $('#' + getIdElement('DiagramDraggableContent')).append(block);
+            setDraggable('block');
+        }
+
+        function deleteDraggable(Number){
+            if(typeof Number === 'undefined'){
+                cont = 1;
+                for (indexElement in draggableElemnts){
+                    if(typeof draggableElemnts[indexElement].object !== 'undefined'){
+                        draggableElemnts[indexElement].object.remove();
+                    }
+                }
+
+                draggableElemnts = [];
+            }else{
+                console.log("LOG -- ", "DELETE ELEMENT -", cont);
+                $( "#draggable" + Number ).remove();
+
+                for (indexElement in draggableElemnts){
+                    if(draggableElemnts[indexElement].id == Number){
+                        draggableElemnts[indexElement].object.remove();
+                        draggableElemnts.splice(indexElement,1);
+                    }
+                }
+            }
+        }
+
+        function setDraggable(TypeElementDraggable){
+
+            let objectDraggable = $( "#" +TypeElementDraggable+cont );
+            let dialog          = $( "#" +TypeElementDraggable+cont );
+
+            objectDraggable.addClass("ThemeDraggable");
+            objectDraggable.draggable({ containment: "#" + getIdElement('DiagramDraggableContent')});
+
+            let infoDraggable = {
+                type : 'TypeElementDraggable',
+                id   : cont,
+                x    : 0,
+                y    : 0,
+                dialog :'',
+                object : objectDraggable
+            };
+
+            draggableElemnts.push(infoDraggable);
+            cont++;
+        }
+
+        function getIdElement(Element) {
+            let object = zk.Widget.$(jq('$'+Element));
+            return object.uuid;
+        }
+
+        function initDiagram() {
+            initDiagramContent = true;
+            var contentId =  getIdElement('DiagramDraggableContent');
+            var DiagramContent = window.contentId =  cytoscape({
+                container: document.getElementById(getIdElement('DiagramDraggableContent')),
+
+                layout: {
+                    name: 'cose',
+                    padding: 10
+                },
+
+                style: cytoscape.stylesheet()
+                    .selector('node')
+                    .css({
+                        'shape': 'data(faveShape)',
+                        'width': 'mapData(weight, 40, 80, 20, 60)',
+                        'content': 'data(name)',
+                        'text-valign': 'center',
+                        'text-outline-width': 2,
+                        'text-outline-color': 'data(faveColor)',
+                        'background-color': 'data(faveColor)',
+                        'color': '#fff'
+                    })
+                    .selector(':selected')
+                    .css({
+                        'border-width': 3,
+                        'border-color': '#333'
+                    })
+                    .selector('edge')
+                    .css({
+                        'curve-style': 'bezier',
+                        'opacity': 0.666,
+                        'width': 'mapData(strength, 70, 100, 2, 6)',
+                        'target-arrow-shape': 'triangle',
+                        'source-arrow-shape': 'circle',
+                        'line-color': 'data(faveColor)',
+                        'source-arrow-color': 'data(faveColor)',
+                        'target-arrow-color': 'data(faveColor)'
+                    })
+                    .selector('edge.questionable')
+                    .css({
+                        'line-style': 'dotted',
+                        'target-arrow-shape': 'diamond'
+                    })
+                    .selector('.faded')
+                    .css({
+                        'opacity': 0.25,
+                        'text-opacity': 0
+                    }),
+
+                elements: {
+                    nodes: [
+                        // { data: { id: 'j', name: 'Jerry', weight: 65, faveColor: '#6FB1FC', faveShape: 'triangle' } },
+                        // { data: { id: 'e', name: 'Elaine', weight: 45, faveColor: '#EDA1ED', faveShape: 'ellipse' } },
+                        // { data: { id: 'k', name: 'Kramer', weight: 75, faveColor: '#86B342', faveShape: 'octagon' } },
+                        // { data: { id: 'g', name: 'George', weight: 70, faveColor: '#F5A45D', faveShape: 'rectangle' } }
+                    ],
+                    edges: [
+                        // { data: { source: 'j', target: 'e', faveColor: '#6FB1FC', strength: 90 } },
+                        // { data: { source: 'j', target: 'k', faveColor: '#6FB1FC', strength: 70 } },
+                        // { data: { source: 'j', target: 'g', faveColor: '#6FB1FC', strength: 80 } },
+                        //
+                        // { data: { source: 'e', target: 'j', faveColor: '#EDA1ED', strength: 95 } },
+                        // { data: { source: 'e', target: 'k', faveColor: '#EDA1ED', strength: 60 }, classes: 'questionable' },
+                        //
+                        // { data: { source: 'k', target: 'j', faveColor: '#86B342', strength: 100 } },
+                        // { data: { source: 'k', target: 'e', faveColor: '#86B342', strength: 100 } },
+                        // { data: { source: 'k', target: 'g', faveColor: '#86B342', strength: 100 } }
+                    ]
+                },
+
+                ready: function(){
+                    window.contentId = this;
+                }
+            });
+        }
+        ]]></script>
+        <div class="row editBox" >
+            <div class="row editHeader">
+                <div class="col-md-12" align="right" >
+                    <custom-attributes removeOnPortal="true" ></custom-attributes>
+                    <button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
+                </div>
+            </div>
+
+            <div id="DiagramContent" class="DiagramContent">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h:ul class="list-group DiagramMargin">
+                            <h:li class="list-group-item">
+                                <button type="button" sclass="btn btn-primary" iconSclass="fa fa-plus" w:onClick="newBlock()"></button>
+                                Bloque
+                            </h:li>
+                            <h:li class="list-group-item">
+                                <button type="button" sclass="btn btn-primary" iconSclass="fa fa-plus"></button>
+                                Linea Izquiera
+                            </h:li>
+                            <h:li class="list-group-item">
+                                <button type="button" sclass="btn btn-primary" iconSclass="fa fa-plus"></button>
+                                Linea Derecha
+                            </h:li>
+                            <h:li class="list-group-item">
+                                <button type="button" sclass="btn btn-danger" iconSclass="fa fa-trash" w:onClick="deleteDraggable()"></button>
+                                Limpiar todo
+                            </h:li>
+
+                        </h:ul>
+                    </div>
+
+                    <div class="col-md-9">
+                        <div id="DiagramDraggableContent" class="DiagramDraggableContent">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Campo para almacenar datos -->
+            <div class="row gridCard" visible="true">
+                <div class="col-md-12">
+                    <label value="info_diagrama" sclass="editField" ></label>
+                    <h:p> <textbox id="info_diagrama" maxlength="0"  ></textbox> </h:p>
+                </div>
+            </div>
+
+        </div>
+
+        <style>
+            .DiagramContent{
+                width: 2000px;
+                height: 2000px;
+                border:1px solid #000;
+                overflow-x: scroll;
+                overflow-y: scroll;
+            }
+
+            .DiagramDraggableContent{
+                width: 100%;
+                height: 900px;
+            }
+
+            .DiagramMargin{
+                margin-top: 15px;
+            }
+
+            .ThemeDraggable {
+                width: 17%;
+                height: 12%;
+                padding: 0.5em;
+                border: 1px solid;
+            }
+
+        </style>
+
+    </window>
+</zk>

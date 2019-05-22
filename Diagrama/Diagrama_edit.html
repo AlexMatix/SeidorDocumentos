@@ -18,65 +18,7 @@
 
 			TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
 		</zscript>
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script type="text/javascript">
 
-			var cont = 0;
-			function newBlock() {
-				console.log("LOG -- ", "GENERANDO NUEVO BLOQUE");
-				let block ='<div id="draggable'+ cont +'" class="ui-widget-content ThemeDraggable ">' +
-						'<p>Drag me around</p>' +
-						'</div>';
-				$('#DiagramDraggableContent').append(block);
-				$( "#draggable" + cont ).draggable();
-			}
-
-		</script>
-		<div class="row editBox" >
-			<div class="row editHeader">
-				<div class="col-md-12" align="right" >
-					<custom-attributes removeOnPortal="true" ></custom-attributes>
-					<button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
-				</div>
-			</div>
-
-			<div id="DiagramContent" class="DiagramContent">
-				<div class="row">
-					<div class="col-md-3">
-						<h:ul class="list-group DiagramMargin">
-							<h:li class="list-group-item">
-								<button type="button" sclass="btn btn-primary" iconSclass="fa fa-plus" xmlns:w="http://www.zkoss.org/2005/zk/client" w:onClick="newBlock()"></button>
-								Nuevo bloque
-							</h:li>
-							<h:li class="list-group-item">
-								<button type="button" sclass="btn btn-primary" iconSclass="fa fa-plus"></button>
-								Nueva linea Izquiera
-							</h:li>
-							<h:li class="list-group-item">
-								<button type="button" sclass="btn btn-primary" iconSclass="fa fa-plus"></button>
-								Nueva linea Derecha
-							</h:li>
-						</h:ul>
-					</div>
-
-					<div class="col-md-9">
-						<div id="DiagramDraggableContent">
-							
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Campo para almacenar datos -->
-			<div class="row gridCard" visible="true">
-				<div class="col-md-12">
-					<label value="info_diagrama" sclass="editField" ></label>
-					<h:p> <textbox id="info_diagrama" maxlength="0"  ></textbox> </h:p>
-				</div>
-			</div>
-
-		</div>
 
 		<style>
 			.DiagramContent{
@@ -87,17 +29,502 @@
 				overflow-y: scroll;
 			}
 
+			.DiagramDraggableContent{
+				width: 100%;
+				height: 900px;
+			}
+
 			.DiagramMargin{
 				margin-top: 15px;
 			}
 
 			.ThemeDraggable {
-				width: 150px;
-				height: 150px;
+				width: 17%;
+				height: 12%;
 				padding: 0.5em;
+				border: 1px solid;
+			}
+
+			.properties{
+				font-size: 11px;
 			}
 
 		</style>
+
+		<div class="row editBox" >
+			<div class="row editHeader">
+				<div class="col-md-12" align="right" >
+					<custom-attributes removeOnPortal="true" ></custom-attributes>
+					<button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
+				</div>
+			</div>
+
+			<div id="DiagramContent" class="DiagramContent">
+				<div class="row">
+					<div class="col-md-12">
+						<h:nav class="navbar navbar-inverse">
+							<h:div class="container-fluid">
+								<h:div class="navbar-header">
+									<h:a class="navbar-brand" href="#">Diagrama COA</h:a>
+								</h:div>
+								<h:ul class="nav navbar-nav">
+									<h:li>
+										<button type="button" class="btn btn-default navbar-btn" w:onClick="previewImaggeDiagram()">Exportar imagen</button>
+										<!--<button type="button" w:onClick="previewImaggeDiagram()"> </button>-->
+									</h:li>
+									<h:li><h:a>Elemento seleccinado</h:a></h:li>
+								</h:ul>
+								<h:form class="navbar-form navbar-left">
+									<h:div class="form-group">
+										<h:input id="selectedElement" type="text" class="form-control" disabled="true"></h:input>
+									</h:div>
+								</h:form>
+							</h:div>
+						</h:nav>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<h:ul class="list-group DiagramMargin">
+							<h:li class="list-group-item">
+								<h:div class="form-group row">
+									<h:div class="col-sm-5">
+										<button type="button" sclass="btn btn-primary" iconSclass="fa fa-plus" w:onClick="newBlock()">Bloque</button>
+									</h:div>
+									<h:div class="col-sm-7">
+										<h:input id="dialogBlock" type="text" class="form-control-plaintext" placeholder="Contenido bloque"> </h:input>
+									</h:div>
+								</h:div>
+							</h:li>
+							<h:li class="list-group-item">
+								<h:div class="form-group row">
+									<button type="button" sclass="btn btn-secondary" iconSclass="fa fa-arrow-right" w:onClick="AddEdges();" style="width: 100%">Conectar Bloques</button>
+									<h:form class="navbar-form navbar-left">
+										<h:div class="row">
+											<h:div class="col-sm-6">
+												<h:input id="Edge1" type="text" placeholder="Block 1" class="form-control DiagramMargin" disabled="true"> </h:input>
+											</h:div>
+											<h:div class="col-sm-6">
+												<h:input id="Edge2" type="text" placeholder="Block 2" class="form-control DiagramMargin" disabled="true"> </h:input>
+											</h:div>
+										</h:div>
+										<h:span class="DiagramMargin"> Color de la linea  </h:span><h:br/>
+										<h:select class="form-control DiagramMargin" id="colorArrow" style="width : 100%">
+											<h:option value="B4B1B0">Gris       </h:option>
+											<h:option value="50F2FF">Azul Claro </h:option>
+											<h:option value="000000">Negro      </h:option>
+											<h:option value="FFB22E">Naranja 	</h:option>
+											<h:option value="2BFF42">Verde 		</h:option>
+											<h:option value="ff2d3c">Rojo 		</h:option>
+											<h:option value="002993">Azul 		</h:option>
+										</h:select>
+									</h:form>
+								</h:div>
+							</h:li>
+
+							<h:li class="list-group-item">
+								<h:div class="row">
+									<h:div class="col-sm-12">
+										<h:p style="width: 100%;" align="center">Asignar propiedades</h:p>
+									</h:div>
+								</h:div>
+								<h:div class="row">
+									<h:div class="col-sm-6">
+										<h:p style="width: 100%;" align="center"> Entradas </h:p>
+
+										<h:input type="checkbox" name="propertiesInput" value="Insumos"><h:span class="properties"> Insumos</h:span></h:input><h:br/>
+										<h:input type="checkbox" name="propertiesInput" value="Consumo_Conbustible"><h:span class="properties"> Consumo Conbustible </h:span></h:input><h:br/>
+										<h:input type="checkbox" name="propertiesInput" value="Uso_agua"><h:span class="properties"> Uso agua</h:span></h:input><h:br/>
+									</h:div>
+
+									<h:div class="col-sm-6">
+										<h:p style="width: 100%;" align="center"> Salidas </h:p>
+
+										<h:input type="checkbox" name="propertiesOutput" value="contaminantes_atmosfericos"> <h:span class="properties"> Contaminantes a la atmósfera</h:span></h:input><h:br/>
+										<h:input type="checkbox" name="propertiesOutput" value="Consumo_Conbustible">  <h:span class="properties"> Consumo Conbustible </h:span></h:input><h:br/>
+										<h:input type="checkbox" name="propertiesOutput" value="contaminantes_agua">  <h:span class="properties"> Contaminantes al agua</h:span></h:input><h:br/>
+										<h:input type="checkbox" name="propertiesOutput" value="emision_suelo">  <h:span class="properties"> Emisión al suelo</h:span></h:input><h:br/>
+										<h:input type="checkbox" name="propertiesOutput" value="residuos_peligroso">  <h:span class="properties"> Residuos peligrosos</h:span></h:input><h:br/>
+										<h:input type="checkbox" name="propertiesOutput" value="residuos_urbanos">  <h:span class="properties"> Residuos sólidos urbanos</h:span></h:input><h:br/>
+										<h:input type="checkbox" name="propertiesOutput" value="aprovechamiento_energia">  <h:span class="properties"> Aprovechamiento de energía</h:span></h:input><h:br/>
+										<h:input type="checkbox" name="propertiesOutput" value="eventos">  <h:span class="properties"> Eventos </h:span></h:input><h:br/>
+										<h:input type="checkbox" name="propertiesOutput" value="subproductos">  <h:span class="properties"> Subproductos </h:span></h:input><h:br/>
+									</h:div>
+								</h:div>
+								<h:div class="row DiagramMargin">
+									<button type="button" iconSclass="fa fa-plus" w:onClick="setPropertiesBlock()" sclass="btn btn-default" style="width: 100%;">Asignar propiedades</button>
+								</h:div>
+							</h:li>
+
+							<h:li class="list-group-item">
+								<button type="button" sclass="btn btn-danger" iconSclass="fa fa-trash" w:onClick="deleteOneItem()">Eliminar </button>
+							</h:li>
+
+							<h:li class="list-group-item">
+								<button type="button" sclass="btn btn-danger" iconSclass="fa fa-trash" w:onClick="deleteDraggable()">Eliminar todo</button>
+							</h:li>
+						</h:ul>
+					</div>
+
+					<div class="col-md-9">
+						<div id="DiagramDraggableContent" class="DiagramDraggableContent">
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row gridCard" visible="true">
+				<div class="col-md-12">
+					<h:img id="viewImageDiagra"></h:img>
+				</div>
+			</div>
+
+			<!-- Campo para almacenar datos -->
+			<div class="row gridCard" visible="true">
+				<div class="col-md-12">
+					<label value="info_diagrama" sclass="editField" ></label>
+					<h:p> <textbox id="info_diagrama" maxlength="0"  ></textbox> </h:p>
+				</div>
+			</div>
+		</div>
+		<script src="${stylesUrl}js/diagram/cytoscape.min.js" />
+		<script type="text/javascript"><![CDATA[
+		var initDiagramContent = false;
+		var cont = 1;
+		var draggableElemnts = [];
+		var DiagramContent;
+
+		function newBlock() {
+			console.log("LOG -- ", "GENERANDO NUEVO BLOQUE");
+			if(! initDiagramContent){
+				initDiagram();
+			}
+
+			// NODES BLOCK
+			// { data: { id: 'j', name: 'Jerry', weight: 65, faveColor: '#6FB1FC', faveShape: 'triangle' } },
+			// { data: { id: 'e', name: 'Elaine', weight: 45, faveColor: '#EDA1ED', faveShape: 'ellipse' } },
+			// { data: { id: 'k', name: 'Kramer', weight: 75, faveColor: '#86B342', faveShape: 'octagon' } },
+			// { data: { id: 'g', name: 'George', weight: 70, faveColor: '#F5A45D', faveShape: 'rectangle' } }
+
+			if(typeof DiagramContent === 'undefined'){
+				console.log("LOG -- ", "AUN NO SE INICIA EL CONTENEDOR");
+			}else{
+
+				let dialogBlock = $("#dialogBlock");
+
+				if(dialogBlock.val() != ""){
+					DiagramContent.add(
+							{
+								group: 'nodes',
+								data: {
+									id: 'block'+cont,
+									name: dialogBlock.val(),
+									weight: 70,
+									faveColor: '#1a9bf5',
+									faveShape: 'rectangle'
+								},
+								position: { x: 100, y: 100 }
+							}
+					);
+					setDraggableItem(dialogBlock.val(), 'block');
+					dialogBlock.val("");
+				}else{
+					alert("Tiene que poner contenido para el bloque");
+				}
+			}
+
+			resetCheckboxProperties();
+		}
+
+		function previewImaggeDiagram() {
+
+			let jpg64 = DiagramContent.jpg();
+			document.querySelector('#viewImageDiagra').setAttribute('src', jpg64);
+
+
+		}
+		function setPropertiesBlock() {
+			let idItem = $("#selectedElement").val();
+
+			if(idItem == ""){
+				alert("Debes seleccionar un bloque para asignarlos");
+				return;
+			}
+
+			let propertiesInput  = getPropertiesInput();
+			let propertiesOutput = getPropertiesOutput();
+
+			if(propertiesInput.length == 0 && propertiesOutput.length == 0) {
+				alert("Debes seleccionar al menos una propiedad");
+				return;
+			}
+
+			for(indexElement in draggableElemnts){
+				if(draggableElemnts[indexElement].id  == idItem){
+					draggableElemnts[indexElement].propertiesOutput = propertiesOutput;
+					draggableElemnts[indexElement].propertiesInput  = propertiesInput;
+					break;
+				}
+			}
+
+			resetCheckboxProperties();
+		}
+		
+		function setViewPropertiesBlock(nodeId) {
+			let propertiesInput, propertiesOutput;
+
+			for (indexElement in draggableElemnts) {
+				if (draggableElemnts[indexElement].id == nodeId) {
+					propertiesInput = draggableElemnts[indexElement].propertiesInput;
+					propertiesOutput = draggableElemnts[indexElement].propertiesOutput;
+					break;
+				}
+			}
+
+			resetCheckboxProperties();
+			setPropertiesInput(propertiesInput);
+			setPropertiesOutput(propertiesOutput);
+		}
+
+		function setPropertiesInput(propertiesInput) {
+			$.each($("input[name='propertiesInput']"), function(){
+				if(in_array($(this).val(), propertiesInput) != -1){
+					this.checked = true;
+				}
+			});
+		}
+
+		function setPropertiesOutput(propertiesOutput) {
+			$.each($("input[name='propertiesOutput']"), function(){
+				if(in_array($(this).val(), propertiesOutput) != -1){
+					this.checked = true;
+				}
+			});
+		}
+
+		function getPropertiesInput() {
+
+			let propertiesInput = [];
+
+			$.each($("input[name='propertiesInput']:checked"), function(){
+				propertiesInput.push($(this).val());
+			});
+
+			console.log("LOG -- propertiesInput" , propertiesInput);
+			return propertiesInput;
+		}
+
+		function getPropertiesOutput() {
+
+			let propertiesOutput = [];
+
+			$.each($("input[name='propertiesOutput']:checked"), function(){
+				propertiesOutput.push($(this).val());
+			});
+
+			console.log("LOG -- propertiesOutput" , propertiesOutput);
+
+			return propertiesOutput;
+		}
+
+		function resetCheckboxProperties() {
+			$('input[type=checkbox]').each(function()
+			{
+				this.checked = false;
+			});
+		}
+		function AddEdges() {
+
+			let Edge1 = $("#Edge1");
+			let Edge2 = $("#Edge2");
+			let ColorArrow = $("#colorArrow").val();
+
+			if(ColorArrow == "" || typeof ColorArrow === 'undefined'){
+				ColorArrow = 'B4B1B0';
+			}
+
+			if(Edge1.val() == "" || Edge2.val() == "" ){
+				return;
+			}
+
+			DiagramContent.add(
+					{
+						data :
+								{
+									source    : Edge1.val(),
+									target    : Edge2.val(),
+									faveColor : '#' + ColorArrow,
+									strength  : 90
+								}
+					}
+			);
+
+			Edge1.val("");
+			Edge2.val("");
+		}
+
+		function deleteDraggable(){
+			cont = 1;
+			for (indexElement in draggableElemnts){
+				if(typeof draggableElemnts[indexElement].id !== 'undefined'){
+					let node = DiagramContent.$('#' + draggableElemnts[indexElement].id);
+					DiagramContent.remove(node);
+					break;
+				}
+			}
+			draggableElemnts = [];
+		}
+
+		function deleteOneItem(){
+
+			let idItem = $("#selectedElement").val();
+
+			if(idItem == ""){
+				alert("Tiene que seleccionar un elemento");
+				return;
+			}
+
+			let node = DiagramContent.$('#' + idItem);
+			DiagramContent.remove(node);
+
+			for(indexElement in draggableElemnts) {
+				if(draggableElemnts[indexElement].id == idItem){
+					console.log("LOG --", 'item deleted - ', draggableElemnts[indexElement]);
+					draggableElemnts.splice(indexElement,1);
+					break;
+				}
+			}
+		}
+
+		function setDraggableItem(dialog, type){
+
+			let infoDraggable = {
+				type   : type,
+				id     : type+cont,
+				x      : 0,
+				y      : 0,
+				dialog : dialog,
+				propertiesInput  : getPropertiesInput(),
+				propertiesOutput : getPropertiesOutput()
+			};
+
+			draggableElemnts.push(infoDraggable);
+			cont++;
+		}
+
+		function getIdElement(Element) {
+			let object = zk.Widget.$(jq('$'+Element));
+			return object.uuid;
+		}
+
+		function initDiagram() {
+			initDiagramContent = true;
+			var contentId =  getIdElement('DiagramDraggableContent');
+
+			DiagramContent = cytoscape({
+				container: document.getElementById(getIdElement('DiagramDraggableContent')),
+
+				layout: {
+					name: 'cose',
+					padding: 10
+				},
+
+				style: cytoscape.stylesheet()
+						.selector('node')
+						.css({
+							'shape': 'data(faveShape)',
+							'width': 'mapData(weight, 40, 80, 20, 60)',
+							'content': 'data(name)',
+							'text-valign': 'center',
+							'text-outline-width': 2,
+							'text-outline-color': 'data(faveColor)',
+							'background-color': 'data(faveColor)',
+							'color': '#fff'
+						})
+						.selector(':selected')
+						.css({
+							'border-width': 3,
+							'border-color': '#333'
+						})
+						.selector('edge')
+						.css({
+							'curve-style': 'bezier',
+							'opacity': 0.666,
+							'width': 'mapData(strength, 70, 100, 2, 6)',
+							'target-arrow-shape': 'triangle',
+							'source-arrow-shape': 'circle',
+							'line-color': 'data(faveColor)',
+							'source-arrow-color': 'data(faveColor)',
+							'target-arrow-color': 'data(faveColor)'
+						})
+						.selector('edge.questionable')
+						.css({
+							'line-style': 'dotted',
+							'target-arrow-shape': 'diamond'
+						})
+						.selector('.faded')
+						.css({
+							'opacity': 0.25,
+							'text-opacity': 0
+						}),
+
+				elements: {
+					nodes: [
+
+					],
+					edges: [
+
+					]
+				},
+
+				ready: function(){
+					window.contentId = this;
+				}
+			});
+
+			DiagramContent.on('tap', function(event){
+
+				var evtTarget = event.target;
+				console.log("LOG -- ON FULL ");
+
+				if( evtTarget === DiagramContent ){
+					resetCheckboxProperties();
+				}
+			});
+
+			DiagramContent.on('tap', 'node', function(evt){
+				let node = evt.target;
+				console.log( 'LOG -- ','Callback',' tapped ', node);
+				let Edge1 = $("#Edge1");
+				let Edge2 = $("#Edge2");
+
+				$("#selectedElement").val(node.id());
+
+				if(Edge1.val() == "" && Edge2.val() == ""){
+					Edge1.val(node.id());
+				}else if(Edge1.val() != "" && Edge2.val() == ""){
+					Edge2.val(node.id());
+				}else if(Edge1.val() == "" && Edge2.val() != ""){
+					Edge1.val(node.id());
+				}else {
+					Edge1.val("");
+					Edge2.val("");
+				}
+
+				setViewPropertiesBlock(node.id());
+			});
+
+		}
+
+
+		function in_array(needle, haystack){
+			for (var i=0, len=haystack.length;i<len;i++) {
+				if (haystack[i] == needle) return i;
+			}
+			return -1;
+		}
+		]]></script>
 
 	</window>
 </zk>
