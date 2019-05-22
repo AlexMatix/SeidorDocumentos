@@ -4,4 +4,22 @@
     Paso 1. Abrir un folio.
     Paso 2. Trámites en proceso de captura. (Solo permite 30 minutos de inactividad)
     Paso 3. Capturar la info dependiendo del folio del trámite
-    Paso 4.
+    Paso 4. Datos de reistro (llenar, no es de copetencia federal sino estatal) para ver que sesiones se les habilita.
+    Paso 5.
+
+    Diagrama.
+
+   01.- Seleccionar un diagrama, se pueden almacenar mas de un diagrama para el mismo trámite.
+   02.- Hay dos tipos de lineas --- (Linea de flujo y linea de aprovechamiento).
+   03.- Solo los iconos de botes se es puede asignar propiedades extra de salida.
+   04.- Siempre si las lineas las selecciona el usuario, el sabe que pedo.
+   05.- Si un cuatro no tiene relación no debe de permitir guardar
+   06.- Cuando se crea el diagrama se le da un número de secuancia y un nombre por que se puede generar varios
+   07.- Agregar entrdas y salidas son circulos de color azul fuerte y claro correspodientemente.
+   08.- Los números que tienen que ser consecutivos.
+   09.- Si estás usando combustible también tienes una generación de contaminate de salida
+   10.- Si selecciona el icono de salida se habilitan ciertas caracteristicas relacionadas.
+   12.- Si le asignas una salida con caracteristicas relacionadas no debe de dejar guardar por que debe tener por lo menos una asignada por categoria.
+   13.- Entradas a la izquierda, emisiones en la parte de arriba y salidas a la derecha,.
+   14.- Agregar linea de aprovechamiento y esas son punteadas y se carga dependiento de las caracteristicas relacionadas que tenga asiganadas.
+
