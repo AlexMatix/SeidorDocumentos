@@ -69,7 +69,7 @@
 								</h:div>
 								<h:ul class="nav navbar-nav">
 									<h:li>
-										<button type="button" class="btn btn-default navbar-btn" w:onClick="previewImaggeDiagram()">Exportar imagen</button>
+										<button type="button" class="btn btn-default navbar-btn" w:onClick="exportImaggeDiagram()">Exportar imagen</button>
 										<!--<button type="button" w:onClick="previewImaggeDiagram()"> </button>-->
 									</h:li>
 									<h:li><h:a>Elemento seleccinado</h:a></h:li>
@@ -87,14 +87,9 @@
 					<div class="col-md-3">
 						<h:ul class="list-group DiagramMargin">
 							<h:li class="list-group-item">
-								<h:div class="form-group row">
-									<h:div class="col-sm-5">
-										<button type="button" sclass="btn btn-primary" iconSclass="fa fa-plus" w:onClick="newBlock()">Bloque</button>
-									</h:div>
-									<h:div class="col-sm-7">
-										<h:input id="dialogBlock" type="text" class="form-control-plaintext" placeholder="Contenido bloque"> </h:input>
-									</h:div>
-								</h:div>
+								<button type="button" sclass="btn btn-primary" iconSclass="fa fa-plus" w:onClick="newBlock()" style="width: 100%">Bloque</button>
+
+								<h:input id="dialogBlock" type="text" class="form-control DiagramMargin" placeholder="Contenido bloque"> </h:input>
 							</h:li>
 							<h:li class="list-group-item">
 								<h:div class="form-group row">
@@ -237,8 +232,12 @@
 			resetCheckboxProperties();
 		}
 
-		function previewImaggeDiagram() {
+		function exportImaggeDiagram() {
 
+			if(typeof DiagramContent === 'undefined'){
+				alert("Aun no se genera ningun diagrama");
+				return;
+			}
 			let jpg64 = DiagramContent.jpg();
 			document.querySelector('#viewImageDiagra').setAttribute('src', jpg64);
 

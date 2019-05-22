@@ -1,0 +1,7 @@
+
+    El representante legal da de alta a los usuarios.
+    el representante forma con su clave fiel.
+    Paso 1. Abrir un folio.
+    Paso 2. Trámites en proceso de captura. (Solo permite 30 minutos de inactividad)
+    Paso 3. Capturar la info dependiendo del folio del trámite
+    Paso 4.
