@@ -23,3 +23,26 @@
    13.- Entradas a la izquierda, emisiones en la parte de arriba y salidas a la derecha,.
    14.- Agregar linea de aprovechamiento y esas son punteadas y se carga dependiento de las caracteristicas relacionadas que tenga asiganadas.
 
+"{"nodes":
+    [
+    {
+        "data":
+        {
+            "id":"block3",
+            "name":"qwe",
+            "weight":70,
+            "faveColor":"#1a9bf5",
+            "faveShape":"rectangle"
+        },
+        "position":
+            {
+                "x":100,
+                "y":100
+            },
+        "group":"nodes",
+        "removed":false,
+        "selected":false,
+        "selectable":true,
+        "locked":false,
+        "grabbable":true,"classes":""}]}"
+

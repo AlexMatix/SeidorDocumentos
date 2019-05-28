@@ -217,12 +217,13 @@
 		<script src="${stylesUrl}js/diagram/cytoscape.min.js" ></script>
 		<script type="text/javascript"><![CDATA[
 		var cont = 1;
-		var contSchemaDiagram = 1;
+		var contSchemaDiagram = 0;
 		var draggableElemnts = [];
 		var DiagramContent;
 		var collectionDiagrams = [];
 		var flagInitDiagram = true;
-		var useDiagramNow   = 0;
+		var useDiagramNow = 0;
+		var changeDiagram = false;
 
 		function newBlock() {
 			console.log("LOG -- ", "GENERANDO NUEVO BLOQUE");
@@ -437,13 +438,13 @@
 			return object.uuid;
 		}
 
-		function initDiagram() {
+		function initDiagram(){
 			let nameSchema = $("#nameDiagramSchema").val();
+
 			if( nameSchema == ""){
 				alert("Debes elegir un nombre");
 				return;
 			}
-
 			DiagramContent = cytoscape(getJsonDiagram());
 			setOnlisttenerDiagram();
 			addDiagramSelect(contSchemaDiagram, nameSchema);
@@ -453,8 +454,10 @@
 
 		function saveDiagramUseNow() {
 			if(typeof collectionDiagrams[useDiagramNow] === 'undefined'){
+				console.log("Guardando nuevo diagrama");
 				collectionDiagrams.push(getJsonElementsDiagramUse());
 			}else{
+				console.log("Sobre escribiendo diagrama");
 				collectionDiagrams[useDiagramNow] = getJsonElementsDiagramUse();
 			}
 			//TODO Update JSON to save
@@ -481,7 +484,7 @@
 				container: document.getElementById(contentId),
 
 				layout: {
-					name: "random",
+					name: "grid",
 					padding: 10
 				},
 
@@ -536,17 +539,24 @@
 				value: value,
 				text : text
 			}));
+			changeDiagram = true;
+			$('#DiagramSelected option[value='+ value +']').prop('selected', 'selected').change();
+			useDiagramNow = value;
+			changeDiagram = false;
 
 			if(flagInitDiagram){
 				$("#DiagramSelected option[value='initDiagram']").remove();
-
 				$('#DiagramSelected').on( "change", function () {
-					console.log("LOG--", "CHANGE DIAGRAM");
-					let JsonDiagram = DiagramContent.json();
-                    collectionDiagrams[useDiagramNow] = JSON.stringify(JsonDiagram.elements);
-					DiagramContent = cytoscape(getJsonDiagram(collectionDiagrams[$(this).val()]));
-					useDiagramNow  = $(this).val();
-					setOnlisttenerDiagram();
+					if(!changeDiagram){
+						console.log("LOG--", "CHANGE DIAGRAM Number --> ",useDiagramNow);
+						let JsonDiagram = DiagramContent.json();
+						let changeUseDiagram = parseInt($(this).val(), 10);
+						console.log("Change why --> ", collectionDiagrams[changeUseDiagram]);
+						DiagramContent = cytoscape(getJsonDiagram(collectionDiagrams[changeUseDiagram]));
+						useDiagramNow  = changeUseDiagram;
+						setOnlisttenerDiagram();
+					}
+
 				});
 
 				flagInitDiagram = false;

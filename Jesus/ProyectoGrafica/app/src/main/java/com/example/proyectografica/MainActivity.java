@@ -15,17 +15,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        double y, x;
-
-        x=-5.0;
-
+        //get Item visual
         GraphView graph= (GraphView) findViewById (R.id.graph);
+
+        //TODO get values for user
+        Double speed;
+        Double grades;
+
+        Double speedX;
+
+        //TODO calcule values in bucle
+        Double speedY;
+        Double height;
+        Double displacement;
+        Double time = 12.0;
+
+
+        int iterator = (int) Math.round(time) * 2;
+
         series= new LineGraphSeries<DataPoint>();
-        for (int i=0; i<500; i++){
-            x= x + 0.1;
-            y= Math.sin(x);
-            series.appendData(new DataPoint(x, y), true, 500);
+//        series.appendData(new DataPoint(x, y), true, 500);
+
+        for(int i = 0; i < iterator; i++){
+
         }
+
         graph.addSeries(series);
     }
 }
