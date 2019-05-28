@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,46 +10,65 @@
     xsi:schemaLocation="http://schemas.android.com/apk/res/android
 http://schemas.android.com/apk/res/android ">
 
-   <LinearLayout
+
+   <ScrollView
        android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:orientation="vertical">
+       android:layout_height="wrap_content"
+       tools:layout_editor_absoluteX="8dp"
+       tools:layout_editor_absoluteY="8dp">
 
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Velocidad inicial" />
-
-      <EditText
+      <LinearLayout
           android:layout_width="match_parent"
-          android:layout_height="20dp" />
+          android:layout_height="match_parent"
+          android:orientation="vertical">
+
+         <TextView
+             android:id="@+id/textView"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Velocidad inicial"
+
+             tools:ignore="MissingConstraints" />
 
 
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Ángulo" />
+         <EditText
+             android:id="@+id/speed"
+             android:layout_width="match_parent"
+             android:layout_height="57dp"
+             android:ems="10"
+             android:inputType="number" />
 
-      <EditText
-          android:layout_width="match_parent"
-          android:layout_height="20dp" />
+         <TextView
+             android:id="@+id/textView2"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Ángulo" />
 
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Tiempo" />
+         <EditText
+             android:id="@+id/grade"
+             android:layout_width="match_parent"
+             android:layout_height="57dp"
+             android:ems="10"
+             android:inputType="number" />
 
-      <EditText
-          android:layout_width="match_parent"
-          android:layout_height="20dp" />
+         <Button
+             android:id="@+id/calcule"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Calcular" />
 
-      <com.jjoe64.graphview.GraphView
-          android:id="@+id/graph"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          tools:layout_editor_absoluteX="0dp"
-          tools:layout_editor_absoluteY="-167dp" />
-   </LinearLayout>
+         <com.jjoe64.graphview.GraphView
+             android:id="@+id/graph"
+             android:layout_width="wrap_content"
+             android:layout_height="483dp"
+             tools:layout_editor_absoluteX="0dp"
+             tools:layout_editor_absoluteY="-167dp" />
 
-
+         <TextView
+             android:id="@+id/log"
+             android:layout_width="match_parent"
+             android:layout_height="70dp"
+             android:text="TextView" />
+      </LinearLayout>
+   </ScrollView>
 </android.support.constraint.ConstraintLayout>
