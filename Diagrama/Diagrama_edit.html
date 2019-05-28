@@ -31,6 +31,12 @@
 			.DiagramDraggableContent{
 				width: 100%;
 				height: 900px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 999;
 			}
 
 			.DiagramMargin{
@@ -66,53 +72,64 @@
 			</div>
 
 			<div id="DiagramContent" class="DiagramContent">
-				<div class="row">
-					<div class="col-md-12">
-						<h:nav class="navbar navbar-inverse">
-							<h:div class="container-fluid">
+				<h:nav class="navbar navbar-inverse" style="margin-bottom : 0px">
+					<h:div class="container-fluid">
 <!--								<h:div class="navbar-header">-->
 <!--									<h:a class="navbar-brand" href="#">Diagrama COA</h:a>-->
 <!--								</h:div>-->
-								<h:ul class="nav navbar-nav">
-									<h:li class="marginList">
-										<button class="btn btn-default navbar-btn" iconSclass="fa fa-save" w:onClick="saveDiagramUseNow()" tooltiptext="Guardar diagrama"> </button>
-									</h:li>
+						<h:ul class="nav navbar-nav">
+							<h:li class="marginList">
+								<button class="btn btn-default navbar-btn" iconSclass="fa fa-save" w:onClick="saveDiagramUseNow()" tooltiptext="Guardar diagrama"> </button>
+							</h:li>
 
-									<h:li class="marginList">
-										<button class="btn btn-default navbar-btn" iconSclass="fa fa-file-image-o" w:onClick="exportImaggeDiagram()" tooltiptext="Exportar a imagen"> </button>
-									</h:li>
+							<h:li class="marginList">
+								<button class="btn btn-default navbar-btn" iconSclass="fa fa-file-image-o" w:onClick="exportImaggeDiagram()" tooltiptext="Exportar a imagen"> </button>
+							</h:li>
 
-									<h:li class="marginList">
-										<button class="btn btn-default navbar-btn" w:onClick="initDiagram()" iconSclass="fa fa-plus" tooltiptext="Agregar diagrama"></button>
-									</h:li>
+							<h:li class="marginList">
+								<button class="btn btn-default navbar-btn" w:onClick="initDiagram()" iconSclass="fa fa-plus" tooltiptext="Agregar diagrama"></button>
+							</h:li>
 
-									<h:li class="marginList">
-										<h:input id="nameDiagramSchema" type="text" class="form-control marginInputList" placeholder="Nombre de diagrama"></h:input>
-									</h:li>
+							<h:li class="marginList">
+								<h:input id="nameDiagramSchema" type="text" class="form-control marginInputList" placeholder="Nombre de diagrama"></h:input>
+							</h:li>
 
-									<h:li class="marginList">
-										<h:select class="form-control marginInputList" id="DiagramSelected" style="width : 100%">
-											<h:option value="initDiagram">Crea un nuevo diagrama</h:option>
-										</h:select>
-									</h:li>
+							<h:li class="marginList">
+								<h:select class="form-control marginInputList" id="DiagramSelected" style="width : 100%">
+									<h:option value="initDiagram">Crea un nuevo diagrama</h:option>
+								</h:select>
+							</h:li>
 
-								</h:ul>
-								<h:form class="navbar-form navbar-left">
-									<h:div class="form-group">
-										<h:input id="selectedElement" type="text" class="form-control" disabled="true" placeholder="Elemento seleccionado"></h:input>
-									</h:div>
-								</h:form>
+						</h:ul>
+						<h:form class="navbar-form navbar-left">
+							<h:div class="form-group">
+								<h:input id="selectedElement" type="text" class="form-control" disabled="true" placeholder="Elemento seleccionado"></h:input>
 							</h:div>
-						</h:nav>
-					</div>
-				</div>
+						</h:form>
+					</h:div>
+				</h:nav>
 				<div class="row">
-					<div class="col-md-3">
-						<h:ul class="list-group DiagramMargin">
+					<div class="col-md-4">
+						<h:ul class="list-group">
 							<h:li class="list-group-item">
-								<button type="button" sclass="btn btn-primary" iconSclass="fa fa-plus" w:onClick="newBlock()" style="width: 100%">Bloque</button>
 
-								<h:input id="dialogBlock" type="text" class="form-control DiagramMargin" placeholder="Contenido bloque"> </h:input>
+								<h:div class="row DiagramMargin">
+									<h:div class="col-md-4">
+										<h:input id="numberBlock" type="number" class="form-control" placeholder="Número bloque"> </h:input>
+									</h:div>
+									<h:div class="col-md-8">
+										<h:input id="dialogBlock" type="text" class="form-control" placeholder="Dialogo bloque"> </h:input>
+									</h:div>
+								</h:div>
+
+								<h:select class="form-control DiagramMargin" id="typeElement">
+									<h:option value="1">Bloque</h:option>
+									<h:option value="2">Conector de Entrada</h:option>
+									<h:option value="3">Conector de Salida</h:option>
+								</h:select>
+
+								<button type="button" sclass="btn btn-primary DiagramMargin" iconSclass="fa fa-plus" w:onClick="newBlock()" label="Nuevo elemeto" style="width: 100%"></button>
+
 							</h:li>
 							<h:li class="list-group-item">
 								<h:div class="form-group row">
@@ -142,7 +159,7 @@
 										<h:p class="DiagramMargin"> Tipo de linea  </h:p><h:br></h:br>
 										<h:select class="form-control" id="typeArrow" style="width : 100%">
 											<h:option value="1">Linea de flujo</h:option>
-											<h:option value="1">Linea de aprovechamiento </h:option>
+											<h:option value="2">Linea de aprovechamiento </h:option>
 										</h:select>
 									</h:form>
 								</h:div>
@@ -192,7 +209,7 @@
 						</h:ul>
 					</div>
 
-					<div class="col-md-9">
+					<div class="col-md-8">
 						<div id="DiagramDraggableContent" class="DiagramDraggableContent">
 
 						</div>
@@ -214,6 +231,7 @@
 				</div>
 			</div>
 		</div>
+
 		<script src="${stylesUrl}js/diagram/cytoscape.min.js" ></script>
 		<script type="text/javascript"><![CDATA[
 		var cont = 1;
@@ -236,6 +254,20 @@
 			if(typeof DiagramContent === 'undefined'){
 				alert("Aun no creas un diagrama");
 			}else{
+				let typeElement = $("#typeElement").val();
+				let color;
+				let type;
+
+				if(typeElement == 2){
+					color = '#4368CA';
+					type  =  'ellipse';
+				}else if(typeElement == 3){
+					color = '#2f498d';
+					type  =  'ellipse';
+				}else{
+					color = '#1a9bf5';
+					type  =  'rectangle';
+				}
 
 				let dialogBlock = $("#dialogBlock");
 
@@ -247,8 +279,8 @@
 									id: 'block'+cont,
 									name: dialogBlock.val(),
 									weight: 70,
-									faveColor: '#1a9bf5',
-									faveShape: 'rectangle'
+									faveColor: color,
+									faveShape: type
 								},
 								position: { x: 100, y: 100 }
 							}
@@ -265,9 +297,11 @@
 
 		function AddEdges() {
 
-			let Edge1 = $("#Edge1");
-			let Edge2 = $("#Edge2");
+			let Edge1      = $("#Edge1");
+			let Edge2      = $("#Edge2");
 			let ColorArrow = $("#colorArrow").val();
+			let typeArrow  = $("#typeArrow").val();
+			let edge;
 
 			if(ColorArrow == "" || typeof ColorArrow === 'undefined'){
 				ColorArrow = 'B4B1B0';
@@ -277,18 +311,29 @@
 				return;
 			}
 
-			DiagramContent.add(
-					{
-						data :
-								{
-									source    : Edge1.val(),
-									target    : Edge2.val(),
-									faveColor : '#' + ColorArrow,
-									strength  : 90
-								}
-					}
-			);
-
+			if(typeArrow == '1'){
+				edge =  {
+					data :
+							{
+								source    : Edge1.val(),
+								target    : Edge2.val(),
+								faveColor : '#' + ColorArrow,
+								strength  : 90
+							}
+				}
+			}else{
+				edge =  {
+					data :
+							{
+								source    : Edge1.val(),
+								target    : Edge2.val(),
+								faveColor : '#' + ColorArrow,
+								strength  : 90
+							},
+					classes: 'questionable'
+				}
+			}
+			DiagramContent.add(edge);
 			Edge1.val("");
 			Edge2.val("");
 		}
@@ -384,7 +429,6 @@
 				this.checked = false;
 			});
 		}
-
 
 		function deleteDraggable(){
 			cont = 1;
@@ -492,7 +536,7 @@
 						.selector('node')
 						.css({
 							'shape': 'data(faveShape)',
-							'width': 'mapData(weight, 40, 80, 20, 60)',
+							'width': 'mapData(weight, 50, 90, 30, 70)',
 							'content': 'data(name)',
 							'text-valign': 'center',
 							'text-outline-width': 2,
