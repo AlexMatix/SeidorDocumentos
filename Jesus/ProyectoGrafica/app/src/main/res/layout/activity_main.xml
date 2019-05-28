@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.android.com/apk/res/android
+http://schemas.android.com/apk/res/android ">
 
    <LinearLayout
        android:layout_width="match_parent"
@@ -14,7 +17,7 @@
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="Velocidad inicial"/>
+          android:text="Velocidad inicial" />
 
       <EditText
           android:layout_width="match_parent"
@@ -24,7 +27,7 @@
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="Ángulo"/>
+          android:text="Ángulo" />
 
       <EditText
           android:layout_width="match_parent"
@@ -33,12 +36,12 @@
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="Tiempo"/>
+          android:text="Tiempo" />
 
       <EditText
           android:layout_width="match_parent"
           android:layout_height="20dp" />
-      
+
       <com.jjoe64.graphview.GraphView
           android:id="@+id/graph"
           android:layout_width="wrap_content"
@@ -46,8 +49,6 @@
           tools:layout_editor_absoluteX="0dp"
           tools:layout_editor_absoluteY="-167dp" />
    </LinearLayout>
-
-
 
 
 </android.support.constraint.ConstraintLayout>
