@@ -1,0 +1,35 @@
+.DiagramContent{
+    width: 100%;
+    height: 900px;
+    border:1px solid #000;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+.DiagramDraggableContent{
+    width: 100%;
+    height: 900px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+}
+.DiagramMargin{
+    margin-top: 15px;
+}
+.ThemeDraggable {
+    width: 17%;
+    height: 12%;
+    padding: 0.5em;
+    border: 1px solid;
+}
+.properties{
+    font-size: 11px;
+}
+.marginList{
+    margin: 5px 5px 5px 5px;
+}
+.marginInputList{
+    margin-top: 4px;
+}
