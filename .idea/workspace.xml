@@ -15,103 +15,129 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Diagrama/Diagrama_edit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="282" column="51" selection-end-line="652" />
-              <folding>
-                <element signature="e#912#954#0" />
-                <element signature="e#973#1001#0" />
-                <element signature="e#1022#1104#0" />
-                <element signature="e#1120#1147#0" />
-                <element signature="e#1163#1198#0" />
-                <element signature="n#div#0;n#window#0;n#zk#0;n#!!top" />
-                <element signature="n#style#0;n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#h:li#0;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h:select#0;n#h:form#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h:select#1;n#h:form#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#0;n#h:li#2;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#1;n#h:li#2;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h:p#0;n#h:div#1;n#h:div#1;n#h:li#2;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#h:div#2;n#h:li#2;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" />
-                <element signature="n#div#2;n#div#0;n#window#0;n#zk#0;n#!!top" />
-                <element signature="e#10557#11069#0" />
-                <element signature="e#11104#11333#0" />
-                <element signature="e#11367#12049#0" />
-                <element signature="e#12093#12519#0" />
-                <element signature="e#12568#12726#0" />
-                <element signature="e#12777#12937#0" />
-                <element signature="e#12971#13206#0" />
-                <element signature="e#13241#13482#0" />
-                <element signature="e#13521#13609#0" />
-                <element signature="e#13640#13925#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/visual-style/code.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="50" column="28" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/visual-style/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Diagrama/Diagrama_edit.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="366">
+                  <caret line="238" column="62" selection-start-line="238" selection-start-column="62" selection-end-line="238" selection-end-column="62" />
+                  <folding>
+                    <element signature="n#style#0;n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" />
+                    <element signature="n#style#0;n#h:select#0;n#h:li#4;n#h:ul#0;n#h:div#0;n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" />
+                    <element signature="n#style#0;n#button#0;n#h:li#0;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#button#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#h:select#0;n#h:form#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#h:select#1;n#h:form#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#0;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#1;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#h:p#0;n#h:div#1;n#h:div#1;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#2;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#button#0;n#h:div#4;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#button#0;n#h:li#3;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#button#0;n#h:li#4;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#h:div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../draw2d/examples/canvas_drag_drop/CopyInterceptorPolicy.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-42">
+                  <caret line="90" column="20" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="20" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/DescripcionSolicitud_editable.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="451">
+                  <caret line="619" column="12" selection-start-line="619" selection-start-column="12" selection-end-line="619" selection-end-column="21" />
+                  <folding>
+                    <element signature="n#style#0;n#button#0;n#div#2;n#div#4;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#textbox#0;n#h:p#0;n#div#0;n#div#14;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$USER_HOME$/Documents/draw2d/examples/connection_decoration/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="692">
+                  <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+                  <folding>
+                    <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$USER_HOME$/Documents/draw2d/examples/connection_decoration/css/example.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="432">
+                  <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setView</find>
-      <find>export</find>
-      <find>previewImaggeDiagram</find>
-      <find>ON FUL</find>
-      <find>top</find>
-      <find>center-ce</find>
-      <find>change</find>
-      <find>CONTEN</find>
-      <find>cHAN</find>
-      <find>dependenc</find>
-      <find>trámite</find>
-      <find>exportar</find>
-      <find>eleme</find>
-      <find>ele</find>
-      <find>elemento</find>
-      <find>Guarda</find>
+      <find>setPropertiesBlock</find>
+      <find>saveDiagramUse</find>
+      <find>saveDiagramUseNow(</find>
+      <find>nuevo</find>
       <find>saveDiagramUseNow</find>
-      <find>loadData</find>
-      <find>ciudadno</find>
-      <find>C</find>
-      <find>Nombre de la</find>
-      <find>chan</find>
-      <find>eliminar</find>
-      <find>deleteDraggable</find>
-      <find>collectionDiagrams</find>
-      <find>Linea</find>
-      <find>addEd</find>
-      <find>Bloque</find>
-      <find>contenido</find>
+      <find>init</find>
+      <find>change</find>
+      <find>draggableElemnts</find>
+      <find>setView</find>
+      <find>save</find>
+      <find>JSON</find>
+      <find>saveDiagram</find>
+      <find>saveDiagramusenow</find>
+      <find>getIdElement</find>
+      <find>show</find>
+      <find>buttons</find>
+      <find>mxBasePath</find>
+      <find>onInit</find>
+      <find>'xml'</find>
+      <find>xml</find>
+      <find>selectActions</find>
+      <find>editor</find>
+      <find>container</find>
+      <find>div</find>
+      <find>src</find>
+      <find>DiagramDraggableContent</find>
+      <find>canvas</find>
+      <find>mozilla</find>
+      <find>class</find>
       <find>DiagramContent</find>
     </findStrings>
     <replaceStrings>
@@ -126,13 +152,19 @@
       <list>
         <option value="$USER_HOME$/Desktop/cytoscape.js-unstable/documentation/demos/compound-nodes/code.js" />
         <option value="$USER_HOME$/Desktop/cytoscape.js-unstable/documentation/demos/visual-style/code.js" />
-        <option value="$PROJECT_DIR$/Diagrama/Respaldo.html" />
         <option value="$PROJECT_DIR$/../cytoscape.js/documentation/demos/labels/code.js" />
         <option value="$PROJECT_DIR$/../cytoscape.js/documentation/demos/visual-style/cy-style.json" />
-        <option value="$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/DescripcionSolicitud_editable.html" />
         <option value="$PROJECT_DIR$/Diagrama/notitas.txt" />
         <option value="$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/cy-style.json" />
         <option value="$PROJECT_DIR$/../cytoscape.js/documentation/demos/visual-style/code.js" />
+        <option value="$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/DescripcionSolicitud_editable.html" />
+        <option value="$PROJECT_DIR$/Diagrama/script.js" />
+        <option value="$PROJECT_DIR$/Diagrama/style.css" />
+        <option value="$PROJECT_DIR$/Diagrama/Respaldo.html" />
+        <option value="$PROJECT_DIR$/../draw2d/examples/buildin_zoom/index.html" />
+        <option value="$PROJECT_DIR$/../draw2d/examples/canvas_drag_drop/index.html" />
+        <option value="$USER_HOME$/Documents/draw2d/examples/connection_decoration/css/example.css" />
+        <option value="$USER_HOME$/Documents/draw2d/examples/connection_decoration/index.html" />
         <option value="$PROJECT_DIR$/Diagrama/Diagrama_edit.html" />
       </list>
     </option>
@@ -144,10 +176,10 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1366" />
-    <option name="y" value="-1" />
-    <option name="width" value="1366" />
-    <option name="height" value="741" />
+    <option name="x" value="1912" />
+    <option name="y" value="-15" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -188,7 +220,9 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -197,6 +231,12 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Alejandro\Repos\SeidorDocumentos\Diagrama" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -228,17 +268,27 @@
       <workItem from="1558919095119" duration="10861000" />
       <workItem from="1558970148213" duration="22479000" />
       <workItem from="1559056641275" duration="15306000" />
+      <workItem from="1559581436127" duration="10228000" />
+      <workItem from="1559662005247" duration="18963000" />
     </task>
+    <task id="LOCAL-00001" summary="Finalizar diagrama edit">
+      <created>1559174355675</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1559174355675</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135369000" />
+    <option name="totallyTimeSpent" value="185661000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1366" y="-1" width="1366" height="741" extended-state="6" />
+    <frame x="1912" y="-15" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1340283" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.13435195" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -250,7 +300,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3289256" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32887402" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3289256" />
       <window_info anchor="bottom" id="GraphQL" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -261,6 +311,10 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Finalizar diagrama edit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finalizar diagrama edit" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/Desktop/cytoscape.js-unstable/documentation/demos/compound-nodes/index.html" />
     <entry file="file://$USER_HOME$/Desktop/cytoscape.js-unstable/documentation/js/script.js" />
@@ -268,52 +322,16 @@
     <entry file="file://$USER_HOME$/Desktop/cytoscape.js-unstable/documentation/demos/visual-style/code.js" />
     <entry file="file://$USER_HOME$/Desktop/cytoscape.js-unstable/documentation/demos/visual-style/index.html" />
     <entry file="file://$USER_HOME$/Desktop/cytoscape.js-unstable/documentation/demos/compound-nodes/code.js" />
-    <entry file="file://D:/Descargas/cytoscape.js-unstable/documentation/demos/visual-style/index.html" />
-    <entry file="file://$PROJECT_DIR$/Diagrama/Respaldo.html" />
-    <entry file="file://D:/Descargas/cytoscape.js-unstable/documentation/demos/visual-style/code.js" />
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/edge-arrows/data.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="50" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/edge-arrows/code.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/pie-style/code.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="60" column="15" lean-forward="true" selection-start-line="60" selection-start-column="15" selection-end-line="60" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/DescripcionSolicitud_vista.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/edge-arrows/data.json" />
+    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/edge-arrows/code.js" />
+    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/pie-style/code.js" />
     <entry file="file://$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/AsigancionValores_edit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1558" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/visual-style/cy-style.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="777">
-          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/labels/code.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="25" column="65" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/visual-style/cy-style.json" />
+    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/labels/code.js" />
     <entry file="file://$PROJECT_DIR$/Diagrama/notitas.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="861">
@@ -321,104 +339,260 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/style.css" />
+    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/index.html" />
+    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/data.json" />
+    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/cy-style.json" />
+    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/code.js" />
+    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/visual-style/style.css" />
+    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/visual-style/code.js" />
+    <entry file="file://D:/Descargas/cytoscape.js-unstable/documentation/demos/visual-style/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11208">
+          <caret line="467" column="10" selection-start-line="467" selection-start-column="10" selection-end-line="469" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textbox#0;n#h:p#0;n#div#0;n#div#13;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/DescripcionSolicitud_vista.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5376">
+          <caret line="224" column="18" selection-start-line="224" selection-start-column="18" selection-end-line="224" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Descargas/cytoscape.js-unstable/documentation/demos/visual-style/code.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="51" column="58" selection-start-line="51" selection-start-column="58" selection-end-line="51" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Diagrama/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mxgraph/javascript/examples/jsondata.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-83">
+          <caret line="82" column="62" lean-forward="true" selection-start-line="82" selection-start-column="62" selection-end-line="82" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mxgraph/javascript/examples/anchors.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="97" column="59" selection-start-line="97" selection-start-column="59" selection-end-line="97" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mxgraph/javascript/examples/labelposition.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="48" column="17" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="27" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mxgraph/javascript/examples/grapheditor/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="47" column="63" selection-start-line="47" selection-start-column="63" selection-end-line="47" selection-end-column="63" />
+          <folding>
+            <element signature="n#style#0;n#center#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mxgraph/javascript/examples/editors/config/diagrameditor.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5976" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Diagrama/Respaldo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="788">
+          <caret line="224" selection-start-line="224" selection-end-line="224" />
+          <folding>
+            <element signature="n#style#0;n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:select#0;n#h:li#4;n#h:ul#0;n#h:div#0;n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#h:li#0;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:select#0;n#h:form#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:select#1;n#h:form#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#0;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#1;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:p#0;n#h:div#1;n#h:div#1;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#2;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#h:div#4;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#h:li#3;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#h:li#4;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mxgraph/javascript/examples/editors/diagrameditor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6384">
+          <caret line="300" column="9" selection-start-line="300" selection-start-column="9" selection-end-line="300" selection-end-column="9" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mxgraph/javascript/src/js/mxClient.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="254" column="50" lean-forward="true" selection-start-line="254" selection-start-column="50" selection-end-line="254" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mxgraph/javascript/examples/dynamictoolbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/galerie_shape_basic/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="45" column="61" lean-forward="true" selection-start-line="45" selection-start-column="61" selection-end-line="45" selection-end-column="61" />
+          <folding>
+            <element signature="n#style#0;n#pre#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/buildin_zoom/lib/jquery.layout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="5467" column="50" selection-start-line="5467" selection-start-column="50" selection-end-line="5467" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/buildin_zoom/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="696">
+          <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/buildin_event/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Diagrama/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/DescripcionSolicitud_editable.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="237" column="24" selection-start-line="237" selection-start-column="24" selection-end-line="237" selection-end-column="24" />
+        <state relative-caret-position="451">
+          <caret line="619" column="12" selection-start-line="619" selection-start-column="12" selection-end-line="619" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#button#0;n#div#2;n#div#4;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#textbox#0;n#h:p#0;n#div#0;n#div#14;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#2;n#div#4;n#div#0;n#window#0;n#zk#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textbox#0;n#h:p#0;n#div#0;n#div#14;n#div#0;n#window#0;n#zk#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/style.css">
+    <entry file="file://$USER_HOME$/Documents/draw2d/examples/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        <state relative-caret-position="72">
+          <caret line="3" column="11" lean-forward="true" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/index.html">
+    <entry file="file://$USER_HOME$/Documents/draw2d/examples/menu.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="8" lean-forward="true" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+        <state relative-caret-position="408">
+          <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/data.json">
+    <entry file="file://$USER_HOME$/Documents/draw2d/examples/connection_decoration/css/example.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="432">
+          <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/cy-style.json">
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/canvas_drag_drop/CopyInterceptorPolicy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="-42">
+          <caret line="90" column="20" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/code.js">
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/canvas_drag_drop/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="288">
+          <caret line="12" column="48" lean-forward="true" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/visual-style/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-        </state>
-      </provider>
+    <entry file="file://$USER_HOME$/Documents/draw2d/dist/draw2d.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/visual-style/code.js">
+    <entry file="file://$USER_HOME$/Documents/draw2d/examples/connection_decoration/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="50" column="28" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+        <state relative-caret-position="692">
+          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Diagrama/Diagrama_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="282" column="51" selection-end-line="652" />
+        <state relative-caret-position="366">
+          <caret line="238" column="62" selection-start-line="238" selection-start-column="62" selection-end-line="238" selection-end-column="62" />
           <folding>
-            <element signature="e#912#954#0" />
-            <element signature="e#973#1001#0" />
-            <element signature="e#1022#1104#0" />
-            <element signature="e#1120#1147#0" />
-            <element signature="e#1163#1198#0" />
-            <element signature="n#div#0;n#window#0;n#zk#0;n#!!top" />
             <element signature="n#style#0;n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#h:li#0;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h:select#0;n#h:form#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h:select#1;n#h:form#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#0;n#h:li#2;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#1;n#h:li#2;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h:p#0;n#h:div#1;n#h:div#1;n#h:li#2;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#h:div#2;n#h:li#2;n#h:ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" />
-            <element signature="n#div#2;n#div#0;n#window#0;n#zk#0;n#!!top" />
-            <element signature="e#10557#11069#0" />
-            <element signature="e#11104#11333#0" />
-            <element signature="e#11367#12049#0" />
-            <element signature="e#12093#12519#0" />
-            <element signature="e#12568#12726#0" />
-            <element signature="e#12777#12937#0" />
-            <element signature="e#12971#13206#0" />
-            <element signature="e#13241#13482#0" />
-            <element signature="e#13521#13609#0" />
-            <element signature="e#13640#13925#0" />
+            <element signature="n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" />
+            <element signature="n#style#0;n#h:select#0;n#h:li#4;n#h:ul#0;n#h:div#0;n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" />
+            <element signature="n#style#0;n#button#0;n#h:li#0;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:select#0;n#h:form#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:select#1;n#h:form#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#0;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#1;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:p#0;n#h:div#1;n#h:div#1;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#2;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#h:div#4;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#h:li#3;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#h:li#4;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
