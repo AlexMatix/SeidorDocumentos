@@ -8,6 +8,7 @@
 			import ieci.tdw.ispac.adapter.TransactAdapterI;
 			import ieci.tdw.ispac.entity.EntityAdapter;
 
+
 			EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
 			update(){
@@ -17,7 +18,49 @@
 
 			TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
 		</zscript>
-		<h:link rel="stylesheet" href="${stylesUrl}styles/diagram/style.css"/>
+
+		<!--<h:link rel="stylesheet" href="${stylesUrl}styles/diagram/style.css"/>-->
+		<!--<script src="${stylesUrl}js/diagram/cytoscape.min.js" ></script>-->
+
+		<style>
+			.DiagramContent{
+				width: 100%;
+				height: 900px;
+				border:1px solid #000;
+				overflow-x: scroll;
+				overflow-y: scroll;
+			}
+			.DiagramDraggableContent{
+                width:3000px;
+                height:3000px;
+				/*position: absolute;*/
+				/*left: 0;*/
+				/*top: 0;*/
+				/*right: 0;*/
+				/*bottom: 0;*/
+				/*z-index: 999;*/
+			}
+			.DiagramMargin{
+				margin-top: 15px;
+			}
+			.ThemeDraggable {
+				width: 17%;
+				height: 12%;
+				padding: 0.5em;
+				border: 1px solid;
+			}
+			.properties{
+				font-size: 11px;
+			}
+			.marginList{
+				margin: 5px 5px 5px 5px;
+			}
+			.marginInputList{
+				margin-top: 4px;
+			}
+		</style>
+
+		<h:link rel="stylesheet" href="${stylesUrl}styles/diagram/example.css" />
 		<div class="row editBox" >
 			<div class="row editHeader">
 				<div class="col-md-12" align="right" >
@@ -192,9 +235,10 @@
 					</div>
 
 					<div class="col-md-8">
-						<div id="DiagramDraggableContent" class="DiagramDraggableContent">
-
-						</div>
+                        <h:div id="DiagramDraggableContent" class="bodyContainer">
+                            <h:div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:1500px; height:1500px; ">
+                            </h:div>
+                        </h:div>
 					</div>
 				</div>
 			</div>
@@ -218,7 +262,71 @@
 			</div>
 		</div>
 
-		<script src="${stylesUrl}js/diagram/cytoscape.min.js" ></script>
-		<script src="${stylesUrl}js/diagram/script.js" ></script>
-	</window>
+<!--        <h:script src="${stylesUrl}js/diagram/jquery.js" ></h:script>-->
+        <h:script src="${stylesUrl}js/diagram/jquery-ui.js" ></h:script>
+<!--        <script src="${stylesUrl}js/diagram/script.js" ></script>-->
+        <h:script src="${stylesUrl}js/diagram/draw2d.js" ></h:script>
+
+        <script type="text/javascript">
+            var canvas = null;
+            document.addEventListener("DOMContentLoaded",function () {
+                // Create the paint area. The id in the constructor must be
+                // an existing DIV
+               var canvas = new draw2d.Canvas("gfx_holder");
+
+                // create and add two nodes which contains Ports (In and OUT)
+                //
+                var start = new draw2d.shape.node.Start({x:50, y:250});
+                var end   = new draw2d.shape.node.End({x:430, y:150});
+
+                // ...add it to the canvas
+                canvas.add( start);
+                canvas.add( end);
+
+                // Create a Connection and connect the Start and End node
+                //
+                var c = new draw2d.Connection({
+                    sourceDecorator: new draw2d.decoration.connection.BarDecorator(),
+                    targetDecorator: new draw2d.decoration.connection.DiamondDecorator(),
+                    source: start.getOutputPort(0),
+                    target:end.getInputPort(0)
+                });
+
+                // and finally add the connection to the canvas
+                canvas.add(c);
+
+                c.toFront();
+
+                // Add another source/target/connection combination with
+                // another connection router
+                // create and add two nodes which contains Ports (In and OUT)
+                //
+                start = new draw2d.shape.node.Start({x:50, y:450});
+                end   = new draw2d.shape.node.End({x:430, y:350});
+                canvas.add( start);
+                canvas.add( end);
+
+                c = new draw2d.Connection({
+                    router:new draw2d.layout.connection.DirectRouter(),
+                    sourceDecorator: new draw2d.decoration.connection.BarDecorator(),
+                    targetDecorator: new draw2d.decoration.connection.DiamondDecorator(),
+                    source: start.getOutputPort(0),
+                    target:end.getInputPort(0)
+                });
+                canvas.add(c);
+
+                /////////////////////////////////////////////////////////////////////
+                // THIS IS ONLY FOR THE ARROW AND THE POST-IT
+                /////////////////////////////////////////////////////////////////////
+
+                var msg = new draw2d.shape.note.PostIt({text:"Add to the standard connector some endpoint decorations."});
+                canvas.add(msg, 20,20);
+
+                $("DiagramDraggableContent").scrollTop(0)
+                    .scrollLeft(0);
+            });
+
+        </script>
+
+    </window>
 </zk>
