@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diagrama COA</title>
+
+    <link rel="stylesheet" href="http://tramitesdev.queretaro.gob.mx:8080/egovstyles/styles/diagram/example.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!--    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">-->
+</head>
+<body>
+
+<div id="DiagramContent" class="DiagramContent">
+
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item">
+
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <input id="numberBlock" type="number" class="form-control" placeholder="Número bloque">
+                            </div>
+                            <div class="form-group col-md-8">
+                                <input id="dialogBlock" type="text" class="form-control" placeholder="Dialogo bloque">
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="typeElement">Elemento</label>
+                        </div>
+                        <select class="custom-select" id="typeElement">
+                            <option value="1">Bloque</option>
+                            <option value="2">Conector de Entrada</option>
+                            <option value="3">Conector de Salida</option>
+                        </select>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" onClick="newBlock()">
+                        <i class="fa fa-plus-square" aria-hidden="true"></i>
+                        Agregar elemento
+                    </button>
+                </li>
+                <li class="list-group-item">
+
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input id="Edge1" type="text" placeholder="Block 1" class="form-control DiagramMargin" disabled="true">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input id="Edge2" type="text" placeholder="Block 2" class="form-control DiagramMargin" disabled="true">
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="colorArrow">Color de linea</label>
+                        </div>
+                        <select class="custom-select" id="colorArrow">
+                            <option value="1">Seleccionar color</option>
+                            <option value="B4B1B0">Gris       </option>
+                            <option value="50F2FF">Azul Claro </option>
+                            <option value="000000">Negro      </option>
+                            <option value="FFB22E">Naranja 	</option>
+                            <option value="2BFF42">Verde 		</option>
+                            <option value="ff2d3c">Rojo 		</option>
+                            <option value="002993">Azul 		</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="typeArrow">Tipo de linea</label>
+                        </div>
+                        <select class="custom-select" id="typeArrow">
+                            <option value="1">Linea de flujo</option>
+                            <option value="2">Linea de aprovechamiento </option>
+                        </select>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" onClick="AddEdges();">
+                        <i class="fa fa-arrows-h" aria-hidden="true"></i>
+                        Conectar Bloques
+                    </button>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p style="widt 100%;" align="center">Asignar propiedades</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p style="widt 100%;" align="center"> Entradas </p>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="propertiesInput" value="Insumos" class="custom-control-input" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">Insumos</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="propertiesInput" value="Consumo_Combustible" class="custom-control-input" id="customCheck2">
+                                <label class="custom-control-label" for="customCheck2">Consumo Combustible</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="propertiesInput" value="Uso_agua" class="custom-control-input" id="customCheck3">
+                                <label class="custom-control-label" for="customCheck3">Uso agua</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <p style="widt 100%;" align="center"> Salidas </p>
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="propertiesOutput" class="propertiesOutput custom-control-input" id="customCheck4" value="contaminantes_atmosfericos">
+                                <label class="custom-control-label" for="customCheck4">Contaminantes a la atmósfera</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="propertiesOutput" class="propertiesOutput custom-control-input" id="customCheck5" value="consumo_Combustible">
+                                <label class="custom-control-label" for="customCheck5">Consumo Combustible</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="propertiesOutput" class="propertiesOutput custom-control-input" id="customCheck6" value="contaminantes_agua">
+                                <label class="custom-control-label" for="customCheck6">Contaminantes al agua</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="propertiesOutput" class="propertiesOutput custom-control-input" id="customCheck7" value="emision_suelo">
+                                <label class="custom-control-label" for="customCheck7">Emisión al suelo</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="propertiesOutput" class="propertiesOutput custom-control-input" id="customCheck8" value="residuos_peligroso">
+                                <label class="custom-control-label" for="customCheck8">Residuos peligrosos</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="propertiesOutput" class="propertiesOutput custom-control-input" id="customCheck9" value="residuos_urbanos">
+                                <label class="custom-control-label" for="customCheck9">Residuos sólidos urbanos</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="propertiesOutput" class="propertiesOutput custom-control-input" id="customCheck10" value="aprovechamiento_energia">
+                                <label class="custom-control-label" for="customCheck10">Aprovechamiento de energía</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="propertiesOutput" class="propertiesOutput custom-control-input" id="customCheck11" value="eventos">
+                                <label class="custom-control-label" for="customCheck11">Eventos</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="propertiesOutput" class="propertiesOutput custom-control-input" id="customCheck12" value="subproductos">
+                                <label class="custom-control-label" for="customCheck12">Subproductos</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row DiagramMargin">
+                        <div class="col-sm-12">
+                            <p style="widt 100%;" align="center">Asignar caracteristicas relacionadas</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="customCheck13" type="checkbox" name="propertiesRelated"  value="IE" disabled="true">
+                                <label class="custom-control-label" for="customCheck13">IE</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="customCheck14" type="checkbox" name="propertiesRelated" value="II" disabled="true">
+                                <label class="custom-control-label" for="customCheck14">II</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="customCheck15" type="checkbox" name="propertiesRelated" value="CE" disabled="true">
+                                <label class="custom-control-label" for="customCheck15">CE</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="customCheck16" type="checkbox" name="propertiesRelated" value="CI" disabled="true">
+                                <label class="custom-control-label" for="customCheck16">CI</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="customCheck17" type="checkbox" name="propertiesRelated" value="E" disabled="true">
+                                <label class="custom-control-label" for="customCheck17">E</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="customCheck18" type="checkbox" name="propertiesRelated" value="T" disabled="true">
+                                <label class="custom-control-label" for="customCheck18">T</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="customCheck19" type="checkbox" name="propertiesRelated" value="REU" disabled="true">
+                                <label class="custom-control-label" for="customCheck19">REU</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="customCheck20" type="checkbox" name="propertiesRelated" value="REC" disabled="true">
+                                <label class="custom-control-label" for="customCheck20">REC</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="customCheck21" type="checkbox" name="propertiesRelated" value="CoP" disabled="true">
+                                <label class="custom-control-label" for="customCheck21">CoP</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="customCheck22" type="checkbox" name="propertiesRelated" value="Tra" disabled="true">
+                                <label class="custom-control-label" for="customCheck22">Tra</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="customCheck23" type="checkbox" name="propertiesRelated" value="Inc" disabled="true">
+                                <label class="custom-control-label" for="customCheck23">Inc</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="customCheck24" type="checkbox" name="propertiesRelated" value="O" disabled="true">
+                                <label class="custom-control-label" for="customCheck24">O</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="customCheck25" type="checkbox" name="propertiesRelated" value="DF" disabled="true">
+                                <label class="custom-control-label" for="customCheck25">DF</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="customCheck26" type="checkbox" name="propertiesRelated" value="RS" disabled="true">
+                                <label class="custom-control-label" for="customCheck26">RS</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="customCheck27" type="checkbox" name="propertiesRelated" value="RETC" disabled="true">
+                                <label class="custom-control-label" for="customCheck27">RETC</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <button type="button" onClick="setPropertiesBlock()" class="btn btn-secondary btn-lg btn-block">
+                        Asignar propiedades
+                    </button>
+                </li>
+
+                <li class="list-group-item">
+                    <button type="button" class="btn btn-danger btn-lg btn-block" onClick="deleteOneItem()"> Eliminar</button>
+                </li>
+
+                <li class="list-group-item">
+                    <button type="button" class="btn btn-danger btn-lg btn-block" onClick="deleteDraggable()"> Eliminar todo</button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-8">
+            <div id="DiagramDraggableContent" style="background: transparent url(http://tramitesdev.queretaro.gob.mx:8080/egovstyles/styles/diagram/background.png);  margin: 0px;">
+                <div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="widt1500px; height:1500px; ">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="http://tramitesdev.queretaro.gob.mx:8080/egovstyles/js/diagram/jquery.js" ></script>
+<script src="http://tramitesdev.queretaro.gob.mx:8080/egovstyles/js/diagram/jquery-ui.js" ></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="http://tramitesdev.queretaro.gob.mx:8080/egovstyles/js/diagram/draw2d.js" ></script>
+<script src="http://tramitesdev.queretaro.gob.mx:8080/egovstyles/js/diagram/script.js" ></script>
+
+<script type="text/javascript">
+
+</script>
+</html>

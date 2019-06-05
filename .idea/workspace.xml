@@ -18,53 +18,44 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Diagrama/Diagrama_edit.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="366">
-                  <caret line="238" column="62" selection-start-line="238" selection-start-column="62" selection-end-line="238" selection-end-column="62" />
+                <state relative-caret-position="212">
+                  <caret line="18" column="95" lean-forward="true" selection-end-line="86" />
                   <folding>
-                    <element signature="n#style#0;n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" />
-                    <element signature="n#style#0;n#h:select#0;n#h:li#4;n#h:ul#0;n#h:div#0;n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" />
-                    <element signature="n#style#0;n#button#0;n#h:li#0;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#button#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#h:select#0;n#h:form#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#h:select#1;n#h:form#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#0;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#1;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#h:p#0;n#h:div#1;n#h:div#1;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#2;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#button#0;n#h:div#4;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#button#0;n#h:li#3;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#button#0;n#h:li#4;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#h:div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#h:nav#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#h:div#0;n#h:nav#0;n#div#0;n#window#0;n#zk#0;n#!!top" />
+                    <element signature="n#style#0;n#h:select#0;n#h:li#4;n#h:ul#0;n#h:div#0;n#h:nav#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#iframe#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../draw2d/examples/canvas_drag_drop/CopyInterceptorPolicy.js">
+            <entry file="file://$PROJECT_DIR$/Diagrama/iFrameDiagram.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-42">
-                  <caret line="90" column="20" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="20" />
+                <state relative-caret-position="606">
+                  <caret line="287" selection-start-line="287" selection-end-line="287" />
+                  <folding>
+                    <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                    <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#p#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#p#0;n#div#0;n#div#2;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/DescripcionSolicitud_editable.html">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Diagrama/sourceDiagram.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="451">
-                  <caret line="619" column="12" selection-start-line="619" selection-start-column="12" selection-end-line="619" selection-end-column="21" />
-                  <folding>
-                    <element signature="n#style#0;n#button#0;n#div#2;n#div#4;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#textbox#0;n#h:p#0;n#div#0;n#div#14;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                  </folding>
+                <state relative-caret-position="384">
+                  <caret line="22" column="60" lean-forward="true" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
                 </state>
               </provider>
             </entry>
@@ -73,11 +64,28 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Diagrama/iFrameDiagram.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="288">
+                  <caret line="33" column="30" lean-forward="true" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+                  <folding>
+                    <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#p#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#p#0;n#div#0;n#div#2;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$USER_HOME$/Documents/draw2d/examples/connection_decoration/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="692">
-                  <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+                <state relative-caret-position="192">
+                  <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                   </folding>
@@ -85,11 +93,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$USER_HOME$/Documents/draw2d/examples/connection_decoration/css/example.css">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Diagrama/script.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="432">
-                  <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+                <state>
+                  <caret selection-end-line="15" selection-end-column="2" />
                 </state>
               </provider>
             </entry>
@@ -101,22 +109,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setPropertiesBlock</find>
-      <find>saveDiagramUse</find>
-      <find>saveDiagramUseNow(</find>
-      <find>nuevo</find>
-      <find>saveDiagramUseNow</find>
-      <find>init</find>
-      <find>change</find>
-      <find>draggableElemnts</find>
       <find>setView</find>
       <find>save</find>
       <find>JSON</find>
@@ -139,9 +139,18 @@
       <find>mozilla</find>
       <find>class</find>
       <find>DiagramContent</find>
+      <find>h:</find>
+      <find>button</find>
+      <find>sclass</find>
+      <find>w:</find>
+      <find>conectar</find>
+      <find>bodyContainer</find>
+      <find>Conbustible</find>
+      <find>init</find>
     </findStrings>
     <replaceStrings>
       <replace />
+      <replace>class</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -158,14 +167,17 @@
         <option value="$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/cy-style.json" />
         <option value="$PROJECT_DIR$/../cytoscape.js/documentation/demos/visual-style/code.js" />
         <option value="$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/DescripcionSolicitud_editable.html" />
-        <option value="$PROJECT_DIR$/Diagrama/script.js" />
         <option value="$PROJECT_DIR$/Diagrama/style.css" />
-        <option value="$PROJECT_DIR$/Diagrama/Respaldo.html" />
         <option value="$PROJECT_DIR$/../draw2d/examples/buildin_zoom/index.html" />
         <option value="$PROJECT_DIR$/../draw2d/examples/canvas_drag_drop/index.html" />
         <option value="$USER_HOME$/Documents/draw2d/examples/connection_decoration/css/example.css" />
         <option value="$USER_HOME$/Documents/draw2d/examples/connection_decoration/index.html" />
+        <option value="$PROJECT_DIR$/Diagrama/example.html" />
+        <option value="$PROJECT_DIR$/Diagrama/Respaldo.html" />
         <option value="$PROJECT_DIR$/Diagrama/Diagrama_edit.html" />
+        <option value="$PROJECT_DIR$/Diagrama/script.js" />
+        <option value="$PROJECT_DIR$/Diagrama/iFrameDiagram.html" />
+        <option value="$PROJECT_DIR$/Diagrama/sourceDiagram.js" />
       </list>
     </option>
   </component>
@@ -176,8 +188,8 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="-15" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -186,6 +198,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -213,7 +226,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -270,6 +282,8 @@
       <workItem from="1559056641275" duration="15306000" />
       <workItem from="1559581436127" duration="10228000" />
       <workItem from="1559662005247" duration="18963000" />
+      <workItem from="1559748468158" duration="696000" />
+      <workItem from="1559749272986" duration="20790000" />
     </task>
     <task id="LOCAL-00001" summary="Finalizar diagrama edit">
       <created>1559174355675</created>
@@ -282,10 +296,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="185661000" />
+    <option name="totallyTimeSpent" value="207147000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-15" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.13435195" />
@@ -418,28 +432,6 @@
         <state relative-caret-position="-5976" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Diagrama/Respaldo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="788">
-          <caret line="224" selection-start-line="224" selection-end-line="224" />
-          <folding>
-            <element signature="n#style#0;n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h:select#0;n#h:li#4;n#h:ul#0;n#h:div#0;n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#h:li#0;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h:select#0;n#h:form#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h:select#1;n#h:form#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#0;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#1;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h:p#0;n#h:div#1;n#h:div#1;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h:p#0;n#h:div#0;n#h:div#2;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#h:div#4;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#h:li#3;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#h:li#4;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../mxgraph/javascript/examples/editors/diagrameditor.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6384">
@@ -452,13 +444,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../mxgraph/javascript/src/js/mxClient.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="254" column="50" lean-forward="true" selection-start-line="254" selection-start-column="50" selection-end-line="254" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../mxgraph/javascript/src/js/mxClient.js" />
     <entry file="file://$PROJECT_DIR$/../mxgraph/javascript/examples/dynamictoolbar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -500,26 +486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Diagrama/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/DescripcionSolicitud_editable.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="619" column="12" selection-start-line="619" selection-start-column="12" selection-end-line="619" selection-end-column="21" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#div#2;n#div#4;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textbox#0;n#h:p#0;n#div#0;n#div#14;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Documents/draw2d/examples/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -534,20 +500,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/draw2d/examples/connection_decoration/css/example.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../draw2d/examples/canvas_drag_drop/CopyInterceptorPolicy.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-42">
-          <caret line="90" column="20" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../draw2d/examples/canvas_drag_drop/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -559,28 +511,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/draw2d/dist/draw2d.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/draw2d/examples/connection_decoration/index.html">
+    <entry file="file://$USER_HOME$/Documents/draw2d/dist/draw2d.js" />
+    <entry file="file://$USER_HOME$/Documents/draw2d/examples/connection_decoration/css/example.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+        <state relative-caret-position="432">
+          <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/docs/connection_decoration/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1224" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/canvas_drag_drop/CopyInterceptorPolicy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="788">
+          <caret line="90" column="20" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/DescripcionSolicitud_editable.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="788">
+          <caret line="619" column="12" selection-start-line="619" selection-start-column="12" selection-end-line="619" selection-end-column="21" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#2;n#div#4;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textbox#0;n#h:p#0;n#div#0;n#div#14;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Diagrama/Diagrama_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="238" column="62" selection-start-line="238" selection-start-column="62" selection-end-line="238" selection-end-column="62" />
+        <state relative-caret-position="212">
+          <caret line="18" column="95" lean-forward="true" selection-end-line="86" />
+          <folding>
+            <element signature="n#style#0;n#h:nav#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#h:div#0;n#h:nav#0;n#div#0;n#window#0;n#zk#0;n#!!top" />
+            <element signature="n#style#0;n#h:select#0;n#h:li#4;n#h:ul#0;n#h:div#0;n#h:nav#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#iframe#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Diagrama/Respaldo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="22" column="54" lean-forward="true" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
           <folding>
             <element signature="n#style#0;n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" />
             <element signature="n#style#0;n#h:select#0;n#h:li#4;n#h:ul#0;n#h:div#0;n#h:nav#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" />
             <element signature="n#style#0;n#button#0;n#h:li#0;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h:select#0;n#h:form#0;n#h:div#0;n#h:li#1;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
@@ -592,8 +582,47 @@
             <element signature="n#style#0;n#button#0;n#h:div#4;n#h:li#2;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#h:li#3;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#h:li#4;n#h:ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h:div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/draw2d/examples/connection_decoration/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Diagrama/iFrameDiagram.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="287" selection-start-line="287" selection-end-line="287" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#2;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Diagrama/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="15" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Diagrama/sourceDiagram.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="22" column="60" lean-forward="true" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
         </state>
       </provider>
     </entry>

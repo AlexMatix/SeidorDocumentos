@@ -18,49 +18,7 @@
 
 			TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
 		</zscript>
-
-		<!--<h:link rel="stylesheet" href="${stylesUrl}styles/diagram/style.css"/>-->
-		<!--<script src="${stylesUrl}js/diagram/cytoscape.min.js" ></script>-->
-
-		<style>
-			.DiagramContent{
-				width: 100%;
-				height: 900px;
-				border:1px solid #000;
-				overflow-x: scroll;
-				overflow-y: scroll;
-			}
-			.DiagramDraggableContent{
-                width:3000px;
-                height:3000px;
-				/*position: absolute;*/
-				/*left: 0;*/
-				/*top: 0;*/
-				/*right: 0;*/
-				/*bottom: 0;*/
-				/*z-index: 999;*/
-			}
-			.DiagramMargin{
-				margin-top: 15px;
-			}
-			.ThemeDraggable {
-				width: 17%;
-				height: 12%;
-				padding: 0.5em;
-				border: 1px solid;
-			}
-			.properties{
-				font-size: 11px;
-			}
-			.marginList{
-				margin: 5px 5px 5px 5px;
-			}
-			.marginInputList{
-				margin-top: 4px;
-			}
-		</style>
-
-		<h:link rel="stylesheet" href="${stylesUrl}styles/diagram/example.css" />
+		<h:link rel="stylesheet" href="${stylesUrl}styles/diagram/style.css"/>
 		<div class="row editBox" >
 			<div class="row editHeader">
 				<div class="col-md-12" align="right" >
@@ -69,7 +27,7 @@
 				</div>
 			</div>
 
-			<div id="DiagramContent" class="DiagramContent">
+			<window id="win">
 				<h:nav class="navbar navbar-inverse" style="margin-bottom : 0px">
 					<h:div class="container-fluid">
 						<h:ul class="nav navbar-nav">
@@ -103,145 +61,8 @@
 						</h:form>
 					</h:div>
 				</h:nav>
-				<div class="row">
-					<div class="col-md-4">
-						<h:ul class="list-group">
-							<h:li class="list-group-item">
-
-								<h:div class="row DiagramMargin">
-									<h:div class="col-md-4">
-										<h:input id="numberBlock" type="number" class="form-control" placeholder="Número bloque"> </h:input>
-									</h:div>
-									<h:div class="col-md-8">
-										<h:input id="dialogBlock" type="text" class="form-control" placeholder="Dialogo bloque"> </h:input>
-									</h:div>
-								</h:div>
-
-								<h:select class="form-control DiagramMargin" id="typeElement">
-									<h:option value="1">Bloque</h:option>
-									<h:option value="2">Conector de Entrada</h:option>
-									<h:option value="3">Conector de Salida</h:option>
-								</h:select>
-
-								<button type="button" sclass="btn btn-primary DiagramMargin" iconSclass="fa fa-plus" w:onClick="newBlock()" label="Nuevo elemeto" style="width: 100%"></button>
-
-							</h:li>
-							<h:li class="list-group-item">
-								<h:div class="form-group row">
-									<button type="button" sclass="btn btn-secondary" iconSclass="fa fa-arrow-right" w:onClick="AddEdges();" style="width: 100%">Conectar Bloques</button>
-									<h:form class="navbar-form navbar-left">
-										<h:div class="row">
-											<h:div class="col-sm-6">
-												<h:input id="Edge1" type="text" placeholder="Block 1" class="form-control DiagramMargin" disabled="true"> </h:input>
-											</h:div>
-											<h:div class="col-sm-6">
-												<h:input id="Edge2" type="text" placeholder="Block 2" class="form-control DiagramMargin" disabled="true"> </h:input>
-											</h:div>
-										</h:div>
-
-										<h:p class="DiagramMargin"> Color de la linea  </h:p><h:br></h:br>
-										<h:select class="form-control" id="colorArrow" style="width : 100%">
-											<h:option value="1">Seleccionar color</h:option>
-											<h:option value="B4B1B0">Gris       </h:option>
-											<h:option value="50F2FF">Azul Claro </h:option>
-											<h:option value="000000">Negro      </h:option>
-											<h:option value="FFB22E">Naranja 	</h:option>
-											<h:option value="2BFF42">Verde 		</h:option>
-											<h:option value="ff2d3c">Rojo 		</h:option>
-											<h:option value="002993">Azul 		</h:option>
-										</h:select>
-
-										<h:p class="DiagramMargin"> Tipo de linea  </h:p><h:br></h:br>
-										<h:select class="form-control" id="typeArrow" style="width : 100%">
-											<h:option value="1">Linea de flujo</h:option>
-											<h:option value="2">Linea de aprovechamiento </h:option>
-										</h:select>
-									</h:form>
-								</h:div>
-							</h:li>
-
-							<h:li class="list-group-item">
-								<h:div class="row">
-									<h:div class="col-sm-12">
-										<h:p style="width: 100%;" align="center">Asignar propiedades</h:p>
-									</h:div>
-								</h:div>
-								<h:div class="row">
-									<h:div class="col-sm-6">
-										<h:p style="width: 100%;" align="center"> Entradas </h:p>
-
-										<h:input type="checkbox" name="propertiesInput" value="Insumos"><h:span class="properties"> Insumos</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesInput" value="Consumo_Conbustible"><h:span class="properties"> Consumo Conbustible </h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesInput" value="Uso_agua"><h:span class="properties"> Uso agua</h:span></h:input><h:br></h:br>
-									</h:div>
-
-									<h:div class="col-sm-6">
-										<h:p style="width: 100%;" align="center"> Salidas </h:p>
-
-										<h:input type="checkbox" name="propertiesOutput" class="propertiesOutput" value="contaminantes_atmosfericos"> <h:span class="properties"> Contaminantes a la atmósfera</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesOutput" class="propertiesOutput" value="consumo_Conbustible">  <h:span class="properties"> Consumo Conbustible </h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesOutput" class="propertiesOutput" value="contaminantes_agua">  <h:span class="properties"> Contaminantes al agua</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesOutput" class="propertiesOutput" value="emision_suelo">  <h:span class="properties"> Emisión al suelo</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesOutput" class="propertiesOutput" value="residuos_peligroso">  <h:span class="properties"> Residuos peligrosos</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesOutput" class="propertiesOutput" value="residuos_urbanos">  <h:span class="properties"> Residuos sólidos urbanos</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesOutput" class="propertiesOutput" value="aprovechamiento_energia">  <h:span class="properties"> Aprovechamiento de energía</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesOutput" class="propertiesOutput" value="eventos">  <h:span class="properties"> Eventos </h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesOutput" class="propertiesOutput" value="subproductos">  <h:span class="properties"> Subproductos </h:span></h:input><h:br></h:br>
-									</h:div>
-								</h:div>
-								<h:hr/>
-								<h:div class="row DiagramMargin">
-									<h:div class="col-sm-12">
-										<h:p style="width: 100%;" align="center">Asignar caracteristicas relacionadas</h:p>
-									</h:div>
-								</h:div>
-
-								<h:div class="row">
-									<h:div class="col-sm-6">
-										<h:input type="checkbox" name="propertiesRelated" value="IE" disabled="true"><h:span class="properties">IE</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesRelated" value="II" disabled="true"><h:span class="properties">II</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesRelated" value="CE" disabled="true"><h:span class="properties">CE</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesRelated" value="CI" disabled="true"><h:span class="properties">CI</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesRelated" value="E" disabled="true"><h:span class="properties">E</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesRelated" value="T" disabled="true"><h:span class="properties">T</h:span></h:input><h:br></h:br>
-									</h:div>
-
-									<h:div class="col-sm-6">
-										<h:input type="checkbox" name="propertiesRelated" value="REU" disabled="true">  <h:span class="properties">REU</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesRelated" value="REC" disabled="true">  <h:span class="properties">REC</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesRelated" value="CoP" disabled="true">  <h:span class="properties">CoP</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesRelated" value="Tra" disabled="true">  <h:span class="properties">Tra</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesRelated" value="Inc" disabled="true">  <h:span class="properties">Inc</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesRelated" value="O" disabled="true">  <h:span class="properties">O</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesRelated" value="DF" disabled="true">  <h:span class="properties">DF</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesRelated" value="RS" disabled="true">  <h:span class="properties">RS</h:span></h:input><h:br></h:br>
-										<h:input type="checkbox" name="propertiesRelated" value="RETC" disabled="true">  <h:span class="properties">RETC</h:span></h:input><h:br></h:br>
-									</h:div>
-								</h:div>
-								<h:hr/>
-								<h:div class="row DiagramMargin">
-									<button type="button" iconSclass="fa fa-plus" w:onClick="setPropertiesBlock()" sclass="btn btn-default" style="width: 100%;">Asignar propiedades</button>
-								</h:div>
-							</h:li>
-
-							<h:li class="list-group-item">
-								<button type="button" sclass="btn btn-danger" iconSclass="fa fa-trash" w:onClick="deleteOneItem()" style="width: 100%" label="Eliminar"> </button>
-							</h:li>
-
-							<h:li class="list-group-item">
-								<button type="button" sclass="btn btn-danger" iconSclass="fa fa-trash" w:onClick="deleteDraggable()" style="width: 100%" label="Eliminar todo"></button>
-							</h:li>
-						</h:ul>
-					</div>
-
-					<div class="col-md-8">
-                        <h:div id="DiagramDraggableContent" class="bodyContainer">
-                            <h:div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:1500px; height:1500px; ">
-                            </h:div>
-                        </h:div>
-					</div>
-				</div>
-			</div>
+				<iframe style="width:100%; height:1000px;border:3px inset;" src="http://tramitesdev.queretaro.gob.mx:8080/egovstyles/iFrameDiagramContent.html" />
+			</window>
 
 			<div class="row gridCard" visible="true">
 				<div class="col-md-12">
@@ -261,72 +82,5 @@
 				</div>
 			</div>
 		</div>
-
-<!--        <h:script src="${stylesUrl}js/diagram/jquery.js" ></h:script>-->
-        <h:script src="${stylesUrl}js/diagram/jquery-ui.js" ></h:script>
-<!--        <script src="${stylesUrl}js/diagram/script.js" ></script>-->
-        <h:script src="${stylesUrl}js/diagram/draw2d.js" ></h:script>
-
-        <script type="text/javascript">
-            var canvas = null;
-            document.addEventListener("DOMContentLoaded",function () {
-                // Create the paint area. The id in the constructor must be
-                // an existing DIV
-               var canvas = new draw2d.Canvas("gfx_holder");
-
-                // create and add two nodes which contains Ports (In and OUT)
-                //
-                var start = new draw2d.shape.node.Start({x:50, y:250});
-                var end   = new draw2d.shape.node.End({x:430, y:150});
-
-                // ...add it to the canvas
-                canvas.add( start);
-                canvas.add( end);
-
-                // Create a Connection and connect the Start and End node
-                //
-                var c = new draw2d.Connection({
-                    sourceDecorator: new draw2d.decoration.connection.BarDecorator(),
-                    targetDecorator: new draw2d.decoration.connection.DiamondDecorator(),
-                    source: start.getOutputPort(0),
-                    target:end.getInputPort(0)
-                });
-
-                // and finally add the connection to the canvas
-                canvas.add(c);
-
-                c.toFront();
-
-                // Add another source/target/connection combination with
-                // another connection router
-                // create and add two nodes which contains Ports (In and OUT)
-                //
-                start = new draw2d.shape.node.Start({x:50, y:450});
-                end   = new draw2d.shape.node.End({x:430, y:350});
-                canvas.add( start);
-                canvas.add( end);
-
-                c = new draw2d.Connection({
-                    router:new draw2d.layout.connection.DirectRouter(),
-                    sourceDecorator: new draw2d.decoration.connection.BarDecorator(),
-                    targetDecorator: new draw2d.decoration.connection.DiamondDecorator(),
-                    source: start.getOutputPort(0),
-                    target:end.getInputPort(0)
-                });
-                canvas.add(c);
-
-                /////////////////////////////////////////////////////////////////////
-                // THIS IS ONLY FOR THE ARROW AND THE POST-IT
-                /////////////////////////////////////////////////////////////////////
-
-                var msg = new draw2d.shape.note.PostIt({text:"Add to the standard connector some endpoint decorations."});
-                canvas.add(msg, 20,20);
-
-                $("DiagramDraggableContent").scrollTop(0)
-                    .scrollLeft(0);
-            });
-
-        </script>
-
     </window>
 </zk>
