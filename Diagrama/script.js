@@ -15,58 +15,7 @@ var propertiesRelated = {
     residuos_urbanos : ['REU','REC','CoP','Tra','Inc','O','RETC','RS','IE','II','CE','CI'],
 };
 
-function newBlock() {
-    console.log("LOG -- ", "GENERANDO NUEVO BLOQUE");
-    // NODES BLOCK
-    // { data: { id: 'j', name: 'Jerry', weight: 65, faveColor: '#6FB1FC', faveShape: 'triangle' } },
-    // { data: { id: 'e', name: 'Elaine', weight: 45, faveColor: '#EDA1ED', faveShape: 'ellipse' } },
-    // { data: { id: 'k', name: 'Kramer', weight: 75, faveColor: '#86B342', faveShape: 'octagon' } },
-    // { data: { id: 'g', name: 'George', weight: 70, faveColor: '#F5A45D', faveShape: 'rectangle' } }
 
-    if(typeof DiagramContent === 'undefined'){
-        alert("Aun no creas un diagrama");
-    }else{
-        let typeElement = $("#typeElement").val();
-        let color;
-        let type;
-
-        if(typeElement == 2){
-            color = '#4368CA';
-            type  =  'ellipse';
-        }else if(typeElement == 3){
-            color = '#2f498d';
-            type  =  'ellipse';
-        }else{
-            color = '#1a9bf5';
-            type  =  'rectangle';
-        }
-
-        let dialogBlock = $("#dialogBlock");
-        let numberBlock = $("#numberBlock");
-
-        if(dialogBlock.val() != "" || numberBlock.val() != ""){
-            DiagramContent.add(
-                {
-                    group: 'nodes',
-                    data: {
-                        id: type + numberBlock.val(),
-                        name: dialogBlock.val()+ "-" + numberBlock.val(),
-                        weight: 70,
-                        faveColor: color,
-                        faveShape: type
-                    },
-                    position: { x: 100, y: 100 }
-                }
-            );
-            setDraggableItem(dialogBlock.val(), type, numberBlock.val());
-            dialogBlock.val("");
-            numberBlock.val("");
-        }else{
-            alert("Tiene que poner contenido para el bloque");
-        }
-    }
-    resetCheckboxProperties();
-}
 
 function AddEdges() {
 
@@ -236,8 +185,6 @@ function resetCheckboxProperties() {
     {
         $(this).prop("disabled", true);
     });
-
-
 }
 
 function deleteDraggable(){

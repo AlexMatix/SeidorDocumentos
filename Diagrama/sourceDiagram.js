@@ -1,4 +1,3 @@
-var canvas = null;
 var contSchemaDiagram  = 0;
 var useDiagramNow      = 0;
 var draggableElemnts   = [];
@@ -7,16 +6,8 @@ var flagInitDiagram    = true;
 var changeDiagram      = false;
 var nameSchema		   = "";
 var saveDiagramUseNowFlag = false;
-var DiagramContent;
-var propertiesRelated = {
-    contaminantes_atmosfericos : ['IE','II','RETC'],
-    contaminantes_agua : ['IE','II','CE','CI','RETC'],
-    emision_suelo : ['RECT'],
-    residuos_peligroso	: ['REU','REC','CoP','Tra','Inc','O','DF','RETC', 'IE','II','CE','CI'],
-    residuos_urbanos : ['REU','REC','CoP','Tra','Inc','O','RETC','RS','IE','II','CE','CI'],
-};
+var canvas = null;
 
-canvas = new draw2d.Canvas("gfx_holder");
 
 document.addEventListener("DOMContentLoaded",function () {
 
@@ -32,5 +23,50 @@ document.addEventListener("DOMContentLoaded",function () {
             });
         }
     });
-
 });
+
+canvas = new draw2d.Canvas("gfx_holder");
+function newBlock() {
+    console.log("LOG -- ", "GENERANDO NUEVO BLOQUE");
+
+    if(typeof canvas === 'undefined' || canvas == null ){
+        alert("Aun no creas un diagrama");
+    }else{
+        let typeElement = $("#typeElement").val();
+        let color;
+        let type;
+
+        if(typeElement == 2){
+            color = '#4368CA';
+            type  =  'ellipse';
+        }else if(typeElement == 3){
+            color = '#2f498d';
+            type  =  'ellipse';
+        }else{
+            color = '#1a9bf5';
+            type  =  'rectangle';
+        }
+
+        let dialogBlock = $("#dialogBlock");
+        let numberBlock = $("#numberBlock");
+
+        if(dialogBlock.val() != "" || numberBlock.val() != ""){
+
+            var table = new draw2d.shape.layout.VerticalLayout();
+            table.add(new draw2d.shape.basic.Label({text:numberBlock.val()+"-"+dialogBlock.val(),bold:true, stroke:4, resizeable:true}));
+            canvas.add(table);
+
+
+
+            canvas.add(c);
+
+            // setDraggableItem(dialogBlock.val(), type, numberBlock.val());
+            dialogBlock.val("");
+            numberBlock.val("");
+        }else{
+            alert("Tiene que ingresar contenido para el bloque");
+        }
+    }
+    // resetCheckboxProperties();
+}
+
