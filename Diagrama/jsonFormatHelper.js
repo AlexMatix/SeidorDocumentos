@@ -1,4 +1,5 @@
 function setDraggableItem(dialog, type, cont){
+    return;
     let infoDraggable = {
         type   : type,
         id     : type+cont,

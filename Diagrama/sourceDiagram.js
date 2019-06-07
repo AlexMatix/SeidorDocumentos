@@ -1,66 +1,55 @@
-var contSchemaDiagram  = 0;
-var useDiagramNow      = 0;
-var draggableElemnts   = [];
+var contSchemaDiagram  = 1;
+var useDiagramNow      = 1;
+var collectionDiagam   = [];
 var collectionDiagrams = [];
 var flagInitDiagram    = true;
 var changeDiagram      = false;
 var nameSchema		   = "";
 var saveDiagramUseNowFlag = false;
-var canvas = null;
+var canvas = new draw2d.Canvas("gfx_holder");
 
+function initDiagram(name) {
 
-document.addEventListener("DOMContentLoaded",function () {
+    if(name == "" || typeof name === 'undefined'){
+        return false;
+    }
 
-    $("DiagramDraggableContent").scrollTop(0).scrollLeft(0);
-    $(".propertiesOutput").click(function () {
-        let propertie = $(this).val();
-        if(typeof propertiesRelated[propertie] !== 'undefined'){
-            let checkedPropertiesRelated = propertiesRelated[propertie];
-            $.each($("input[name='propertiesRelated']"), function(){
-                if(in_array($(this).val(), checkedPropertiesRelated) != -1){
-                    $(this).prop("disabled", false);
-                }
-            });
-        }
+    collectionDiagam.push({
+        [name]        : [],
+        'nameDiagram' : 
     });
-});
+    contSchemaDiagram++;
+}
 
-canvas = new draw2d.Canvas("gfx_holder");
 function newBlock() {
     console.log("LOG -- ", "GENERANDO NUEVO BLOQUE");
 
     if(typeof canvas === 'undefined' || canvas == null ){
         alert("Aun no creas un diagrama");
     }else{
+        let propertiesInput   = getPropertiesInput();
+        let propertiesOutput  = getPropertiesOutput();
+        let propertiesRelated = getPropertiesRelated();
+
         let typeElement = $("#typeElement").val();
-        let color;
-        let type;
-
-        if(typeElement == 2){
-            color = '#4368CA';
-            type  =  'ellipse';
-        }else if(typeElement == 3){
-            color = '#2f498d';
-            type  =  'ellipse';
-        }else{
-            color = '#1a9bf5';
-            type  =  'rectangle';
-        }
-
         let dialogBlock = $("#dialogBlock");
         let numberBlock = $("#numberBlock");
+        console.log("Type element --> ", typeElement);
+
+        if(typeElement == 1){
+            if(propertiesInput.length == 0 ||
+                propertiesOutput.length == 0 ||
+                propertiesRelated.length == 0)
+            {
+                alert("Tienes que asignar propiedades al bloque");
+                return;
+            }
+        }
+
 
         if(dialogBlock.val() != "" || numberBlock.val() != ""){
-
-            var table = new draw2d.shape.layout.VerticalLayout();
-            table.add(new draw2d.shape.basic.Label({text:numberBlock.val()+"-"+dialogBlock.val(),bold:true, stroke:4, resizeable:true}));
-            canvas.add(table);
-
-
-
-            canvas.add(c);
-
-            // setDraggableItem(dialogBlock.val(), type, numberBlock.val());
+            newItem(numberBlock.val(), dialogBlock.val(),typeElement);
+            setDraggableItem(dialogBlock.val(), type, numberBlock.val());
             dialogBlock.val("");
             numberBlock.val("");
         }else{
@@ -69,4 +58,57 @@ function newBlock() {
     }
     // resetCheckboxProperties();
 }
+
+function setPortsBlock(itemTable) {
+
+    itemTable.addPort(
+        new draw2d.InputPort(
+            {
+                cssClass : "draw2d_InputPort",
+                locator  : new draw2d.layout.locator.InputPortLocator()
+            }));
+
+    itemTable.addPort(
+        new draw2d.OutputPort(
+            {
+                cssClass : "draw2d_OutputPort",
+                locator  : new draw2d.layout.locator.OutputPortLocator()
+            }));
+}
+
+function newItem(number, dialog, typeElemen) {
+    let item = null;
+
+    if(typeElemen == 1){
+        draw2d.shape.basic.Circle
+        item = new draw2d.shape.layout.VerticalLayout();
+        item.add(
+            new draw2d.shape.basic.Label(
+                {
+                    text   : number + "-" + dialog,
+                    bold   : true,
+                    stroke : 4,
+                    x      : 20,
+                    y      : 20,
+                    resizeable : true
+                }));
+
+    }else{
+        item = new draw2d.shape.basic.Circle(
+            {
+                cssClass : "draw2d_shape_basic_Circle",
+                color    : "#1B1B1B",
+                stroke   : 1,
+                width    : 80,
+                height   : 80,
+                x        : 20,
+                y        : 20
+            }
+        );
+    }
+    canvas.add(item);
+    setPortsBlock(item);
+}
+
+
 

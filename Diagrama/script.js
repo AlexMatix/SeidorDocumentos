@@ -15,24 +15,18 @@ var propertiesRelated = {
     residuos_urbanos : ['REU','REC','CoP','Tra','Inc','O','RETC','RS','IE','II','CE','CI'],
 };
 
-
-
 function AddEdges() {
-
     let Edge1      = $("#Edge1");
     let Edge2      = $("#Edge2");
     let ColorArrow = $("#colorArrow").val();
     let typeArrow  = $("#typeArrow").val();
     let edge;
-
     if(ColorArrow == "" || typeof ColorArrow === 'undefined'){
         ColorArrow = 'B4B1B0';
     }
-
     if(Edge1.val() == "" || Edge2.val() == "" ){
         return;
     }
-
     if(typeArrow == '1'){
         edge =  {
             data :
