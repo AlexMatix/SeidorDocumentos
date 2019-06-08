@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="206f3e71-62dd-4df0-9aa9-93c0cb5d5d5a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diagrama/jsonFormatHelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/Diagrama/jsonFormatHelper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diagrama/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/Diagrama/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diagrama/iFrameDiagram.html" beforeDir="false" afterPath="$PROJECT_DIR$/Diagrama/iFrameDiagram.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diagrama/sourceDiagram.js" beforeDir="false" afterPath="$PROJECT_DIR$/Diagrama/sourceDiagram.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diagrama/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/Diagrama/util.js" afterDir="false" />
     </list>
@@ -18,23 +17,27 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.48026806">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Diagrama/iFrameDiagram.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="198">
-                  <caret line="54" column="48" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="48" />
+                <state relative-caret-position="3969">
+                  <caret line="276" column="22" lean-forward="true" selection-start-line="276" selection-start-column="22" selection-end-line="276" selection-end-column="22" />
+                  <folding>
+                    <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Diagrama/sourceDiagram.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="124">
-                  <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+                <state relative-caret-position="294">
+                  <caret line="131" column="28" lean-forward="true" selection-start-line="131" selection-start-column="28" selection-end-line="131" selection-end-column="28" />
                 </state>
               </provider>
             </entry>
@@ -48,11 +51,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Diagrama/util.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="4" />
+                <state relative-caret-position="318">
+                  <caret line="82" column="37" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
                 </state>
               </provider>
             </entry>
@@ -61,38 +64,38 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Diagrama/script.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="114">
-                  <caret line="254" column="24" selection-start-line="254" selection-start-column="8" selection-end-line="254" selection-end-column="24" />
+                <state relative-caret-position="-894">
+                  <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../draw2d/examples/connection_router/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="164">
+                  <caret line="73" column="86" lean-forward="true" selection-start-line="73" selection-start-column="86" selection-end-line="73" selection-end-column="134" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../draw2d/examples/shape_slider/index.html">
+            <entry file="file://$PROJECT_DIR$/../draw2d/examples/connection_router/gui/Application.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="129">
-                  <caret line="33" column="29" lean-forward="true" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+                <state relative-caret-position="312">
+                  <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../draw2d/examples/connection_dotted/index.html">
+            <entry file="file://$PROJECT_DIR$/../draw2d/examples/connection_router/gui/Toolbar.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-84">
-                  <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../draw2d/examples/shape_db/index.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="189">
-                  <caret line="60" column="8" lean-forward="true" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
+                <state relative-caret-position="311">
+                  <caret line="19" column="32" lean-forward="true" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
                 </state>
               </provider>
             </entry>
@@ -112,8 +115,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mxBasePath</find>
-      <find>onInit</find>
       <find>'xml'</find>
       <find>xml</find>
       <find>selectActions</find>
@@ -142,6 +143,8 @@
       <find>newItemTable</find>
       <find>Edge2</find>
       <find>initDi</find>
+      <find>key</find>
+      <find>setDefaultRouterClassName</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -170,14 +173,17 @@
         <option value="$PROJECT_DIR$/Diagrama/example.html" />
         <option value="$PROJECT_DIR$/Diagrama/Respaldo.html" />
         <option value="$PROJECT_DIR$/Diagrama/Diagrama_edit.html" />
-        <option value="$PROJECT_DIR$/../draw2d/examples/galerie_layout/index.html" />
         <option value="$PROJECT_DIR$/../draw2d/examples/connection_decoration/index.html" />
-        <option value="$PROJECT_DIR$/Diagrama/iFrameDiagram.html" />
         <option value="$PROJECT_DIR$/Diagrama/jsonFormatHelper.js" />
         <option value="$PROJECT_DIR$/../draw2d/examples/shape_slider/document.js" />
-        <option value="$PROJECT_DIR$/Diagrama/util.js" />
         <option value="$PROJECT_DIR$/Diagrama/script.js" />
+        <option value="$PROJECT_DIR$/../draw2d/examples/galerie_layout/index.html" />
+        <option value="$PROJECT_DIR$/../draw2d/examples/shape_icon_decoration/index.html" />
+        <option value="$PROJECT_DIR$/Diagrama/iFrameDiagram.html" />
+        <option value="$PROJECT_DIR$/../draw2d/examples/connection_router/index.html" />
         <option value="$PROJECT_DIR$/Diagrama/sourceDiagram.js" />
+        <option value="$PROJECT_DIR$/../draw2d/examples/connection_router/gui/Toolbar.js" />
+        <option value="$PROJECT_DIR$/Diagrama/util.js" />
       </list>
     </option>
   </component>
@@ -187,7 +193,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="-1" />
     <option name="width" value="1366" />
     <option name="height" value="370" />
@@ -273,7 +279,7 @@
       <workItem from="1559748468158" duration="696000" />
       <workItem from="1559749272986" duration="22694000" />
       <workItem from="1559837263378" duration="9769000" />
-      <workItem from="1559860526140" duration="11803000" />
+      <workItem from="1559860526140" duration="23987000" />
     </task>
     <task id="LOCAL-00001" summary="Finalizar diagrama edit">
       <created>1559174355675</created>
@@ -286,7 +292,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230623000" />
+    <option name="totallyTimeSpent" value="242807000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1366" height="741" extended-state="7" />
@@ -340,22 +346,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Finalizar diagrama edit" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/AsigancionValores_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1558" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/visual-style/cy-style.json" />
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/labels/code.js" />
-    <entry file="file://$PROJECT_DIR$/Diagrama/notitas.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="861">
-          <caret line="41" column="24" lean-forward="true" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/style.css" />
-    <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/index.html" />
     <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/data.json" />
     <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/cy-style.json" />
     <entry file="file://$PROJECT_DIR$/../cytoscape.js/documentation/demos/node-types/code.js" />
@@ -561,27 +551,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../draw2d/examples/galerie_layout/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="64" column="72" selection-start-line="64" selection-start-column="72" selection-end-line="64" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../draw2d/examples/shape_db/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="60" column="8" lean-forward="true" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../draw2d/examples/connection_dotted/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-84">
-          <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../draw2d/examples/shape_slider/document.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1236">
@@ -589,10 +558,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Diagrama/util.js">
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/shape_slider/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="4" />
+        <state relative-caret-position="-249">
+          <caret line="33" column="29" lean-forward="true" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/connection_dotted/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-627">
+          <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/shape_db/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-270">
+          <caret line="60" column="8" lean-forward="true" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/shape_icon_decoration/IconDecoShape.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="25" column="42" lean-forward="true" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Diagrama/iFrameDiagram.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3969">
+          <caret line="276" column="22" lean-forward="true" selection-start-line="276" selection-start-column="22" selection-end-line="276" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/galerie_layout/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/shape_icon_decoration/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="18" column="53" selection-start-line="19" selection-end-line="20" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/connection_router/gui/example.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-970">
+          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -603,31 +628,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../draw2d/examples/shape_slider/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="33" column="29" lean-forward="true" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Diagrama/iFrameDiagram.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="54" column="48" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Diagrama/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="254" column="24" selection-start-line="254" selection-start-column="8" selection-end-line="254" selection-end-column="24" />
+        <state relative-caret-position="-894">
+          <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/connection_router/gui/Toolbar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="19" column="32" lean-forward="true" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/connection_router/gui/Application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../draw2d/examples/connection_router/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="73" column="86" lean-forward="true" selection-start-line="73" selection-start-column="86" selection-end-line="73" selection-end-column="134" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Diagrama/sourceDiagram.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+        <state relative-caret-position="294">
+          <caret line="131" column="28" lean-forward="true" selection-start-line="131" selection-start-column="28" selection-end-line="131" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Diagrama/util.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="82" column="37" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
         </state>
       </provider>
     </entry>

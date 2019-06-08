@@ -11,13 +11,16 @@ var canvas = new draw2d.Canvas("gfx_holder");
 function initDiagram(name) {
 
     if(name == "" || typeof name === 'undefined'){
+        alert("");
         return false;
     }
 
     collectionDiagam.push({
-        [name]        : [],
-        'nameDiagram' : 
+        [name]          : [],
+        'nameDiagram'   : name,
+        'numberDiagram' : contSchemaDiagram
     });
+
     contSchemaDiagram++;
 }
 
@@ -27,31 +30,18 @@ function newBlock() {
     if(typeof canvas === 'undefined' || canvas == null ){
         alert("Aun no creas un diagrama");
     }else{
-        let propertiesInput   = getPropertiesInput();
-        let propertiesOutput  = getPropertiesOutput();
-        let propertiesRelated = getPropertiesRelated();
 
         let typeElement = $("#typeElement").val();
         let dialogBlock = $("#dialogBlock");
         let numberBlock = $("#numberBlock");
         console.log("Type element --> ", typeElement);
 
-        if(typeElement == 1){
-            if(propertiesInput.length == 0 ||
-                propertiesOutput.length == 0 ||
-                propertiesRelated.length == 0)
-            {
-                alert("Tienes que asignar propiedades al bloque");
-                return;
-            }
-        }
-
-
         if(dialogBlock.val() != "" || numberBlock.val() != ""){
             newItem(numberBlock.val(), dialogBlock.val(),typeElement);
-            setDraggableItem(dialogBlock.val(), type, numberBlock.val());
+            // setDraggableItem(dialogBlock.val(), type, numberBlock.val());
             dialogBlock.val("");
             numberBlock.val("");
+            resetCheckboxProperties();
         }else{
             alert("Tiene que ingresar contenido para el bloque");
         }
@@ -92,7 +82,8 @@ function newItem(number, dialog, typeElemen) {
                     y      : 20,
                     resizeable : true
                 }));
-
+        canvas.add(item, 100,100);
+        addGridRow(item);
     }else{
         item = new draw2d.shape.basic.Circle(
             {
@@ -105,9 +96,45 @@ function newItem(number, dialog, typeElemen) {
                 y        : 20
             }
         );
+        canvas.add(item, 100,100);
     }
-    canvas.add(item);
+
     setPortsBlock(item);
+}
+
+function addGridRow(table) {
+    let input   = getPropertiesInput();
+    let output  = getPropertiesOutput();
+
+    var grid = new draw2d.shape.layout.TableLayout({resizeable:true});
+    grid.addRow(new draw2d.shape.basic.Label({text:"Entradas",resizeable:true}), new draw2d.shape.basic.Label({text:"Salidas",resizeable:true}));
+    // grid.addRow(new draw2d.shape.basic.Label({text:"Ejemplo1",resizeable:true}), new draw2d.shape.basic.Label({text:"Ejemplo2",resizeable:true}));
+
+    let textInput  = "";
+    let textOutput = "";
+    let limit = input.length > output.length
+                ? input.length
+                : output.length;
+
+    for(let i = 0;  i < limit; i++){
+        if(typeof input[i] === 'undefined'){
+            textInput = " ";
+        }else{
+            textInput = input[i];
+        }
+
+        if(typeof output[i] === 'undefined'){
+            textOutput = " ";
+        }else{
+            textOutput = output[i];
+        }
+
+        grid.addRow(new draw2d.shape.basic.Label({text:textInput,resizeable:true}), new draw2d.shape.basic.Label({text:textOutput,resizeable:true}));
+    }
+    grid.setCellAlign(1,1,"right");
+    grid.setCellPadding(0,3,5);
+
+    table.add(grid);
 }
 
 

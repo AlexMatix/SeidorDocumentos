@@ -78,3 +78,9 @@ document.addEventListener("DOMContentLoaded",function () {
     });
 });
 
+
+function changeLines(canvas) {
+    canvas.getLines().each(function(i,line){
+        line.setRouter(new draw2d.layout.connection.CircuitConnectionRouter());
+    });
+}

@@ -267,7 +267,13 @@
 
         <div class="col-md-8">
             <div id="DiagramDraggableContent" style="background: transparent url(http://tramitesdev.queretaro.gob.mx:8080/egovstyles/styles/diagram/background.png);  margin: 0px;">
-                <div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:3000px; height:3000px; ">
+                <div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder"
+                      style="
+                        width:3000px;
+                        height:3000px;
+                        cursor: default;
+                        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                ">
                 </div>
             </div>
         </div>
