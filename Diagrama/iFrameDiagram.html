@@ -45,25 +45,13 @@
                     </button>
                 </li>
                 <li class="list-group-item">
-
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <input id="Edge1" type="text" placeholder="Block 1" class="form-control DiagramMargin" disabled="true">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input id="Edge2" type="text" placeholder="Block 2" class="form-control DiagramMargin" disabled="true">
-                            </div>
-                        </div>
-                    </form>
-
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="colorArrow">Color de linea</label>
                         </div>
                         <select class="custom-select" id="colorArrow">
                             <option value="1">Seleccionar color</option>
-                            <option value="B4B1B0">Gris       </option>
+                            <option value="787473">Gris       </option>
                             <option value="50F2FF">Azul Claro </option>
                             <option value="000000">Negro      </option>
                             <option value="FFB22E">Naranja 	</option>
@@ -82,11 +70,6 @@
                             <option value="2">Linea de aprovechamiento </option>
                         </select>
                     </div>
-
-                    <button type="button" class="btn btn-secondary btn-lg btn-block" onClick="AddEdges();">
-                        <i class="fa fa-arrows-h" aria-hidden="true"></i>
-                        Conectar Bloques
-                    </button>
                 </li>
 
                 <li class="list-group-item">
@@ -249,18 +232,10 @@
                             </div>
                         </div>
                     </div>
-                    <hr/>
-                    <button type="button" onClick="setPropertiesBlock()" class="btn btn-secondary btn-lg btn-block">
-                        Asignar propiedades
-                    </button>
                 </li>
 
                 <li class="list-group-item">
-                    <button type="button" class="btn btn-danger btn-lg btn-block" onClick="deleteOneItem()"> Eliminar</button>
-                </li>
-
-                <li class="list-group-item">
-                    <button type="button" class="btn btn-danger btn-lg btn-block" onClick="deleteDraggable()"> Eliminar todo</button>
+                    <button type="button" class="btn btn-danger btn-lg btn-block" id="deleteItem"> Eliminar</button>
                 </li>
             </ul>
         </div>
@@ -288,7 +263,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <script src="http://tramitesdev.queretaro.gob.mx:8080/egovstyles/js/diagram/draw2d.js" ></script>
-<script src="http://tramitesdev.queretaro.gob.mx:8080/egovstyles/js/diagram/script.js" ></script>
 
 <script src="sourceDiagram.js" ></script>
 <script src="jsonFormatHelper.js" ></script>

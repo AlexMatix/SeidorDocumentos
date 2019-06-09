@@ -78,9 +78,63 @@ document.addEventListener("DOMContentLoaded",function () {
     });
 });
 
+function setDecorationLine() {
+    if(validateCanvas()){
+        return;
+    }
+    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
+        createConnection: function(){
 
-function changeLines(canvas) {
-    canvas.getLines().each(function(i,line){
-        line.setRouter(new draw2d.layout.connection.CircuitConnectionRouter());
+            var c = new draw2d.Connection({
+                outlineColor:"#fffaf5",
+                outlineStroke:1,
+                router: router,
+                stroke:2,
+                color : colorLine,
+            });
+            c.setSourceDecorator(new draw2d.decoration.connection.BarDecorator());
+            c.setTargetDecorator(lineDecoration);
+            return c;
+        }
+    }));
+}
+
+function validateCanvas() {
+    let flag = false;
+    if(typeof canvas === 'undefined' || canvas == null ){
+        flag = true;
+    }
+    return flag;
+}
+
+function setEventSelect() {
+    $('#deleteItem').click(function () {
+        if(validateCanvas()){
+            alert('No hay elementos para eliminar');
+            return;
+        }
+        let node = canvas.getPrimarySelection();
+        deleteItem(node);
+        canvas.getCommandStack().execute(new draw2d.command.CommandDelete(node));
+    });
+
+    $('#colorArrow').on('change', function () {
+        if(!validateCanvas()){
+            colorLine = new draw2d.util.Color("#" + $(this).val());
+            setDecorationLine();
+        }
+
+    });
+
+    $('#typeArrow').on('change', function () {
+        if(!validateCanvas()){
+            if($(this).val() == 1){
+                lineDecoration = new draw2d.decoration.connection.DiamondDecorator();
+            }else{
+                lineDecoration = new draw2d.decoration.connection.ArrowDecorator();
+            }
+            setDecorationLine();
+        }
     });
 }
+
