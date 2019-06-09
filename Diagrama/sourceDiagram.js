@@ -9,6 +9,7 @@ var imageDiagram = null;
 var canvas       = null;
 var router       = null;
 var saveUseDiagram = true;
+var changeDiagramFlag  = false;
 
 
 function newDiagram(name) {
@@ -38,23 +39,10 @@ function initDiagram() {
     setDecorationLine();
 
     canvas.on("figure:add", function (emitter, event) {
-        console.log("Figure added", event);
-    });
-
-    canvas.on("figure:remove", function (emitter, event) {
-        console.log("Figure removed");
-    });
-
-    canvas.on("select", function (emitter, event) {
-        console.log("Figure selected: ", event);
-    });
-
-    canvas.on("unselect", function (emitter, event) {
-        console.log("Figure unselected: ", event);
-    });
-
-    canvas.on("click", function (emitter, event) {
-          console.log("click: ", event);
+        console.log("Figura add");
+        if(changeDiagramFlag){
+            restaureItemTable(event.figure);
+        }
     });
 
 }
@@ -85,41 +73,15 @@ function newBlock() {
     // resetCheckboxProperties();
 }
 
-function setPortsBlock(itemTable) {
-
-    itemTable.addPort(
-        new draw2d.InputPort(
-            {
-                cssClass : "draw2d_InputPort",
-                locator  : new draw2d.layout.locator.InputPortLocator()
-            }));
-
-    itemTable.addPort(
-        new draw2d.OutputPort(
-            {
-                cssClass : "draw2d_OutputPort",
-                locator  : new draw2d.layout.locator.OutputPortLocator()
-            }));
-}
-
 function newItem(number, dialog, typeElemen) {
     let item = null;
 
     if(typeElemen == 1){
         draw2d.shape.basic.Circle
         item = new draw2d.shape.layout.VerticalLayout();
-        item.add(
-            new draw2d.shape.basic.Label(
-                {
-                    text   : number + "-" + dialog,
-                    bold   : true,
-                    stroke : 4,
-                    x      : 20,
-                    y      : 20,
-                    resizeable : true
-                }));
+        setPortsBlock(item);
         canvas.add(item, 100,100);
-        addGridRow(item);
+        addGridRow(item,number, dialog);
     }else{
         let width;
         let height;
@@ -146,15 +108,34 @@ function newItem(number, dialog, typeElemen) {
                 y        : 20
             }
         );
+        setPortsBlock(item);
         canvas.add(item, 100,100);
     }
-    setPortsBlock(item);
     return item;
 }
 
-function addGridRow(table) {
-    let input   = getPropertiesInput();
-    let output  = getPropertiesOutput();
+function addGridRow(table, number, dialog, propertiesInput, propertiesOutput) {
+    let input;
+    let output;
+
+    if(typeof propertiesInput === 'undefined' && typeof propertiesOutput === 'undefined'){
+        input   = getPropertiesInput();
+        output  = getPropertiesOutput();
+    }else{
+        input  = propertiesInput;
+        output = propertiesOutput;
+    }
+
+    table.add(
+        new draw2d.shape.basic.Label(
+            {
+                text   : number + "-" + dialog,
+                bold   : true,
+                stroke : 4,
+                x      : 20,
+                y      : 20,
+                resizeable : true
+            }));
 
     var grid = new draw2d.shape.layout.TableLayout({resizeable:true});
     grid.addRow(new draw2d.shape.basic.Label({text:"Entradas",resizeable:true}), new draw2d.shape.basic.Label({text:"Salidas",resizeable:true}));
@@ -185,6 +166,23 @@ function addGridRow(table) {
     grid.setCellPadding(0,3,5);
 
     table.add(grid);
+}
+
+function setPortsBlock(itemTable) {
+
+    itemTable.addPort(
+        new draw2d.InputPort(
+            {
+                cssClass : "draw2d_InputPort",
+                locator  : new draw2d.layout.locator.InputPortLocator()
+            }));
+
+    itemTable.addPort(
+        new draw2d.OutputPort(
+            {
+                cssClass : "draw2d_OutputPort",
+                locator  : new draw2d.layout.locator.OutputPortLocator()
+            }));
 }
 
 function saveSourceDiagram() {
@@ -224,17 +222,27 @@ function saveSourceDiagram() {
 
 function changeDiagram(number) {
 
-    let changeDiagramUse;
-
     if(typeof collectionSourceDiagram[number] === 'undefined'){
         console.log("No existe el diagrama");
         return;
     }
 
     canvas.clear();
-    reader.unmarshal(canvas, collectionSourceDiagram[number].json);
+    changeDiagramFlag = true;
     nameSchema    = collectionSourceDiagram[number].name;
     useDiagramNow = number;
+    reader.unmarshal(canvas, collectionSourceDiagram[number].json);
+    changeDiagramFlag = false;
+}
+
+function restaureItemTable(item) {
+    if(item.cssClass == "draw2d_shape_basic_Circle"){
+        return;
+    }
+    let dataItem = getDataItem(item.id);
+    if(typeof dataItem !== 'undefined'){
+        addGridRow(item, dataItem.number, dataItem.dialog,dataItem.propertiesInput,dataItem.propertiesOutput);
+    }
 }
 
 

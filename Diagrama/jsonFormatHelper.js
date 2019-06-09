@@ -41,12 +41,34 @@ function addItemDiagram(number, dialog, type, item){
 }
 
 function deleteItem(item) {
+    let indexElement = searchItem(item.id);
 
+    if(indexElement != -1){
+        collectionDiagam[useDiagramNow][nameSchema].splice(indexElement,1);
+    }
+    // for(indexElement in collectionDiagam[useDiagramNow][nameSchema]) {
+    //     if(collectionDiagam[useDiagramNow][nameSchema][indexElement].id == item.id){
+    //         console.log("LOG --", 'item deleted - ', collectionDiagam[useDiagramNow][nameSchema][indexElement]);
+    //         collectionDiagam[useDiagramNow][nameSchema].splice(indexElement,1);
+    //         break;
+    //     }
+    // }
+}
+
+function getDataItem(itemId) {
+    let indexElement = searchItem(itemId);
+    if(indexElement != -1){
+        return collectionDiagam[useDiagramNow][nameSchema][indexElement];
+    }
+}
+
+function searchItem(itemId) {
+    let indexItem = -1;
     for(indexElement in collectionDiagam[useDiagramNow][nameSchema]) {
-        if(collectionDiagam[useDiagramNow][nameSchema][indexElement].id == item.id){
-            console.log("LOG --", 'item deleted - ', collectionDiagam[useDiagramNow][nameSchema][indexElement]);
-            collectionDiagam[useDiagramNow][nameSchema].splice(indexElement,1);
+        if(collectionDiagam[useDiagramNow][nameSchema][indexElement].id == itemId){
+            indexItem = indexElement;
             break;
         }
     }
+    return indexItem;
 }
