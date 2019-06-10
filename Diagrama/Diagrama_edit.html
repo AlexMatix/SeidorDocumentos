@@ -8,7 +8,6 @@
 			import ieci.tdw.ispac.adapter.TransactAdapterI;
 			import ieci.tdw.ispac.entity.EntityAdapter;
 
-
 			EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
 			update(){
@@ -129,23 +128,17 @@
 			function saveDiagramUseNow(){
 				iframeWindow.saveSourceDiagram();
 				let collectionSourceDiagram = iframeWindow.getSourceDiagram();
-				saveImages(collectionSourceDiagram);
 				let collectionDiagrams      = iframeWindow.getDataDiagram();
 				console.log("Soruce", collectionSourceDiagram, "data", collectionDiagrams);
 				zk.Widget.$(jq('$info_diagrama')).setValue(collectionSourceDiagram);
 				zk.Widget.$(jq('$data_json')).setValue(collectionDiagrams);
 				alert("Diagrama guardado");
 			}
+			
+			function exportImaggeDiagram() {
+				let viewImageDiagra = iframeWindow.getImageDiagram();
+				$("#viewImageDiagra").attr("src",viewImageDiagra);
 
-			function saveImages(collectionDiagram) {
-
-				for(index in collectionDiagram){
-					images.push(
-							{
-								collectionDiagram[index].
-							}
-					);
-				}
 			}
 
 			]]>

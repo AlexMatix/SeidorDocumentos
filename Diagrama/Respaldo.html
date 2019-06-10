@@ -222,3 +222,69 @@
         <script src="${stylesUrl}js/diagram/script.js" ></script>
     </window>
 </zk>
+
+
+
+function addGridRow(table, number, dialog, propertiesInput, propertiesOutput) {
+let input;
+let output;
+
+if(typeof propertiesInput === 'undefined' && typeof propertiesOutput === 'undefined'){
+input   = getPropertiesInput();
+output  = getPropertiesOutput();
+}else{
+input  = propertiesInput;
+output = propertiesOutput;
+}
+
+table.add(
+new draw2d.shape.basic.Label(
+{
+text   : number + "-" + dialog,
+bold   : true,
+stroke : 4,
+x      : 20,
+y      : 20,
+resizeable : true
+}));
+
+var grid = new draw2d.shape.layout.TableLayout({resizeable:true});
+
+grid.addRow(
+new draw2d.shape.basic.Label(
+{
+text:"Entradas",
+resizeable:true
+}),
+new draw2d.shape.basic.Label(
+{
+text:"Salidas",
+resizeable:true
+}));
+
+let textInput  = "";
+let textOutput = "";
+let limit = input.length > output.length
+? input.length
+: output.length;
+
+for(let i = 0;  i < limit; i++){
+if(typeof input[i] === 'undefined'){
+textInput = " ";
+}else{
+textInput = input[i];
+}
+
+if(typeof output[i] === 'undefined'){
+textOutput = " ";
+}else{
+textOutput = output[i];
+}
+
+grid.addRow(new draw2d.shape.basic.Label({text:textInput,resizeable:true}), new draw2d.shape.basic.Label({text:textOutput,resizeable:true}));
+}
+grid.setCellAlign(1,1,"right");
+grid.setCellPadding(0,3,5);
+
+table.add(grid);
+}

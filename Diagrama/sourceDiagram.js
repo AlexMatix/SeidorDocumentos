@@ -194,10 +194,6 @@ function saveSourceDiagram() {
         jsonSourceDiagramUseNow = JSON.stringify(json,null,2);
     });
 
-    writerPng.marshal(canvas, function(png){
-        imageDiagram =  png;
-    });
-
     if(typeof collectionSourceDiagram[useDiagramNow] === 'undefined'){
         if(jsonSourceDiagramUseNow == "[]"){
             alert("No se puede almacenar un diagrama vacio");
@@ -206,7 +202,6 @@ function saveSourceDiagram() {
             collectionSourceDiagram.push(
                 {
                     json   : jsonSourceDiagramUseNow,
-                    image  : imageDiagram,
                     name   : nameSchema
                 }
             );
@@ -251,6 +246,13 @@ function getSourceDiagram() {
 
 function getDataDiagram() {
     return JSON.stringify(collectionDiagam,null,2);
+}
+
+function getImageDiagram() {
+    writerPng.marshal(canvas, function(png){
+        imageDiagram =  png;
+    });
+    return imageDiagram;
 }
 
 
