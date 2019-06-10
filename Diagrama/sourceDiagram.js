@@ -144,8 +144,8 @@ function addGridRow(table, number, dialog, propertiesInput, propertiesOutput) {
     let textInput  = "";
     let textOutput = "";
     let limit = input.length > output.length
-                ? input.length
-                : output.length;
+        ? input.length
+        : output.length;
 
     for(let i = 0;  i < limit; i++){
         if(typeof input[i] === 'undefined'){
@@ -243,6 +243,14 @@ function restaureItemTable(item) {
     if(typeof dataItem !== 'undefined'){
         addGridRow(item, dataItem.number, dataItem.dialog,dataItem.propertiesInput,dataItem.propertiesOutput);
     }
+}
+
+function getSourceDiagram() {
+    return JSON.stringify(collectionSourceDiagram,null,2);
+}
+
+function getDataDiagram() {
+    return JSON.stringify(collectionDiagam,null,2);
 }
 
 

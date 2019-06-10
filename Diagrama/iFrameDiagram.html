@@ -268,4 +268,22 @@
 <script src="http://tramitesdev.queretaro.gob.mx:8080/egovstyles/js/jsonFormatHelper.js" ></script>
 <script src="http://tramitesdev.queretaro.gob.mx:8080/egovstyles/js/util.js" ></script>
 
+<script type="text/javascript">
+
+    window.theCallData = "";
+    window.addEventListener('message', function(theEvent) {
+
+        if (theEvent.data[0]=== 'pcall'){
+            window.theCallData = theEvent.data[1];
+            childfunction()
+        }
+
+    }, false);
+
+    function childfunction() {
+        var dt = new Date();
+        alert(window.theCallData +  dt  );
+    }
+</script>
+
 </html>

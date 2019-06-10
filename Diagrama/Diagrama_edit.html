@@ -40,7 +40,7 @@
 							</h:li>
 
 							<h:li class="marginList">
-								<button class="btn btn-default navbar-btn" w:onClick="initDiagram()" iconSclass="fa fa-plus" tooltiptext="Agregar diagrama"></button>
+								<button class="btn btn-default navbar-btn" w:onClick="newDiagram()" iconSclass="fa fa-plus" tooltiptext="Agregar diagrama"></button>
 							</h:li>
 
 							<h:li class="marginList">
@@ -56,7 +56,7 @@
 						</h:ul>
 					</h:div>
 				</h:nav>
-				<h:iframe id="diagram" style="width:100%; height:1000px;border:3px inset;" src="http://tramitesdev.queretaro.gob.mx:8080/egovstyles/iFrameDiagramContent.html" />
+				<h:iframe id="diagram" style="width:100%; height:1000px;border:3px inset;" src="http://localhost:8080/egovstyles/iFrameDiagramContent.html"></h:iframe>
 			</window>
 
 			<div class="row gridCard" visible="true">
@@ -79,6 +79,74 @@
 		</div>
 		<script type="text/javascript">
 			<![CDATA[
+
+			var contSchema        = 0;
+			var iframe            = null;
+			var initDiagramFlag   = true;
+			var iframeWindow      = null;
+			var changeDiagramFlag = true;
+			var images = [];
+
+			function newDiagram(){
+				nameSchema = $("#nameDiagramSchema").val();
+				if( nameSchema == ""){
+					return;
+				}
+
+				if(initDiagramFlag){
+					iframe          = document.querySelector('#diagram');
+					iframeWindow    = iframe.contentWindow;
+				}
+
+				iframeWindow.newDiagram(nameSchema);
+				addDiagramSelect(contSchema, nameSchema);
+				alert("Nuevo diagrama - "+ nameSchema);
+				contSchema++;
+				$("#nameDiagramSchema").val("");
+			}
+
+			function addDiagramSelect(value, text) {
+				$('#DiagramSelected').append($('<option>', {
+					value: value,
+					text : value+"-"+text
+				}));
+				changeDiagramFlag = true;
+				$('#DiagramSelected option[value='+ value +']').prop('selected', 'selected').change();
+				changeDiagramFlag = false;
+
+				if(initDiagramFlag){
+					$("#DiagramSelected option[value='initDiagram']").remove();
+					$('#DiagramSelected').on( "change", function () {
+						if(!changeDiagramFlag){
+							let value = parseInt($(this).val(), 10);
+							iframeWindow.changeDiagram(value);
+						}
+					});
+					initDiagramFlag = false;
+				}
+			}
+
+			function saveDiagramUseNow(){
+				iframeWindow.saveSourceDiagram();
+				let collectionSourceDiagram = iframeWindow.getSourceDiagram();
+				saveImages(collectionSourceDiagram);
+				let collectionDiagrams      = iframeWindow.getDataDiagram();
+				console.log("Soruce", collectionSourceDiagram, "data", collectionDiagrams);
+				zk.Widget.$(jq('$info_diagrama')).setValue(collectionSourceDiagram);
+				zk.Widget.$(jq('$data_json')).setValue(collectionDiagrams);
+				alert("Diagrama guardado");
+			}
+
+			function saveImages(collectionDiagram) {
+
+				for(index in collectionDiagram){
+					images.push(
+							{
+								collectionDiagram[index].
+							}
+					);
+				}
+			}
 
 			]]>
 		</script>
