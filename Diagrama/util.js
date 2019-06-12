@@ -6,6 +6,26 @@ var propertiesRelated = {
     residuos_urbanos : ['REU','REC','CoP','Tra','Inc','O','RETC','RS','IE','II','CE','CI'],
 };
 
+var iconsProperties = {
+    input : {
+        Insumos : 'insumos.png',
+        Consumo_Combustible : 'con_combustible.png',
+        Uso_agua : 'uso_agua.png',
+
+    },
+    output : {
+        contaminantes_atmosfericos : 'c_atmosfera.png',
+        emision_atmosfera  : 'emision_atmosfera.png',
+        contaminantes_agua : 'g_con_agua.png',
+        emision_suelo      : 'emision_suelo.png',
+        residuos_peligroso : 'residuos_peligrosos.png',
+        residuos_urbanos   : 'residuos_urbanos.png',
+        aprovechamiento_energia : 'aprov_energia.png',
+        eventos   : 'eventos.png',
+        subproductos   : 'subproducto.png'
+    }
+};
+
 function resetCheckboxProperties() {
     $('input[type=checkbox]').each(function()
     {
@@ -82,21 +102,26 @@ function setDecorationLine() {
     if(validateCanvas()){
         return;
     }
-    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
-        createConnection: function(){
+    var createConnection=function(sourcePort, targetPort){
+        var con = new draw2d.Connection({
+            outlineColor:"#fffaf5",
+            outlineStroke:1,
+            router: router,
+            stroke:2,
+            color : colorLine,
+        });
+        con.setRouter(new draw2d.layout.connection.ManhattanConnectionRouter());
+        con.setSourceDecorator(new draw2d.decoration.connection.BarDecorator());
+        con.setTargetDecorator(lineDecoration);
 
-            var c = new draw2d.Connection({
-                outlineColor:"#fffaf5",
-                outlineStroke:1,
-                router: router,
-                stroke:2,
-                color : colorLine,
-            });
-            c.setSourceDecorator(new draw2d.decoration.connection.BarDecorator());
-            c.setTargetDecorator(lineDecoration);
-            return c;
-        }
+        return con;
+    };
+
+
+    canvas.installEditPolicy(  new draw2d.policy.connection.DragConnectionCreatePolicy({
+        createConnection: createConnection
     }));
+
 }
 
 function validateCanvas() {
@@ -136,5 +161,19 @@ function setEventSelect() {
             setDecorationLine();
         }
     });
+
+    function replacer(json) {
+        json = json.toString();
+        json = json.replace(/\\n/g, "\\n")
+            .replace(/\\'/g, "\\'")
+            .replace(/\\"/g, '\\"')
+            .replace(/\\&/g, "\\&")
+            .replace(/\\r/g, "\\r")
+            .replace(/\\t/g, "\\t")
+            .replace(/\\b/g, "\\b")
+            .replace(/\\f/g, "\\f");
+        json = json.replace(/[\u0000-\u0019]+/g,"");
+        return json;
+    }
 }
 

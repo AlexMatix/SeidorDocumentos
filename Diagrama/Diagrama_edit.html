@@ -15,6 +15,10 @@
 			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
 			}
 
+			public void initDiagram(){
+				Clients.evalJavaScript("reloadDiagram()");
+			}
+
 			TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
 		</zscript>
 		<h:link rel="stylesheet" href="${stylesUrl}styles/diagram/style.css"/>
@@ -55,7 +59,9 @@
 						</h:ul>
 					</h:div>
 				</h:nav>
-				<h:iframe id="diagram" style="width:100%; height:1000px;border:3px inset;" src="http://localhost:8080/egovstyles/iFrameDiagramContent.html"></h:iframe>
+				<h:iframe id="diagram" style="width:100%; height:900px;border:3px inset;" src="http://localhost:8080/egovstyles/iFrameDiagramContent.html">
+
+				</h:iframe>
 			</window>
 
 			<div class="row gridCard" visible="true">
@@ -68,11 +74,15 @@
 			<div class="row gridCard" visible="true">
 				<div class="col-md-12">
 					<label value="info_diagrama" sclass="editField" ></label>
-					<h:p> <textbox id="info_diagrama" maxlength="0"  ></textbox> </h:p>
+					<h:p> <textbox id="info_diagrama" maxlength="0" onChanging="coaInitController.testValues(ewin);"></textbox> </h:p>
 				</div>
 				<div class="col-md-12">
 					<label value="data_json" sclass="editField" ></label>
 					<h:p> <textbox id="data_json" maxlength="0"  ></textbox> </h:p>
+				</div>
+				<div class="col-md-12">
+					<label id="lbl1" onUser1="self.value = org.zkoss.lang.Objects.toString(event.data)" visible="false" />
+					<label id="lbl2" onUser1="self.value = org.zkoss.lang.Objects.toString(event.data)" visible="false" onCreate="initDiagram()"/>
 				</div>
 			</div>
 		</div>
@@ -84,7 +94,11 @@
 			var initDiagramFlag   = true;
 			var iframeWindow      = null;
 			var changeDiagramFlag = true;
-			var images = [];
+
+			function initContentiFrame() {
+				iframe          = document.querySelector('#diagram');
+				iframeWindow    = iframe.contentWindow;
+			}
 
 			function newDiagram(){
 				nameSchema = $("#nameDiagramSchema").val();
@@ -93,8 +107,7 @@
 				}
 
 				if(initDiagramFlag){
-					iframe          = document.querySelector('#diagram');
-					iframeWindow    = iframe.contentWindow;
+					initContentiFrame();
 				}
 
 				iframeWindow.newDiagram(nameSchema);
@@ -129,19 +142,51 @@
 				iframeWindow.saveSourceDiagram();
 				let collectionSourceDiagram = iframeWindow.getSourceDiagram();
 				let collectionDiagrams      = iframeWindow.getDataDiagram();
-				console.log("Soruce", collectionSourceDiagram, "data", collectionDiagrams);
-				zk.Widget.$(jq('$info_diagrama')).setValue(collectionSourceDiagram);
-				zk.Widget.$(jq('$data_json')).setValue(collectionDiagrams);
+				zAu.send(new zk.Event(zk.Widget.$(jq('$lbl1')), "onUser1", collectionSourceDiagram, {toServer:true}));
+				zAu.send(new zk.Event(zk.Widget.$(jq('$lbl2')), "onUser1", collectionDiagrams, {toServer:true}));
 				alert("Diagrama guardado");
+				zAu.send(new zk.Event(zk.Widget.$(jq('$info_diagrama')), "onChanging", "", {toServer:true}));
 			}
-			
+
 			function exportImaggeDiagram() {
 				let viewImageDiagra = iframeWindow.getImageDiagram();
 				$("#viewImageDiagra").attr("src",viewImageDiagra);
-
 			}
+
+			function reloadDiagram() {
+				console.log("Buscando diagramas creados");
+				$('#diagram').on("load", function() {
+					let info_diagrama = zk.Widget.$(jq('$info_diagrama')).getValue();
+					let data_json = zk.Widget.$(jq('$data_json')).getValue();
+
+					if(info_diagrama != "" && data_json != "" ){
+						initContentiFrame();
+						iframeWindow.loadDiagram(info_diagrama, data_json);
+						let info_diagrama_obj = $.parseJSON(info_diagrama);
+						for(let index = 0; index < info_diagrama_obj.length; index++){
+							addDiagramSelect(index, info_diagrama_obj[index].name);
+						}
+						contSchema = info_diagrama_obj.length;
+					}
+				});
+			}
+
+			function replacer(json) {
+				json = json.toString();
+				json = json.replace(/\\n/g, "\\n")
+						.replace(/\\'/g, "\\'")
+						.replace(/\\"/g, '\\"')
+						.replace(/\\&/g, "\\&")
+						.replace(/\\r/g, "\\r")
+						.replace(/\\t/g, "\\t")
+						.replace(/\\b/g, "\\b")
+						.replace(/\\f/g, "\\f");
+				json = json.replace(/[\u0000-\u0019]+/g,"");
+				return json;
+			}
+
 
 			]]>
 		</script>
-    </window>
+	</window>
 </zk>
