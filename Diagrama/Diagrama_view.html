@@ -1,0 +1,188 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./ewin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+    <window id="ewin" border="none" onCreate="entityController.loadView(ebeanDetail, self);" >
+
+        <zscript>
+            import ieci.tdw.ispac.adapter.TransactAdapterI;
+            import ieci.tdw.ispac.entity.EntityAdapter;
+
+            EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+            update(){
+            fcv.validate(ewin);
+            entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+            }
+
+            public void initDiagram(){
+            Clients.evalJavaScript("reloadDiagram()");
+            }
+
+            TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+        </zscript>
+        <h:link rel="stylesheet" href="${stylesUrl}styles/diagram/style.css"></h:link>
+        <div class="row editBox" >
+            <div class="row editHeader">
+                <div class="col-md-12" align="right" >
+                    <custom-attributes removeOnPortal="true" ></custom-attributes>
+                    <!--                    <button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>-->
+                </div>
+            </div>
+
+            <window id="win">
+                <h:nav class="navbar navbar-inverse" style="margin-bottom : 0px">
+                    <h:div class="container-fluid">
+                        <h:ul class="nav navbar-nav">
+                            <h:li class="marginList">
+                                <button class="btn btn-default navbar-btn" iconSclass="fa fa-save" w:onClick="saveDiagramUseNow()" tooltiptext="Guardar diagrama" disabled="true"> </button>
+                            </h:li>
+
+                            <h:li class="marginList">
+                                <button class="btn btn-default navbar-btn" iconSclass="fa fa-file-image-o" w:onClick="exportImaggeDiagram()" tooltiptext="Exportar a imagen"> </button>
+                            </h:li>
+
+                            <h:li class="marginList">
+                                <button class="btn btn-default navbar-btn" w:onClick="newDiagram()" iconSclass="fa fa-plus" tooltiptext="Agregar diagrama" disabled="true"></button>
+                            </h:li>
+
+                            <h:li class="marginList">
+                                <h:input id="nameDiagramSchema" type="text" class="form-control marginInputList" placeholder="Nombre de diagrama" disabled="true"></h:input>
+                            </h:li>
+
+                            <h:li class="marginList">
+                                <h:select class="form-control marginInputList" id="DiagramSelected" style="width : 100%">
+                                    <h:option value="initDiagram">Crea un nuevo diagrama</h:option>
+                                </h:select>
+                            </h:li>
+
+                        </h:ul>
+                    </h:div>
+                </h:nav>
+                <h:iframe id="diagram" style="width:100%; height:900px;border:3px inset;" src="http://localhost:8080/egovstyles/iFrameDiagramContent_view.html">
+
+                </h:iframe>
+            </window>
+
+            <div class="row gridCard" visible="false">
+                <div class="col-md-12">
+                    <h:img id="viewImageDiagra"></h:img>
+                </div>
+            </div>
+
+            <!-- Campo para almacenar datos -->
+            <div class="row gridCard" visible="true">
+                <div class="col-md-12">
+                    <label value="Datos" sclass="detailField" ></label>
+                    <h:p> <label id="data_json" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-12">
+                    <label value="info_diagrama" sclass="detailField" ></label>
+                    <h:p> <label id="info_diagrama" sclass="detailData" onCreate="initDiagram()"></label> </h:p>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            <![CDATA[
+
+            var contSchema        = 0;
+            var iframe            = null;
+            var initDiagramFlag   = true;
+            var iframeWindow      = null;
+            var changeDiagramFlag = true;
+
+            function initContentiFrame() {
+                iframe          = document.querySelector('#diagram');
+                iframeWindow    = iframe.contentWindow;
+            }
+
+            function newDiagram(){
+                nameSchema = $("#nameDiagramSchema").val();
+                if( nameSchema == ""){
+                    return;
+                }
+
+                if(initDiagramFlag){
+                    initContentiFrame();
+                }
+
+                iframeWindow.newDiagram(nameSchema);
+                addDiagramSelect(contSchema, nameSchema);
+                alert("Nuevo diagrama - "+ nameSchema);
+                contSchema++;
+                $("#nameDiagramSchema").val("");
+            }
+
+            function addDiagramSelect(value, text) {
+                $('#DiagramSelected').append($('<option>', {
+                    value: value,
+                    text : value+"-"+text
+                }));
+                changeDiagramFlag = true;
+                $('#DiagramSelected option[value='+ value +']').prop('selected', 'selected').change();
+                changeDiagramFlag = false;
+
+                if(initDiagramFlag){
+                    $("#DiagramSelected option[value='initDiagram']").remove();
+                    $('#DiagramSelected').on( "change", function () {
+                        if(!changeDiagramFlag){
+                            let value = parseInt($(this).val(), 10);
+                            iframeWindow.changeDiagram(value);
+                        }
+                    });
+                    initDiagramFlag = false;
+                }
+            }
+
+            function saveDiagramUseNow(){
+                iframeWindow.saveSourceDiagram();
+                let collectionSourceDiagram = iframeWindow.getSourceDiagram();
+                let collectionDiagrams      = iframeWindow.getDataDiagram();
+                zAu.send(new zk.Event(zk.Widget.$(jq('$lbl1')), "onUser1", collectionSourceDiagram, {toServer:true}));
+                zAu.send(new zk.Event(zk.Widget.$(jq('$lbl2')), "onUser1", collectionDiagrams, {toServer:true}));
+                alert("Diagrama guardado");
+                zAu.send(new zk.Event(zk.Widget.$(jq('$info_diagrama')), "onChanging", "", {toServer:true}));
+            }
+
+            function exportImaggeDiagram() {
+                let viewImageDiagra = iframeWindow.getImageDiagram();
+                $("#viewImageDiagra").attr("src",viewImageDiagra);
+            }
+
+            function reloadDiagram() {
+                console.log("Buscando diagramas creados");
+                $('#diagram').on("load", function() {
+                    let info_diagrama = zk.Widget.$(jq('$info_diagrama')).getValue();
+                    let data_json = zk.Widget.$(jq('$data_json')).getValue();
+
+                    if(info_diagrama != "" && data_json != "" ){
+                        initContentiFrame();
+                        iframeWindow.loadDiagram(info_diagrama, data_json);
+                        let info_diagrama_obj = $.parseJSON(info_diagrama);
+                        for(let index = 0; index < info_diagrama_obj.length; index++){
+                            addDiagramSelect(index, info_diagrama_obj[index].name);
+                        }
+                        contSchema = info_diagrama_obj.length;
+                    }
+                });
+            }
+
+            function replacer(json) {
+                json = json.toString();
+                json = json.replace(/\\n/g, "\\n")
+                    .replace(/\\'/g, "\\'")
+                    .replace(/\\"/g, '\\"')
+                    .replace(/\\&/g, "\\&")
+                    .replace(/\\r/g, "\\r")
+                    .replace(/\\t/g, "\\t")
+                    .replace(/\\b/g, "\\b")
+                    .replace(/\\f/g, "\\f");
+                json = json.replace(/[\u0000-\u0019]+/g,"");
+                return json;
+            }
+
+
+            ]]>
+        </script>
+    </window>
+</zk>

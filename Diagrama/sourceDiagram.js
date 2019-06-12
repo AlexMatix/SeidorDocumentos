@@ -12,7 +12,7 @@ var saveUseDiagram = true;
 var changeDiagramFlag  = false;
 var pathOutput = "/egovstyles/js/diagram/icons/salidas/";
 var pathInput = "/egovstyles/js/diagram/icons/entradas/";
-
+var test;
 
 function newDiagram(name) {
 
@@ -36,8 +36,6 @@ function newDiagram(name) {
 }
 
 function initDiagram() {
-    // router = new draw2d.layout.connection.CircuitConnectionRouter();
-    // router.abortRoutingOnFirstVertexNode = false;
 
     setDecorationLine();
 
@@ -46,6 +44,16 @@ function initDiagram() {
         if(changeDiagramFlag){
             restaureItemTable(event.figure);
         }
+    });
+
+    canvas.on("select", function(emitter, event){
+        console.log("Figura seleccionada --> ", event.figure.id);
+        setViewPropertiesBlock(event.figure.id);
+    });
+
+    canvas.on("unselect", function(emitter, event){
+        console.log("Figura Unseleccionada --> ", event.figure.id);
+        resetCheckboxProperties();
     });
 
 }
@@ -223,7 +231,6 @@ function saveSourceDiagram() {
     saveUseDiagram = true;
 }
 
-
 function changeDiagram(number) {
 
     if(typeof collectionSourceDiagram[number] === 'undefined'){
@@ -280,7 +287,19 @@ function loadDiagram(json_diagram, json_data) {
     changeDiagram(0);
 }
 
-
+function replacer(json) {
+    json = json.toString();
+    json = json.replace(/\\n/g, "\\n")
+        .replace(/\\'/g, "\\'")
+        .replace(/\\"/g, '\\"')
+        .replace(/\\&/g, "\\&")
+        .replace(/\\r/g, "\\r")
+        .replace(/\\t/g, "\\t")
+        .replace(/\\b/g, "\\b")
+        .replace(/\\f/g, "\\f");
+    json = json.replace(/[\u0000-\u0019]+/g,"");
+    return json;
+}
 
 let json = "[{\"json\":\"[{\\\"type\\\":\\\"draw2d.shape.layout.TableLayout\\\",\\\"id\\\":\\\"0810401d-777d-f29b-4d64-c73eeceb266a\\\",\\\"x\\\":10,\\\"y\\\":10,\\\"width\\\":30.34375,\\\"height\\\":44,\\\"alpha\\\":1,\\\"angle\\\":0,\\\"userData\\\":{},\\\"cssClass\\\":\\\"draw2d_shape_layout_TableLayout\\\",\\\"ports\\\":[{\\\"type\\\":\\\"draw2d.InputPort\\\",\\\"id\\\":\\\"cca21b0c-a8a6-c53f-6b8d-92e15eeb953c\\\",\\\"width\\\":10,\\\"height\\\":10,\\\"alpha\\\":1,\\\"angle\\\":0,\\\"userData\\\":{},\\\"cssClass\\\":\\\"draw2d_InputPort\\\",\\\"bgColor\\\":\\\"#4F6870\\\",\\\"color\\\":\\\"#1B1B1B\\\",\\\"stroke\\\":1,\\\"dasharray\\\":null,\\\"maxFanOut\\\":9007199254740991,\\\"name\\\":null,\\\"port\\\":\\\"draw2d.InputPort\\\",\\\"locator\\\":\\\"draw2d.layout.locator.InputPortLocator\\\"},{\\\"type\\\":\\\"draw2d.OutputPort\\\",\\\"id\\\":\\\"545d7165-1757-d155-4037-3921cba6a3db\\\",\\\"width\\\":10,\\\"height\\\":10,\\\"alpha\\\":1,\\\"angle\\\":0,\\\"userData\\\":{},\\\"cssClass\\\":\\\"draw2d_OutputPort\\\",\\\"bgColor\\\":\\\"#4F6870\\\",\\\"color\\\":\\\"#1B1B1B\\\",\\\"stroke\\\":1,\\\"dasharray\\\":null,\\\"maxFanOut\\\":9007199254740991,\\\"name\\\":null,\\\"port\\\":\\\"draw2d.OutputPort\\\",\\\"locator\\\":\\\"draw2d.layout.locator.OutputPortLocator\\\"}],\\\"bgColor\\\":\\\"none\\\",\\\"color\\\":\\\"#1B1B1B\\\",\\\"stroke\\\":1,\\\"radius\\\":0,\\\"dasharray\\\":null},{\\\"type\\\":\\\"draw2d.shape.layout.TableLayout\\\",\\\"id\\\":\\\"e0d2708d-9c73-ccce-4932-19088a41aae5\\\",\\\"x\\\":149,\\\"y\\\":48,\\\"width\\\":30.34375,\\\"height\\\":44,\\\"alpha\\\":1,\\\"angle\\\":0,\\\"userData\\\":{},\\\"cssClass\\\":\\\"draw2d_shape_layout_TableLayout\\\",\\\"ports\\\":[{\\\"type\\\":\\\"draw2d.InputPort\\\",\\\"id\\\":\\\"35e514de-9b0e-2d1e-1e93-dc1d1bf22345\\\",\\\"width\\\":10,\\\"height\\\":10,\\\"alpha\\\":1,\\\"angle\\\":0,\\\"userData\\\":{},\\\"cssClass\\\":\\\"draw2d_InputPort\\\",\\\"bgColor\\\":\\\"#4F6870\\\",\\\"color\\\":\\\"#1B1B1B\\\",\\\"stroke\\\":1,\\\"dasharray\\\":null,\\\"maxFanOut\\\":9007199254740991,\\\"name\\\":null,\\\"port\\\":\\\"draw2d.InputPort\\\",\\\"locator\\\":\\\"draw2d.layout.locator.InputPortLocator\\\"},{\\\"type\\\":\\\"draw2d.OutputPort\\\",\\\"id\\\":\\\"2523efcb-306b-79fc-594d-d21f1d02a512\\\",\\\"width\\\":10,\\\"height\\\":10,\\\"alpha\\\":1,\\\"angle\\\":0,\\\"userData\\\":{},\\\"cssClass\\\":\\\"draw2d_OutputPort\\\",\\\"bgColor\\\":\\\"#4F6870\\\",\\\"color\\\":\\\"#1B1B1B\\\",\\\"stroke\\\":1,\\\"dasharray\\\":null,\\\"maxFanOut\\\":9007199254740991,\\\"name\\\":null,\\\"port\\\":\\\"draw2d.OutputPort\\\",\\\"locator\\\":\\\"draw2d.layout.locator.OutputPortLocator\\\"}],\\\"bgColor\\\":\\\"none\\\",\\\"color\\\":\\\"#1B1B1B\\\",\\\"stroke\\\":1,\\\"radius\\\":0,\\\"dasharray\\\":null},{\\\"type\\\":\\\"draw2d.Connection\\\",\\\"id\\\":\\\"36a7a409-fee3-9749-fa56-bf9ec946d7ba\\\",\\\"alpha\\\":1,\\\"angle\\\":0,\\\"userData\\\":{},\\\"cssClass\\\":\\\"draw2d_Connection\\\",\\\"stroke\\\":2,\\\"color\\\":\\\"#787473\\\",\\\"outlineStroke\\\":1,\\\"outlineColor\\\":\\\"#FFFAF5\\\",\\\"policy\\\":\\\"draw2d.policy.line.LineSelectionFeedbackPolicy\\\",\\\"vertex\\\":[{\\\"x\\\":40.34375,\\\"y\\\":32},{\\\"x\\\":94.671875,\\\"y\\\":32},{\\\"x\\\":94.671875,\\\"y\\\":70},{\\\"x\\\":149,\\\"y\\\":70}],\\\"router\\\":\\\"draw2d.layout.connection.CircuitConnectionRouter\\\",\\\"radius\\\":3,\\\"source\\\":{\\\"node\\\":\\\"0810401d-777d-f29b-4d64-c73eeceb266a\\\",\\\"port\\\":null,\\\"decoration\\\":\\\"draw2d.decoration.connection.BarDecorator\\\"},\\\"target\\\":{\\\"node\\\":\\\"e0d2708d-9c73-ccce-4932-19088a41aae5\\\",\\\"port\\\":null,\\\"decoration\\\":\\\"draw2d.decoration.connection.DiamondDecorator\\\"}}]\",\"name\":\"asd\"}]";
 let json_data = "[{\"nameDiagram\":\"asd\",\"numberDiagram\":1,\"asd\":[{\"id\":\"0810401d-777d-f29b-4d64-c73eeceb266a\",\"type\":\"1\",\"number\":\"1\",\"dialog\":\"asd\",\"propertiesInput\":[],\"propertiesOutput\":[],\"propertiesRelated\":[]},{\"id\":\"e0d2708d-9c73-ccce-4932-19088a41aae5\",\"type\":\"1\",\"number\":\"2\",\"dialog\":\"asd\",\"propertiesInput\":[],\"propertiesOutput\":[],\"propertiesRelated\":[]}]}]";
