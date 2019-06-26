@@ -8,12 +8,14 @@
 	<zscript>
 		import ieci.tdw.ispac.adapter.TransactAdapterI;
 		import ieci.tdw.ispac.entity.EntityAdapter;
+		import ieci.tdw.ispac.entity.adapter.ACCACombustionAdapter;
 
 		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+		ACCACombustionAdapter accaAdapter = accaDatosCombustionController.read(ebeanDetail);
 
 		update(){
-			fcv.validate(ewin);
-			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+			fcv.validate(vwin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, vwin);
 		}
 
 		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
@@ -75,11 +77,10 @@
           	<div sclass="separatorEdit"></div>
 
           	<div class="col-md-12">
-	          	<listbox id="date_combustion" onCreate="pwGeneralAdapter.loadWork(self, true, ewin, catalogManager.getCatalogs(421));" style="">
+	          	<listbox id="date_combustion" onCreate="accaAdapter.loadProgramateDateCombustion(self,false, vwin);" style="">
 	            	<listhead>
 	                	<listheader label="Hora" hflex="1"></listheader>
 		                <listheader label="Fecha" hflex="1"></listheader>
-		                <listheader label="Accion" hflex="1"></listheader>
 	              	</listhead>
 	          	</listbox>
       		</div>
@@ -95,12 +96,11 @@
           	<div sclass="separatorEdit"></div>
 
           	<div class="col-md-12">
-	          	<listbox id="quantity_combustion" onCreate="pwGeneralAdapter.loadWork(self, true, ewin, catalogManager.getCatalogs(421));" style="">
+	          	<listbox id="quantity_combustion" onCreate="accaAdapter.loadQuantityCombustion(self,false,vwin);" style="">
 	            	<listhead>
 	                	<listheader label="Combustible" hflex="1"></listheader>
 		                <listheader label="Cantidad" hflex="1"></listheader>
 		                <listheader label="Estado" hflex="1"></listheader>
-		                <listheader label="Accion" hflex="1"></listheader>
 	              	</listhead>
 	          	</listbox>
       		</div>

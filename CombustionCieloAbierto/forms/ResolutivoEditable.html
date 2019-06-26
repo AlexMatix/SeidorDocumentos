@@ -1,0 +1,54 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./ewin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+    <window id="ewin" border="none" onCreate="entityController.loadEdit(ebeanDetail, self);" >
+
+        <zscript>
+            import ieci.tdw.ispac.adapter.TransactAdapterI;
+            import ieci.tdw.ispac.entity.EntityAdapter;
+
+            EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+            update(){
+            fcv.validate(ewin);
+            entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+            entityUtilController.assignOfficialData(transactDetail, ebeanDetail, ewin, "ACCA_F3");
+            }
+
+            TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+        </zscript>
+
+        <div class="row editBox" >
+            <div class="row editHeader">
+                <div class="col-md-12" align="right" >
+                    <custom-attributes removeOnPortal="true" ></custom-attributes>
+                        <button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
+                </div>
+            </div>
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Datos de resolutivo" sclass="detailField"></label>
+                </div>
+            </div>
+
+            <div sclass="separatorEdit" ></div>
+            <div class="row gridCard">
+                <div class="col-md-4">
+                    <label value="Número de oficio*" sclass="editField" ></label>
+                    <h:p> <textbox id="trade_number" maxlength="50"  ></textbox> </h:p>
+                </div>
+                <div class="col-md-4">
+                    <label value="Fecha de oficio*" sclass="editField" ></label>
+                    <h:p> <datebox id="date_trade"  ></datebox> </h:p>
+                </div>
+                <div class="col-md-4">
+                    <label value="Iniciales de funcionario" sclass="editField" ></label>
+                    <h:p> <textbox id="abbreviation_elaborated" maxlength="10"  ></textbox> </h:p>
+                </div>
+            </div>
+
+        </div>
+
+    </window>
+</zk>
