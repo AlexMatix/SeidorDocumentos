@@ -1,0 +1,45 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./vwin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+    <window id="vwin" border="none" onCreate="entityController.loadView(ebeanDetail, self);" >
+
+        <zscript>
+            import ieci.tdw.ispac.adapter.TransactAdapterI;
+            import ieci.tdw.ispac.entity.EntityAdapter;
+
+            EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+            update(){
+            fcv.validate(ewin);
+            entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+            }
+
+            TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+        </zscript>
+
+        <div class="row detailBox" >
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Datos de resolutivo" sclass="detailField"/>
+                </div>
+            </div>
+            <div class="row gridCard">
+                <div class="col-md-4">
+                    <label value="Número de oficio" sclass="detailField" ></label>
+                    <h:p> <label id="trade_number" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-4">
+                    <label value="Fecha de oficio" sclass="detailField" ></label>
+                    <h:p> <label id="date_trade" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-4">
+                    <label value="Iniciales de funcionario" sclass="detailField" ></label>
+                    <h:p> <label id="abbreviation_elaborated" sclass="detailData" ></label> </h:p>
+                </div>
+            </div>
+
+        </div>
+
+    </window>
+</zk>

@@ -17,7 +17,6 @@
     ArrayList uomCatalog = catalogManager.getCatalogs(421);
 
     EntityAdapter ebeanDetail         = Executions.getCurrent().getArg().get("adapter");
-    
     PWGeneralAdapter pwGeneralAdapter = pwGeneralController.read(ebeanDetail);
 
     update(){
