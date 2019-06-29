@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConstanciaVerificacion" pageWidth="612" pageHeight="792" columnWidth="522" leftMargin="50" rightMargin="40" topMargin="20" bottomMargin="0" uuid="6c50ef1e-4cb4-4e54-ab16-ec55fa13560c">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConstanciaVerificacion" pageWidth="650" pageHeight="850" columnWidth="570" leftMargin="40" rightMargin="40" topMargin="20" bottomMargin="0" uuid="6c50ef1e-4cb4-4e54-ab16-ec55fa13560c">
 	<property name="ireport.zoom" value="0.9982500000000004"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="97"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -63,35 +63,85 @@
 			<pen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="quantity_combustion" uuid="837cba3a-d466-48e2-98f3-b6f087879288">
+		<field name="fuel" class="java.lang.String"/>
+		<field name="quantity" class="java.lang.String"/>
+		<field name="status" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="progrmate_combustion" uuid="f383d432-11c5-41b2-ac6c-57059b54c127">
+		<field name="date" class="java.lang.String"/>
+		<field name="time" class="java.lang.String"/>
+	</subDataset>
 	<parameter name="LongFormatedDate[time_now]" class="java.lang.String"/>
 	<parameter name="SimpleFormatedDate[time_now]" class="java.lang.String"/>
 	<parameter name="styles_url" class="java.lang.String">
 		<defaultValueExpression><![CDATA["http://tramitesdev.queretaro.gob.mx:8080/egovstyles/"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="F_PW_GENERAL_no_office" class="java.lang.String">
-		<defaultValueExpression><![CDATA["SIN OFICIO"]]></defaultValueExpression>
-	</parameter>
-	<parameter name="F_PW_GENERAL_date_office" class="java.lang.String"/>
-	<parameter name="F_PW_GENERAL_location_works" class="java.lang.String"/>
-	<parameter name="F_PW_GENERAL_name_aplicant" class="java.lang.String"/>
-	<parameter name="F_PW_GENERAL_position" class="java.lang.String"/>
-	<parameter name="F_PW_RESOLUTIVOS_name_works_concat" class="java.lang.String"/>
+	<parameter name="F_CCA_GENERAL_agent_name" class="java.lang.String"/>
+	<parameter name="F_CCA_GENERAL_company_name" class="java.lang.String"/>
+	<parameter name="F_CCA_GENERAL_street" class="java.lang.String"/>
+	<parameter name="F_CCA_GENERAL_municipality" class="java.lang.String"/>
+	<parameter name="F_CCA_GENERAL_Ciudad" class="java.lang.String"/>
+	<parameter name="F_CCA_GENERAL_neighborhood" class="java.lang.String"/>
+	<parameter name="ListFromJsonGeneric[F_ACCA_DATOS_COMBUSTION_date_combustion_json]" class="java.util.List"/>
+	<parameter name="ListFromJsonGeneric[F_ACCA_DATOS_COMBUSTION_quantity_combustion_json]" class="java.util.List"/>
+	<parameter name="F_CCA_GENERAL_numexp" class="java.lang.String"/>
 	<pageHeader>
-		<band height="65">
+		<band height="54">
 			<image scaleImage="RetainShape" hAlign="Center" vAlign="Bottom">
-				<reportElement mode="Transparent" x="-51" y="0" width="614" height="54" backcolor="#FFFFFF" uuid="1460f06c-89df-48cf-a6ab-480df30cf67b"/>
+				<reportElement mode="Transparent" x="-38" y="0" width="641" height="54" backcolor="#FFFFFF" uuid="1460f06c-89df-48cf-a6ab-480df30cf67b"/>
 				<imageExpression><![CDATA[$P{styles_url} + "images/report/sedesu/header.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="117">
+		<band height="123">
 			<staticText>
-				<reportElement x="0" y="95" width="241" height="20" uuid="a59079f5-1050-49aa-b27f-3256f45f810a"/>
+				<reportElement x="0" y="103" width="241" height="20" uuid="a59079f5-1050-49aa-b27f-3256f45f810a"/>
 				<textElement>
-					<font isBold="true"/>
+					<font size="11" isBold="true"/>
 				</textElement>
-				<text><![CDATA[PRESENTE]]></text>
+				<text><![CDATA[P R E S E N T E]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="272" y="41" width="212" height="20" uuid="c4dab22a-df5f-440c-9f16-ef59cfc7fb8a"/>
@@ -102,88 +152,211 @@
 				<text><![CDATA[ SEDESU/SSMA/                              /2019]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="41" width="241" height="17" uuid="4e2c870f-4e48-4863-a190-9eba58dbc81f"/>
+				<reportElement x="0" y="24" width="241" height="17" uuid="4e2c870f-4e48-4863-a190-9eba58dbc81f"/>
 				<textElement>
 					<font size="11" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{F_PW_GENERAL_location_works}.toUpperCase()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{F_CCA_GENERAL_agent_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="57" width="241" height="20" uuid="7d26f744-b496-49b2-9b51-7535f491be79"/>
+				<reportElement x="0" y="61" width="241" height="20" uuid="7d26f744-b496-49b2-9b51-7535f491be79"/>
 				<textElement>
 					<font size="11" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{F_PW_GENERAL_name_aplicant}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{F_CCA_GENERAL_company_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="77" width="241" height="18" uuid="3578c18c-3937-45d9-9ff7-d4bd8cc4138a"/>
+				<reportElement x="0" y="80" width="241" height="24" uuid="3578c18c-3937-45d9-9ff7-d4bd8cc4138a"/>
 				<textElement>
 					<font size="11" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{F_PW_GENERAL_position}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{F_CCA_GENERAL_street} + "\nMunicipio de " + $P{F_CCA_GENERAL_municipality} +", \n"+ $P{F_CCA_GENERAL_Ciudad} +", "+$P{F_CCA_GENERAL_neighborhood}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="0" y="41" width="241" height="20" uuid="1020392b-798c-47b3-b1ba-76a98e7508ec"/>
+				<textElement>
+					<font size="11" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Representante Legal]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="469" splitType="Stretch">
+		<band height="120" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="18" width="522" height="90" uuid="d16d3255-04ca-48c8-a385-5dfd15da56e5"/>
+				<reportElement x="0" y="6" width="570" height="84" uuid="d16d3255-04ca-48c8-a385-5dfd15da56e5"/>
 				<textElement textAlignment="Justified">
 					<font size="10" isBold="false" isStrikeThrough="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Con fundamento en los artículos 4, 8 y 16 de la Constitución Política de los Estados Unidos Mexicanos; artículo 20 párrafo tercero y 22 fracciones I y XIV de la Constitución Política del Estado de Querétaro; artículo 3, 19 fracción IV y 25 fracción XIII de la ley Orgánica del poder Ejecutivo del Estado de Querétaro artículos 1, 6 fracción I, 7 fracción XIV, 52, 53 y 54 de la ley de Protección Ambiental para e desarrollo sustetable del Estado de Querétaro y en atención en su solicitud de evaluación en materia de impacto ambiental en las obras publicas a los que se requiere en el oficio " + $P{F_PW_GENERAL_no_office} + ", de fecha " + $P{F_PW_GENERAL_date_office} + ", recibido en está Secretaria el mismo día; al respecto le comento lo siguiente:"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["En atención a su solicitud de permiso de combustión a cielo abierto y con fundamento en los artículos 1,2 fr. VI, 124, 125 fr. III y X, 155, 177fr. VI y 179 de la ley de Protección Ambiental para el Desarrollo Sustentable del Estado de Querétaro y de conformidad al Acuerdo Delegatorio de fecha 02 de febrero de 2016 a favor del suscrito, se autoriza llevar a cabo una capacitación para el manejo de extintores, en el domicilio "+ $P{F_CCA_GENERAL_street} + " "+ $P{F_CCA_GENERAL_municipality}+ " "+ $P{F_CCA_GENERAL_Ciudad}+" "+ $P{F_CCA_GENERAL_neighborhood} +"., según lo manifestado en su solicitud; debiendo cumplir con las siguientes condicionantes:"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="163" width="522" height="29" uuid="874a772c-9410-4faa-9807-5d90ed6750f1"/>
-				<textElement textAlignment="Justified">
-					<font size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Para las demás obras publicas mencionadas en el oficio de mérito, no requiere contar con la autorización del material de Impacto Ambiental por parte de esta Secretaria."]]></textFieldExpression>
+				<reportElement x="76" y="90" width="494" height="24" uuid="500720aa-a54f-456c-9da7-82b329a2cf38"/>
+				<textFieldExpression><![CDATA["Se sutoriza lo siguiente:"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="209" width="522" height="32" uuid="36cfad4c-f7b7-4db4-b9f2-5ffef647aeda"/>
-				<textElement textAlignment="Justified">
-					<font size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA["No obstante lo anterior, se hace de su conocimiento que por ningún motivo el presente documento representa una autorización de desmonte de vegetación."]]></textFieldExpression>
+				<reportElement x="0" y="90" width="76" height="24" uuid="22404cc9-4be8-4333-ac89-d0fce3b0bdbb"/>
+				<textFieldExpression><![CDATA["\t1."]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="56">
+			<componentElement>
+				<reportElement key="table 3" style="table 3" x="116" y="0" width="345" height="46" uuid="c710a965-eca3-46d3-a82d-00f39aa345aa"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="quantity_combustion" uuid="ebc8e7cc-3a1c-4ae2-a7ff-bb0d4e3f44c4">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{ListFromJsonGeneric[F_ACCA_DATOS_COMBUSTION_quantity_combustion_json]}, false)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="2847ad94-2842-42e3-bbc3-ccd8524af588">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="7d9aa641-1bb9-4960-ab4c-c3c92b732e86"/>
+								<text><![CDATA[Combustible]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="a13a3b62-3283-4960-873c-71a82b8cb700"/>
+								<textFieldExpression><![CDATA[$F{fuel}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="6fb240b1-3b10-4c96-9b47-3000664ef455">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="29e5bcde-c650-45c0-801d-885881e802e0"/>
+								<text><![CDATA[Cantidad]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="8a5d7f67-0af4-49af-af23-4d83c30b57bd"/>
+								<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="a227365b-95d2-4a8a-84b8-9d7d19efe06d">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="0ed9a316-1c54-4a16-9bee-b0484838b1eb"/>
+								<text><![CDATA[Estado]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="cf72d1d8-0e40-47c3-88b5-3785501fc17e"/>
+								<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="69">
+			<componentElement>
+				<reportElement key="table 4" style="table 4" x="116" y="0" width="345" height="56" uuid="ed0dff70-a06b-4a5e-995b-b19a5f436ec7"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="progrmate_combustion" uuid="7dd7b54c-bca5-4944-9f1f-33cda9450b93">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{ListFromJsonGeneric[F_ACCA_DATOS_COMBUSTION_date_combustion_json]}, false)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="5aa7171a-cc8d-4f96-a225-c151405dbfe2">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="932ba532-0c7a-46da-b36a-fd45bbfe83e9"/>
+								<text><![CDATA[Fecha]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="adb74e19-32a9-4dc6-a31f-a7833eefbc21"/>
+								<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="a2d1130c-56ed-49cf-ab27-63562ad84116">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="39f90f79-8ec6-4cac-a1db-3245a0beaade"/>
+								<text><![CDATA[Hora]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="e8197fbd-384d-4224-adb1-bd321673630a"/>
+								<textFieldExpression><![CDATA[$F{time}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="146">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="26" uuid="72623f7d-87c7-4bb5-88d3-71283e5a26d8"/>
+				<textFieldExpression><![CDATA["\t2."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="266" width="522" height="41" uuid="3c93b40d-b6f0-4821-88a9-1732254eb515"/>
-				<textElement textAlignment="Justified">
-					<font size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Asimismo, le comento que este documento solo se reviso lo relativo a Impacto Ambientales, por que por ningún motivo exime de contar con la autorización que por competencia corresponda emitir a otras Dependencias."]]></textFieldExpression>
+				<reportElement x="0" y="32" width="100" height="28" uuid="32c30c50-d562-4073-b24f-5ccb19496b07"/>
+				<textFieldExpression><![CDATA["\t 3."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="328" width="257" height="20" uuid="b3217947-da8e-40da-9134-799a7712f87b"/>
-				<textFieldExpression><![CDATA["Sin más por el momento le envió un cordial saludo."]]></textFieldExpression>
+				<reportElement x="0" y="67" width="100" height="30" uuid="b1f69053-8f57-4baf-8c2f-c2836153b106"/>
+				<textFieldExpression><![CDATA["\t 4."]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="0" y="107" width="100" height="34" uuid="3120576f-524b-425e-b7ea-4df97355ef86"/>
+				<textFieldExpression><![CDATA["\t5."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="470" height="26" uuid="3e7ee059-05d8-4a19-9b4d-8d801eff5187"/>
+				<textFieldExpression><![CDATA["Deberá notificar a Protección Civil del Municipio de San Juan del Rio, Qro. en un plazo no mayor a 72 horas previo al evento programado, vía oficio y/o telefónica."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="32" width="470" height="28" uuid="b3d1177f-8bbb-4e07-afec-0189203ab7d9"/>
+				<textFieldExpression><![CDATA[$P{F_CCA_GENERAL_company_name} +", deberá sujetarse a lo establecido por la NOM-002-STPS-2000, referente a las condiciones de seguridad, prevención, protección y combate de incendios en los centros de trabajo."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="67" width="470" height="30" uuid="79f41b15-c014-4044-8c9a-db3f95702b06"/>
+				<textFieldExpression><![CDATA["Deberá contar con equipo y personas capacitado para atender dicho evento. Deberá contar con equipo y personas capacitado para atender dicho evento."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="107" width="470" height="34" uuid="9ef49bf5-7a6a-462a-88f6-b657edbc527b"/>
+				<textFieldExpression><![CDATA["En caso de presentarse alguna contingencia durante el evento, deberá aplicar las medidas necesarias para su antención inmediata. \n\t 6. Cualquier cambio deberá informar a esta Secretaría."]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="47">
 			<staticText>
-				<reportElement x="210" y="366" width="100" height="20" uuid="bab63da3-7de9-4038-8f94-37e81df8529f"/>
+				<reportElement x="0" y="0" width="563" height="34" uuid="3da22043-3fe7-4cdd-977a-f0ea07b36799"/>
+				<text><![CDATA[En caso de incumplir lo señalado, podrá hacerse acreedor a una o más de las sanciones establecidas en el artículo 183 de la Ley de Protección Ambiental para el Desarrollo Sustentable del Estado de Querétaro.]]></text>
+			</staticText>
+		</band>
+		<band height="77">
+			<staticText>
+				<reportElement x="241" y="0" width="100" height="20" uuid="bab63da3-7de9-4038-8f94-37e81df8529f"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Atentamente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="149" y="423" width="221" height="33" uuid="0d6cec2e-68d6-4e95-b1ea-163638f53183"/>
+				<reportElement x="183" y="42" width="221" height="33" uuid="0d6cec2e-68d6-4e95-b1ea-163638f53183"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Ing. Ricardo Javier Torres Hernandez
-Subsecretario del Medio Ambiente]]></text>
+				<text><![CDATA[Ing. Marisol Guerrero Jiménez
+Directora de Control Ambiental.]]></text>
 			</staticText>
+		</band>
+		<band height="73">
 			<textField>
-				<reportElement x="0" y="123" width="522" height="29" uuid="fb3032f4-7b42-4f3e-9c8e-583bb0dbe495"/>
-				<textElement textAlignment="Justified"/>
-				<textFieldExpression><![CDATA["Para la obra(s) pubica(s) denominada(s) \"" + $P{F_PW_RESOLUTIVOS_name_works_concat}  + "\" require ingresar a la secretaria más información de la obra a realizar, en donde se llevará acabo la misma y la superficie de dicho poligono."]]></textFieldExpression>
+				<reportElement x="0" y="25" width="563" height="48" uuid="bfd3787c-7a86-4dab-ba0f-2340ee33515d"/>
+				<textFieldExpression><![CDATA["C.c.p.- \n\t Ing. Marco Antonio del Prete Tercero.- Secretario de Desarrollo Sustentable. \n\t Ing. Ricardo Javier Torres Hernández - Subsecretario de Medio Ambiente \n\t Expediente Archivo. \n"+ $P{F_CCA_GENERAL_numexp} +" \n SMA2421"]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="100">
+		<band height="88">
 			<image scaleImage="RetainShape" hAlign="Center" vAlign="Bottom">
-				<reportElement mode="Transparent" x="-51" y="0" width="614" height="100" backcolor="#FFFFFF" uuid="1805fdd3-edca-48ae-82c5-d63918973a8f"/>
+				<reportElement mode="Transparent" x="-38" y="0" width="641" height="88" backcolor="#FFFFFF" uuid="1805fdd3-edca-48ae-82c5-d63918973a8f"/>
 				<imageExpression><![CDATA[$P{styles_url} + "images/report/sedesu/footer.png"]]></imageExpression>
 			</image>
 		</band>
