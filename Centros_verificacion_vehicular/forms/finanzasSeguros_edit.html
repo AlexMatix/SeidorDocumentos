@@ -1,0 +1,84 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./ewin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+    <window id="ewin" border="none" onCreate="entityController.loadEdit(ebeanDetail, self);" >
+
+        <zscript>
+            import ieci.tdw.ispac.adapter.TransactAdapterI;
+            import ieci.tdw.ispac.entity.EntityAdapter;
+
+            EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+            update(){
+            fcv.validate(ewin);
+            entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+            }
+
+            TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+        </zscript>
+
+        <div class="row editBox" >
+            <div class="row editHeader">
+                <div class="col-md-12" align="right" >
+                    <custom-attributes removeOnPortal="true" ></custom-attributes>
+                        <button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Servicio de Verificación" sclass="detailField"></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Número de finanza para prestar el servicio de verificación" sclass="editField" ></label>
+                    <h:p> <intbox id="number_finanza" maxlength="9"></intbox> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Razón social afianzadora" sclass="editField" ></label>
+                    <h:p> <textbox id="bussines_name" maxlength="200"  ></textbox> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Fecha de expedición" sclass="editField" ></label>
+                    <h:p> <datebox id="date_expedition"  ></datebox> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Vigencia" sclass="editField" ></label>
+                    <h:p> <textbox id="validity" maxlength="100"  ></textbox> </h:p>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Póliza de seguro de daños a terceros" sclass="detailField"></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Número de póliza de seguro de daños de terceros" sclass="editField" ></label>
+                    <h:p> <textbox id="policy_number" maxlength="100"  ></textbox> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Razón social aseguradora" sclass="editField" ></label>
+                    <h:p> <textbox id="razon_social" maxlength="255"  ></textbox> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Fecha de expedición" sclass="editField" ></label>
+                    <h:p> <datebox id="date_expedition_t"  ></datebox> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Vigencia" sclass="editField" ></label>
+                    <h:p> <textbox id="validity_t" maxlength="100"  ></textbox> </h:p>
+                </div>
+            </div>
+
+        </div>
+
+    </window>
+</zk>

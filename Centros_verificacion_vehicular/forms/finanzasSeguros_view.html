@@ -1,0 +1,78 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./vwin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+    <window id="vwin" border="none" onCreate="entityController.loadView(ebeanDetail, self);" >
+
+        <zscript>
+            import ieci.tdw.ispac.adapter.TransactAdapterI;
+            import ieci.tdw.ispac.entity.EntityAdapter;
+
+            EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+            update(){
+            fcv.validate(ewin);
+            entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+            }
+
+            TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+        </zscript>
+
+        <div class="row detailBox" >
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Servicio de Verificación" sclass="detailField"></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Número de finanza para prestar el servicio de verificación" sclass="detailField" ></label>
+                    <h:p> <label id="number_finanza" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Razón social afianzadora" sclass="detailField" ></label>
+                    <h:p> <label id="bussines_name" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Fecha de expedición" sclass="detailField" ></label>
+                    <h:p> <label id="date_expedition" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Vigencia" sclass="detailField" ></label>
+                    <h:p> <label id="validity" sclass="detailData" ></label> </h:p>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Póliza de seguro de daños a terceros" sclass="detailField"></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Número de póliza de seguro de daños de terceros" sclass="detailField" ></label>
+                    <h:p> <label id="policy_number" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Razón social aseguradora" sclass="detailField" ></label>
+                    <h:p> <label id="razon_social" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Fecha de expedición" sclass="detailField" ></label>
+                    <h:p> <label id="date_expedition_t" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Vigencia" sclass="detailField" ></label>
+                    <h:p> <label id="validity_t" sclass="detailData" ></label> </h:p>
+                </div>
+            </div>
+
+            </div>
+
+    </window>
+</zk>

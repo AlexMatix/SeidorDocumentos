@@ -19,6 +19,14 @@
             Clients.evalJavaScript("reloadDiagram()");
             }
 
+            public void initDiagram(){
+                Clients.evalJavaScript("reloadDiagram()");
+            }
+
+            public void loadPreViewImage(){
+                Clients.evalJavaScript("exportImageDiagram()");
+                coaInitController.loadModalViewImage(ewin);
+            }
             TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
         </zscript>
         <h:link rel="stylesheet" href="${stylesUrl}styles/diagram/style.css"></h:link>
@@ -34,20 +42,9 @@
                 <h:nav class="navbar navbar-inverse" style="margin-bottom : 0px">
                     <h:div class="container-fluid">
                         <h:ul class="nav navbar-nav">
-                            <h:li class="marginList">
-                                <button class="btn btn-default navbar-btn" iconSclass="fa fa-save" w:onClick="saveDiagramUseNow()" tooltiptext="Guardar diagrama" disabled="true"> </button>
-                            </h:li>
 
                             <h:li class="marginList">
-                                <button class="btn btn-default navbar-btn" iconSclass="fa fa-file-image-o" w:onClick="exportImaggeDiagram()" tooltiptext="Exportar a imagen"> </button>
-                            </h:li>
-
-                            <h:li class="marginList">
-                                <button class="btn btn-default navbar-btn" w:onClick="newDiagram()" iconSclass="fa fa-plus" tooltiptext="Agregar diagrama" disabled="true"></button>
-                            </h:li>
-
-                            <h:li class="marginList">
-                                <h:input id="nameDiagramSchema" type="text" class="form-control marginInputList" placeholder="Nombre de diagrama" disabled="true"></h:input>
+                                <button class="btn btn-default navbar-btn" iconSclass="fa fa-file-image-o" onClick="loadPreViewImage();"  tooltiptext="Exportar a imagen"> </button>
                             </h:li>
 
                             <h:li class="marginList">
@@ -59,19 +56,19 @@
                         </h:ul>
                     </h:div>
                 </h:nav>
-                <h:iframe id="diagram" style="width:100%; height:900px;border:3px inset;" src="http://localhost:8080/egovstyles/iFrameDiagramContent_view.html">
+                <h:iframe id="diagram" style="width:100%; height:900px;border:3px inset;" src="http://tramitesdev.queretaro.gob.mx:8080/egovstyles/iFrameDiagramContent_view.html">
 
                 </h:iframe>
             </window>
 
-            <div class="row gridCard" visible="false">
+            <div class="row gridCard" visible="true">
                 <div class="col-md-12">
                     <h:img id="viewImageDiagra"></h:img>
                 </div>
             </div>
 
             <!-- Campo para almacenar datos -->
-            <div class="row gridCard" visible="true">
+            <div class="row gridCard" visible="fale">
                 <div class="col-md-12">
                     <label value="Datos" sclass="detailField" ></label>
                     <h:p> <label id="data_json" sclass="detailData" ></label> </h:p>
@@ -81,7 +78,11 @@
                     <h:p> <label id="info_diagrama" sclass="detailData" onCreate="initDiagram()"></label> </h:p>
                 </div>
             </div>
-        </div>
+            <div class="row gridCard" visible="true">
+                <label id="lbImageConten" onUser1="self.value = org.zkoss.lang.Objects.toString(event.data)"></label>
+                <h:p> <textbox id="imageContent" maxlength="0" onChanging="coaInitController.testValues(ewin,true);"></textbox> </h:p>
+            </div>
+            </div>
         <script type="text/javascript">
             <![CDATA[
 
@@ -140,13 +141,15 @@
                 let collectionDiagrams      = iframeWindow.getDataDiagram();
                 zAu.send(new zk.Event(zk.Widget.$(jq('$lbl1')), "onUser1", collectionSourceDiagram, {toServer:true}));
                 zAu.send(new zk.Event(zk.Widget.$(jq('$lbl2')), "onUser1", collectionDiagrams, {toServer:true}));
-                alert("Diagrama guardado");
                 zAu.send(new zk.Event(zk.Widget.$(jq('$info_diagrama')), "onChanging", "", {toServer:true}));
+                zAu.send(new zk.Event(zk.Widget.$(jq('$saveDiargam')), "onChanging", "", {toServer:true}));
             }
 
-            function exportImaggeDiagram() {
-                let viewImageDiagra = iframeWindow.getImageDiagram();
-                $("#viewImageDiagra").attr("src",viewImageDiagra);
+            function exportImageDiagram() {
+                let imageContent = iframeWindow.getImageDiagram();
+                console.log("Imagen content", imageContent);
+                zAu.send(new zk.Event(zk.Widget.$(jq('$lbImageConten')), "onUser1", imageContent, {toServer:true}));
+                zAu.send(new zk.Event(zk.Widget.$(jq('$imageContent')), "onChanging", "", {toServer:true}));
             }
 
             function reloadDiagram() {
@@ -180,8 +183,6 @@
                 json = json.replace(/[\u0000-\u0019]+/g,"");
                 return json;
             }
-
-
             ]]>
         </script>
     </window>

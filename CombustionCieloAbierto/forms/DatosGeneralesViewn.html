@@ -1,72 +1,71 @@
-
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./vwin"?>
 
 <zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
-<window id="vwin" border="none" onCreate="entityController.loadView(ebeanDetail, self);" >
+	<window id="vwin" border="none" onCreate="entityController.loadView(ebeanDetail, self);" >
 
-	<zscript>
-		import ieci.tdw.ispac.adapter.TransactAdapterI;
-		import ieci.tdw.ispac.entity.EntityAdapter;
-		import ieci.tdw.ispac.model.SystemProperties;
-		import ieci.tdw.ispac.util.SystemPropertiesUtil;
-		import ieci.tdw.ispac.constant.SystemPropertiesConstants;
-		import ieci.tdw.ispac.adapter.gmaps.GmapsResponseAdapter;
-		import ieci.tdw.ispac.constant.SigemConstants;
+		<zscript>
+			import ieci.tdw.ispac.adapter.TransactAdapterI;
+			import ieci.tdw.ispac.entity.EntityAdapter;
+			import ieci.tdw.ispac.model.SystemProperties;
+			import ieci.tdw.ispac.util.SystemPropertiesUtil;
+			import ieci.tdw.ispac.constant.SystemPropertiesConstants;
+			import ieci.tdw.ispac.adapter.gmaps.GmapsResponseAdapter;
+			import ieci.tdw.ispac.constant.SigemConstants;
 
 
-		EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+			EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
-		update(){
+			update(){
 			fcv.validate(vwin);
 			entityController.saveOrUpdate(transactDetail, ebeanDetail, vwin);
-		}
+			}
 
-		TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
-
-
-		/*********************** Start Maps **********************/
-
-		sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_APIKEY, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
-		String apiKey = sp.getStringValue();
-
-		SystemProperties sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_INITIALZOOM, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
-		Integer initialZoom = sp.getIntValue();
-
-		sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_LATITUDE, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
-		Double lat = sp.getDoubleValue();
-
-		sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_LONGITUDE, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
-		Double lng = sp.getDoubleValue();
+			TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
 
 
-		Integer radius = 100;
+			/*********************** Start Maps **********************/
 
-		Double latStored = ebeanDetail.getField("latitude");
-		Double longStored = ebeanDetail.getField("longitude");
-		Integer zoomStored = ebeanDetail.getField("zoom");
+			sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_APIKEY, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+			String apiKey = sp.getStringValue();
+
+			SystemProperties sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_INITIALZOOM, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+			Integer initialZoom = sp.getIntValue();
+
+			sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_LATITUDE, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+			Double lat = sp.getDoubleValue();
+
+			sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_LONGITUDE, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+			Double lng = sp.getDoubleValue();
 
 
-		public void prepareAddress(){
+			Integer radius = 100;
 
-		}
+			Double latStored = ebeanDetail.getField("latitude");
+			Double longStored = ebeanDetail.getField("longitude");
+			Integer zoomStored = ebeanDetail.getField("zoom");
 
 
-<!--		public void changeInitialGmaps(){-->
-<!--			Label latL  = vwin.getFellow("latitude");-->
-<!--			Label longL = vwin.getFellow("longitude");-->
-<!--			alert(latL.getValue() + "-" + longL.getValue());-->
-<!--			Double lat  =  Double.parseDouble(latL.getValue());-->
-<!--			Double long =  Double.parseDouble(longL.getValue());-->
-<!--			Double lat  =  ebeanDetail.getField("latitude");-->
-<!--			Double long =  ebeanDetail.getField("longitude");-->
-<!--			gmaps.setZoom(11);-->
-<!--			gmaps.setCenter(lat, long);-->
-<!--			marker.setLat(lat);-->
-<!--			marker.setLng(long);-->
-<!--		}-->
+			public void prepareAddress(){
 
-		public void changeInitialGmaps(){
+			}
+
+
+			<!--		public void changeInitialGmaps(){-->
+			<!--			Label latL  = vwin.getFellow("latitude");-->
+			<!--			Label longL = vwin.getFellow("longitude");-->
+			<!--			alert(latL.getValue() + "-" + longL.getValue());-->
+			<!--			Double lat  =  Double.parseDouble(latL.getValue());-->
+			<!--			Double long =  Double.parseDouble(longL.getValue());-->
+			<!--			Double lat  =  ebeanDetail.getField("latitude");-->
+			<!--			Double long =  ebeanDetail.getField("longitude");-->
+			<!--			gmaps.setZoom(11);-->
+			<!--			gmaps.setCenter(lat, long);-->
+			<!--			marker.setLat(lat);-->
+			<!--			marker.setLng(long);-->
+			<!--		}-->
+
+			public void changeInitialGmaps(){
 			if (latStored != null) latitude.setValue(latStored);
 			else latitude.setValue(lat);
 			if (longStored != null) longitude.setValue(longStored);
@@ -77,185 +76,177 @@
 			gmaps.setCenter(latitude.doubleValue(), longitude.doubleValue());
 			marker.setLat(latitude.doubleValue());
 			marker.setLng(longitude.doubleValue());
-		}
+			}
 
 
 
-		public void zoomHasChanged() {
+			public void zoomHasChanged() {
 			Intbox zoom = vwin.getFellow("zoom");
 			zoom.setValue(gmaps.getZoom());
-		}
-		/*********************** Finish Maps **********************/
-	</zscript>
-
-	<script type="text/javascript">
-		var nav = null;
-		var lat2, lng2;
-		function requestPosition() {
-			if (nav == null) {
-				nav = window.navigator;
 			}
-			if (nav != null) {
-				var geoloc = nav.geolocation;
-				if (geoloc != null) {
-					geoloc.getCurrentPosition(successCallback,errorCallback,{timeout:5000});
+			/*********************** Finish Maps **********************/
+		</zscript>
+
+		<script type="text/javascript">
+			var nav = null;
+			var lat2, lng2;
+			function requestPosition() {
+				if (nav == null) {
+					nav = window.navigator;
+				}
+				if (nav != null) {
+					var geoloc = nav.geolocation;
+					if (geoloc != null) {
+						geoloc.getCurrentPosition(successCallback,errorCallback,{timeout:5000});
+					}
+					else {
+						alert("Geolocation API is not supported in your browser");
+					}
 				}
 				else {
-					alert("Geolocation API is not supported in your browser");
+					alert("Navigator is not found");
 				}
 			}
-			else {
-				alert("Navigator is not found");
+
+			function successCallback(position) {
+				lat2 = position.coords.latitude;
+				lng2 = position.coords.longitude;
+				zk.Widget.$(jq('$latitude')).setValue(lat2);
+				zk.Widget.$(jq('$longitude')).setValue(lng2);
+
+				zk.Widget.$(jq('$latitude')).fireOnChange();
+				zk.Widget.$(jq('$longitude')).fireOnChange();
 			}
-		}
 
-		function successCallback(position) {
-			lat2 = position.coords.latitude;
-			lng2 = position.coords.longitude;
-			zk.Widget.$(jq('$latitude')).setValue(lat2);
-			zk.Widget.$(jq('$longitude')).setValue(lng2);
+			function errorCallback() {
+				alert("Google geolocation API is not working now, try later");
+			}
+		</script>
 
-			zk.Widget.$(jq('$latitude')).fireOnChange();
-			zk.Widget.$(jq('$longitude')).fireOnChange();
-		}
-
-		function errorCallback() {
-			alert("Google geolocation API is not working now, try later");
-		}
-	</script>
-
-	<div class="row detailBox" >
-		<div class="row gridCard">
-
-			<!-- PARTE DE DATOS DE PAGO -->
+		<div class="row detailBox" >
 			<div class="row gridCard">
+
+				<!-- PARTE DE DATOS DE PAGO -->
+				<div class="row gridCard">
+					<div class="col-md-12">
+						<div id="divAlert"></div>
+					</div>
+					<div class="col-md-12">
+						<label value="Datos de pago" sclass="detailField"></label>
+					</div>
+				</div>
+				<div sclass="separatorEdit" ></div>
+
+				<div class="col-md-2">
+					<label value="Año Fiscal" sclass="detailField" ></label>
+					<h:p> <label id="transaction_year" sclass="detailData" ></label> </h:p>
+				</div>
+				<div class="col-md-2">
+					<label value="Número de transacción" sclass="detailField" ></label>
+					<h:p> <label id="transaction" sclass="detailData" ></label> </h:p>
+				</div>
+				<div class="col-md-8"></div>
+				<!--FIN PARTE DE DATOS DE PAGO -->
+
+				<!-- PARTE DE DATOS GENERALES DEL CIUDADANO -->
+				<div class="row gridCard">
+					<div class="col-md-12">
+						<label value="Datos generales" sclass="detailField"></label>
+					</div>
+				</div>
+				<div sclass="separatorEdit" ></div>
+
 				<div class="col-md-12">
-					<div id="divAlert"></div>
+					<label value="Nombre y giro o actividad de la empresa o institución" sclass="detailField" ></label>
+					<h:p> <label id="company_name" sclass="detailData" ></label> </h:p>
 				</div>
 				<div class="col-md-12">
-					<label value="Datos de pago" sclass="detailField"></label>
+					<label value="Nombre y cargo del representante" sclass="detailField" ></label>
+					<h:p> <label id="agent_name" sclass="detailData" ></label> </h:p>
+				</div>
+				<!--FIN PARTE DE DATOS GENERALES DEL CIUDADANO -->
+
+				<!-- PARTE DE DATOS DE LOCALIZACIÓN DE LA FUENTE -->
+				<div class="row gridCard">
+					<div class="col-md-12">
+						<label value="Localización de la fuente" sclass="detailField"></label>
+					</div>
+				</div>
+				<div sclass="separatorEdit" ></div>
+
+				<div class="col-md-8">
+					<label value="Calle" sclass="detailField" ></label>
+					<h:p> <label id="street" sclass="detailData" ></label> </h:p>
+				</div>
+				<div class="col-md-2">
+					<label value="Número Exterior" sclass="detailField" ></label>
+					<h:p> <label id="extnum" sclass="detailData" ></label> </h:p>
+				</div>
+				<div class="col-md-2">
+					<label value="Número interior" sclass="detailField" ></label>
+					<h:p> <label id="innnum" sclass="detailData" ></label> </h:p>
+				</div>
+				<div class="col-md-2">
+					<label value="Código postal" sclass="detailField" ></label>
+					<h:p> <label id="zipcode" sclass="detailData" ></label> </h:p>
+				</div>
+				<div class="col-md-2">
+					<label value="Estado" sclass="detailField" ></label>
+					<h:p> <label id="state" sclass="detailData" ></label> </h:p>
+				</div>
+				<div class="col-md-2">
+					<label value="Municipio" sclass="detailField" ></label>
+					<h:p> <label id="municipality" sclass="detailData" ></label> </h:p>
+				</div>
+
+				<div class="col-md-3">
+					<label value="Ciudad" sclass="detailField" ></label>
+					<h:p> <label id="city" sclass="detailData" ></label> </h:p>
+				</div>
+				<div class="col-md-3">
+					<label value="Colonia" sclass="detailField" ></label>
+					<h:p> <label id="neighborhood" sclass="detailData" ></label> </h:p>
+				</div>
+				<div class="col-md-8">
+					<label value="Entre las calles" sclass="detailField" ></label>
+					<h:p> <label id="reference" sclass="detailData" ></label> </h:p>
+				</div>
+				<div class="col-md-2">
+					<label value="Teléfono fijo" sclass="detailField" ></label>
+					<h:p> <label id="telephone" sclass="detailData" ></label> </h:p>
+				</div>
+				<div class="col-md-2">
+					<label value="Celular" sclass="detailField" ></label>
+					<h:p> <label id="cellphone" sclass="detailData" ></label> </h:p>
+				</div>
+				<div class="col-md-2">
+					<label value="Latitud" sclass="detailField" ></label>
+					<h:p> <label id="latitude" sclass="detailData" ></label> </h:p>
+				</div>
+				<div class="col-md-2">
+					<label value="Longitud" sclass="detailField" ></label>
+					<h:p> <label id="longitude" sclass="detailData" ></label> </h:p>
 				</div>
 			</div>
-			<div sclass="separatorEdit" ></div>
 
-			<div class="col-md-2">
-				<label value="Año Fiscal" sclass="detailField" ></label>
-				<h:p> <label id="transaction_year" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-2">
-				<label value="Número de transacción" sclass="detailField" ></label>
-				<h:p> <label id="transaction" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-8"></div>
-			<!--FIN PARTE DE DATOS DE PAGO -->
+			<!--		<div class="row gridCard">-->
+			<!--			<div class="col-md-12" >-->
+			<!--				<script type="text/javascript" content="zk.googleAPIkey='${apiKey}'" ></script>-->
+			<!--				<gmaps id="gmaps" zoom="11" height="350px"-->
+			<!--					   onCreate="prepareAddress();changeInitialGmaps();"-->
+			<!--					   showSmallCtrl="false" onMapZoom="zoomHasChanged();">-->
+			<!--					<gmarker id="marker" draggingEnabled="false"-->
+			<!--							 content="" visible="true" ></gmarker>-->
+			<!--				</gmaps>-->
+			<!--			</div>-->
+			<!--		</div>-->
+			<!--		<separator spacing="30px"></separator>-->
+			<!--		<div visible="false">-->
+			<!--			<label value="Zoom" sclass="editField" ></label>-->
+			<!--			<h:p> <intbox id="zoom"  ></intbox> </h:p>-->
+			<!--		</div>-->
 
-			<!-- PARTE DE DATOS GENERALES DEL CIUDADANO -->
-			<div class="row gridCard">
-				<div class="col-md-12">
-					<label value="Datos generales" sclass="detailField"></label>
-				</div>
-			</div>
-			<div sclass="separatorEdit" ></div>
-
-			<div class="col-md-6">
-				<label value="Nombre de la empresa o institución" sclass="detailField" ></label>
-				<h:p> <label id="company_name" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-6">
-				<label value="Nombre del representante" sclass="detailField" ></label>
-				<h:p> <label id="agent_name" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-6">
-				<label value="Cargo de representante" sclass="detailField" ></label>
-				<h:p> <label id="agent_position" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-6">
-				<label value="Giro o Actividad de la Empresa" sclass="detailField" ></label>
-				<h:p> <label id="company_activity" sclass="detailData" ></label> </h:p>
-			</div>
-			<!--FIN PARTE DE DATOS GENERALES DEL CIUDADANO -->
-
-			<!-- PARTE DE DATOS DE LOCALIZACIÓN DE LA FUENTE -->
-			<div class="row gridCard">  
-      		  	<div class="col-md-12">
-          			<label value="Localización de la fuente" sclass="detailField"></label>
-        		</div>
-      		</div>
-      		<div sclass="separatorEdit" ></div>
-
-			<div class="col-md-8">
-				<label value="Calle" sclass="detailField" ></label>
-				<h:p> <label id="street" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-2">
-				<label value="Número Exterior" sclass="detailField" ></label>
-				<h:p> <label id="extnum" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-2">
-				<label value="Número interior" sclass="detailField" ></label>
-				<h:p> <label id="innnum" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-2">
-				<label value="Código postal" sclass="detailField" ></label>
-				<h:p> <label id="zipcode" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-2">
-				<label value="Estado" sclass="detailField" ></label>
-				<h:p> <label id="state" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-2">
-				<label value="Municipio" sclass="detailField" ></label>
-				<h:p> <label id="municipality" sclass="detailData" ></label> </h:p>
-			</div>
-
-			<div class="col-md-3">
-				<label value="Ciudad" sclass="detailField" ></label>
-				<h:p> <label id="city" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-3">
-				<label value="Colonia" sclass="detailField" ></label>
-				<h:p> <label id="neighborhood" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-8">
-				<label value="Entre las calles" sclass="detailField" ></label>
-				<h:p> <label id="reference" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-2">
-				<label value="Teléfono fijo" sclass="detailField" ></label>
-				<h:p> <label id="telephone" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-2">
-				<label value="Celular" sclass="detailField" ></label>
-				<h:p> <label id="cellphone" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-2">
-				<label value="Latitud" sclass="detailField" ></label>
-				<h:p> <label id="latitude" sclass="detailData" ></label> </h:p>
-			</div>
-			<div class="col-md-2">
-				<label value="Longitud" sclass="detailField" ></label>
-				<h:p> <label id="longitude" sclass="detailData" ></label> </h:p>
-			</div>
 		</div>
 
-<!--		<div class="row gridCard">-->
-<!--			<div class="col-md-12" >-->
-<!--				<script type="text/javascript" content="zk.googleAPIkey='${apiKey}'" ></script>-->
-<!--				<gmaps id="gmaps" zoom="11" height="350px"-->
-<!--					   onCreate="prepareAddress();changeInitialGmaps();"-->
-<!--					   showSmallCtrl="false" onMapZoom="zoomHasChanged();">-->
-<!--					<gmarker id="marker" draggingEnabled="false"-->
-<!--							 content="" visible="true" ></gmarker>-->
-<!--				</gmaps>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--		<separator spacing="30px"></separator>-->
-<!--		<div visible="false">-->
-<!--			<label value="Zoom" sclass="editField" ></label>-->
-<!--			<h:p> <intbox id="zoom"  ></intbox> </h:p>-->
-<!--		</div>-->
-
-	</div>
-
-</window>
+	</window>
 </zk>

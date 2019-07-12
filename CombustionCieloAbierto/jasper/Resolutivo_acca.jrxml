@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConstanciaVerificacion" pageWidth="650" pageHeight="850" columnWidth="570" leftMargin="40" rightMargin="40" topMargin="20" bottomMargin="0" uuid="6c50ef1e-4cb4-4e54-ab16-ec55fa13560c">
 	<property name="ireport.zoom" value="0.9982500000000004"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="97"/>
+	<property name="ireport.y" value="31"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -126,6 +126,7 @@
 	<parameter name="ListFromJsonGeneric[F_ACCA_DATOS_COMBUSTION_date_combustion_json]" class="java.util.List"/>
 	<parameter name="ListFromJsonGeneric[F_ACCA_DATOS_COMBUSTION_quantity_combustion_json]" class="java.util.List"/>
 	<parameter name="F_CCA_GENERAL_numexp" class="java.lang.String"/>
+	<parameter name="F_ACCA_RESOLUTIVO_abbreviation_elaborated" class="java.lang.String"/>
 	<pageHeader>
 		<band height="54">
 			<image scaleImage="RetainShape" hAlign="Center" vAlign="Bottom">
@@ -135,71 +136,85 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="123">
-			<staticText>
-				<reportElement x="0" y="103" width="241" height="20" uuid="a59079f5-1050-49aa-b27f-3256f45f810a"/>
-				<textElement>
-					<font size="11" isBold="true"/>
-				</textElement>
-				<text><![CDATA[P R E S E N T E]]></text>
-			</staticText>
+		<band height="60">
 			<textField>
-				<reportElement x="272" y="41" width="212" height="20" uuid="c4dab22a-df5f-440c-9f16-ef59cfc7fb8a"/>
+				<reportElement x="351" y="40" width="212" height="20" uuid="c4dab22a-df5f-440c-9f16-ef59cfc7fb8a"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
 				<textFieldExpression><![CDATA["Querétaro, Qro., a "]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="272" y="11" width="212" height="20" uuid="d739b417-70ee-4686-91ac-8ce468ada3b3"/>
-				<text><![CDATA[ SEDESU/SSMA/                              /2019]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="0" y="24" width="241" height="17" uuid="4e2c870f-4e48-4863-a190-9eba58dbc81f"/>
+				<reportElement x="351" y="10" width="212" height="20" uuid="657701c1-d9f9-4d25-b614-4226b90595b9"/>
 				<textElement>
-					<font size="11" isBold="true"/>
+					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{F_CCA_GENERAL_agent_name}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" SEDESU/SSMA/DCA/DPA/\t\t/"+ new SimpleDateFormat("yy").format(new Date())]]></textFieldExpression>
 			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="126" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="61" width="241" height="20" uuid="7d26f744-b496-49b2-9b51-7535f491be79"/>
+				<reportElement x="0" y="68" width="241" height="24" uuid="3578c18c-3937-45d9-9ff7-d4bd8cc4138a"/>
 				<textElement>
-					<font size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{F_CCA_GENERAL_company_name}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="80" width="241" height="24" uuid="3578c18c-3937-45d9-9ff7-d4bd8cc4138a"/>
-				<textElement>
-					<font size="11" isBold="true"/>
+					<font fontName="Avenir LT Std 45 Book" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{F_CCA_GENERAL_street} + "\nMunicipio de " + $P{F_CCA_GENERAL_municipality} +", \n"+ $P{F_CCA_GENERAL_Ciudad} +", "+$P{F_CCA_GENERAL_neighborhood}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="41" width="241" height="20" uuid="1020392b-798c-47b3-b1ba-76a98e7508ec"/>
+				<reportElement x="0" y="21" width="241" height="20" uuid="1020392b-798c-47b3-b1ba-76a98e7508ec"/>
 				<textElement>
-					<font size="11" isBold="true" isItalic="false"/>
+					<font fontName="Avenir LT Std 45 Book" size="11" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Representante Legal]]></text>
 			</staticText>
-		</band>
-	</columnHeader>
-	<detail>
-		<band height="120" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="6" width="570" height="84" uuid="d16d3255-04ca-48c8-a385-5dfd15da56e5"/>
-				<textElement textAlignment="Justified">
-					<font size="10" isBold="false" isStrikeThrough="false"/>
+				<reportElement x="0" y="43" width="241" height="20" uuid="7d26f744-b496-49b2-9b51-7535f491be79"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book" size="11" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["En atención a su solicitud de permiso de combustión a cielo abierto y con fundamento en los artículos 1,2 fr. VI, 124, 125 fr. III y X, 155, 177fr. VI y 179 de la ley de Protección Ambiental para el Desarrollo Sustentable del Estado de Querétaro y de conformidad al Acuerdo Delegatorio de fecha 02 de febrero de 2016 a favor del suscrito, se autoriza llevar a cabo una capacitación para el manejo de extintores, en el domicilio "+ $P{F_CCA_GENERAL_street} + " "+ $P{F_CCA_GENERAL_municipality}+ " "+ $P{F_CCA_GENERAL_Ciudad}+" "+ $P{F_CCA_GENERAL_neighborhood} +"., según lo manifestado en su solicitud; debiendo cumplir con las siguientes condicionantes:"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{F_CCA_GENERAL_company_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="76" y="90" width="494" height="24" uuid="500720aa-a54f-456c-9da7-82b329a2cf38"/>
+				<reportElement x="0" y="0" width="241" height="17" uuid="4e2c870f-4e48-4863-a190-9eba58dbc81f"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{F_CCA_GENERAL_agent_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="96" width="241" height="20" uuid="a59079f5-1050-49aa-b27f-3256f45f810a"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[P R E S E N T E]]></text>
+			</staticText>
+		</band>
+		<band height="119">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="570" height="84" uuid="d16d3255-04ca-48c8-a385-5dfd15da56e5"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Avenir LT Std 45 Book" size="10" isBold="false" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["En atención a su solicitud de permiso de combustión a cielo abierto y con fundamento en los artículos 1,2 fr. VI, 124, 125 fr. III y X, 155, 177fr. VI y 179 de la ley de Protección Ambiental para el Desarrollo Sustentable del Estado de Querétaro y de conformidad al Acuerdo Delegatorio de fecha 02 de febrero de 2016 a favor del suscrito, se autoriza llevar a cabo una capacitación para el manejo de extintores, en el domicilio <b> "+ $P{F_CCA_GENERAL_street} + " "+ $P{F_CCA_GENERAL_municipality}+ " " + $P{F_CCA_GENERAL_neighborhood} +".</b>, según lo manifestado en su solicitud; debiendo cumplir con las siguientes condicionantes:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="84" width="494" height="24" uuid="500720aa-a54f-456c-9da7-82b329a2cf38"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
 				<textFieldExpression><![CDATA["Se sutoriza lo siguiente:"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="90" width="76" height="24" uuid="22404cc9-4be8-4333-ac89-d0fce3b0bdbb"/>
+				<reportElement x="0" y="84" width="76" height="24" uuid="22404cc9-4be8-4333-ac89-d0fce3b0bdbb"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
 				<textFieldExpression><![CDATA["\t1."]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="56">
+		<band height="69">
 			<componentElement>
 				<reportElement key="table 3" style="table 3" x="116" y="0" width="345" height="46" uuid="c710a965-eca3-46d3-a82d-00f39aa345aa"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -209,7 +224,7 @@
 					<jr:column width="90" uuid="2847ad94-2842-42e3-bbc3-ccd8524af588">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="7d9aa641-1bb9-4960-ab4c-c3c92b732e86"/>
+								<reportElement x="0" y="0" width="90" height="30" backcolor="#FFFFFF" uuid="7d9aa641-1bb9-4960-ab4c-c3c92b732e86"/>
 								<text><![CDATA[Combustible]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -251,9 +266,9 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="69">
+		<band height="70">
 			<componentElement>
-				<reportElement key="table 4" style="table 4" x="116" y="0" width="345" height="56" uuid="ed0dff70-a06b-4a5e-995b-b19a5f436ec7"/>
+				<reportElement key="table 4" style="table 4" x="116" y="0" width="345" height="48" uuid="ed0dff70-a06b-4a5e-995b-b19a5f436ec7"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="progrmate_combustion" uuid="7dd7b54c-bca5-4944-9f1f-33cda9450b93">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{ListFromJsonGeneric[F_ACCA_DATOS_COMBUSTION_date_combustion_json]}, false)]]></dataSourceExpression>
@@ -289,68 +304,110 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="146">
+		<band height="192">
 			<textField>
-				<reportElement x="0" y="0" width="100" height="26" uuid="72623f7d-87c7-4bb5-88d3-71283e5a26d8"/>
+				<reportElement x="0" y="0" width="76" height="26" uuid="72623f7d-87c7-4bb5-88d3-71283e5a26d8"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
 				<textFieldExpression><![CDATA["\t2."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="32" width="100" height="28" uuid="32c30c50-d562-4073-b24f-5ccb19496b07"/>
-				<textFieldExpression><![CDATA["\t 3."]]></textFieldExpression>
+				<reportElement x="0" y="32" width="76" height="28" uuid="32c30c50-d562-4073-b24f-5ccb19496b07"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
+				<textFieldExpression><![CDATA["\t3."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="67" width="100" height="30" uuid="b1f69053-8f57-4baf-8c2f-c2836153b106"/>
-				<textFieldExpression><![CDATA["\t 4."]]></textFieldExpression>
+				<reportElement x="0" y="67" width="76" height="30" uuid="b1f69053-8f57-4baf-8c2f-c2836153b106"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
+				<textFieldExpression><![CDATA["\t4."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="107" width="100" height="34" uuid="3120576f-524b-425e-b7ea-4df97355ef86"/>
+				<reportElement x="0" y="107" width="76" height="34" uuid="3120576f-524b-425e-b7ea-4df97355ef86"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
 				<textFieldExpression><![CDATA["\t5."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="0" width="470" height="26" uuid="3e7ee059-05d8-4a19-9b4d-8d801eff5187"/>
+				<reportElement x="76" y="0" width="494" height="26" uuid="3e7ee059-05d8-4a19-9b4d-8d801eff5187"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
 				<textFieldExpression><![CDATA["Deberá notificar a Protección Civil del Municipio de San Juan del Rio, Qro. en un plazo no mayor a 72 horas previo al evento programado, vía oficio y/o telefónica."]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="100" y="32" width="470" height="28" uuid="b3d1177f-8bbb-4e07-afec-0189203ab7d9"/>
-				<textFieldExpression><![CDATA[$P{F_CCA_GENERAL_company_name} +", deberá sujetarse a lo establecido por la NOM-002-STPS-2000, referente a las condiciones de seguridad, prevención, protección y combate de incendios en los centros de trabajo."]]></textFieldExpression>
+			<textField isBlankWhenNull="true">
+				<reportElement x="76" y="32" width="494" height="28" uuid="b3d1177f-8bbb-4e07-afec-0189203ab7d9"/>
+				<textElement markup="html">
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b>" + $P{F_CCA_GENERAL_company_name} +",</b> deberá sujetarse a lo establecido por la NOM-002-STPS-2000, referente a las condiciones de seguridad, prevención, protección y combate de incendios en los centros de trabajo."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="67" width="470" height="30" uuid="79f41b15-c014-4044-8c9a-db3f95702b06"/>
+				<reportElement x="76" y="67" width="494" height="30" uuid="79f41b15-c014-4044-8c9a-db3f95702b06"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
 				<textFieldExpression><![CDATA["Deberá contar con equipo y personas capacitado para atender dicho evento. Deberá contar con equipo y personas capacitado para atender dicho evento."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="107" width="470" height="34" uuid="9ef49bf5-7a6a-462a-88f6-b657edbc527b"/>
-				<textFieldExpression><![CDATA["En caso de presentarse alguna contingencia durante el evento, deberá aplicar las medidas necesarias para su antención inmediata. \n\t 6. Cualquier cambio deberá informar a esta Secretaría."]]></textFieldExpression>
+				<reportElement x="76" y="107" width="494" height="34" uuid="9ef49bf5-7a6a-462a-88f6-b657edbc527b"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
+				<textFieldExpression><![CDATA["En caso de presentarse alguna contingencia durante el evento, deberá aplicar las medidas necesarias para su antención inmediata."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="150" width="76" height="34" uuid="89b8de7f-e5e2-4fba-95b9-e889643fae13"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
+				<textFieldExpression><![CDATA["\t6."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="150" width="494" height="34" uuid="f08a069f-acfd-4b0d-a7b6-c80c1536cb9b"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Cualquier cambio deberá informar a esta Secretaría."]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="47">
+		<band height="43">
 			<staticText>
 				<reportElement x="0" y="0" width="563" height="34" uuid="3da22043-3fe7-4cdd-977a-f0ea07b36799"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
 				<text><![CDATA[En caso de incumplir lo señalado, podrá hacerse acreedor a una o más de las sanciones establecidas en el artículo 183 de la Ley de Protección Ambiental para el Desarrollo Sustentable del Estado de Querétaro.]]></text>
 			</staticText>
 		</band>
-		<band height="77">
-			<staticText>
-				<reportElement x="241" y="0" width="100" height="20" uuid="bab63da3-7de9-4038-8f94-37e81df8529f"/>
-				<textElement textAlignment="Center">
-					<font isBold="true"/>
+		<band height="186">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="113" width="570" height="73" uuid="bfd3787c-7a86-4dab-ba0f-2340ee33515d"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
-				<text><![CDATA[Atentamente]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA["C.c.p.- \n\t Ing. Marco Antonio del Prete Tercero.- Secretario de Desarrollo Sustentable. \n\t Ing. Ricardo Javier Torres Hernández - Subsecretario de Medio Ambiente \n\t Expediente Archivo. \n\t"+ $P{F_CCA_GENERAL_numexp} +" \n\t SMA2421 \n\t " + $P{F_ACCA_RESOLUTIVO_abbreviation_elaborated}]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement x="183" y="42" width="221" height="33" uuid="0d6cec2e-68d6-4e95-b1ea-163638f53183"/>
+				<reportElement x="199" y="69" width="221" height="33" uuid="0d6cec2e-68d6-4e95-b1ea-163638f53183"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font fontName="Avenir LT Std 45 Book" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Ing. Marisol Guerrero Jiménez
 Directora de Control Ambiental.]]></text>
 			</staticText>
-		</band>
-		<band height="73">
-			<textField>
-				<reportElement x="0" y="25" width="563" height="48" uuid="bfd3787c-7a86-4dab-ba0f-2340ee33515d"/>
-				<textFieldExpression><![CDATA["C.c.p.- \n\t Ing. Marco Antonio del Prete Tercero.- Secretario de Desarrollo Sustentable. \n\t Ing. Ricardo Javier Torres Hernández - Subsecretario de Medio Ambiente \n\t Expediente Archivo. \n"+ $P{F_CCA_GENERAL_numexp} +" \n SMA2421"]]></textFieldExpression>
-			</textField>
+			<staticText>
+				<reportElement x="251" y="26" width="100" height="20" uuid="bab63da3-7de9-4038-8f94-37e81df8529f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Avenir LT Std 45 Book" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Atentamente]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<pageFooter>
