@@ -11,9 +11,9 @@
             EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
             update(){
-            fcv.validate(ewin);
-            entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
-            entityUtilController.assignOfficialData(transactDetail, ebeanDetail, ewin, "ACCA_F3");
+                entityUtilController.assignOfficialData(transactDetail, ebeanDetail, ewin, "ACCA_F3");
+                fcv.validate(ewin);
+                entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
             }
 
             TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
@@ -23,7 +23,7 @@
             <div class="row editHeader">
                 <div class="col-md-12" align="right" >
                     <custom-attributes removeOnPortal="true" ></custom-attributes>
-                        <button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
+                    <button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
                 </div>
             </div>
             <div class="row gridCard">
@@ -35,11 +35,11 @@
             <div sclass="separatorEdit" ></div>
             <div class="row gridCard">
                 <div class="col-md-4">
-                    <label value="Número de oficio*" sclass="editField" ></label>
+                    <label value="Número de oficio" sclass="editField" ></label>
                     <h:p> <textbox id="trade_number" maxlength="50"  ></textbox> </h:p>
                 </div>
                 <div class="col-md-4">
-                    <label value="Fecha de oficio*" sclass="editField" ></label>
+                    <label value="Fecha de oficio" sclass="editField" ></label>
                     <h:p> <datebox id="date_trade"  ></datebox> </h:p>
                 </div>
                 <div class="col-md-4">

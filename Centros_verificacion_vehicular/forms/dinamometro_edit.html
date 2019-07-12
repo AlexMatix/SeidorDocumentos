@@ -1,0 +1,294 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./ewin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+    <window id="ewin" border="none" onCreate="entityController.loadEdit(ebeanDetail, self);" >
+
+        <zscript>
+            import ieci.tdw.ispac.adapter.TransactAdapterI;
+            import ieci.tdw.ispac.entity.EntityAdapter;
+
+            EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+            update(){
+            fcv.validate(ewin);
+            entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+            }
+
+            TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+        </zscript>
+
+        <div class="row editBox" >
+            <div class="row editHeader">
+                <div class="col-md-12" align="right" >
+                    <custom-attributes removeOnPortal="true" ></custom-attributes>
+                        <button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Marca del Dinamómetro"
+                           sclass="editTitle"></label>
+                </div>
+                <div class="col-md-6">
+                    <button label="añadir" sclass="btn btn-info" iconSclass="z-icon-plus-circle"
+                            style="float: right;"></button>
+                </div>
+            </div>
+            <div sclass="separatorEdit"></div>
+
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <listbox id="listbox1" style="">
+                        <listhead>
+                            <listheader label="Linea 1" hflex="1"></listheader>
+                            <listheader label="Linea 2" hflex="1"></listheader>
+                            <listheader label="Linea 3" hflex="1"></listheader>
+                            <listheader label="Linea 4" hflex="1"></listheader>
+                        </listhead>
+                    </listbox>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Modelo del Dinamómetro"
+                           sclass="editTitle"></label>
+                </div>
+                <div class="col-md-6">
+                    <button label="añadir" sclass="btn btn-info" iconSclass="z-icon-plus-circle"
+                            style="float: right;"></button>
+                </div>
+            </div>
+            <div sclass="separatorEdit"></div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <listbox id="listbox2" style="">
+                        <listhead>
+                            <listheader label="Linea 1" hflex="1"></listheader>
+                            <listheader label="Linea 2" hflex="1"></listheader>
+                            <listheader label="Linea 3" hflex="1"></listheader>
+                            <listheader label="Linea 4" hflex="1"></listheader>
+                        </listhead>
+                    </listbox>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Número de Serie Dinamómetro" sclass="editTitle"></label>
+                </div>
+                <div class="col-md-6">
+                    <button label="añadir" sclass="btn btn-info" iconSclass="z-icon-plus-circle"
+                            style="float: right;"></button>
+                </div>
+            </div>
+            <div sclass="separatorEdit"></div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <listbox id="listbox3" style="">
+                        <listhead>
+                            <listheader label="Linea 1" hflex="1"></listheader>
+                            <listheader label="Linea 2" hflex="1"></listheader>
+                            <listheader label="Linea 3" hflex="1"></listheader>
+                            <listheader label="Linea 4" hflex="1"></listheader>
+                        </listhead>
+                    </listbox>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Capacidad nominal de la celda de carga (lb)" sclass="editTitle"></label>
+                </div>
+                <div class="col-md-6">
+                    <button label="añadir" sclass="btn btn-info" iconSclass="z-icon-plus-circle"
+                            style="float: right;"></button>
+                </div>
+            </div>
+            <div sclass="separatorEdit"></div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <listbox id="listbox4" style="">
+                        <listhead>
+                            <listheader label="Linea 1" hflex="1"></listheader>
+                            <listheader label="Linea 2" hflex="1"></listheader>
+                            <listheader label="Linea 3" hflex="1"></listheader>
+                            <listheader label="Linea 4" hflex="1"></listheader>
+                        </listhead>
+                    </listbox>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Carga mínima al eje (Kg)" sclass="editTitle"></label>
+                </div>
+                <div class="col-md-6">
+                    <button label="añadir" sclass="btn btn-info" iconSclass="z-icon-plus-circle"
+                            style="float: right;"></button>
+                </div>
+            </div>
+            <div sclass="separatorEdit"></div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <listbox id="listbox5" style="">
+                        <listhead>
+                            <listheader label="Linea 1" hflex="1"></listheader>
+                            <listheader label="Linea 2" hflex="1"></listheader>
+                            <listheader label="Linea 3" hflex="1"></listheader>
+                            <listheader label="Linea 4" hflex="1"></listheader>
+                        </listhead>
+                    </listbox>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Laboratorio que realizó la calibración." sclass="editTitle"></label>
+                </div>
+                <div class="col-md-6">
+                    <button label="añadir" sclass="btn btn-info" iconSclass="z-icon-plus-circle"
+                            style="float: right;"></button>
+                </div>
+            </div>
+            <div sclass="separatorEdit"></div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <listbox id="listbox6" style="">
+                        <listhead>
+                            <listheader label="Linea 1" hflex="1"></listheader>
+                            <listheader label="Linea 2" hflex="1"></listheader>
+                            <listheader label="Linea 3" hflex="1"></listheader>
+                            <listheader label="Linea 4" hflex="1"></listheader>
+                        </listhead>
+                    </listbox>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Fecha y folio del último certificado de calibración del dinamómetro, en caso de contar con el. (Anexar)"></label>
+                </div>
+                <div class="col-md-6">
+                    <button label="añadir" sclass="btn btn-info" iconSclass="z-icon-plus-circle"
+                            style="float: right;"></button>
+                </div>
+            </div>
+            <div sclass="separatorEdit"></div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <listbox id="listbox7" style="">
+                        <listhead>
+                            <listheader label="Linea 1" hflex="1"></listheader>
+                            <listheader label="Linea 2" hflex="1"></listheader>
+                            <listheader label="Linea 3" hflex="1"></listheader>
+                            <listheader label="Linea 4" hflex="1"></listheader>
+                        </listhead>
+                    </listbox>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Número de registro como prestador de servicios ambientales del laboratorio de calibración expedido por SEDESU" sclass="editTitle"></label>
+                </div>
+                <div class="col-md-6">
+                    <button label="añadir" sclass="btn btn-info" iconSclass="z-icon-plus-circle"
+                            style="float: right;"></button>
+                </div>
+            </div>
+            <div sclass="separatorEdit"></div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <listbox id="listbox8" style="">
+                        <listhead>
+                            <listheader label="Linea 1" hflex="1"></listheader>
+                            <listheader label="Linea 2" hflex="1"></listheader>
+                            <listheader label="Linea 3" hflex="1"></listheader>
+                            <listheader label="Linea 4" hflex="1"></listheader>
+                        </listhead>
+                    </listbox>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <listbox id="box">
+                    <listhead sizable="true">
+                        <listheader label="Datos" sort="auto"/>
+                        <listheader label="Si/No" sort="auto"/>
+                    </listhead>
+
+                    <listitem>
+                        <listcell label="El (los) dinamómetro(s) cuenta con una placa permanente de identificación grabada y colocada por el fabricante en la parte exterior del mismo, en la que se precise:">
+                            <h:ul>
+                                <h:li>Nombre y dirección del fabricante</h:li>
+                                <h:li>Modelo</h:li>
+                                <h:li>Números de serie</h:li>
+                                <h:li>Tipo de dinamómetro</h:li>
+                                <h:li>Fecha de producción</h:li>
+                                <h:li>Carga máxima al eje durante las pruebas</h:li>
+                                <h:li>Potencia máxima de absorción</h:li>
+                                <h:li>Inercia total</h:li>
+                            </h:ul>
+                        </listcell>
+                        <listcell>
+                            <checkbox id="example7"></checkbox>
+                        </listcell>
+                    </listitem>
+
+                    <listitem>
+                        <listcell label="Cuenta(n) con sistemas de seguridad."/>
+                        <listcell>
+                            <checkbox id="example4"></checkbox>
+                        </listcell>
+                    </listitem>
+
+                    <listitem>
+                        <listcell label="Cuenta(n) con certificado de calibración de la celda de carga"/>
+                        <listcell>
+                            <checkbox id="example5"></checkbox>
+                        </listcell>
+                    </listitem>
+
+                    <listitem>
+                        <listcell label="Cuenta(n) con informe de medición del diámetro de los rodillos"/>
+                        <listcell>
+                            <checkbox id="example6"></checkbox>
+                        </listcell>
+                    </listitem>
+
+                    <listitem>
+                        <listcell label="Cuenta(n) con informe de medición del brazo de palanca"/>
+                        <listcell>
+                            <checkbox id="example8"></checkbox>
+                        </listcell>
+                    </listitem>
+
+                    <listitem>
+                        <listcell label="Cuenta(n) con motor de arrastre. "/>
+                        <listcell>
+                            <checkbox id="example9"></checkbox>
+                        </listcell>
+                    </listitem>
+
+                    <listitem>
+                        <listcell label="El (los) dinamómetro(s) cumple con las especificaciones señaladas en el numeral 8.14 Especificaciones del dinamómetro de la NOM-047-SEMARNAT-2014"/>
+                        <listcell>
+                            <checkbox id="example10"></checkbox>
+                        </listcell>
+                    </listitem>
+                </listbox>
+            </div>
+        </div>
+    </window>
+</zk>

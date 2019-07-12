@@ -181,6 +181,7 @@
             zoom.setValue(gmaps.getZoom());
             }
             /*********************** Finish Maps **********************/
+
         </zscript>
         <!-- JAVA SCRIPT DEL MAPA DE GOOGLE -->
         <script type="text/javascript">
@@ -228,7 +229,14 @@
             </div>
 
             <div class="row gridCard">
+                <div class="col-md-12">
+                    <h:div class="alert alert-info">
+                        <h:strong>Info:</h:strong> Las dependencias de gobierno no tienen que llenar los datos de pago.
+                    </h:div>
+                </div>
+            </div>
 
+            <div class="row gridCard">
                 <!-- PARTE DE DATOS DE PAGO Año 2018, tansaccion 454646 -->
                 <div class="row gridCard">
                     <div class="col-md-12">
@@ -241,18 +249,29 @@
                 <div sclass="separatorEdit" ></div>
 
                 <div class="col-md-3">
-                    <label value="Año Fiscal*" sclass="editField" ></label>
+                    <label value="¿Es una Dependencia de gobierno?" sclass="editField" ></label>
+                    <h:p><checkbox id="government_dependency" onClick="accaDatosCombustionController.isDependency(ewin)" ></checkbox></h:p>
+                </div>
+
+                <div class="col-md-3">
+                    <label value="Año Fiscal" sclass="editField" ></label>
                     <h:p> <intbox id="transaction_year" maxlength="4"></intbox> </h:p>
                 </div>
 
                 <div class="col-md-3">
-                    <label value="Número de transacción*" sclass="editField" ></label>
-                    <h:p> <intbox id="transaction"></intbox> </h:p>
+                    <label value="Número de transacción" sclass="editField" ></label>
+                    <h:p> <intbox id="transaction" onCreate="accaDatosCombustionController.isDependency(ewin)"></intbox> </h:p>
                 </div>
 
-                <div class="col-md-2">
-                    <label value=" " sclass="editField" ></label>
-                    <h:p><button label="VERIFICAR PAGO" sclass="btn btn-secondary" iconSclass="z-icon-plus" onClick="verifyPayment();"></button></h:p>
+                <div class="col-md-3">
+                    <h:p><button
+                            id = "validatePayment"
+                            label="VERIFICAR PAGO"
+                            sclass="btn btn-info"
+                            iconSclass="fa fa-money"
+                            onClick="verifyPayment();"
+                            style = "margin-top: 20px;"
+                    ></button></h:p>
                 </div>
 
                 <div class="col-md-4"></div>
@@ -267,22 +286,16 @@
                 </div>
                 <div sclass="separatorEdit" ></div>
 
-                <div class="col-md-6">
-                    <label value="Nombre de la empresa o institución*" sclass="editField" ></label>
+                <div class="col-md-12">
+                    <label value="Nombre y giro o actividad de la empresa o institución " sclass="editField" ></label>
                     <h:p> <textbox id="company_name" maxlength="150"  ></textbox> </h:p>
                 </div>
-                <div class="col-md-6">
-                    <label value="Nombre del representante*" sclass="editField" ></label>
+
+                <div class="col-md-12">
+                    <label value="Nombre y cargo del representante*" sclass="editField" ></label>
                     <h:p> <textbox id="agent_name" maxlength="100"  ></textbox> </h:p>
                 </div>
-                <div class="col-md-6">
-                    <label value="Cargo del Representante" sclass="editField" ></label>
-                    <h:p> <textbox id="agent_position" maxlength="100" ></textbox> </h:p>
-                </div>
-                <div class="col-md-6">
-                    <label value="Giro o Actividad de la Empresa*" sclass="editField" ></label>
-                    <h:p> <textbox id="company_activity" maxlength="100"  ></textbox> </h:p>
-                </div>
+
 
                 <!--FIN  PARTE DE DATOS GENERALES DEL CIUDADANO -->
 
@@ -308,24 +321,16 @@
                     <h:p> <textbox id="innnum" maxlength="255"  ></textbox> </h:p>
                 </div>
 
-                <div class="col-md-2">
-                    <label value="Código postal*" sclass="editField" ></label>
-                    <h:p> <textbox id="zipcode" maxlength="255"  ></textbox> </h:p>
-                </div>
-
                 <!--ADRESSBOX -->
                 <div class="row">
                     <addressbox     id="addressbox" state ="${stateS}"  stateId="${stateId}"
                                     municipality="${muniS}" municipalityId="${muniId}"
                                     city="${cityS}" cityId="${cityId}"  neighborhoodId="${neighId}"
                                     neighborhood="${neigS}" zipcode="${zip}"
-                                    onChange="setAddress();" ></addressbox>
-
+                                    onChange="setAddress();" >
+                    </addressbox>
                 </div>
                 <!--FIN ADRESSBOX -->
-
-
-
 
                 <div class="col-md-8">
                     <label value="Entre las calles" sclass="editField" ></label>
@@ -347,7 +352,6 @@
                 <div class="col-md-2">
                     <button label="Buscar" sclass="btn btn-info" iconSclass="z-icon-search" onClick="updateLocationSearch();" ></button>
                 </div>
-
 
                 <div class="col-md-2">
                     <label value="Latitud*" sclass="editField" ></label>

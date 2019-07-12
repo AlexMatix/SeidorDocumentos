@@ -1,0 +1,111 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./vwin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+    <window id="vwin" border="none" onCreate="entityController.loadView(ebeanDetail, self);" >
+
+        <zscript>
+            import ieci.tdw.ispac.adapter.TransactAdapterI;
+            import ieci.tdw.ispac.entity.EntityAdapter;
+
+            EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+            update(){
+            fcv.validate(ewin);
+            entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+            }
+
+            TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+        </zscript>
+
+        <div class="row detailBox" >
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Datos del centro de verificación vehícular" sclass="detailField"></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Número de centro de verificación vehícular" sclass="detailField" ></label>
+                    <h:p> <label id="number_center" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Nombre de la persona física o moral " sclass="detailField" ></label>
+                    <h:p> <label id="name_person" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Nombre del representante legal" sclass="detailField" ></label>
+                    <h:p> <label id="name_representative_legal" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Nombre del comercio" sclass="detailField" ></label>
+                    <h:p> <label id="name_commerce" sclass="detailData" ></label> </h:p>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Datos de contacto" sclass="detailField"></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
+
+            <div class="row gridCard">
+                <div class="col-md-3">
+                    <label value="RFC" sclass="detailField" ></label>
+                    <h:p> <label id="rfc" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-3">
+                    <label value="Número telefónico" sclass="detailField" ></label>
+                    <h:p> <label id="phone" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-3">
+                    <label value="Celular" sclass="detailField" ></label>
+                    <h:p> <label id="cellphone" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-3">
+                    <label value="Correo electrónico" sclass="detailField" ></label>
+                    <h:p> <label id="email" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-4">
+                    <label value="Domicilio del almacenamiento" sclass="detailField" ></label>
+                    <h:p> <label id="adrress_commerce" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-4">
+                    <label value="Domicilio fiscal" sclass="detailField" ></label>
+                    <h:p> <label id="addrees_fiscal" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-4">
+                    <label value="Municipio" sclass="detailField" ></label>
+                    <h:p> <label id="municipality" sclass="detailData" ></label> </h:p>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Número de lineas autorizadas de verificación vehicular en operación" sclass="detailField"></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
+
+            <div class="row gridCard">
+                <div class="col-md-4">
+                    <label value="Dinámica" sclass="detailField" ></label>
+                    <h:p> <label id="dinamic" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-4">
+                    <label value="Diésel" sclass="detailField" ></label>
+                    <h:p> <label id="diesel" sclass="detailData" ></label> </h:p>
+                </div>
+                <div class="col-md-4">
+                    <label value="Dual" sclass="detailField" ></label>
+                    <h:p> <label id="dual" sclass="detailData" ></label> </h:p>
+                </div>
+            </div>
+        </div>
+
+    </window>
+</zk>

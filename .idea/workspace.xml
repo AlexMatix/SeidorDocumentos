@@ -2,8 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="206f3e71-62dd-4df0-9aa9-93c0cb5d5d5a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/EquiposAnalizadores_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/datosCentro_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/datosCentro_view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/dinamometro_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/finanzasSeguros_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/finanzasSeguros_view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/opacimetro_edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosCombustionEditable.html" beforeDir="false" afterPath="$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosCombustionEditable.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosGeneralesEditable.html" beforeDir="false" afterPath="$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosGeneralesEditable.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosGeneralesViewn.html" beforeDir="false" afterPath="$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosGeneralesViewn.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CombustionCieloAbierto/forms/ResolutivoEditable.html" beforeDir="false" afterPath="$PROJECT_DIR$/CombustionCieloAbierto/forms/ResolutivoEditable.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CombustionCieloAbierto/jasper/Resolutivo_acca.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/CombustionCieloAbierto/jasper/Resolutivo_acca.jasper" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CombustionCieloAbierto/jasper/Resolutivo_acca.jrxml" beforeDir="false" afterPath="$PROJECT_DIR$/CombustionCieloAbierto/jasper/Resolutivo_acca.jrxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diagrama/Diagrama_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/Diagrama/Diagrama_edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diagrama/Diagrama_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/Diagrama/Diagrama_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prod.compare" beforeDir="false" afterPath="$PROJECT_DIR$/prod.compare" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,32 +32,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosCombustionEditable.html">
+        <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosGeneralesEditable.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="117" column="22" lean-forward="true" selection-start-line="117" selection-start-column="22" selection-end-line="117" selection-end-column="22" />
+            <state relative-caret-position="93">
+              <caret line="289" column="27" selection-start-line="289" selection-start-column="27" selection-end-line="289" selection-end-column="27" />
               <folding>
-                <element signature="n#style#0;n#button#0;n#div#1;n#div#10;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#1;n#div#13;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#h:p#0;n#div#5;n#div#2;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosGeneralesEditable.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosCombustionVista.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10">
-              <caret line="222" column="40" lean-forward="true" selection-start-line="222" selection-start-column="40" selection-end-line="222" selection-end-column="40" />
+            <state relative-caret-position="318">
+              <caret line="91" column="103" selection-start-line="91" selection-start-column="103" selection-end-line="91" selection-end-column="103" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/ResolutivoEditable.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosGeneralesViewn.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="46" column="79" selection-start-line="46" selection-start-column="79" selection-end-line="46" selection-end-column="79" />
+            <state relative-caret-position="4784">
+              <caret line="252" selection-start-line="252" selection-end-line="252" />
             </state>
           </provider>
         </entry>
@@ -52,44 +66,44 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>len</find>
-      <find>insumos</find>
-      <find>JSON</find>
-      <find>stringify</find>
-      <find>collectionSourceDiagram</find>
-      <find>saveS</find>
-      <find>replace</find>
-      <find>setPor</find>
-      <find>set</find>
-      <find>disabled</find>
-      <find>loadW</find>
-      <find>pwGeneralAdapter</find>
-      <find>load</find>
-      <find>ACCACombustionAdapter</find>
-      <find>año</find>
-      <find>fcv</find>
-      <find>null</find>
-      <find>prepareAddress</find>
-      <find>initialZoom</find>
-      <find>changeInitialGmaps</find>
-      <find>zoom|</find>
-      <find>zoom</find>
-      <find>intbox id=&quot;z</find>
-      <find>zoomHasChanged</find>
-      <find>longitude</find>
-      <find>changeGmapsLocation</find>
-      <find>latStored</find>
-      <find>initialLatitude</find>
-      <find>initialLongitude</find>
-      <find>latitude</find>
+      <find>Número de serie de la sonda de</find>
+      <find>cargo de</find>
+      <find>onChanged</find>
+      <find>check</find>
+      <find>rfc</find>
+      <find>elnlb</find>
+      <find>ebeanDetail</find>
+      <find>Número</find>
+      <find>number_licence</find>
+      <find>persona</find>
+      <find>Verifica</find>
+      <find>onCreate</find>
+      <find>Perso</find>
+      <find>coa</find>
+      <find>lbima</find>
+      <find>exportImageDiagram</find>
+      <find>nombre</find>
+      <find>lbImageConten</find>
+      <find>testValues</find>
+      <find>demo</find>
+      <find>initContentiFrame</find>
+      <find>getS</find>
+      <find>saveDiagramUseNow</find>
+      <find>getSourceDiagram</find>
+      <find>reload</find>
+      <find>replacer</find>
+      <find>downl</find>
+      <find>downloadDiagram</find>
+      <find>savediagra</find>
+      <find>giro</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -127,19 +141,28 @@
         <option value="$PROJECT_DIR$/../draw2d/examples/buildin_event/index.html" />
         <option value="$PROJECT_DIR$/Diagrama/jsonFormatHelper.js" />
         <option value="$PROJECT_DIR$/Diagrama/Respaldo.html" />
-        <option value="$PROJECT_DIR$/Diagrama/Diagrama_edit.html" />
         <option value="$PROJECT_DIR$/Diagrama/util.js" />
         <option value="$PROJECT_DIR$/Diagrama/sourceDiagram.js" />
-        <option value="$PROJECT_DIR$/Diagrama/Diagrama_view.html" />
         <option value="$PROJECT_DIR$/Diagrama/iFrameDiagram_view.html" />
         <option value="$PROJECT_DIR$/Diagrama/iFrameDiagram.html" />
         <option value="$PROJECT_DIR$/PWGeneralObras/Forms/Formulario_de_obra_edit.html" />
-        <option value="$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosCombustionEditable.html" />
         <option value="$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosCombustionVista.html" />
-        <option value="$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosGeneralesViewn.html" />
-        <option value="$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosGeneralesEditable.html" />
         <option value="$PROJECT_DIR$/CombustionCieloAbierto/forms/ResolutivoView.html" />
+        <option value="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/datosCentro_edit.html" />
+        <option value="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/datosCentro_view.html" />
+        <option value="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/finanzasSeguros_edit.html" />
+        <option value="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/finanzasSeguros_view.css" />
+        <option value="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/finanzasSeguros_view.html" />
+        <option value="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/EquiposAnalizadores.html" />
+        <option value="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/EquiposAnalizadores_edit.html" />
+        <option value="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/opacimetro_edit.html" />
+        <option value="$PROJECT_DIR$/Centros_verificacion_vehicular/forms/dinamometro_edit.html" />
+        <option value="$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosCombustionEditable.html" />
         <option value="$PROJECT_DIR$/CombustionCieloAbierto/forms/ResolutivoEditable.html" />
+        <option value="$PROJECT_DIR$/Diagrama/Diagrama_view.html" />
+        <option value="$PROJECT_DIR$/Diagrama/Diagrama_edit.html" />
+        <option value="$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosGeneralesEditable.html" />
+        <option value="$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosGeneralesViewn.html" />
       </list>
     </option>
   </component>
@@ -149,11 +172,11 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1366" />
-    <option name="y" value="-1" />
-    <option name="width" value="1366" />
-    <option name="height" value="741" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="170" />
+    <option name="y" value="92" />
+    <option name="width" value="1026" />
+    <option name="height" value="557" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -190,6 +213,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
+    <property name="eu.ydp.idea.ts.spec.generator.settings.spec.template" value="import {$ClassName$} from '$TestsRelativePath$../src/$classRelativePath$/$ClassName$';&#10;&#10;describe('$ClassName$', () =&gt; {&#10;  let $ObjName$:$ClassName$;&#10;&#10;  beforeEach(() =&gt; {&#10;    $ObjName$ = new $ClassName$();&#10;  });&#10;&#10;  describe('', () =&gt; {&#10;    it('', () =&gt; {&#10;      // given&#10;&#10;      // when&#10;&#10;      // then&#10;    });&#10;  });&#10;});&#10;" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -252,6 +276,11 @@
       <workItem from="1561350355916" duration="86000" />
       <workItem from="1561398505228" duration="12980000" />
       <workItem from="1561493900082" duration="9763000" />
+      <workItem from="1562264796461" duration="16663000" />
+      <workItem from="1562595904021" duration="16384000" />
+      <workItem from="1562688077652" duration="7493000" />
+      <workItem from="1562777630030" duration="13946000" />
+      <workItem from="1562862803811" duration="12023000" />
     </task>
     <task id="LOCAL-00001" summary="Finalizar diagrama edit">
       <created>1559174355675</created>
@@ -264,13 +293,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="388086000" />
+    <option name="totallyTimeSpent" value="454595000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-15" width="1936" height="1056" extended-state="6" />
+    <frame x="0" y="-1" width="1366" height="741" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13382508" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21667908" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -318,48 +347,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Finalizar diagrama edit" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Documents/draw2d/examples/connection_decoration/css/example.css" />
-    <entry file="file://$PROJECT_DIR$/../draw2d/docs/connection_decoration/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1224" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../draw2d/examples/canvas_drag_drop/CopyInterceptorPolicy.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="788">
-          <caret line="90" column="20" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../draw2d/examples/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/draw2d/examples/connection_decoration/index.html" />
-    <entry file="file://$PROJECT_DIR$/../draw2d/examples/shape_db/document.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2184">
-          <caret line="91" column="26" lean-forward="true" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../draw2d/examples/shape_slider/document.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1236">
-          <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../draw2d/examples/shape_slider/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-249">
-          <caret line="33" column="29" lean-forward="true" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../draw2d/examples/connection_dotted/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-627">
@@ -519,24 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/AsigancionValores_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/DescripcionSolicitud_editable.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5094">
-          <caret line="205" column="42" lean-forward="true" selection-start-line="205" selection-start-column="42" selection-end-line="205" selection-end-column="42" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#div#2;n#div#4;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textbox#0;n#h:p#0;n#div#0;n#div#14;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../draw2d/examples/buildin_event/app/Canvas.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -595,39 +564,6 @@
     <entry file="file://$PROJECT_DIR$/Diagrama/icons/salidas/g_con_agua.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/PWGeneralObras/Forms/Formulario_de_obra_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Diagrama/Diagrama_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
-          <folding>
-            <element signature="n#style#0;n#h:nav#0;n#window#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h:select#0;n#h:li#4;n#h:ul#0;n#h:div#0;n#h:nav#0;n#window#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h:iframe#0;n#window#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosCombustionVista.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosGeneralesViewn.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="183" column="47" lean-forward="true" selection-start-line="178" selection-start-column="12" selection-end-line="183" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/ResolutivoView.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
@@ -663,41 +599,164 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Diagrama/Diagrama_view.html">
+    <entry file="file://$PROJECT_DIR$/Diagrama/notitas.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Centros_verificacion_vehicular/forms/datosCentro_view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="55" column="43" selection-start-line="55" selection-start-column="43" selection-end-line="55" selection-end-column="43" />
+        <state relative-caret-position="164">
+          <caret line="74" column="35" selection-start-line="74" selection-start-column="35" selection-end-line="74" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Centros_verificacion_vehicular/forms/finanzasSeguros_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="59" column="47" lean-forward="true" selection-start-line="54" selection-start-column="12" selection-end-line="59" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Centros_verificacion_vehicular/forms/finanzasSeguros_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="68" column="36" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PWGeneralObras/Forms/Formulario_de_obra_vista.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="566">
+          <caret line="89" column="11" selection-start-line="89" selection-start-column="11" selection-end-line="89" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PWGeneralObras/Forms/Formulario_de_obra_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="81" column="6" selection-start-line="81" selection-start-column="6" selection-end-line="89" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Centros_verificacion_vehicular/forms/EquiposAnalizadores_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="290" column="18" lean-forward="true" selection-start-line="29" selection-start-column="11" selection-end-line="290" selection-end-column="18" />
           <folding>
-            <element signature="n#style#0;n#h:iframe#0;n#window#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#div#27;n#div#0;n#window#0;n#zk#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Diagrama/notitas.txt">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/Centros_verificacion_vehicular/forms/dinamometro_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="220" column="22" lean-forward="true" selection-start-line="220" selection-start-column="22" selection-end-line="220" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Centros_verificacion_vehicular/forms/opacimetro_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="219" column="18" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="219" selection-end-column="18" />
+          <folding>
+            <element signature="e#20886#20907#0" expanded="true" />
+            <element signature="n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Centros_verificacion_vehicular/forms/datosCentro_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="33" column="47" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="33" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/AsigancionValores_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="94" lean-forward="true" selection-start-line="84" selection-start-column="35" selection-end-line="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ApoyosEspecialesSecretaria/forms/DescripcionSolicitud_editable.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15726">
+          <caret line="371" column="26" selection-start-line="371" selection-start-column="21" selection-end-line="371" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#2;n#div#4;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#9;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textbox#0;n#h:p#0;n#div#0;n#div#14;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosCombustionEditable.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="117" column="22" lean-forward="true" selection-start-line="117" selection-start-column="22" selection-end-line="117" selection-end-column="22" />
+        <state relative-caret-position="-252">
+          <caret line="51" column="34" lean-forward="true" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
           <folding>
+            <element signature="n#style#0;n#listbox#0;n#bandpopup#0;n#bandbox#0;n#div#0;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#1;n#div#10;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#1;n#div#13;n#div#1;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosGeneralesEditable.html">
+    <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/ResolutivoEditable.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="222" column="40" lean-forward="true" selection-start-line="222" selection-start-column="40" selection-end-line="222" selection-end-column="40" />
+        <state relative-caret-position="315">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/ResolutivoEditable.html">
+    <entry file="file://$PROJECT_DIR$/Diagrama/Diagrama_view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="46" column="79" selection-start-line="46" selection-start-column="79" selection-end-line="46" selection-end-column="79" />
+        <state relative-caret-position="1554">
+          <caret line="74" column="22" lean-forward="true" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#h:nav#0;n#window#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:select#0;n#h:li#1;n#h:ul#0;n#h:div#0;n#h:nav#0;n#window#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:iframe#0;n#window#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Diagrama/Diagrama_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="153" column="33" lean-forward="true" selection-start-line="153" selection-start-column="33" selection-end-line="153" selection-end-column="33" />
+          <folding>
+            <element signature="n#style#0;n#h:nav#0;n#window#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:select#0;n#h:li#4;n#h:ul#0;n#h:div#0;n#h:nav#0;n#window#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h:iframe#0;n#window#0;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosGeneralesEditable.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="289" column="27" selection-start-line="289" selection-start-column="27" selection-end-line="289" selection-end-column="27" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#h:p#0;n#div#5;n#div#2;n#div#0;n#window#0;n#zk#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosGeneralesViewn.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4784">
+          <caret line="252" selection-start-line="252" selection-end-line="252" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CombustionCieloAbierto/forms/DatosCombustionVista.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="91" column="103" selection-start-line="91" selection-start-column="103" selection-end-line="91" selection-end-column="103" />
         </state>
       </provider>
     </entry>
