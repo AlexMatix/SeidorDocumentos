@@ -183,7 +183,7 @@
             /*********************** Finish Maps **********************/
 
             public void updateFields(){
-                environmental_lic_num.setValue("");
+            environmental_lic_num.setValue("");
             }
         </zscript>
         <!-- JAVA SCRIPT DEL MAPA DE GOOGLE -->
@@ -231,10 +231,12 @@
                 </div>
             </div>
 
+
+
             <div class="row gridCard">
                 <div class="col-md-12">
-                    <h:div class="alert alert-info">
-                        <h:strong>Info:</h:strong> Las dependencias de gobierno no tienen que llenar los datos de pago.
+                    <h:div class="alert alert-warning">
+                        <h:strong>¡Exento de pago!:</h:strong> El pago queda excento, debido aque no es solicitado a Dependencias, para tipos de proyecto de Obra Pública o cuando No se Requiere Impacto Ambiental
                     </h:div>
                 </div>
             </div>
@@ -291,7 +293,7 @@
 
                 <div class="col-md-6">
                     <label value="Nombre de la empresa o institución*" sclass="editField" ></label>
-                    <h:p> <textbox id="company_name" maxlength="150"  ></textbox> </h:p>
+                    <h:p> <textbox id="name" maxlength="150"  ></textbox> </h:p>
                 </div>
 
                 <div class="col-md-6">

@@ -11,9 +11,9 @@
             EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
             update(){
-                entityUtilController.assignOfficialData(transactDetail, ebeanDetail, ewin, "ACCA_F3");
-                fcv.validate(ewin);
-                entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+            entityUtilController.assignOfficialData(transactDetail, ebeanDetail, ewin, "ACCA_F3");
+            fcv.validate(ewin);
+            entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
             }
 
             TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
@@ -26,10 +26,9 @@
                     <button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
                 </div>
             </div>
-
             <div class="row gridCard">
                 <div class="col-md-12">
-                    <label value="Datos de resolutivo" sclass="detailField"></label>
+                    <label value="Datos de resolutivo" sclass="editTitle"></label>
                 </div>
             </div>
 
@@ -37,19 +36,21 @@
             <div class="row gridCard">
                 <div class="col-md-4">
                     <label value="Número de oficio" sclass="editField" ></label>
-                    <h:p> <textbox id="trade_number" maxlength="50"  ></textbox> </h:p>
+                    <h:p> <textbox id="trade_number" maxlength="50"></textbox> </h:p>
                 </div>
                 <div class="col-md-4">
-                    <label value="Fecha de oficio*" sclass="editField" ></label>
-                    <h:p> <datebox id="date_trade"  ></datebox> </h:p>
+                    <label value="Fecha de oficio" sclass="editField" ></label>
+                    <h:p> <datebox id="date_trade"></datebox> </h:p>
                 </div>
                 <div class="col-md-4">
-                    <label value="Iniciales de funcionario" sclass="editField"></label>
-                    <h:p> <textbox id="abbreviation_elaborated" maxlength="10" disabled="true"></textbox> </h:p>
+                    <label value="Iniciales de funcionario*" sclass="editField"></label>
+                    <a sclass="linkDark" iconSclass="z-icon-question-circle" style="cursor: pointer;" popup="iniciales" />
+                    <h:p> <textbox id="abbreviation_elaborated" maxlength="10" readonly="true"></textbox> </h:p>
                 </div>
             </div>
-
+            <popup id="iniciales" width="70%" >
+                <label style="font-size: 14px;" value="El campo se llenará automáticamente cuando presione el botón de guardar" />
+            </popup>
         </div>
-
     </window>
 </zk>
