@@ -182,6 +182,9 @@
             }
             /*********************** Finish Maps **********************/
 
+            public void updateFields(){
+                environmental_lic_num.setValue("");
+            }
         </zscript>
         <!-- JAVA SCRIPT DEL MAPA DE GOOGLE -->
         <script type="text/javascript">
@@ -243,7 +246,7 @@
                         <div id="divAlert"></div>
                     </div>
                     <div class="col-md-12">
-                        <label value="Datos de pago" sclass="detailField"></label>
+                        <label value="Datos de pago" sclass="editTitle"></label>
                     </div>
                 </div>
                 <div sclass="separatorEdit" ></div>
@@ -281,29 +284,59 @@
                 <!-- PARTE DE DATOS GENERALES DEL CIUDADANO -->
                 <div class="row gridCard">
                     <div class="col-md-12">
-                        <label value="Datos generales" sclass="detailField"></label>
+                        <label value="Datos generales" sclass="editTitle"></label>
                     </div>
                 </div>
                 <div sclass="separatorEdit" ></div>
 
-                <div class="col-md-12">
-                    <label value="Nombre y giro o actividad de la empresa o institución " sclass="editField" ></label>
+                <div class="col-md-6">
+                    <label value="Nombre de la empresa o institución*" sclass="editField" ></label>
                     <h:p> <textbox id="company_name" maxlength="150"  ></textbox> </h:p>
                 </div>
 
-                <div class="col-md-12">
-                    <label value="Nombre y cargo del representante*" sclass="editField" ></label>
-                    <h:p> <textbox id="agent_name" maxlength="100"  ></textbox> </h:p>
+                <div class="col-md-6">
+                    <label value="Giro o actividad de la empresa o institución*" sclass="editField" ></label>
+                    <h:p> <textbox id="company_activity" maxlength="150"  ></textbox> </h:p>
                 </div>
 
+                <div class="col-md-6">
+                    <label value="Nombre del representante*" sclass="editField" ></label>
+                    <h:p> <textbox id="legal_representative" maxlength="100"  ></textbox> </h:p>
+                </div>
 
+                <div class="col-md-6">
+                    <label value="Cargo del representante*" sclass="editField" ></label>
+                    <h:p> <textbox id="position_representative" maxlength="100"  ></textbox> </h:p>
+                </div>
+
+                <div class="col-md-6">
+                    <label value="RFC*" sclass="editField" ></label>
+                    <h:p><textbox id="rfc" maxlength="50" constraint="@{rfcmv}" onChanging="updateFields()"></textbox></h:p>
+                </div>
+
+                <div class="col-md-6">
+                    <label value="Número de licencia ambiental" sclass="editField" ></label>
+
+                    <bandbox id="environmental_lic_num" maxlength="50" onOpen="coaInitController.suggestEnvironmentalLicNum(self, elnlb, ebeanDetail, rfc.value);" autodrop="true" width="100%" onCreate="self.value=environmental_lic_num.value">
+                        <bandpopup width="inherit">
+                            <listbox id="elnlb" onSelect="coaInitController.onSelectEnvironmentalLicNum(environmental_lic_num, self);" width="700px" pageSize="5" mold="paging" autopaging="false" style="margin-top: 0px;margin-bottom:0px;margin-left:0px;margin-right: 0px;">
+                                <listhead>
+                                    <listheader label="No. Licencia" hflex="1" ></listheader>
+                                    <listheader label="Inicio Vigencia" hflex="1" ></listheader>
+                                    <listheader label="Final Vigencia" hflex="1" ></listheader>
+                                    <listheader label="No. Oficio" hflex="1" ></listheader>
+                                </listhead>
+                            </listbox>
+                        </bandpopup>
+                    </bandbox>
+                </div>
                 <!--FIN  PARTE DE DATOS GENERALES DEL CIUDADANO -->
 
 
                 <!-- PARTE DE DATOS DE LOCALIZACIÓN DE LA FUENTE -->
                 <div class="row gridCard">
                     <div class="col-md-12">
-                        <label value="Localización de la fuente" sclass="detailField"></label>
+                        <label value="Localización de la fuente" sclass="editTitle"></label>
                     </div>
                 </div>
                 <div sclass="separatorEdit" ></div>

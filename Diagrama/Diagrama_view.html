@@ -7,6 +7,9 @@
         <zscript>
             import ieci.tdw.ispac.adapter.TransactAdapterI;
             import ieci.tdw.ispac.entity.EntityAdapter;
+            import ieci.tdw.ispac.model.SystemProperties;
+            import ieci.tdw.ispac.util.SystemPropertiesUtil;
+            import ieci.tdw.ispac.constant.SystemPropertiesConstants;
 
             EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
 
@@ -20,21 +23,24 @@
             }
 
             public void initDiagram(){
-                Clients.evalJavaScript("reloadDiagram()");
+            Clients.evalJavaScript("reloadDiagram()");
             }
 
             public void loadPreViewImage(){
-                Clients.evalJavaScript("exportImageDiagram()");
-                coaInitController.loadModalViewImage(ewin);
+            Clients.evalJavaScript("exportImageDiagram()");
+            coaInitController.loadModalViewImage(ewin);
             }
             TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+
+            SystemProperties sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GENERAL_STYLESURL, SystemPropertiesConstants.CATEGORY_SYSTEM_GENERAL);
+            String stylesUrl = sp.getStringValue();
+
         </zscript>
         <h:link rel="stylesheet" href="${stylesUrl}styles/diagram/style.css"></h:link>
         <div class="row editBox" >
             <div class="row editHeader">
                 <div class="col-md-12" align="right" >
                     <custom-attributes removeOnPortal="true" ></custom-attributes>
-                    <!--                    <button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>-->
                 </div>
             </div>
 
@@ -52,11 +58,13 @@
                                     <h:option value="initDiagram">Crea un nuevo diagrama</h:option>
                                 </h:select>
                             </h:li>
-
+                            <h:li class="marginList">
+                                <h:a id="download"><h:i class="fa fa-cloud-download"></h:i> Exportar a json</h:a>
+                            </h:li>
                         </h:ul>
                     </h:div>
                 </h:nav>
-                <h:iframe id="diagram" style="width:100%; height:900px;border:3px inset;" src="http://tramitesdev.queretaro.gob.mx:8080/egovstyles/iFrameDiagramContent_view.html">
+                <h:iframe id="diagram" style="width:100%; height:900px;border:3px inset;" src="${stylesUrl}html/diagram/iFrameDiagramContent_view.html">
 
                 </h:iframe>
             </window>
@@ -68,7 +76,7 @@
             </div>
 
             <!-- Campo para almacenar datos -->
-            <div class="row gridCard" visible="fale">
+            <div class="row gridCard" visible="false">
                 <div class="col-md-12">
                     <label value="Datos" sclass="detailField" ></label>
                     <h:p> <label id="data_json" sclass="detailData" ></label> </h:p>
@@ -82,7 +90,7 @@
                 <label id="lbImageConten" onUser1="self.value = org.zkoss.lang.Objects.toString(event.data)"></label>
                 <h:p> <textbox id="imageContent" maxlength="0" onChanging="coaInitController.testValues(ewin,true);"></textbox> </h:p>
             </div>
-            </div>
+        </div>
         <script type="text/javascript">
             <![CDATA[
 
@@ -139,17 +147,17 @@
                 iframeWindow.saveSourceDiagram();
                 let collectionSourceDiagram = iframeWindow.getSourceDiagram();
                 let collectionDiagrams      = iframeWindow.getDataDiagram();
-                zAu.send(new zk.Event(zk.Widget.$(jq('$lbl1')), "onUser1", collectionSourceDiagram, {toServer:true}));
+                zAu.send(new zk.Event(zk.Widget.$(jq('data_json')), "onUser1", collectionSourceDiagram, {toServer:true}));
                 zAu.send(new zk.Event(zk.Widget.$(jq('$lbl2')), "onUser1", collectionDiagrams, {toServer:true}));
                 zAu.send(new zk.Event(zk.Widget.$(jq('$info_diagrama')), "onChanging", "", {toServer:true}));
                 zAu.send(new zk.Event(zk.Widget.$(jq('$saveDiargam')), "onChanging", "", {toServer:true}));
+                downloadDiagram();
             }
 
             function exportImageDiagram() {
                 let imageContent = iframeWindow.getImageDiagram();
-                console.log("Imagen content", imageContent);
                 zAu.send(new zk.Event(zk.Widget.$(jq('$lbImageConten')), "onUser1", imageContent, {toServer:true}));
-                zAu.send(new zk.Event(zk.Widget.$(jq('$imageContent')), "onChanging", "", {toServer:true}));
+                zAu.send(new zk.Event(zk.Widget.$(jq('$info_diagrama')), "onChanging", "", {toServer:true}));
             }
 
             function reloadDiagram() {
@@ -166,8 +174,71 @@
                             addDiagramSelect(index, info_diagrama_obj[index].name);
                         }
                         contSchema = info_diagrama_obj.length;
+                        $("#DiagramSelected").val(0);
+                        $("#DiagramSelected").change();
                     }
                 });
+                downloadDiagram();
+            }
+
+            function downloadDiagram() {
+                let collectionSourceDiagram = iframeWindow.getSourceDiagram();
+                let collectionDiagrams      = iframeWindow.getDataDiagram();
+                collectionSourceDiagram     = replacer(collectionSourceDiagram);
+                collectionDiagrams          = replacer(collectionDiagrams);
+                collectionSourceDiagram     = $.parseJSON(collectionSourceDiagram);
+                collectionDiagrams          = $.parseJSON(collectionDiagrams);
+
+                let data = {
+                    diagram : collectionSourceDiagram,
+                    data    : collectionDiagrams
+                };
+
+                data = JSON.stringify(data);
+                console.log("Data --> ", data);
+                var elem = document.getElementById('download');
+                elem.download = "diagrama.json";
+                elem.href = "data:application/octet-stream," + encodeURIComponent(data);
+            }
+
+            function uploadDiagram(e) {
+                var archivo = e.target.files[0];
+                if (!archivo) {
+                    return;
+                }
+                var lector = new FileReader();
+                lector.onload = function(e) {
+                    var contenido = e.target.result;
+                    console.log("Contenido",contenido);
+                    realoadDiargamFronFile(contenido);
+                };
+                lector.readAsText(archivo);
+            }
+
+            function realoadDiargamFronFile(contenido){
+
+                if(contenido != ""){
+                    contenido = replacer(contenido);
+                    contenido = $.parseJSON(contenido);
+
+                    if(typeof contenido.diagram === 'undefined' && typeof contenido.data === 'undefined'){
+                        alert("Archivo no valido");
+                        return;
+                    }
+                    initContentiFrame();
+                    $('#DiagramSelected').empty();
+                    iframeWindow.resetDiagram();
+                    iframeWindow.loadDiagram(JSON.stringify(contenido.diagram),JSON.stringify(contenido.data));
+                    let info_diagrama_obj = contenido.diagram;
+                    for(let index = 0; index < info_diagrama_obj.length; index++){
+                        addDiagramSelect(index, info_diagrama_obj[index].name);
+                    }
+                    contSchema = info_diagrama_obj.length;
+                    $("#DiagramSelected").val(0);
+                    $("#DiagramSelected").change();
+                }else{
+                    alert("Archivo no valido");
+                }
             }
 
             function replacer(json) {

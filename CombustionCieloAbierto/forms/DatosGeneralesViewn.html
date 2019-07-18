@@ -12,6 +12,7 @@
 			import ieci.tdw.ispac.constant.SystemPropertiesConstants;
 			import ieci.tdw.ispac.adapter.gmaps.GmapsResponseAdapter;
 			import ieci.tdw.ispac.constant.SigemConstants;
+			import ieci.tdw.ispac.model.Citizen;
 
 
 			EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
@@ -23,68 +24,33 @@
 
 			TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
 
-
 			/*********************** Start Maps **********************/
-
-			sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_APIKEY, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
-			String apiKey = sp.getStringValue();
-
 			SystemProperties sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_INITIALZOOM, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
 			Integer initialZoom = sp.getIntValue();
 
 			sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_LATITUDE, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
-			Double lat = sp.getDoubleValue();
+			Double initialLatitude = sp.getDoubleValue();
 
 			sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_LONGITUDE, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
-			Double lng = sp.getDoubleValue();
+			Double initialLongitude = sp.getDoubleValue();
 
-
-			Integer radius = 100;
+			sp = SystemPropertiesUtil.getProperty(SystemPropertiesConstants.SYSTEM_GMAPS_APIKEY, SystemPropertiesConstants.CATEGORY_SYSTEM_GMAPS);
+			String apiKey = sp.getStringValue();
 
 			Double latStored = ebeanDetail.getField("latitude");
 			Double longStored = ebeanDetail.getField("longitude");
-			Integer zoomStored = ebeanDetail.getField("zoom");
+			Integer zoomStored = 15;
 
+			public void changeInitialGmaps() {
+			if (latStored == null) latStored = initialLatitude;
+			if (longStored == null) longStored = initialLongitude;
+			if (zoomStored == null) zoomStored = 1;
 
-			public void prepareAddress(){
-
-			}
-
-
-			<!--		public void changeInitialGmaps(){-->
-			<!--			Label latL  = vwin.getFellow("latitude");-->
-			<!--			Label longL = vwin.getFellow("longitude");-->
-			<!--			alert(latL.getValue() + "-" + longL.getValue());-->
-			<!--			Double lat  =  Double.parseDouble(latL.getValue());-->
-			<!--			Double long =  Double.parseDouble(longL.getValue());-->
-			<!--			Double lat  =  ebeanDetail.getField("latitude");-->
-			<!--			Double long =  ebeanDetail.getField("longitude");-->
-			<!--			gmaps.setZoom(11);-->
-			<!--			gmaps.setCenter(lat, long);-->
-			<!--			marker.setLat(lat);-->
-			<!--			marker.setLng(long);-->
-			<!--		}-->
-
-			public void changeInitialGmaps(){
-			if (latStored != null) latitude.setValue(latStored);
-			else latitude.setValue(lat);
-			if (longStored != null) longitude.setValue(longStored);
-			else longitude.setValue(lng);
-			if (zoomStored != null) zoom.setValue(zoomStored);
-			else zoom.setValue(11);
-			gmaps.setZoom(zoom.getValue());
-			gmaps.setCenter(latitude.doubleValue(), longitude.doubleValue());
-			marker.setLat(latitude.doubleValue());
-			marker.setLng(longitude.doubleValue());
-			}
-
-
-
-			public void zoomHasChanged() {
-			Intbox zoom = vwin.getFellow("zoom");
-			zoom.setValue(gmaps.getZoom());
+			gmaps.setCenter(latStored, longStored );
 			}
 			/*********************** Finish Maps **********************/
+
+
 		</zscript>
 
 		<script type="text/javascript">
@@ -132,10 +98,15 @@
 						<div id="divAlert"></div>
 					</div>
 					<div class="col-md-12">
-						<label value="Datos de pago" sclass="detailField"></label>
+						<label value="Datos de pago" sclass="editTitle"></label>
 					</div>
 				</div>
 				<div sclass="separatorEdit" ></div>
+
+				<div class="col-md-2">
+					<label value="¿Es una Dependencia de gobierno?" sclass="detailField" ></label>
+					<h:p> <label id="government_dependency" sclass="detailData" ></label> </h:p>
+				</div>
 
 				<div class="col-md-2">
 					<label value="Año Fiscal" sclass="detailField" ></label>
@@ -145,31 +116,42 @@
 					<label value="Número de transacción" sclass="detailField" ></label>
 					<h:p> <label id="transaction" sclass="detailData" ></label> </h:p>
 				</div>
-				<div class="col-md-8"></div>
+				<div class="col-md-6"></div>
 				<!--FIN PARTE DE DATOS DE PAGO -->
 
 				<!-- PARTE DE DATOS GENERALES DEL CIUDADANO -->
 				<div class="row gridCard">
 					<div class="col-md-12">
-						<label value="Datos generales" sclass="detailField"></label>
+						<label value="Datos generales" sclass="editTitle"></label>
 					</div>
 				</div>
 				<div sclass="separatorEdit" ></div>
 
-				<div class="col-md-12">
-					<label value="Nombre y giro o actividad de la empresa o institución" sclass="detailField" ></label>
+				<div class="col-md-6">
+					<label value="Nombre de la empresa o institución" sclass="detailField" ></label>
 					<h:p> <label id="company_name" sclass="detailData" ></label> </h:p>
 				</div>
-				<div class="col-md-12">
-					<label value="Nombre y cargo del representante" sclass="detailField" ></label>
-					<h:p> <label id="agent_name" sclass="detailData" ></label> </h:p>
+
+				<div class="col-md-6">
+					<label value="Giro o actividad de la empresa o institución" sclass="detailField" ></label>
+					<h:p> <label id="company_activity" sclass="detailData" ></label> </h:p>
+				</div>
+
+				<div class="col-md-6">
+					<label value="Nombre del representante" sclass="detailField" ></label>
+					<h:p> <label id="legal_representative" sclass="detailData" ></label> </h:p>
+				</div>
+
+				<div class="col-md-6">
+					<label value="Cargo del representante" sclass="detailField" ></label>
+					<h:p> <label id="position_representative" sclass="detailData" ></label> </h:p>
 				</div>
 				<!--FIN PARTE DE DATOS GENERALES DEL CIUDADANO -->
 
 				<!-- PARTE DE DATOS DE LOCALIZACIÓN DE LA FUENTE -->
 				<div class="row gridCard">
 					<div class="col-md-12">
-						<label value="Localización de la fuente" sclass="detailField"></label>
+						<label value="Localización de la fuente" sclass="editTitle"></label>
 					</div>
 				</div>
 				<div sclass="separatorEdit" ></div>
@@ -229,22 +211,13 @@
 				</div>
 			</div>
 
-			<!--		<div class="row gridCard">-->
-			<!--			<div class="col-md-12" >-->
-			<!--				<script type="text/javascript" content="zk.googleAPIkey='${apiKey}'" ></script>-->
-			<!--				<gmaps id="gmaps" zoom="11" height="350px"-->
-			<!--					   onCreate="prepareAddress();changeInitialGmaps();"-->
-			<!--					   showSmallCtrl="false" onMapZoom="zoomHasChanged();">-->
-			<!--					<gmarker id="marker" draggingEnabled="false"-->
-			<!--							 content="" visible="true" ></gmarker>-->
-			<!--				</gmaps>-->
-			<!--			</div>-->
-			<!--		</div>-->
-			<!--		<separator spacing="30px"></separator>-->
-			<!--		<div visible="false">-->
-			<!--			<label value="Zoom" sclass="editField" ></label>-->
-			<!--			<h:p> <intbox id="zoom"  ></intbox> </h:p>-->
-			<!--		</div>-->
+			<div class="col-md-12">
+				<script type="text/javascript" content="zk.googleAPIkey='${apiKey}'" ></script>
+				<gmaps id="gmaps" zoom="${zoomStored}" height="350px"
+					   showSmallCtrl="false" onCreate="changeInitialGmaps();">
+					<gmarker id="marker" lat="@{latStored}" lng="@{longStored}" visible="true" ></gmarker>
+				</gmaps>
+			</div>
 
 		</div>
 

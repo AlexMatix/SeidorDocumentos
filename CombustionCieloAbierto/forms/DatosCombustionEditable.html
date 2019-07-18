@@ -17,9 +17,7 @@
 			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
 			}
 
-			public void updateFields(){
-				number_licence.setValue("");
-			}
+
 
 			TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
 		</zscript>
@@ -46,55 +44,34 @@
 			</div>
 			<div class="col-md-4">
 				<label value="Cargo*" sclass="editField" ></label>
-				<h:p> <textbox id="position" maxlength="100"  ></textbox> </h:p>
+				<h:p> <textbox id="position" maxlength="100" ></textbox> </h:p>
 			</div>
 
 			<div class="col-md-4">
-				<label value="RFC*" sclass="editField" ></label>
-				<h:p><textbox id="rfc" maxlength="50" constraint="@{rfcmv}" onChanging="updateFields()"></textbox></h:p>
+				<label value="Teléfono fijo*" sclass="editField" ></label>
+				<h:p> <textbox id="phone" maxlength="10" constraint="@{phmv}"></textbox> </h:p>
 			</div>
-
-			<div class="col-md-3">
-				<label value="Teléfono fijo *" sclass="editField" ></label>
-				<h:p> <textbox id="phone" maxlength="10"  ></textbox> </h:p>
-			</div>
-			<div class="col-md-3">
+			<div class="col-md-4">
 				<label value="Exención" sclass="editField" ></label>
 				<h:p> <textbox id="extension" maxlength="10"  ></textbox> </h:p>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-4">
 				<label value="Teléfono celular" sclass="editField" ></label>
-				<h:p> <textbox id="cellphone" maxlength="10"  ></textbox> </h:p>
+				<h:p> <textbox id="cellphone" maxlength="10" constraint="@{phmv}" ></textbox> </h:p>
 			</div>
-			<div class="col-md-3">
-				<label value="Emai*" sclass="editField" ></label>
-				<h:p> <textbox id="email" maxlength="100"  ></textbox> </h:p>
+			<div class="col-md-4">
+				<label value="Email*" sclass="editField" ></label>
+				<h:p> <textbox id="email" maxlength="100" constraint="@{emv}"></textbox> </h:p>
 			</div>
 
+			<div class="col-md-12">
+				<label value="Objetivo de la combustión*" sclass="editField" ></label>
+				<h:p> <textbox id="objective_combustion" maxlength="255" multiline="true" rows="4" ></textbox> </h:p>
+			</div>
+			<!--FIN SECCIÖN DE PERSONAL TÉCNICO -->
+
+			<!-- LISTA DE PROGRAMACIÓN DE FECHAS -->
 			<div class="row gridCard">
-				<div class="col-md-6">
-					<label value="Número de licencia ambiental" sclass="editField" ></label>
-
-					<bandbox id="number_licence" maxlength="50" onOpen="coaInitController.suggestEnvironmentalLicNum(self, elnlb, ebeanDetail, rfc.value);" autodrop="true" width="100%" onCreate="self.value=number_licence.value">
-						<bandpopup width="inherit">
-							<listbox id="elnlb" onSelect="coaInitController.onSelectEnvironmentalLicNum(number_licence, self);" width="700px" pageSize="5" mold="paging" autopaging="false" style="margin-top: 0px;margin-bottom:0px;margin-left:0px;margin-right: 0px;">
-								<listhead>
-									<listheader label="No. Licencia" hflex="1" ></listheader>
-									<listheader label="Inicio Vigencia" hflex="1" ></listheader>
-									<listheader label="Final Vigencia" hflex="1" ></listheader>
-									<listheader label="No. Oficio" hflex="1" ></listheader>
-								</listhead>
-							</listbox>
-						</bandpopup>
-					</bandbox>
-				</div>
-				<div class="col-md-6">
-					<label value="Objetivo de la combustión*" sclass="editField" ></label>
-					<h:p> <textbox id="objective_combustion" maxlength="255"  ></textbox> </h:p>
-				</div>
-				<!--FIN SECCIÖN DE PERSONAL TÉCNICO -->
-
-				<!-- LISTA DE PROGRAMACIÓN DE FECHAS -->
 				<separator spacing="30px" />
 				<div class="row gridCard">
 					<div class="col-md-6">
