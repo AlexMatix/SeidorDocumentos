@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConstanciaVerificacion" pageWidth="650" pageHeight="850" columnWidth="570" leftMargin="40" rightMargin="40" topMargin="20" bottomMargin="0" uuid="6c50ef1e-4cb4-4e54-ab16-ec55fa13560c">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConstanciaVerificacion" pageWidth="612" pageHeight="792" columnWidth="448" leftMargin="85" rightMargin="79" topMargin="28" bottomMargin="0" uuid="6c50ef1e-4cb4-4e54-ab16-ec55fa13560c">
 	<property name="ireport.zoom" value="0.9982500000000004"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="360"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -129,9 +129,9 @@
 	<parameter name="F_ACCA_RESOLUTIVO_ABBREVIATION_ELABORATED" class="java.lang.String"/>
 	<parameter name="F_ACCA_DATOS_COMBUSTION_objective_combustion" class="java.lang.String"/>
 	<pageHeader>
-		<band height="54">
+		<band height="60">
 			<image scaleImage="RetainShape" hAlign="Center" vAlign="Bottom">
-				<reportElement mode="Transparent" x="-38" y="0" width="641" height="54" backcolor="#FFFFFF" uuid="1460f06c-89df-48cf-a6ab-480df30cf67b"/>
+				<reportElement mode="Transparent" x="-85" y="0" width="612" height="60" backcolor="#FFFFFF" uuid="1460f06c-89df-48cf-a6ab-480df30cf67b"/>
 				<imageExpression><![CDATA[$P{styles_url} + "images/report/sedesu/header.png"]]></imageExpression>
 			</image>
 		</band>
@@ -139,14 +139,14 @@
 	<columnHeader>
 		<band height="60">
 			<textField>
-				<reportElement x="351" y="40" width="212" height="20" uuid="c4dab22a-df5f-440c-9f16-ef59cfc7fb8a"/>
+				<reportElement x="251" y="40" width="197" height="20" uuid="c4dab22a-df5f-440c-9f16-ef59cfc7fb8a"/>
 				<textElement>
 					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Querétaro, Qro., a "]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="351" y="10" width="212" height="20" uuid="657701c1-d9f9-4d25-b614-4226b90595b9"/>
+				<reportElement x="251" y="0" width="197" height="20" uuid="657701c1-d9f9-4d25-b614-4226b90595b9"/>
 				<textElement>
 					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
@@ -192,23 +192,23 @@
 				<text><![CDATA[P R E S E N T E]]></text>
 			</staticText>
 		</band>
-		<band height="119">
+		<band height="131">
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="0" width="570" height="84" isRemoveLineWhenBlank="true" uuid="d16d3255-04ca-48c8-a385-5dfd15da56e5"/>
+				<reportElement x="0" y="0" width="448" height="91" isRemoveLineWhenBlank="true" uuid="d16d3255-04ca-48c8-a385-5dfd15da56e5"/>
 				<textElement textAlignment="Justified" markup="html">
 					<font fontName="Avenir LT Std 45 Book" size="10" isBold="false" isStrikeThrough="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["En atención a su solicitud de permiso de combustión a cielo abierto y con fundamento en los artículos 1,2 fr. VI, 124, 125 fr. III y X, 155, 177fr. VI y 179 de la ley de Protección Ambiental para el Desarrollo Sustentable del Estado de Querétaro y de conformidad al Acuerdo Delegatorio de fecha 02 de febrero de 2016 a favor del suscrito, se autoriza llevar a cabo; <b>"+ $P{F_ACCA_DATOS_COMBUSTION_objective_combustion} + "</b>, en el domicilio <b> "+ $P{F_CCA_GENERAL_street} + " "+ $P{F_CCA_GENERAL_municipality}+ " " + $P{F_CCA_GENERAL_neighborhood} +".</b>, según lo manifestado en su solicitud; debiendo cumplir con las siguientes condicionantes:"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="76" y="84" width="494" height="24" uuid="500720aa-a54f-456c-9da7-82b329a2cf38"/>
+				<reportElement x="77" y="103" width="494" height="24" uuid="500720aa-a54f-456c-9da7-82b329a2cf38"/>
 				<textElement>
 					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Se autorizá lo siguiente:"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="84" width="76" height="24" uuid="22404cc9-4be8-4333-ac89-d0fce3b0bdbb"/>
+				<reportElement x="0" y="103" width="76" height="24" uuid="22404cc9-4be8-4333-ac89-d0fce3b0bdbb"/>
 				<textElement>
 					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
@@ -217,7 +217,7 @@
 		</band>
 		<band height="69">
 			<componentElement>
-				<reportElement key="table 3" style="table 3" x="116" y="0" width="345" height="46" uuid="c710a965-eca3-46d3-a82d-00f39aa345aa"/>
+				<reportElement key="table 3" style="table 3" x="53" y="0" width="345" height="46" uuid="c710a965-eca3-46d3-a82d-00f39aa345aa"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="quantity_combustion" uuid="ebc8e7cc-3a1c-4ae2-a7ff-bb0d4e3f44c4">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{ListFromJsonGeneric[F_ACCA_DATOS_COMBUSTION_quantity_combustion_json]}, false)]]></dataSourceExpression>
@@ -225,14 +225,14 @@
 					<jr:column width="90" uuid="2847ad94-2842-42e3-bbc3-ccd8524af588">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" backcolor="#FFFFFF" uuid="7d9aa641-1bb9-4960-ab4c-c3c92b732e86"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#133150" uuid="7d9aa641-1bb9-4960-ab4c-c3c92b732e86"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Combustible]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="a13a3b62-3283-4960-873c-71a82b8cb700"/>
+								<reportElement x="0" y="0" width="90" height="20" isRemoveLineWhenBlank="true" uuid="a13a3b62-3283-4960-873c-71a82b8cb700"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{fuel}]]></textFieldExpression>
 							</textField>
@@ -241,14 +241,14 @@
 					<jr:column width="90" uuid="6fb240b1-3b10-4c96-9b47-3000664ef455">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="29e5bcde-c650-45c0-801d-885881e802e0"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#133150" uuid="29e5bcde-c650-45c0-801d-885881e802e0"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Cantidad]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="8a5d7f67-0af4-49af-af23-4d83c30b57bd"/>
+								<reportElement x="0" y="0" width="90" height="20" isRemoveLineWhenBlank="true" uuid="8a5d7f67-0af4-49af-af23-4d83c30b57bd"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
 							</textField>
@@ -257,14 +257,14 @@
 					<jr:column width="90" uuid="a227365b-95d2-4a8a-84b8-9d7d19efe06d">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="0ed9a316-1c54-4a16-9bee-b0484838b1eb"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#133150" uuid="0ed9a316-1c54-4a16-9bee-b0484838b1eb"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Estado]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="cf72d1d8-0e40-47c3-88b5-3785501fc17e"/>
+								<reportElement x="0" y="0" width="90" height="20" isRemoveLineWhenBlank="true" uuid="cf72d1d8-0e40-47c3-88b5-3785501fc17e"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
 							</textField>
@@ -275,7 +275,7 @@
 		</band>
 		<band height="70">
 			<componentElement>
-				<reportElement key="table 4" style="table 4" x="116" y="0" width="345" height="48" backcolor="#133150" uuid="ed0dff70-a06b-4a5e-995b-b19a5f436ec7"/>
+				<reportElement key="table 4" style="table 4" x="53" y="0" width="345" height="48" backcolor="#133150" uuid="ed0dff70-a06b-4a5e-995b-b19a5f436ec7"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="progrmate_combustion" uuid="7dd7b54c-bca5-4944-9f1f-33cda9450b93">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{ListFromJsonGeneric[F_ACCA_DATOS_COMBUSTION_date_combustion_json]}, false)]]></dataSourceExpression>
@@ -283,14 +283,14 @@
 					<jr:column width="90" uuid="5aa7171a-cc8d-4f96-a225-c151405dbfe2">
 						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="932ba532-0c7a-46da-b36a-fd45bbfe83e9"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#133150" uuid="932ba532-0c7a-46da-b36a-fd45bbfe83e9"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Fecha]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="adb74e19-32a9-4dc6-a31f-a7833eefbc21"/>
+								<reportElement x="0" y="0" width="90" height="20" isRemoveLineWhenBlank="true" uuid="adb74e19-32a9-4dc6-a31f-a7833eefbc21"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 							</textField>
@@ -299,14 +299,14 @@
 					<jr:column width="90" uuid="a2d1130c-56ed-49cf-ab27-63562ad84116">
 						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="39f90f79-8ec6-4cac-a1db-3245a0beaade"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#133150" uuid="39f90f79-8ec6-4cac-a1db-3245a0beaade"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Hora]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="e8197fbd-384d-4224-adb1-bd321673630a"/>
+								<reportElement x="0" y="0" width="90" height="20" isRemoveLineWhenBlank="true" uuid="e8197fbd-384d-4224-adb1-bd321673630a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{time}]]></textFieldExpression>
 							</textField>
@@ -315,7 +315,7 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="192">
+		<band height="237">
 			<textField>
 				<reportElement x="0" y="0" width="76" height="26" uuid="72623f7d-87c7-4bb5-88d3-71283e5a26d8"/>
 				<textElement>
@@ -324,72 +324,72 @@
 				<textFieldExpression><![CDATA["\t2."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="32" width="76" height="28" uuid="32c30c50-d562-4073-b24f-5ccb19496b07"/>
+				<reportElement x="0" y="48" width="76" height="28" uuid="32c30c50-d562-4073-b24f-5ccb19496b07"/>
 				<textElement>
 					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
 				<textFieldExpression><![CDATA["\t3."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="67" width="76" height="30" uuid="b1f69053-8f57-4baf-8c2f-c2836153b106"/>
+				<reportElement x="0" y="102" width="76" height="30" uuid="b1f69053-8f57-4baf-8c2f-c2836153b106"/>
 				<textElement>
 					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
 				<textFieldExpression><![CDATA["\t4."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="107" width="76" height="34" uuid="3120576f-524b-425e-b7ea-4df97355ef86"/>
+				<reportElement x="0" y="142" width="76" height="34" uuid="3120576f-524b-425e-b7ea-4df97355ef86"/>
 				<textElement>
 					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
 				<textFieldExpression><![CDATA["\t5."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="76" y="0" width="494" height="26" isRemoveLineWhenBlank="true" uuid="3e7ee059-05d8-4a19-9b4d-8d801eff5187"/>
+				<reportElement x="76" y="0" width="372" height="36" isRemoveLineWhenBlank="true" uuid="3e7ee059-05d8-4a19-9b4d-8d801eff5187"/>
 				<textElement>
 					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Deberá notificar a Protección Civil del Municipio de San Juan del Rio, Qro. en un plazo no mayor a 72 horas previo al evento programado, vía oficio y/o telefónica."]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="76" y="32" width="494" height="28" isRemoveLineWhenBlank="true" uuid="b3d1177f-8bbb-4e07-afec-0189203ab7d9"/>
+				<reportElement x="76" y="48" width="372" height="44" isRemoveLineWhenBlank="true" uuid="b3d1177f-8bbb-4e07-afec-0189203ab7d9"/>
 				<textElement markup="html">
 					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
 				<textFieldExpression><![CDATA["<b>" + $P{F_CCA_GENERAL_name} +",</b> deberá sujetarse a lo establecido por la NOM-002-STPS-2000, referente a las condiciones de seguridad, prevención, protección y combate de incendios en los centros de trabajo."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="76" y="67" width="494" height="30" isRemoveLineWhenBlank="true" uuid="79f41b15-c014-4044-8c9a-db3f95702b06"/>
+				<reportElement x="76" y="102" width="372" height="30" isRemoveLineWhenBlank="true" uuid="79f41b15-c014-4044-8c9a-db3f95702b06"/>
 				<textElement>
 					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Deberá contar con equipo y personas capacitado para atender dicho evento. Deberá contar con equipo y personas capacitado para atender dicho evento."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="76" y="107" width="494" height="34" isRemoveLineWhenBlank="true" uuid="9ef49bf5-7a6a-462a-88f6-b657edbc527b"/>
+				<reportElement x="76" y="142" width="372" height="34" isRemoveLineWhenBlank="true" uuid="9ef49bf5-7a6a-462a-88f6-b657edbc527b"/>
 				<textElement>
 					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
 				<textFieldExpression><![CDATA["En caso de presentarse alguna contingencia durante el evento, deberá aplicar las medidas necesarias para su atención inmediata."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="1" y="150" width="76" height="34" uuid="89b8de7f-e5e2-4fba-95b9-e889643fae13"/>
+				<reportElement x="1" y="185" width="76" height="34" uuid="89b8de7f-e5e2-4fba-95b9-e889643fae13"/>
 				<textElement>
 					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
 				<textFieldExpression><![CDATA["\t6."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="77" y="150" width="494" height="34" isRemoveLineWhenBlank="true" uuid="f08a069f-acfd-4b0d-a7b6-c80c1536cb9b"/>
+				<reportElement x="77" y="185" width="371" height="34" isRemoveLineWhenBlank="true" uuid="f08a069f-acfd-4b0d-a7b6-c80c1536cb9b"/>
 				<textElement>
 					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Cualquier cambio deberá informar a esta Secretaría."]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="43">
+		<band height="44">
 			<staticText>
-				<reportElement x="0" y="0" width="563" height="34" isRemoveLineWhenBlank="true" uuid="3da22043-3fe7-4cdd-977a-f0ea07b36799"/>
+				<reportElement x="0" y="0" width="448" height="34" isRemoveLineWhenBlank="true" uuid="3da22043-3fe7-4cdd-977a-f0ea07b36799"/>
 				<textElement>
 					<font fontName="Avenir LT Std 45 Book"/>
 				</textElement>
@@ -405,7 +405,7 @@
 				<textFieldExpression><![CDATA["C.c.p.-"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="199" y="69" width="221" height="33" uuid="0d6cec2e-68d6-4e95-b1ea-163638f53183"/>
+				<reportElement x="114" y="67" width="221" height="33" uuid="0d6cec2e-68d6-4e95-b1ea-163638f53183"/>
 				<textElement textAlignment="Center">
 					<font fontName="Avenir LT Std 45 Book" isBold="true"/>
 				</textElement>
@@ -413,22 +413,22 @@
 Directora de Control Ambiental.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="251" y="26" width="100" height="20" uuid="bab63da3-7de9-4038-8f94-37e81df8529f"/>
+				<reportElement x="171" y="23" width="100" height="20" uuid="bab63da3-7de9-4038-8f94-37e81df8529f"/>
 				<textElement textAlignment="Center">
 					<font fontName="Avenir LT Std 45 Book" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Atentamente]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="53" y="113" width="517" height="73" isRemoveLineWhenBlank="true" uuid="b21e8cbc-c0f9-45cb-a8da-5c714efa05a1"/>
+				<reportElement x="53" y="113" width="395" height="73" isRemoveLineWhenBlank="true" uuid="b21e8cbc-c0f9-45cb-a8da-5c714efa05a1"/>
 				<textFieldExpression><![CDATA["Ing. Marco Antonio del Prete Tercero.- Secretario de Desarrollo Sustentable. \nIng. Ricardo Javier Torres Hernández - Subsecretario de Medio Ambiente \nExpediente Archivo. \n"+ $P{F_CCA_GENERAL_numexp} +"\n" + $P{F_ACCA_RESOLUTIVO_ABBREVIATION_ELABORATED}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="88">
+		<band height="100">
 			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
-				<reportElement mode="Transparent" x="-38" y="0" width="641" height="88" backcolor="#FFFFFF" uuid="1805fdd3-edca-48ae-82c5-d63918973a8f"/>
+				<reportElement mode="Transparent" x="-85" y="0" width="612" height="100" backcolor="#FFFFFF" uuid="1805fdd3-edca-48ae-82c5-d63918973a8f"/>
 				<imageExpression><![CDATA[$P{styles_url} + "images/report/sedesu/footer.png"]]></imageExpression>
 			</image>
 		</band>
