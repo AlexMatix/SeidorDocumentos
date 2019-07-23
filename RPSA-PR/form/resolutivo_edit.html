@@ -1,0 +1,72 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./ewin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client" >
+    <window id="ewin" border="none" onCreate="entityController.loadEdit(ebeanDetail, self);" >
+
+        <zscript>
+            import ieci.tdw.ispac.adapter.TransactAdapterI;
+            import ieci.tdw.ispac.entity.EntityAdapter;
+
+            EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+
+            update(){
+            entityUtilController.assignOfficialData(transactDetail, ebeanDetail, ewin, "RPSA_PR_F2");
+            fcv.validate(ewin);
+            entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+            }
+
+            TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+        </zscript>
+
+        <div class="row editBox" >
+            <div class="row editHeader">
+                <div class="col-md-12" align="right" >
+                    <custom-attributes removeOnPortal="true" ></custom-attributes>
+                    <button label="guardar" sclass="btn btn-success" onClick="update();" iconSclass="z-icon-save" ></button>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Datos del Resolutivo"  sclass="editTitle" ></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="No. de oficio" sclass="editField" ></label>
+                    <h:p> <textbox id="num_oficio" maxlength="255"  ></textbox> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="No. de registro" sclass="editField" ></label>
+                    <h:p> <textbox id="num_reg" maxlength="255" ></textbox> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Vigencia inicial" sclass="editField" ></label>
+                    <h:p> <datebox id="initial_validity" readonly="true" onChangue="rpsaPrController.calculateValidity(ewin);" ></datebox> </h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Vigencia final" sclass="editField" ></label>
+                    <h:p> <datebox id="final_validity" readonly="true" ></datebox> </h:p>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <label value="Iniciales de funcionario*" sclass="editField"></label>
+                    <a sclass="linkDark" iconSclass="z-icon-question-circle" style="cursor: pointer;" popup="iniciales" />
+                    <h:p> <textbox id="abbreviation_elaborated" maxlength="5" readonly="true"></textbox> </h:p>
+                </div>
+            </div>
+
+            <popup id="iniciales" width="70%" >
+                <label style="font-size: 14px;" value="El campo se llenará automáticamente cuando presione el botón de guardar" />
+            </popup>
+
+        </div>
+
+    </window>
+</zk>

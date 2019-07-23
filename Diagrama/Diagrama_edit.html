@@ -16,10 +16,10 @@
 			TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
 
 			update(){
-				if(ebeanDetail.getField("id")!=null) {
-					fcv.validate(ewin);
-					entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
-				}
+			if(ebeanDetail.getField("id")!=null) {
+			fcv.validate(ewin);
+			entityController.saveOrUpdate(transactDetail, ebeanDetail, ewin);
+			}
 			}
 
 			public void initDiagram(){
@@ -116,8 +116,8 @@
 				</div>
 				<div class="col-md-12">
 					<label id="lbl1" onUser1="self.value = org.zkoss.lang.Objects.toString(event.data)" visible="false" ></label>
-					<label id="lbl2" onUser1="self.value = org.zkoss.lang.Objects.toString(event.data)" visible="false" onCreate="initDiagram()"></label>
-					<label id="lbImageConten" onUser1="self.value = org.zkoss.lang.Objects.toString(event.data)" visible="false"></label>
+					<label id="lbl2" onUser1="self.value = org.zkoss.lang.Objects.toString(event.data)" visible="true" onCreate="initDiagram()"></label>
+					<label id="lbImageConten" onUser1="self.value = org.zkoss.lang.Objects.toString(event.data)" visible="true"></label>
 					<textbox id="saveDiargam" onChanging="update();" visible="false"></textbox>
 				</div>
 			</div>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RPSA-PR_Resolutivo" pageWidth="612" pageHeight="792" columnWidth="448" leftMargin="85" rightMargin="79" topMargin="28" bottomMargin="0" uuid="b409414a-1b3e-48d4-a4f9-744118aa69ab">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="ireport.zoom" value="1.210000000000003"/>
+	<property name="ireport.x" value="65"/>
+	<property name="ireport.y" value="1283"/>
+	<parameter name="F_RPSA_PR_GENERAL_name" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Marcos Raul"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="F_RPSA_PR_GENERAL_lastname1" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Machorro"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="F_RPSA_PR_GENERAL_lastname2" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Perez"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="F_RPSA_PR_GENERAL_street" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Av. Adolfo Lopez Mateos"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="F_RPSA_PR_GENERAL_extnum" class="java.lang.String">
+		<defaultValueExpression><![CDATA["8"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="F_RPSA_PR_GENERAL_state" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Puebla"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="F_RPSA_PR_GENERAL_municipality" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Gral. Felipe Angeles"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="F_RPSA_PR_GENERAL_city" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Santiago Tenango"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="F_RPSA_PR_GENERAL_honorific" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Dr."]]></defaultValueExpression>
+	</parameter>
+	<parameter name="F_RPSA_PR_GENERAL_neighborhood" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Centro"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LongFormatedDate[time_now]" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Enero 11, 2019"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="F_RPSA_PR_RESOLUTIVE_num_oficio" class="java.lang.String">
+		<defaultValueExpression><![CDATA["OFICIO/WDF/423423"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="F_RPSA_PR_RESOLUTIVE_numexp" class="java.lang.String">
+		<defaultValueExpression><![CDATA["SEDESU/RPSAPR/07032019NR3"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="F_RPSA_PR_RESOLUTIVE_num_reg" class="java.lang.String">
+		<defaultValueExpression><![CDATA["PA-QRO-114-2018"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="styles_url" class="java.lang.String">
+		<defaultValueExpression><![CDATA["http://tramitesdev.queretaro.gob.mx:8080/egovstyles/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="F_RPSA_PR_RESOLUTIVE_abbreviation_elaborated" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="100" splitType="Stretch">
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Bottom">
+				<reportElement mode="Transparent" x="-85" y="0" width="612" height="60" backcolor="#FFFFFF" uuid="d021c1e4-ed49-448a-b8fe-7cbf70831914"/>
+				<imageExpression><![CDATA[$P{styles_url} + "images/report/sedesu/header.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="249" y="60" width="199" height="18" uuid="169e8959-dfaa-4e92-9174-efbaf4d3267f"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
+				<text><![CDATA[SEDESU/SSMA/                              /2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="249" y="81" width="198" height="19" uuid="dead8c41-b8c7-49a8-bce4-f6adfe559d6d"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
+				<text><![CDATA[Querétaro, Qro., a ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="544" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="448" height="80" uuid="dd9c756a-52fa-4d47-bb0c-b0a8d7975ab6"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{F_RPSA_PR_GENERAL_honorific}+" "+$P{F_RPSA_PR_GENERAL_name}+" "+$P{F_RPSA_PR_GENERAL_lastname1}+" "+$P{F_RPSA_PR_GENERAL_lastname2}+
+"\nPerito responsable de la explotacion de bancos de material\n"+
+$P{F_RPSA_PR_GENERAL_street}+" "+$P{F_RPSA_PR_GENERAL_extnum}+", Col. "+$P{F_RPSA_PR_GENERAL_neighborhood}+"\n"+
+$P{F_RPSA_PR_GENERAL_city}+", "+$P{F_RPSA_PR_GENERAL_municipality}+", "+$P{F_RPSA_PR_GENERAL_state}+"\n"+
+"Presente"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="181" width="448" height="40" uuid="5273732e-adea-4456-afc3-f95cadddee22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Avenir LT Std 45 Book" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OBLIGACIONES DEL PERITO TRATÁNDOSE DE EXPLOTACIÓN DE BANCOS DE MATERIAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="80" width="448" height="101" uuid="3d0a6f37-411f-4650-8e8e-1724a07849c8"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Con fundamentos en los artículos 8, 16, 40 y 43 de la Constitución Política de de los Estados Unidos Mexicanos; artículos 20 párrafo tercero y 22 fr. I y XIV de la Constitución Política del Estado de Querétaro, artículos 3, 19 fr. IV y 25 fr. XII de la ley Orgánica del Poder Ejecutivo del Estado de Querétaro,  artículos 1, 6 fr. I, 7 fracciones VII incisos a) y c), VIII y XVII; 117 fr. IV, 118 fr. IV, 119 y 120 de la Ley de Protección Ambiental para el Desarrollo Sustentable del estado de Querétaro y al <b>Acuerdo Delegatorio de fecha " +$P{LongFormatedDate[time_now]}+" a favor del suscrito, bajo el numero "+$P{F_RPSA_PR_RESOLUTIVE_num_reg}+", esta secretaria le otorga el REGISTRO DE PERITO RESPONSABLE</b>, para bancos materiales, mismos que contara con vigencia de un año a partir de la fecha de expedición y para tal efecto deberá observar lo siguiente:"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="221" width="448" height="323" uuid="539a90de-be5d-47e3-abac-08561204994f"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Avenir LT Std 45 Book" size="9"/>
+				</textElement>
+				<text><![CDATA[1. Suscribir un dictamen o informe técnico sobre la estabilidad, seguridad de cotes, terraplenes, obras e instalaciones de explotación de un banco de material que este bajo su responsabilidad o cualquier otro que le requiera esta Secretaría.
+
+2. Supervisar el proceso de explotación, restauración o rehabilitación.
+
+3. Hacer cumplir las especificaciones del proyecto en las obras que se ejecuten y las medidas de seguridad ordenadas en la licencia de explotación.
+
+4. Llevar un libro de obra o bitácora firmado por el perito responsable que deberá: Anotar y suscribir en las hojas subsecuentes, las observaciones referentes al proceso de explotación, medidas de seguridad, causas y soluciones dadas a los problemas que se presenten, incidentes y acciones de trabajo, cambios de frente de explotación autorizados, así como la información técnica suficiente para escribir la memoria de explotación, agregando la fecha de cada observación y anotación, así como las observaciones de los inspectores de esta Secretaría.
+
+5. Avisar por escrito a esta Secretaría la terminación de los trabajos de explotación del banco de material de que se trate.
+
+6. Notificar por escrito a esta Secretaría con cinco días hábiles de anticipación, la fecha en que retira su responsiva del banco de material explicando los motivos.
+
+7. Informar cada semestre a la Secretaría, a partir del siguiente año de la fecha de expedición de la licencia de explotación,  el volumen extraído así como los avances en los programas de restauración o rehabilitación.
+
+8. Cuando cese en sus funciones como perito responsable de la explotación de un banco de material, será responsable hasta por el término de un año contando a partir de la fecha de su retiro oficial, por cualquier responsabilidad administrativa contraída durante el tiempo que duro su intervención en la explotación.
+]]></text>
+			</staticText>
+		</band>
+		<band height="544" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="118" width="448" height="40" uuid="68210de1-468d-4453-970b-ee4cde33095e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Avenir LT Std 45 Book" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DECLARACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="158" width="448" height="100" uuid="c71e354c-237f-41d7-936f-3020e2e0ab00"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Avenir LT Std 45 Book" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[<b>PRIMERA.-</b> Esta Secretaría en uso de las facultades que en materia de inspección y vigilancia le otorga la Ley de Protección Ambiental para el Desarrollo Sustentable del Estado de Querétaro, podrá verificar que el proyecto se lleve a cabo en los términos contenidos en el presente registro.<br><br>
+
+<b>SEGUNDA.-</b> En caso de incumplir con las obligaciones descritas en el presente registro de peritos responsable, mediante procedimiento administrativo se dejara sin efecto la misma, de conformidad con lo dispuesto en el artículo 7 fracciones VII incisos a) y c) y VIII de la Ley de protección Ambiental para el Desarrollo Sustentable  del Estado de Querétaro.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="320" width="448" height="117" uuid="eb9fb73e-8834-455c-a5c2-8122ebe34aa4"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
+				<text><![CDATA[Atentamente
+
+
+
+____________________________________
+Ricardo Javier Torres Hernández
+Subsecretario del Medio Ambiente
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="0" width="448" height="118" uuid="8472d29d-5a9f-4723-90ec-9706daaa425d"/>
+				<textElement markup="html">
+					<font fontName="Avenir LT Std 45 Book" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<br><pre>9. Cumplir con lo requerimientos establecidos por la Secretaría en el presente documento y en la licencia de explotación del banco de material de que se trate. Su inobservancia será causa de la cancelación como Perito Responsable en el Registro de esta Secretaría.</pre><br>"+
+
+"<pre>10. Solicitar su refrendo anual de su registro de perito responsable</pre><br>"+
+
+"<pre>11. <b>El registro numero " +$P{F_RPSA_PR_RESOLUTIVE_num_reg}+" lo faculta para la explotación de otros Bancos de Material que cuenten con la licencia de explotación expedida por esta Secretaría</b>, previa notificación de la misma.</pre>"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="482" width="447" height="62" uuid="b3125f05-7bfb-4936-b23c-80e7dad461f8"/>
+				<textElement>
+					<font fontName="Avenir LT Std 45 Book" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["C.c.p.	Ing. Marco Antonio del Prete Tercero.- Secretario de Desarrollo Sustentable\n\tLic. José Luis Peña Ríos.- Procurador Estatal de Protección al Medio Ambiente y Desarrollo Urbano.\n\tArchivo.\n\tExpediente.\n\tRJTH/MGJ/AMJ/" + $P{F_RPSA_PR_RESOLUTIVE_abbreviation_elaborated} + "\n\tTurno: " + $P{F_RPSA_PR_RESOLUTIVE_numexp}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="120" splitType="Stretch">
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Bottom">
+				<reportElement mode="Transparent" x="-85" y="20" width="612" height="100" backcolor="#FFFFFF" uuid="724f909d-3feb-4daa-b345-a69cb862cbc0"/>
+				<imageExpression><![CDATA[$P{styles_url} + "images/report/sedesu/footer.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="171" y="0" width="70" height="15" forecolor="#000000" uuid="acd29878-4e5e-4f47-b4f7-4e5651df249f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="html">
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER} + " de "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="245" y="0" width="25" height="15" forecolor="#000000" uuid="6ec3ebef-c79c-43a6-9a68-3735507ee798"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font fontName="Avenir LT Std 45 Book"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

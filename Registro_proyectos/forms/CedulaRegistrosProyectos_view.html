@@ -1,0 +1,407 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./vwin"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="native" xmlns:w="client">
+    <window id="vwin" border="none" onCreate="entityController.loadView(ebeanDetail, self);">
+
+        <zscript>
+            import ieci.tdw.ispac.adapter.TransactAdapterI;
+            import ieci.tdw.ispac.entity.EntityAdapter;
+            import ieci.tdw.ispac.entity.adapter.rpfpa.RpfpaFormsAdapter;
+            import ieci.tdw.ispac.model.Catalog;
+            import java.util.ArrayList;
+
+            EntityAdapter ebeanDetail = Executions.getCurrent().getArg().get("adapter");
+            RpfpaFormsAdapter initialAdapter = rpfpaFormController.readRpfpaForms(ebeanDetail);
+
+            ArrayList participantesCatalog = catalogManager.getCatalogs(981);
+
+            update(){
+            fcv.validate(vwin);
+            entityController.saveOrUpdate(transactDetail, ebeanDetail, vwin);
+            }
+
+            TransactAdapterI transactDetail = Executions.getCurrent().getArg().get("transact");
+        </zscript>
+
+        <div class="row detailBox">
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <label value="Datos generales" sclass="editTitle"></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit"></div>
+
+            <div class="row gridCard">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <label value="Fecha de recepción" sclass="detailField"></label>
+                    <h:p><label id="reception_date" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-4">
+                    <label value="Folio" sclass="detailField"></label>
+                    <h:p><label id="folio" sclass="detailData"></label></h:p>
+                </div>
+            </div>
+
+
+            <div class="row gridCard" style="margin-top: 30px !important;">
+                <div class="col-md-6">
+                    <label value="Nombre" sclass="detailField"></label>
+                    <h:p><label id="name" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Representante Legal" sclass="detailField"></label>
+                    <h:p><label id="legal_representative" sclass="detailData"></label></h:p>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Teléfono" sclass="detailField"></label>
+                    <h:p><label id="telephone" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Correo Electrónico" sclass="detailField"></label>
+                    <h:p><label id="email" sclass="detailData"></label></h:p>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-8">
+                    <label value="Nombre de la Calle" sclass="detailField"></label>
+                    <h:p><label id="street" sclass="detailData"></label></h:p>
+                </div>
+
+                <div class="col-md-2">
+                    <label value="No. Exterior" sclass="detailField"></label>
+                    <h:p><label id="extnum" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-2">
+                    <label value="No. Interior" sclass="detailField"></label>
+                    <h:p><label id="innnum" sclass="detailData"></label></h:p>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-2">
+                    <label value="Código Postal" sclass="detailField"></label>
+                    <h:p><label id="zipcode" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-3">
+                    <label value="Estado" sclass="detailField"></label>
+                    <h:p><label id="state" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-3">
+                    <label value="Municipio" sclass="detailField"></label>
+                    <h:p><label id="municipality" sclass="detailData"></label></h:p>
+                </div>
+
+                <div class="col-md-2">
+                    <label value="Ciudad" sclass="detailField"></label>
+                    <h:p><label id="city" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-2">
+                    <label value="Colonia" sclass="detailField"></label>
+                    <h:p><label id="neighborhood" sclass="detailData"></label></h:p>
+                </div>
+            </div>
+
+            <div class="row gridCard" style="margin-top: 50px !important;">
+                <div class="col-md-12">
+                    <label value="Ubicación del proyecto" sclass="editTitle" ></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
+            <div class="row gridCard">
+                <div class="col-md-4">
+                    <label value="Municipio(s)" sclass="detailField"></label>
+                    <h:p><label id="project_municipalities" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-8">
+                    <label value="Dirección" sclass="detailField"></label>
+                    <h:p><label id="project_address" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-12">
+                    <label value="Información adicional sobre la ubicación" sclass="detailField"></label>
+                    <h:p><label id="project_info_address" sclass="detailData"></label></h:p>
+                </div>
+            </div>
+
+            <div class="row gridCard" style="margin-top: 50px !important;">
+                <div class="col-md-12">
+                    <label value="Datos generales del proyecto" sclass="editTitle" ></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Título o Nombre del proyecto" sclass="detailField"></label>
+                    <h:p><label id="project_name" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-6">
+                    <label value="Responsable técnico" sclass="detailField"></label>
+                    <h:p><label id="project_tech_response" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-12">
+                    <label value="Resumen ejecutivo del proyecto" sclass="detailField"></label>
+                    <h:p><label id="project_summary" sclass="detailData"></label></h:p>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-8">
+                    <label value="Nombre de la calle" sclass="detailField"></label>
+                    <h:p><label id="project_street" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-2">
+                    <label value="No. Exterior" sclass="detailField"></label>
+                    <h:p><label id="project_extnum" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-2">
+                    <label value="No. Interior" sclass="detailField"></label>
+                    <h:p><label id="project_innnum" sclass="detailData"></label></h:p>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-2">
+                    <label value="Código Postal" sclass="detailField"></label>
+                    <h:p><label id="project_zipcode" sclass="detailData"></label></h:p>
+                </div>
+
+                <div class="col-md-2">
+                    <label value="Estado" sclass="detailField"></label>
+                    <h:p><label id="project_state" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-2">
+                    <label value="Ciudad" sclass="detailField"></label>
+                    <h:p><label id="project_city" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-2">
+                    <label value="Municipio" sclass="detailField"></label>
+                    <h:p><label id="project_municipality" sclass="detailData"></label></h:p>
+                </div>
+                <div class="col-md-2">
+                    <label value="Colonia" sclass="detailField"></label>
+                    <h:p><label id="project_neighborhood" sclass="detailData"></label></h:p>
+                </div>
+            </div>
+
+            <div class="row gridCard" style="margin-top: 50px !important;">
+                <div class="col-md-12">
+                    <label value="Concepto de apoyo" sclass="editTitle" ></label>
+                </div>
+            </div>
+
+            <div sclass="separatorEdit" ></div>
+
+
+            <div class="row gridCard">
+                <div class="col-md-2">
+                    <label value="Concepto" sclass="editField" ></label>
+                </div>
+            </div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <listbox id="lbSupport" onCreate="initialAdapter.loadSupportConcept(vwin, self);" style="min-height:30px;">
+                        <listhead>
+                            <listheader label="Cantidad" hflex="1"></listheader>
+                            <listheader label="Descripción" hflex="1"></listheader>
+                            <listheader label="Costo unitario" hflex="1"></listheader>
+                            <listheader label="Monto total" hflex="1"></listheader>
+                        </listhead>
+                    </listbox>
+                </div>
+            </div>
+
+            <div class="row gridCard" style="margin-top: 120px !important;">
+                <div class="col-md-12">
+                    <label value="Identificación de Participante en el Financiamiento del Proyecto" sclass="editTitle" ></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
+
+            <div class="row gridCard">
+                <div class="col-md-2">
+                    <label value="Participante" sclass="editField" ></label>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <listbox id="lbIdeParticipant" onCreate="initialAdapter.loadIdeParticipant(vwin, self, participantesCatalog);" style="min-height:30px;">
+                    <listhead>
+                        <listheader label="Participante" hflex="2"></listheader>
+                        <listheader label="Nombre de la institución" hflex="3"></listheader>
+                    </listhead>
+                </listbox>
+            </div>
+
+
+            <div class="row gridCard" style="margin-top: 120px !important;">
+                <div class="col-md-12">
+                    <label value="Fuentes y Calendario de Aplicación de Recursos" sclass="editTitle" ></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
+
+            <div class="row gridCard" style="margin-top: 50px !important;">
+                <div class="col-md-6">
+                    <label value="Presupuesto en pesos con el que participarán las instancias" sclass="editField" ></label>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <listbox id="lbSourcesAndCalendar" onCreate="initialAdapter.loadSourcesAndCalendar(vwin, self);" style="min-height:30px;">
+                    <listhead>
+                        <listheader label="Meses" hflex="2"></listheader>
+                        <listheader label="Federación" hflex="3"></listheader>
+                        <listheader label="Estado" hflex="3"></listheader>
+                        <listheader label="Municipio" hflex="3"></listheader>
+                        <listheader label="Sector Académico" hflex="3"></listheader>
+                        <listheader label="Sector Privado" hflex="3"></listheader>
+                        <listheader label="Otros" hflex="3"></listheader>
+                        <listheader label="Total Mensual" hflex="3"></listheader>
+                    </listhead>
+                </listbox>
+            </div>
+
+            <div class="row gridCard" style="margin-top: 150px !important;">
+                <div class="col-md-12">
+                    <label value="Otras aportaciones" sclass="editTitle" ></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
+
+            <div class="row gridCard">
+                <div class="col-md-6">
+                    <label value="Aportaciones en especie (Bienes muebles, bienes inmuebles)" sclass="editField" ></label>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <listbox id="lbKindContributions" onCreate="initialAdapter.loadOtherContributions(vwin, self);" style="min-height:30px;">
+                    <listhead>
+                        <listheader label="Monto" hflex="1"></listheader>
+                        <listheader label="Participante" hflex="1"></listheader>
+                        <listheader label="Descripción" hflex="1"></listheader>
+                    </listhead>
+                </listbox>
+            </div>
+
+            <div class="row gridCard" style="margin-top: 120px !important">
+                <div class="col-md-6">
+                    <label value="Aportaciones en especie (Honorarios)" sclass="editField" ></label>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <listbox id="lbKindContributions2" onCreate="initialAdapter.loadOtherContributions2(vwin, self);" style="min-height:30px;">
+                    <listhead>
+                        <listheader label="Monto" hflex="1"></listheader>
+                        <listheader label="Participante" hflex="1"></listheader>
+                        <listheader label="Descripción" hflex="1"></listheader>
+                    </listhead>
+                </listbox>
+            </div>
+
+            <div class="row gridCard" style="margin-top: 120px !important;">
+                <div class="col-md-12">
+                    <label value="Protesta del solicitante" sclass="editTitle" ></label>
+                </div>
+            </div>
+            <div sclass="separatorEdit" ></div>
+
+            <div class="row gridCard">
+                <div class="col-md-12">
+                    <h:p align="justify" style="font-size: 12px;">
+                        Como solicitante, manifiesto bajo protesta de decir verdad, que conozco el contenido y alcances que establecen en las Reglas
+                        de Operación del Fondo para la Protección Ambiental y el Desarrollo Sustentable en Querétaro para el Desarrollo de Políticas
+                        Públicas, Programas y Proyectos que contribuyan a la Disminución de las emisiones de Dióxido de carbono y Otros Gases de
+                        Efecto Invernadero en el Estado, así como aquellos que promuevan la Sustentabilidad Ambiental y la Utilización de Fuentes
+                        Renovables de Energía; por lo que manifiesto a nombre propio y en su caso, de mi representada, mi voluntad de Asumir las
+                        obligaciones revistas en dichas Reglas de Operación, particularmente las relativas a realizar las actividades correspondientes
+                        para llevar acabo su ejecución, vigilar la correcta aplicación y administración de los recursos otorgados, así como rendir los
+                        informes establecidos en las citadas reglas de operación, en caso de que el proyecto sea aprobado por el Comité.
+                    </h:p>
+                </div>
+
+                <div class="col-md-12">
+                    <label id="accept_check" sclass="detailData"></label> <label value=" He leído y tomo protesta de lo que se menciona arriba."></label>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+<!--        Sección de addressbox (id)-->
+        <div class="col-md-12" visible="false">
+            <div class="col-md-12">
+                <label value="Estado Id" sclass="detailField"></label>
+                <h:p><label id="id_state" sclass="detailData"></label></h:p>
+            </div>
+            <div class="col-md-12">
+                <label value="Municipio Id" sclass="detailField"></label>
+                <h:p><label id="id_municipality" sclass="detailData"></label></h:p>
+            </div>
+            <div class="col-md-12">
+                <label value="Municipio Id" sclass="detailField"></label>
+                <h:p><label id="id_city" sclass="detailData"></label></h:p>
+            </div>
+            <div class="col-md-12">
+                <label value="Colonia Id" sclass="detailField"></label>
+                <h:p><label id="id_neighborhood" sclass="detailData"></label></h:p>
+            </div>
+            <div class="col-md-12">
+                <label value="Estado Id" sclass="detailField"></label>
+                <h:p><label id="project_id_state" sclass="detailData"></label></h:p>
+            </div>
+            <div class="col-md-12">
+                <label value="Municipio Id" sclass="detailField"></label>
+                <h:p><label id="project_id_municipality" sclass="detailData"></label></h:p>
+            </div>
+            <div class="col-md-12">
+                <label value="Ciudad Id" sclass="detailField"></label>
+                <h:p><label id="project_id_city" sclass="detailData"></label></h:p>
+            </div>
+            <div class="col-md-12">
+                <label value="Colonia Id" sclass="detailField"></label>
+                <h:p><label id="project_id_neighborhood" sclass="detailData"></label></h:p>
+            </div>
+        </div>
+<!--        Sección de JSON para listbox-->
+        <div class="col-md-12" visible="false">
+            <div class="col-md-12">
+                <label value="Concepto de Apoyo" sclass="detailField"></label>
+                <h:p><label id="support_concept" sclass="detailData"></label></h:p>
+            </div>
+            <div class="col-md-12">
+                <label value="Identificación de Participante en el Financiamiento del Proyecto"
+                       sclass="detailField"></label>
+                <h:p><label id="ide_participant" sclass="detailData"></label></h:p>
+            </div>
+            <div class="col-md-12">
+                <label value="Fuentes y Calendario de Aplicación de Recursos" sclass="detailField"></label>
+                <h:p><label id="sources_and_calendar" sclass="detailData"></label></h:p>
+            </div>
+            <div class="col-md-12">
+                <label value="Aportaciones en especie (Bienes muebles, bienes inmuebles)"
+                       sclass="detailField"></label>
+                <h:p><label id="kind_contributions" sclass="detailData"></label></h:p>
+            </div>
+            <div class="col-md-12">
+                <label value="Aportaciones en especie (Honorarios)" sclass="detailField"></label>
+                <h:p><label id="kind_contributions2" sclass="detailData"></label></h:p>
+            </div>
+            <div class="col-md-12">
+                <label value="Manifiesto del Contenido" sclass="detailField"></label>
+
+            </div>
+        </div>
+    </window>
+</zk>
